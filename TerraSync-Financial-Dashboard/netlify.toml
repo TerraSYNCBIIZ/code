@@ -1,5 +1,5 @@
 [build]
-  publish = "TerraSync-Financial-Dashboard"
+  publish = "."
 
 [[headers]]
   for = "/*"
@@ -16,4 +16,9 @@
 [[headers]]
   for = "/pitch-deck.html"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate" 
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/NEW-slide-*.html"
+  to = "/pitch-deck.html"
+  status = 302 
