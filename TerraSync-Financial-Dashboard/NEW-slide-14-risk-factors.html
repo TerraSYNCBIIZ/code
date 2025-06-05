@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Risk Factors & Mitigation</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding: 25px 35px 40px 35px !important;
+            height: calc(100vh - 65px) !important;
+        }
+
+        .risk-container {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .risk-hero {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.15) 0%, rgba(251, 146, 60, 0.08) 100%);
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid rgba(251, 146, 60, 0.4);
+        }
+
+        .hero-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        .risks-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .risk-category {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(251, 146, 60, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .category-icon {
+            font-size: 1.4rem;
+            color: #f59e0b;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .risk-item {
+            margin-bottom: 12px;
+            padding: 12px;
+            background: rgba(55, 65, 81, 0.6);
+            border-radius: 8px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .risk-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 4px;
+        }
+
+        .risk-description {
+            font-size: 0.8rem;
+            color: #d1d5db;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .mitigation {
+            font-size: 0.75rem;
+            color: #86efac;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mitigation-icon {
+            font-size: 0.7rem;
+            color: #22c55e;
+        }
+
+        .protection-strategy {
+            grid-column: 1 / 3;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .strategy-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .strategy-text {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            line-height: 1.4;
+        }
+
+        .highlight {
+            color: #22c55e;
+            font-weight: 600;
+        }
+        
+        /* Fix spacing to properly fit content and avoid navigation overlap */
+        .slide {
+            padding-bottom: 10px !important;
+            padding-top: 40px !important;
+        }
+        
+        .slide-content {
+            height: calc(100vh - 50px);
+            overflow: visible;
+            margin-bottom: 0;
+        }
+        
+        .slide-header {
+            margin-bottom: 16px;
+        }
+        
+        .slide-title {
+            font-size: 2rem !important;
+            margin-bottom: 8px !important;
+        }
+        
+        .slide-subtitle {
+            font-size: 1rem !important;
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Risk Factors & Mitigation Strategies</h1>
+                <p class="slide-subtitle">Transparent Assessment of Challenges & Our Protective Moats</p>
+            </div>
+
+            <div class="risk-container">
+                <div class="risk-hero">
+                    <div class="hero-title">Honest Risk Assessment</div>
+                    <div class="hero-subtitle">We address risks head-on with clear mitigation strategies</div>
+                </div>
+
+                <div class="risks-grid">
+                    <!-- Competition Risk -->
+                    <div class="risk-category">
+                        <div class="category-header">
+                            <i class="fas fa-shield-alt category-icon"></i>
+                            <h3 class="category-title">Competitive Threats</h3>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Major Player Entry</div>
+                            <div class="risk-description">Husqvarna, Toro, and Rainbird dominate golf industry but are locked into their own product ecosystems.</div>
+                            <div class="mitigation">
+                                <i class="fas fa-check-circle mitigation-icon"></i>
+                                <span>Mitigation: Vendor-agnostic platform they can't replicate</span>
+                            </div>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Vendor Relationship Risk</div>
+                            <div class="risk-description">If we become a threat, manufacturers might restrict our software access.</div>
+                            <div class="mitigation">
+                                <i class="fas fa-users mitigation-icon"></i>
+                                <span>Protection: Mass customer base makes vendor retaliation costly</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technology & Execution Risk -->
+                    <div class="risk-category">
+                        <div class="category-header">
+                            <i class="fas fa-code category-icon"></i>
+                            <h3 class="category-title">Technology & Execution</h3>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Platform Development</div>
+                            <div class="risk-description">Risk of technical delays or integration challenges as we scale TerraSYNC Hub.</div>
+                            <div class="mitigation">
+                                <i class="fas fa-hammer mitigation-icon"></i>
+                                <span>Mitigation: Beta platform proven, hiring specialized engineering team</span>
+                            </div>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Key Person Dependency</div>
+                            <div class="risk-description">Heavy reliance on Wesley's industry knowledge and technical vision.</div>
+                            <div class="mitigation">
+                                <i class="fas fa-users mitigation-icon"></i>
+                                <span>Mitigation: Building strong advisory board and management team</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market & Customer Risk -->
+                    <div class="risk-category">
+                        <div class="category-header">
+                            <i class="fas fa-chart-line category-icon"></i>
+                            <h3 class="category-title">Market Risks</h3>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Customer Concentration</div>
+                            <div class="risk-description">Early dependence on key commercial accounts for revenue stability.</div>
+                            <div class="mitigation">
+                                <i class="fas fa-expand mitigation-icon"></i>
+                                <span>Mitigation: Diversifying across multiple industries and geographic markets</span>
+                            </div>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Adoption Speed</div>
+                            <div class="risk-description">Commercial adoption may be slower than projected (conservative estimates help here).</div>
+                            <div class="mitigation">
+                                <i class="fas fa-chart-bar mitigation-icon"></i>
+                                <span>Mitigation: Conservative growth projections and proven ROI case studies</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regulatory & External -->
+                    <div class="risk-category">
+                        <div class="category-header">
+                            <i class="fas fa-gavel category-icon"></i>
+                            <h3 class="category-title">External Factors</h3>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Regulatory Changes</div>
+                            <div class="risk-description">Environmental or safety regulations could impact autonomous equipment deployment.</div>
+                            <div class="mitigation">
+                                <i class="fas fa-leaf mitigation-icon"></i>
+                                <span>Mitigation: Our platform improves environmental compliance and safety</span>
+                            </div>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-title">Economic Downturn</div>
+                            <div class="risk-description">Reduced commercial property investment could slow GMA adoption.</div>
+                            <div class="mitigation">
+                                <i class="fas fa-dollar-sign mitigation-icon"></i>
+                                <span>Mitigation: ROI improvements become more valuable in tough times</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protection Strategy -->
+                    <div class="protection-strategy">
+                        <div class="strategy-title">Our Protective Moat Strategy</div>
+                        <div class="strategy-text">
+                            <span class="highlight">Rapid Customer Acquisition</span> creates network effects that protect us. Once thousands of customers 
+                            depend on our platform, <span class="highlight">manufacturers can't afford to alienate this user base</span> - making vendor retaliation 
+                            too costly for their reputation. This is why <span class="highlight">growing quickly is our best defense</span>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

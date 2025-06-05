@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - America's $10B Automation Opportunity</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding: 25px 40px 25px 40px !important;
+            height: calc(100vh - 50px) !important;
+        }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-header {
+            margin-bottom: 20px;
+        }
+
+        .opportunity-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 15px;
+        }
+
+        .timing-hero {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            flex: 1;
+            align-items: stretch;
+        }
+
+        .forces-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .force-card {
+            background: rgba(31, 41, 55, 0.6);
+            padding: 16px;
+            border-radius: 10px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .force-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .force-icon {
+            font-size: 1.3rem;
+            color: #22c55e;
+        }
+
+        .force-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .force-points {
+            list-style: none;
+            flex: 1;
+        }
+
+        .force-points li {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.3;
+        }
+
+        .point-icon {
+            color: #22c55e;
+            font-size: 0.7rem;
+            min-width: 12px;
+        }
+
+        .growth-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .growth-chart {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 16px;
+            border-radius: 10px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            flex: 1;
+        }
+
+        .timeline-item {
+            text-align: center;
+            padding: 10px 6px;
+            background: rgba(31, 41, 55, 0.6);
+            border-radius: 6px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .timeline-year {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 3px;
+            font-weight: 500;
+        }
+
+        .timeline-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 3px;
+        }
+
+        .timeline-note {
+            font-size: 0.7rem;
+            color: #d1d5db;
+        }
+
+        .drivers-section {
+            background: rgba(31, 41, 55, 0.6);
+            padding: 16px;
+            border-radius: 10px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .drivers-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .drivers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .driver-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 6px;
+            background: rgba(31, 41, 55, 0.4);
+            border-radius: 6px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            text-align: center;
+        }
+
+        .driver-icon {
+            font-size: 1rem;
+            color: #22c55e;
+        }
+
+        .driver-text {
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .bottom-summary {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .summary-text {
+            font-size: 0.95rem;
+            color: #e5e7eb;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .key-stat {
+            color: #22c55e;
+            font-weight: 700;
+        }
+
+        /* Override master wrapper padding */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            overflow: hidden;
+        }
+
+        /* Fix bottom spacing to avoid overlap with navigation */
+        .slide {
+            padding-bottom: 120px !important;
+        }
+        
+        .slide-content {
+            margin-bottom: 40px;
+        }
+        
+        .slide-wrapper {
+            padding-bottom: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Perfect Market Timing</h1>
+                <p class="slide-subtitle">Converging Forces Create Unprecedented GMA Opportunity</p>
+            </div>
+
+            <div class="opportunity-container">
+                <div class="timing-hero">
+                    <h2 class="hero-title">The Perfect Storm</h2>
+                    <p class="hero-subtitle">Labor Crisis + Technology Maturity + Market Demand = Automation Explosion</p>
+                </div>
+
+                <div class="main-grid">
+                    <div class="forces-column">
+                        <div class="force-card">
+                            <div class="force-header">
+                                <i class="fas fa-chart-line force-icon"></i>
+                                <h3 class="force-title">Labor Crisis Accelerating</h3>
+                            </div>
+                            <ul class="force-points">
+                                <li><i class="fas fa-circle point-icon"></i>Wages outpacing inflation nationwide</li>
+                                <li><i class="fas fa-circle point-icon"></i>15% surge in workforce shortages</li>
+                                <li><i class="fas fa-circle point-icon"></i>Properties seeking automation solutions</li>
+                            </ul>
+                        </div>
+
+                        <div class="force-card">
+                            <div class="force-header">
+                                <i class="fas fa-cogs force-icon"></i>
+                                <h3 class="force-title">Technology Now Proven</h3>
+                            </div>
+                            <ul class="force-points">
+                                <li><i class="fas fa-circle point-icon"></i>Robotic systems field-tested & reliable</li>
+                                <li><i class="fas fa-circle point-icon"></i>IoT connectivity ubiquitous</li>
+                                <li><i class="fas fa-circle point-icon"></i>ROI under 2 years achievable</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="growth-column">
+                        <div class="growth-chart">
+                            <h3 class="chart-title">GMA Market Trajectory</h3>
+                            <div class="timeline-grid">
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2023</div>
+                                    <div class="timeline-value">$3B</div>
+                                    <div class="timeline-note">Robotic Mowers</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2030</div>
+                                    <div class="timeline-value">$4B</div>
+                                    <div class="timeline-note">14.8% CAGR</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2032</div>
+                                    <div class="timeline-value">$15B+</div>
+                                    <div class="timeline-note">Full GMA Market</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">US Share</div>
+                                    <div class="timeline-value">&lt;5%</div>
+                                    <div class="timeline-note">Massive Gap</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="drivers-section">
+                            <h3 class="drivers-title">Why TerraSync Wins</h3>
+                            <div class="drivers-grid">
+                                <div class="driver-item">
+                                    <i class="fas fa-rocket driver-icon"></i>
+                                    <span class="driver-text">First integrated platform</span>
+                                </div>
+                                <div class="driver-item">
+                                    <i class="fas fa-shield-alt driver-icon"></i>
+                                    <span class="driver-text">Service + Software moat</span>
+                                </div>
+                                <div class="driver-item">
+                                    <i class="fas fa-clock driver-icon"></i>
+                                    <span class="driver-text">Window closing fast</span>
+                                </div>
+                                <div class="driver-item">
+                                    <i class="fas fa-target driver-icon"></i>
+                                    <span class="driver-text">Commercial focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-summary">
+                    <p class="summary-text">
+                        TerraSync captures the <span class="key-stat">$15B+ GMA opportunity</span> with proven integrated platform 
+                        while competitors focus only on residential robotic mowing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

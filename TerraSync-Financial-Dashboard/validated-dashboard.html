@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRASYNC - Validated Financial Analysis</title>
+    
+    <!-- External Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/dashboard-styles.css">
+    
+    <style>
+        .reality-check {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 6px solid #fbbf24;
+        }
+        
+        .validated-metric {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 6px solid #10b981;
+        }
+        
+        .market-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+        }
+        
+        .penetration-visual {
+            display: flex;
+            align-items: center;
+            margin: 16px 0;
+        }
+        
+        .penetration-bar {
+            width: 400px;
+            height: 24px;
+            background-color: #374151;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-right: 16px;
+            position: relative;
+        }
+        
+        .penetration-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            width: 0.27%;
+            transition: width 1s ease-out;
+        }
+        
+        .penetration-label {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        
+        .opportunity-card {
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .opportunity-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin: 8px 0;
+        }
+        
+        .opportunity-label {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        
+        .correction-box {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+            border-left: 4px solid #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>TERRASYNC VALIDATED FINANCIAL ANALYSIS</h1>
+            <p style="color: #9ca3af; font-size: 1.2rem;">Corrected Model • Market Opportunity • Realistic Projections</p>
+        </div>
+        
+        <!-- TAB NAVIGATION -->
+        <div class="tab-navigation">
+            <div class="tab-btn active" onclick="switchTab('reality')">
+                <i class="icon icon-check"></i> Current Reality
+            </div>
+            <div class="tab-btn" onclick="switchTab('market')">
+                <i class="icon icon-target"></i> Market Opportunity
+            </div>
+            <div class="tab-btn" onclick="switchTab('projections')">
+                <i class="icon icon-chart"></i> Growth Projections
+            </div>
+            <div class="tab-btn" onclick="switchTab('corrections')">
+                <i class="icon icon-calculator"></i> Model Corrections
+            </div>
+        </div>
+        
+        <!-- CURRENT REALITY TAB -->
+        <div id="reality" class="tab-content active">
+            
+            <div class="reality-check">
+                <h3>🚨 PREVIOUS MODEL CORRECTION</h3>
+                <p><strong>Previous Dashboard:</strong> $51,600/month revenue (INCORRECT)</p>
+                <p><strong>Actual Current Revenue:</strong> ~$5,000/month</p>
+                <p><strong>Problem:</strong> Used mature territory assumptions for early-stage business</p>
+            </div>
+            
+            <div class="validated-metric">
+                <h3>✅ VALIDATED CURRENT STATE</h3>
+                <p><strong>Real Data:</strong> 62 total acres (Knoxville 50 + West Palm 12)</p>
+                <p><strong>Revenue Streams:</strong> Service $59/acre + Installation $700/acre + Product $1,800/acre + SaaS $50/user</p>
+                <p><strong>Market Position:</strong> 0.27% of 23,000+ acre opportunity</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="metrics-panel">
+                    <div class="metric-card">
+                        <div class="metric-value">$5,000</div>
+                        <div class="metric-label">Actual Monthly Revenue</div>
+                        <div class="metric-change">Service + Installation + Product + SaaS</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value">62</div>
+                        <div class="metric-label">Current Total Acres</div>
+                        <div class="metric-change">Knoxville: 50 | West Palm: 12</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value">2</div>
+                        <div class="metric-label">Active Territories</div>
+                        <div class="metric-change">Foundation phase</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value">+$1,700</div>
+                        <div class="metric-label">Monthly Cash Flow</div>
+                        <div class="metric-change positive">Near profitable</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="section-title">Current Revenue Breakdown</div>
+                    <canvas id="currentRevenueChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+            
+            <!-- Validated Revenue Model -->
+            <div class="section">
+                <div class="section-title">Validated Revenue Model</div>
+                <div class="assumptions-grid">
+                    <div class="assumption-card">
+                        <div class="assumption-title">Current Monthly Revenue</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Service Revenue</span>
+                            <span class="assumption-value">62 acres × $59 = $3,658</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Installation/Product (avg)</span>
+                            <span class="assumption-value">5 acres × $2,500 = $1,250</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">SaaS Revenue</span>
+                            <span class="assumption-value">3 users × $50 = $150</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Total Current</span>
+                            <span class="assumption-value positive">~$5,000/month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assumption-card">
+                        <div class="assumption-title">Current Territory Costs</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Knoxville Base Costs</span>
+                            <span class="assumption-value">$650/month</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">West Palm Base Costs</span>
+                            <span class="assumption-value">$650/month</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Employee Cost</span>
+                            <span class="assumption-value">$0 (under 300 acre threshold)</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Total Current</span>
+                            <span class="assumption-value">$1,300/month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MARKET OPPORTUNITY TAB -->
+        <div id="market" class="tab-content">
+            
+            <div class="market-card">
+                <h3>📊 MASSIVE MARKET OPPORTUNITY</h3>
+                
+                <div class="opportunity-grid">
+                    <div class="opportunity-card">
+                        <div class="opportunity-value">23,000+</div>
+                        <div class="opportunity-label">Total Addressable Acres</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <div class="opportunity-value">0.27%</div>
+                        <div class="opportunity-label">Current Penetration</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <div class="opportunity-value">370x</div>
+                        <div class="opportunity-label">Growth Potential</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <div class="opportunity-value">$16.3M</div>
+                        <div class="opportunity-label">Annual Market Value</div>
+                    </div>
+                </div>
+                
+                <h4>Market Penetration Visualization</h4>
+                <div class="penetration-visual">
+                    <div class="penetration-bar">
+                        <div class="penetration-fill"></div>
+                        <div class="penetration-label">62 / 23,000 acres</div>
+                    </div>
+                    <span style="color: #22c55e; font-weight: 600;">Current Position</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="chart-container">
+                    <div class="section-title">Market Opportunity by Region</div>
+                    <canvas id="marketChart" width="600" height="400"></canvas>
+                </div>
+                
+                <div class="metrics-panel">
+                    <div class="metric-card">
+                        <div class="metric-value">3,000+</div>
+                        <div class="metric-label">Knoxville Addressable</div>
+                        <div class="metric-change">1.7% penetration (50/3,000)</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value">20,000+</div>
+                        <div class="metric-label">West Palm Addressable</div>
+                        <div class="metric-change">0.06% penetration (12/20,000)</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value">$2.1M</div>
+                        <div class="metric-label">Knoxville Annual TAM</div>
+                        <div class="metric-change">3,000 × $59 × 12</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value">$14.2M</div>
+                        <div class="metric-label">West Palm Annual TAM</div>
+                        <div class="metric-change">20,000 × $59 × 12</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Market Segments -->
+            <div class="section">
+                <div class="section-title">Market Validation by Segment</div>
+                <div class="assumptions-grid">
+                    <div class="assumption-card">
+                        <div class="assumption-title">Knoxville Market (3,000+ acres)</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Golf Courses</span>
+                            <span class="assumption-value">Multiple courses, extensive acreage</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Corporate Properties</span>
+                            <span class="assumption-value">Office complexes, commercial landscaping</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Municipal Properties</span>
+                            <span class="assumption-value">Parks, public spaces, city properties</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">High-end Residential</span>
+                            <span class="assumption-value">Large properties requiring irrigation</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assumption-card">
+                        <div class="assumption-title">West Palm Beach (20,000+ acres)</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Golf Courses</span>
+                            <span class="assumption-value">Extensive golf community</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Resort Properties</span>
+                            <span class="assumption-value">Hotels, resorts, commercial landscaping</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Luxury Residential</span>
+                            <span class="assumption-value">High-value properties with irrigation</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Commercial Centers</span>
+                            <span class="assumption-value">Retail, office, mixed-use developments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- GROWTH PROJECTIONS TAB -->
+        <div id="projections" class="tab-content">
+            
+            <div class="scenario-controls">
+                <div class="time-slider-compact">
+                    <i class="icon icon-calendar" style="color: #9ca3af; font-size: 0.85rem;"></i>
+                    <input type="range" 
+                           id="timeSlider" 
+                           class="time-slider-small" 
+                           min="0" 
+                           max="60" 
+                           value="0" 
+                           oninput="updateProjections(this.value)">
+                    <span style="color: #22c55e; font-size: 0.9rem; font-weight: 600;" id="currentMonth">Month 0 (Current)</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="chart-container">
+                    <div class="section-title">Realistic Growth Trajectory</div>
+                    <canvas id="projectionChart" width="800" height="400"></canvas>
+                </div>
+                
+                <div class="metrics-panel">
+                    <div class="metric-card">
+                        <div class="metric-value" id="projectedRevenue">$5,000</div>
+                        <div class="metric-label">Monthly Revenue</div>
+                        <div class="metric-change" id="revenueGrowth">Current state</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="projectedAcres">62</div>
+                        <div class="metric-label">Total Acres</div>
+                        <div class="metric-change" id="acresGrowth">Starting point</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="projectedTerritories">2</div>
+                        <div class="metric-label">Active Territories</div>
+                        <div class="metric-change" id="territoryGrowth">Knoxville + West Palm</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="projectedPenetration">0.27%</div>
+                        <div class="metric-label">Market Penetration</div>
+                        <div class="metric-change" id="penetrationGrowth">Massive opportunity</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Territory Maturity Timeline -->
+            <div class="section">
+                <div class="section-title">Territory Maturity Model</div>
+                <div class="assumptions-grid">
+                    <div class="assumption-card">
+                        <div class="assumption-title">Year 1: Foundation (0-200 acres)</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Growth Rate</span>
+                            <span class="assumption-value">~17 acres/month per territory</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Service Revenue</span>
+                            <span class="assumption-value">+$1,000/month per 17 acres</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">One-time Revenue</span>
+                            <span class="assumption-value">$2,500/acre (install + product)</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Territory Costs</span>
+                            <span class="assumption-value">$650/month (base only)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assumption-card">
+                        <div class="assumption-title">Years 2-3: Growth (200-1,000 acres)</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Growth Rate</span>
+                            <span class="assumption-value">8-10 acres/month</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Employee Addition</span>
+                            <span class="assumption-value">At 300 acres (+$3,250/month)</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">SaaS Growth</span>
+                            <span class="assumption-value">20% adoption rate</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Profitability</span>
+                            <span class="assumption-value">Strong positive cash flow</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assumption-card">
+                        <div class="assumption-title">Mature Territory (1,500 acres)</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Service Revenue</span>
+                            <span class="assumption-value">$88,500/month</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">SaaS Revenue</span>
+                            <span class="assumption-value">$15,000/month (300 users)</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Total Territory Revenue</span>
+                            <span class="assumption-value">$116,000/month</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Net to TerraSync (60%)</span>
+                            <span class="assumption-value">~$67,000/month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MODEL CORRECTIONS TAB -->
+        <div id="corrections" class="tab-content">
+            
+            <div class="section">
+                <div class="section-title">🔧 Critical Model Corrections</div>
+                
+                <div class="correction-box">
+                    <h4>❌ REMOVED: $12K/Territory "Additional Services" Assumption</h4>
+                    <p><strong>Problem:</strong> Original model assumed $12,000/month additional services per territory</p>
+                    <p><strong>Reality:</strong> This calculation was for mature 1,500-acre territories, not current 31-acre average</p>
+                    <p><strong>Impact:</strong> Overstated current revenue by 10x ($51,600 vs actual $5,000)</p>
+                </div>
+                
+                <div class="validated-metric">
+                    <h4>✅ CORRECTED: Reality-Based Current State</h4>
+                    <p><strong>Actual Data:</strong> Knoxville 50 acres + West Palm 12 acres = 62 total acres</p>
+                    <p><strong>Real Revenue:</strong> Service + installation + product + SaaS = ~$5,000/month</p>
+                    <p><strong>Real Costs:</strong> 2 territories × $650 = $1,300/month (no employees yet)</p>
+                </div>
+                
+                <div class="assumptions-grid">
+                    <div class="assumption-card">
+                        <div class="assumption-title">Before Correction (WRONG)</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Current Revenue</span>
+                            <span class="assumption-value negative">$51,600/month</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Based On</span>
+                            <span class="assumption-value">Mature territory assumptions</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Additional Services</span>
+                            <span class="assumption-value negative">$24,000/month (undefined)</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Problem</span>
+                            <span class="assumption-value">Mixed current & future state</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assumption-card highlight">
+                        <div class="assumption-title">After Correction (CORRECT)</div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Current Revenue</span>
+                            <span class="assumption-value positive">$5,000/month</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Based On</span>
+                            <span class="assumption-value">Actual current 62 acres</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Revenue Streams</span>
+                            <span class="assumption-value positive">Service + install + product + SaaS</span>
+                        </div>
+                        <div class="assumption-row">
+                            <span class="assumption-label">Validation</span>
+                            <span class="assumption-value">✅ Matches actual business</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Investment Implications</div>
+                    <div class="assumptions-grid">
+                        <div class="assumption-card">
+                            <div class="assumption-title">Corrected Investment Story</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current Stage</span>
+                                <span class="assumption-value">Early-stage with proven unit economics</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Market Opportunity</span>
+                                <span class="assumption-value">370x growth potential (23,000 acres)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Unit Economics</span>
+                                <span class="assumption-value">$59/acre validated and profitable</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Scalability</span>
+                                <span class="assumption-value">Territory model proven at small scale</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Risk Profile</span>
+                                <span class="assumption-value">Lower risk - real market validation</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Growth Strategy</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Immediate Goal</span>
+                                <span class="assumption-value">Reach 300 acres per territory</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Expansion Rate</span>
+                                <span class="assumption-value">6-8 territories per year</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">SaaS Launch</span>
+                                <span class="assumption-value">Major revenue multiplier</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">5-Year Target</span>
+                                <span class="assumption-value">5-10% market penetration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.closest('.tab-btn').classList.add('active');
+            
+            // Initialize charts for the tab
+            setTimeout(() => {
+                if (tabName === 'reality') {
+                    initCurrentRevenueChart();
+                } else if (tabName === 'market') {
+                    initMarketChart();
+                } else if (tabName === 'projections') {
+                    initProjectionChart();
+                }
+            }, 100);
+        }
+        
+        // Current Revenue Chart
+        function initCurrentRevenueChart() {
+            const ctx = document.getElementById('currentRevenueChart');
+            if (!ctx || ctx.chart) return;
+            
+            ctx.chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Service Revenue ($3,658)', 'Installation/Product ($1,250)', 'SaaS Revenue ($150)'],
+                    datasets: [{
+                        data: [3658, 1250, 150],
+                        backgroundColor: ['#22c55e', '#3b82f6', '#8b5cf6'],
+                        borderColor: ['#16a34a', '#2563eb', '#7c3aed'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#e5e7eb',
+                                padding: 20
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Current Revenue Breakdown (~$5,000/month)',
+                            color: '#e5e7eb',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Market Opportunity Chart
+        function initMarketChart() {
+            const ctx = document.getElementById('marketChart');
+            if (!ctx || ctx.chart) return;
+            
+            ctx.chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Knoxville\nCurrent', 'Knoxville\nAddressable', 'West Palm\nCurrent', 'West Palm\nAddressable'],
+                    datasets: [{
+                        label: 'Acres',
+                        data: [50, 3000, 12, 20000],
+                        backgroundColor: ['#22c55e', '#94a3b8', '#22c55e', '#94a3b8'],
+                        borderColor: ['#16a34a', '#64748b', '#16a34a', '#64748b'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#e5e7eb'
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#e5e7eb'
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Market Opportunity Comparison',
+                            color: '#e5e7eb'
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Projection Chart
+        function initProjectionChart() {
+            const ctx = document.getElementById('projectionChart');
+            if (!ctx || ctx.chart) return;
+            
+            // Generate realistic projection data
+            const months = [];
+            const revenue = [];
+            
+            for (let i = 0; i <= 60; i++) {
+                months.push(i);
+                
+                // Territory growth
+                let territoryCount = 2;
+                if (i >= 12) territoryCount = 3;
+                if (i >= 18) territoryCount = 4;
+                if (i >= 24) territoryCount = 6;
+                if (i >= 36) territoryCount = 10;
+                if (i >= 48) territoryCount = 15;
+                if (i >= 60) territoryCount = 22;
+                
+                // Acres growth
+                let totalAcres = 62; // Start with current
+                for (let t = 0; t < territoryCount; t++) {
+                    let territoryStartMonth = t < 2 ? 0 : (t < 4 ? 12 : (t < 6 ? 24 : 36));
+                    let territoryAge = Math.max(0, i - territoryStartMonth);
+                    
+                    if (territoryAge <= 12) {
+                        totalAcres += Math.min(territoryAge * 17, 200); // 200 acres in year 1
+                    } else {
+                        totalAcres += 200 + Math.min((territoryAge - 12) * 8, 800); // Additional growth
+                    }
+                }
+                
+                // Revenue calculation
+                let monthlyRevenue = totalAcres * 59; // Service revenue
+                monthlyRevenue += totalAcres * 0.15 * 50; // SaaS revenue (15% adoption)
+                monthlyRevenue += territoryCount * 400; // Average new acre revenue
+                
+                revenue.push(monthlyRevenue);
+            }
+            
+            ctx.chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Monthly Revenue',
+                        data: revenue,
+                        borderColor: '#22c55e',
+                        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#e5e7eb',
+                                callback: function(value) {
+                                    return '$' + (value / 1000).toFixed(0) + 'K';
+                                }
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Months from Now',
+                                color: '#e5e7eb'
+                            },
+                            ticks: {
+                                color: '#e5e7eb'
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Realistic Growth Projection',
+                            color: '#e5e7eb'
+                        }
+                    }
+                }
+            });
+        }
+        
+        function updateProjections(month) {
+            month = parseInt(month);
+            document.getElementById('currentMonth').textContent = `Month ${month}`;
+            
+            // Calculate projections for the month
+            let territoryCount = 2;
+            if (month >= 12) territoryCount = 3;
+            if (month >= 18) territoryCount = 4;
+            if (month >= 24) territoryCount = 6;
+            if (month >= 36) territoryCount = 10;
+            if (month >= 48) territoryCount = 15;
+            
+            let totalAcres = 62 + (month * territoryCount * 12); // Simplified growth
+            let monthlyRevenue = totalAcres * 59 + totalAcres * 0.15 * 50 + territoryCount * 400;
+            let penetration = (totalAcres / 23000 * 100);
+            
+            document.getElementById('projectedRevenue').textContent = `$${(monthlyRevenue / 1000).toFixed(0)}K`;
+            document.getElementById('projectedAcres').textContent = totalAcres.toFixed(0);
+            document.getElementById('projectedTerritories').textContent = territoryCount;
+            document.getElementById('projectedPenetration').textContent = `${penetration.toFixed(2)}%`;
+            
+            // Update growth indicators
+            if (month === 0) {
+                document.getElementById('revenueGrowth').textContent = 'Current state';
+                document.getElementById('acresGrowth').textContent = 'Starting point';
+                document.getElementById('territoryGrowth').textContent = 'Knoxville + West Palm';
+                document.getElementById('penetrationGrowth').textContent = 'Massive opportunity';
+            } else {
+                document.getElementById('revenueGrowth').textContent = `+${((monthlyRevenue / 5000 - 1) * 100).toFixed(0)}% vs current`;
+                document.getElementById('acresGrowth').textContent = `+${totalAcres - 62} acres`;
+                document.getElementById('territoryGrowth').textContent = `+${territoryCount - 2} territories`;
+                document.getElementById('penetrationGrowth').textContent = `${penetration.toFixed(2)}% penetration`;
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                initCurrentRevenueChart();
+            }, 100);
+        });
+    </script>
+</body>
+</html> 

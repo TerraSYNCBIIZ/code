@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Investment Ask</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding: 40px 50px 20px 50px !important;
+            height: calc(100vh - 60px) !important;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .investment-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .investment-hero {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.5);
+            margin-bottom: 0;
+        }
+
+        .investment-amount {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #22c55e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .investment-purpose {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .funding-status {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .use-of-funds {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 0;
+        }
+
+        .fund-allocation {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .fund-allocation:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        .fund-icon {
+            font-size: 2rem;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .fund-amount {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 4px;
+        }
+
+        .fund-category {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .fund-description {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            line-height: 1.4;
+        }
+
+        .roi-projection {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(139, 92, 246, 0.08) 100%);
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(168, 85, 247, 0.4);
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .roi-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #a855f7;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .roi-multiple {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #a855f7;
+            margin-bottom: 4px;
+        }
+
+        .roi-timeline {
+            font-size: 1rem;
+            color: #c084fc;
+            font-weight: 500;
+        }
+
+        .contact-section {
+            margin-top: 0;
+            padding: 12px;
+            background: rgba(31, 41, 55, 0.4);
+            border-radius: 10px;
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+
+        .contact-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 6px;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Investment Opportunity</h1>
+                <p class="slide-subtitle">Join the GMA Revolution</p>
+            </div>
+
+            <div class="investment-container">
+                <div class="investment-hero">
+                    <div class="investment-amount">$600K Investment</div>
+                    <div class="investment-purpose">To Complete America's First Comprehensive GMA Platform</div>
+                    <div class="funding-status">$400K Already Secured ($300K Credit Line + $100K Investment)</div>
+                </div>
+
+                <div class="use-of-funds">
+                    <div class="fund-allocation">
+                        <i class="fas fa-code fund-icon"></i>
+                        <div class="fund-amount">$200K</div>
+                        <div class="fund-category">Technology Development</div>
+                        <div class="fund-description">TerraSYNC Hub platform enhancements, AI integration, and scalability improvements</div>
+                    </div>
+                    
+                    <div class="fund-allocation">
+                        <i class="fas fa-users fund-icon"></i>
+                        <div class="fund-amount">$200K</div>
+                        <div class="fund-category">Growth Team</div>
+                        <div class="fund-description">Sales professionals, technical specialists, and customer success managers</div>
+                    </div>
+                    
+                    <div class="fund-allocation">
+                        <i class="fas fa-chart-line fund-icon"></i>
+                        <div class="fund-amount">$200K</div>
+                        <div class="fund-category">Operating Capital</div>
+                        <div class="fund-description">Inventory expansion, working capital, and market expansion initiatives</div>
+                    </div>
+                </div>
+
+                <div class="roi-projection">
+                    <div class="roi-title">Conservative ROI Projection</div>
+                    <div class="roi-multiple">50x - 75x Return</div>
+                    <div class="roi-timeline">5-Year Timeline • $150M Valuation Target (45 territories × $67K/month each)</div>
+                </div>
+
+                <div class="contact-section">
+                    <div class="contact-title">Ready to Invest in the Future of Grounds Maintenance?</div>
+                    <div class="contact-info">
+                        Wesley Pitts, Founder & CEO<br>
+                        TerraSync Technologies<br>
+                        wesleypitts@terrasync.biz | 865-888-0049
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

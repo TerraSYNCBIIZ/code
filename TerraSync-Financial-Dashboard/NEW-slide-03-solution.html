@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Our Solution</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding: 30px 40px 40px 40px !important;
+            height: calc(100vh - 70px) !important;
+        }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-header {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .solution-hero {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.4;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .main-platform-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px;
+            flex: 1;
+            align-items: center;
+        }
+
+        .platform-visual {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
+            border-radius: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 60%);
+        }
+
+        /* Stunning SVG Hub Animation */
+        .terrasync-hub-svg {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            z-index: 2;
+        }
+
+                 .hub-center {
+             fill: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+             stroke: #22c55e;
+             stroke-width: 2;
+             filter: drop-shadow(0 4px 16px rgba(34, 197, 94, 0.3));
+         }
+
+         .connection-line {
+             stroke: rgba(34, 197, 94, 0.6);
+             stroke-width: 2;
+             opacity: 0.8;
+         }
+
+         .tech-node {
+             fill: rgba(31, 41, 55, 0.9);
+             stroke: rgba(34, 197, 94, 0.5);
+             stroke-width: 1.5;
+             transition: all 0.2s ease;
+         }
+
+         .tech-node:hover {
+             fill: rgba(34, 197, 94, 0.1);
+             stroke: #22c55e;
+             stroke-width: 2;
+         }
+
+         .node-text {
+             fill: #ffffff;
+             font-family: 'Inter', sans-serif;
+             font-weight: 500;
+             font-size: 10px;
+             text-anchor: middle;
+             dominant-baseline: central;
+         }
+
+         .node-title {
+             fill: #22c55e;
+             font-family: 'Inter', sans-serif;
+             font-weight: 600;
+             font-size: 11px;
+             text-anchor: middle;
+             dominant-baseline: central;
+         }
+
+         .hub-text {
+             fill: #ffffff;
+             font-family: 'Inter', sans-serif;
+             font-weight: 700;
+             font-size: 16px;
+             text-anchor: middle;
+             dominant-baseline: central;
+         }
+
+         .hub-subtitle {
+             fill: rgba(255, 255, 255, 0.9);
+             font-family: 'Inter', sans-serif;
+             font-weight: 500;
+             font-size: 11px;
+             text-anchor: middle;
+             dominant-baseline: central;
+         }
+
+         .node-icon {
+             fill: #22c55e;
+             font-size: 14px;
+             font-family: "Font Awesome 6 Free";
+             font-weight: 900;
+             text-anchor: middle;
+             dominant-baseline: central;
+         }
+
+        .key-benefits {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .benefits-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(31, 41, 55, 0.6);
+            border-radius: 10px;
+            border-left: 4px solid #22c55e;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateX(8px);
+        }
+
+        .benefit-icon {
+            font-size: 1.2rem;
+            color: #22c55e;
+            min-width: 20px;
+        }
+
+        .benefit-text {
+            font-size: 0.9rem;
+            color: #f1f5f9;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .competitive-edge {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .edge-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .edge-description {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            line-height: 1.4;
+        }
+
+        .key-stat {
+            color: #22c55e;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Our Solution</h1>
+                <p class="slide-subtitle">The World's First Integrated Grounds Maintenance Automation Platform</p>
+            </div>
+
+            <div class="solution-hero">
+                <h2 class="hero-title">TerraSYNC Hub</h2>
+                                 <p class="hero-tagline">AI-Powered Map-Based Platform Integrating ALL Automation Technologies</p>
+                 <p class="hero-description">
+                     TerraSync is the unified intelligence layer that connects, coordinates, and optimizes every aspect of grounds maintenance automation through an intuitive map-based management interface.
+                 </p>
+            </div>
+
+            <div class="main-platform-container">
+                <div class="platform-visual">
+                                         <svg class="terrasync-hub-svg" viewBox="0 0 600 450">
+                         <!-- Gradients -->
+                         <defs>
+                             <radialGradient id="hubGradient" cx="50%" cy="50%" r="50%">
+                                 <stop offset="0%" stop-color="#22c55e"/>
+                                 <stop offset="100%" stop-color="#16a34a"/>
+                             </radialGradient>
+                         </defs>
+
+                         <!-- Connection Lines -->
+                         <line class="connection-line" x1="300" y1="225" x2="300" y2="115"/>
+                         <line class="connection-line" x1="300" y1="225" x2="460" y2="145"/>
+                         <line class="connection-line" x1="300" y1="225" x2="460" y2="305"/>
+                         <line class="connection-line" x1="300" y1="225" x2="300" y2="360"/>
+                         <line class="connection-line" x1="300" y1="225" x2="140" y2="305"/>
+                         <line class="connection-line" x1="300" y1="225" x2="140" y2="145"/>
+
+                         <!-- Autonomous Systems Node -->
+                         <rect class="tech-node" x="110" y="40" width="380" height="75" rx="8"/>
+                         <text class="node-icon" x="135" y="65">&#xf544;</text>
+                         <text class="node-title" x="300" y="65">Autonomous Systems</text>
+                         <text class="node-text" x="180" y="85">• Autonomous Mowers</text>
+                         <text class="node-text" x="315" y="85">• Range Pickers</text>
+                         <text class="node-text" x="430" y="85">• Line Painters</text>
+
+                         <!-- Smart Irrigation Node -->
+                         <rect class="tech-node" x="470" y="125" width="110" height="40" rx="8"/>
+                         <text class="node-icon" x="485" y="140">&#xf043;</text>
+                         <text class="node-title" x="540" y="140">Smart Irrigation</text>
+                         <text class="node-text" x="525" y="153">Systems</text>
+
+                         <!-- Drone Analytics Node -->
+                         <rect class="tech-node" x="470" y="285" width="110" height="40" rx="8"/>
+                         <text class="node-icon" x="485" y="300">&#xf072;</text>
+                         <text class="node-title" x="535" y="300">Drone Analytics</text>
+                         <text class="node-text" x="525" y="313">& Imaging</text>
+
+                         <!-- Data Analytics Node -->
+                         <rect class="tech-node" x="210" y="370" width="180" height="40" rx="8"/>
+                         <text class="node-icon" x="235" y="385">&#xf080;</text>
+                         <text class="node-title" x="315" y="385">Performance Analytics</text>
+                         <text class="node-text" x="300" y="398">& Reporting</text>
+
+                         <!-- Chemical Management Node -->
+                         <rect class="tech-node" x="20" y="285" width="110" height="40" rx="8"/>
+                         <text class="node-icon" x="40" y="300">&#xf492;</text>
+                         <text class="node-title" x="85" y="300">Chemical</text>
+                         <text class="node-text" x="75" y="313">Management</text>
+
+                         <!-- Employee Management Node -->
+                         <rect class="tech-node" x="20" y="125" width="110" height="40" rx="8"/>
+                         <text class="node-icon" x="40" y="140">&#xf0c0;</text>
+                         <text class="node-title" x="85" y="140">Employee</text>
+                         <text class="node-text" x="75" y="153">Management</text>
+
+                         <!-- Central Hub -->
+                         <rect class="hub-center" x="200" y="200" width="200" height="50" rx="12" fill="url(#hubGradient)"/>
+                         <text class="node-icon" x="225" y="220" style="fill: white;">&#xf279;</text>
+                         <text class="hub-text" x="320" y="220">TerraSYNC Hub</text>
+                         <text class="hub-subtitle" x="320" y="235">Map-Based AI Platform</text>
+                     </svg>
+                </div>
+
+                <div class="key-benefits">
+                    <h3 class="benefits-title">Platform Power</h3>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-brain benefit-icon"></i>
+                        <div class="benefit-text">
+                            <strong>AI Coordination:</strong> Intelligent scheduling across all technologies
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-mobile-alt benefit-icon"></i>
+                        <div class="benefit-text">
+                            <strong>Unified Control:</strong> Single dashboard for everything
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line benefit-icon"></i>
+                        <div class="benefit-text">
+                            <strong>ROI Analytics:</strong> Real-time performance optimization
+                        </div>
+                    </div>
+
+                                         <div class="benefit-item">
+                         <i class="fas fa-map-marked-alt benefit-icon"></i>
+                         <div class="benefit-text">
+                             <strong>Map-Based Control:</strong> Visual property management with Acreage Mapper™
+                         </div>
+                     </div>
+
+                                         <div class="benefit-item">
+                         <i class="fas fa-users benefit-icon"></i>
+                         <div class="benefit-text">
+                             <strong>Employee Integration:</strong> Map-based staff coordination & task assignment
+                         </div>
+                     </div>
+
+                    <div class="competitive-edge">
+                        <div class="edge-title">The Only Integrated Platform</div>
+                        <div class="edge-description">
+                            Competitors sell individual tools. We deliver the <span class="key-stat">complete solution</span> with AI orchestration.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
