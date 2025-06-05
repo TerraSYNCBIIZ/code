@@ -228,16 +228,16 @@
                             <span class="metric-value">12-18 months</span>
                         </div>
                         <div class="metric-row">
-                            <span class="metric-label">Mature Territory Profit (2K acres)</span>
-                            <span class="metric-value metric-positive">$55K/month</span>
+                            <span class="metric-label">Mature Territory Revenue (1.2K acres)</span>
+                            <span class="metric-value metric-positive">$83K/month</span>
                         </div>
                         <div class="metric-row">
-                            <span class="metric-label">National Scale (100+ territories)</span>
-                            <span class="metric-value metric-positive">$66M/year</span>
+                            <span class="metric-label">National Scale (45+ territories by 2029)</span>
+                            <span class="metric-value metric-positive">$45M+/year</span>
                         </div>
                         <div class="metric-row">
-                            <span class="metric-label">Est. Exit Multiple (5x revenue)</span>
-                            <span class="metric-value metric-positive">$325M+</span>
+                            <span class="metric-label">Est. Exit Multiple (4x revenue)</span>
+                            <span class="metric-value metric-positive" id="exitValuation">$180M+</span>
                         </div>
                     </div>
                 </div>
@@ -535,39 +535,71 @@
         
                     // Update dashboard
         function updateDashboard() {
-            // National expansion projection: 325M represents massive scale
-            // At 30+ territories by 2029, each generating $55K/month profit = $19.8M annual profit
-            // With 100+ territories at full national scale = $66M annual profit
-            // At 5x revenue multiple (typical for recurring revenue businesses) = $330M valuation
+            if (!financialModel) return;
             
-            const nationalScaleValue = 325000000; // $325M target valuation
+            // Get current state and future projections from model
+            const projection = financialModel.generateProjection(60);
+            const currentData = projection[0];
+            const month48Data = projection[48]; // 2029 target
+            const month54Data = projection[54]; // When we hit 45 territories
+            
+            // Update current metrics
+            updateMetricsForMonth(0);
+            
+            // Calculate 2029 projections (align with slides: 45 territories, $36.2M ARR)
+            const month48ARR = (month48Data.totalRevenue * 12) / 1000000; // Annual revenue in millions
+            const projectedValuation = month48ARR * 4; // Conservative 4x revenue multiple
+            
+            // Update investment summary
             const totalInvestment = 900000; // $900K initial investment
-            const marginOfSafety = Math.round((nationalScaleValue - totalInvestment) / totalInvestment * 100);
+            const marginOfSafety = Math.round((projectedValuation * 1000000 - totalInvestment) / totalInvestment * 100);
             
-            document.getElementById('intrinsicValue').textContent = '$325M';
+            document.getElementById('intrinsicValue').textContent = '$' + projectedValuation.toFixed(0) + 'M';
             document.getElementById('marginOfSafety').textContent = marginOfSafety.toLocaleString() + '%';
-            document.getElementById('averageROIC').textContent = '23.5%';
+            document.getElementById('exitValuation').textContent = '$' + projectedValuation.toFixed(0) + 'M+';
+            
+            // Calculate average annual ROIC based on actual projections
+            const finalValue = projectedValuation * 1000000;
+            const years = 4; // 2025 to 2029
+            const annualReturn = Math.pow(finalValue / totalInvestment, 1/years) - 1;
+            document.getElementById('averageROIC').textContent = (annualReturn * 100).toFixed(1) + '%';
+            
+            console.log('Dashboard updated with model data:', {
+                currentRevenue: currentData.totalRevenue,
+                currentAcres: currentData.acres,
+                month48Revenue: month48ARR.toFixed(1) + 'M ARR',
+                territories48: month48Data.territories,
+                projectedValuation: projectedValuation.toFixed(0) + 'M'
+            });
         }
         
         // Update metrics for specific month
         function updateMetricsForMonth(month) {
-            const scenarioData = financialModel.generateScenario(currentScenario);
-            const territories = chartComponents.getCurrentTerritories(scenarioData.territorySchedule, month);
-            const acres = chartComponents.calculateTotalAcres(territories, month);
-            const saasUsers = Math.floor(acres * 0.20);
+            if (!financialModel) return;
             
-            const revenue = financialModel.calculateMonthlyRevenue(acres, territories, saasUsers, month);
-            const grossProfit = financialModel.calculateGrossProfit(revenue);
-            const opex = financialModel.calculateOpex(territories);
-            const cashFlow = financialModel.calculateFreeCashFlow(grossProfit, opex, territories);
+            const projection = financialModel.generateProjection(60);
+            const currentData = projection[month] || projection[0];
             
-            // Update metric displays
+            // Update metric displays with actual model data
             document.getElementById('currentRevenue').textContent = 
-                '$' + (revenue.total / 1000).toFixed(1) + 'K';
-            document.getElementById('currentAcres').textContent = acres.toLocaleString();
-            document.getElementById('currentTerritories').textContent = territories;
+                '$' + (currentData.totalRevenue / 1000).toFixed(1) + 'K';
+            document.getElementById('currentAcres').textContent = currentData.acres.toLocaleString();
+            document.getElementById('currentTerritories').textContent = currentData.territories;
             document.getElementById('currentROIC').textContent = 
-                (cashFlow.roic * 100).toFixed(1) + '%';
+                '$' + (currentData.netCashFlow / 1000).toFixed(1) + 'K';
+                
+            // Update change indicators
+            if (month > 0 && projection[month - 1]) {
+                const prevData = projection[month - 1];
+                const revenueChange = ((currentData.totalRevenue - prevData.totalRevenue) / prevData.totalRevenue * 100).toFixed(1);
+                const acresChange = currentData.acres - prevData.acres;
+                
+                document.getElementById('revenueChange').textContent = `+${revenueChange}% vs last month`;
+                document.getElementById('acresChange').textContent = `+${acresChange} acres this month`;
+            } else {
+                document.getElementById('revenueChange').textContent = 'Actual current state';
+                document.getElementById('acresChange').textContent = 'Knoxville 50 + West Palm 12';
+            }
         }
         
 
