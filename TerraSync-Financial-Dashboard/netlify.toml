@@ -1,14 +1,5 @@
 [build]
   publish = "."
-  
-[build.environment]
-  NODE_VERSION = "18"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Country = ["US", "CA", "GB", "AU"]}
 
 [[headers]]
   for = "/*"
