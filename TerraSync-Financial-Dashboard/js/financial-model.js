@@ -4,16 +4,17 @@
 class TerrasyncFinancialModel {
     constructor() {
         // Territory maturity curve - how acres grow over time in each territory
+        // Adjusted to align with $67K/month mature territory target from slides
         this.maturityCurve = {
             1: 25,      // Start with 25 acres
             3: 75,      // 75 acres by month 3
             6: 150,     // 150 acres by month 6
-            12: 300,    // 300 acres by month 12
-            18: 500,    // 500 acres by month 18
-            24: 750,    // 750 acres by month 24
-            36: 1200,   // 1,200 acres by month 36
-            48: 1800,   // 1,800 acres by month 48
-            60: 2000    // Maximum capacity at maturity
+            12: 400,    // 400 acres by month 12 (faster growth)
+            18: 600,    // 600 acres by month 18
+            24: 800,    // 800 acres by month 24
+            36: 1000,   // 1,000 acres by month 36
+            48: 1200,   // 1,200 acres by month 48 (target ~$67K revenue)
+            60: 1200    // Maximum capacity at maturity (aligned with slide targets)
         };
         
         // Territory addition schedule - consistent throughout years
@@ -47,12 +48,14 @@ class TerrasyncFinancialModel {
             { month: 46, action: 'add', count: 1 },    // Month 46: 21st territory
             { month: 47, action: 'add', count: 1 },    // Month 47: 22nd territory
             
-            // Year 5 (Month 48+): Add 10+ territories to reach 30+
-            { month: 49, action: 'add', count: 2 },    // Month 49: 24th territory
-            { month: 51, action: 'add', count: 2 },    // Month 51: 26th territory
-            { month: 53, action: 'add', count: 2 },    // Month 53: 28th territory
-            { month: 55, action: 'add', count: 2 },    // Month 55: 30th territory
-            { month: 57, action: 'add', count: 2 },    // Month 57: 32nd territory
+            // Year 5 (Month 48+): Add territories to reach 45 by month 48
+            { month: 48, action: 'add', count: 4 },    // Month 48: 26th territory
+            { month: 49, action: 'add', count: 3 },    // Month 49: 29th territory
+            { month: 50, action: 'add', count: 3 },    // Month 50: 32nd territory
+            { month: 51, action: 'add', count: 3 },    // Month 51: 35th territory
+            { month: 52, action: 'add', count: 3 },    // Month 52: 38th territory
+            { month: 53, action: 'add', count: 3 },    // Month 53: 41st territory
+            { month: 54, action: 'add', count: 4 },    // Month 54: 45th territory (target reached)
         ];
         
         // Revenue parameters (calibrated to current state for -$3,500 cash flow)
@@ -167,13 +170,13 @@ class TerrasyncFinancialModel {
     
     // Calculate total acres across all territories for a given month
     calculateTotalAcres(month) {
-        // Start with actual current state: 400 acres at month 0
+        // Start with actual current state: 62 acres at month 0
         if (month === 0) {
-            return 400; // Actual current acres
+            return 62; // Actual current acres (50 Knoxville + 12 West Palm)
         }
         
         const territories = this.getTerritoryList(month);
-        let totalAcres = 400; // Start from current base
+        let totalAcres = 62; // Start from current base
         
         // Add new acres for each month of growth
         for (let m = 1; m <= month; m++) {
@@ -184,7 +187,7 @@ class TerrasyncFinancialModel {
             
             // Apply churn rate (0.5% monthly)
             const churnLoss = totalAcres * this.churnRate;
-            totalAcres = Math.max(400, totalAcres - churnLoss); // Don't go below starting point
+            totalAcres = Math.max(62, totalAcres - churnLoss); // Don't go below starting point
         }
         
         return totalAcres;
