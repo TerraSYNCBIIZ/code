@@ -38,24 +38,18 @@ class TerrasyncFinancialModel {
             { month: 34, action: 'add', count: 1 },    // Month 34: 13th territory
             { month: 35, action: 'add', count: 1 },    // Month 35: 14th territory
             
-            // Year 4 (Months 36-47): Add 8 territories (22 total)
-            { month: 37, action: 'add', count: 1 },    // Month 37: 15th territory
-            { month: 39, action: 'add', count: 1 },    // Month 39: 16th territory
-            { month: 41, action: 'add', count: 1 },    // Month 41: 17th territory
-            { month: 42, action: 'add', count: 1 },    // Month 42: 18th territory
-            { month: 44, action: 'add', count: 1 },    // Month 44: 19th territory
-            { month: 45, action: 'add', count: 1 },    // Month 45: 20th territory
-            { month: 46, action: 'add', count: 1 },    // Month 46: 21st territory
-            { month: 47, action: 'add', count: 1 },    // Month 47: 22nd territory
+            // Year 4 (Months 36-47): Add 31 territories to reach 45 by month 47 (April 2029)
+            { month: 37, action: 'add', count: 2 },    // Month 37: 16th territory
+            { month: 39, action: 'add', count: 3 },    // Month 39: 19th territory
+            { month: 41, action: 'add', count: 4 },    // Month 41: 23rd territory
+            { month: 43, action: 'add', count: 5 },    // Month 43: 28th territory
+            { month: 45, action: 'add', count: 7 },    // Month 45: 35th territory
+            { month: 47, action: 'add', count: 10 },   // Month 47: 45th territory (April 2029 target!)
             
-            // Year 5 (Month 48+): Add territories to reach 45 by month 48
-            { month: 48, action: 'add', count: 4 },    // Month 48: 26th territory
-            { month: 49, action: 'add', count: 3 },    // Month 49: 29th territory
-            { month: 50, action: 'add', count: 3 },    // Month 50: 32nd territory
-            { month: 51, action: 'add', count: 3 },    // Month 51: 35th territory
-            { month: 52, action: 'add', count: 3 },    // Month 52: 38th territory
-            { month: 53, action: 'add', count: 3 },    // Month 53: 41st territory
-            { month: 54, action: 'add', count: 4 },    // Month 54: 45th territory (target reached)
+            // Year 5 (Month 48+): Continue growth beyond 45 territories
+            { month: 49, action: 'add', count: 3 },    // Month 49: 48th territory
+            { month: 51, action: 'add', count: 4 },    // Month 51: 52nd territory
+            { month: 54, action: 'add', count: 8 },    // Month 54: 60th territory
         ];
         
         // Revenue parameters (calibrated to current state for -$3,500 cash flow)
