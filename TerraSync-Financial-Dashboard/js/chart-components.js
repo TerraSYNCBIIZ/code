@@ -100,12 +100,6 @@ class TerrasyncCharts {
                     borderColor: '#3b82f6',
                     backgroundColor: '#3b82f620',
                     fill: true
-                }, {
-                    label: 'Additional Services',
-                    data: projection.map(p => p.additionalRevenue),
-                    borderColor: '#f59e0b',
-                    backgroundColor: '#f59e0b20',
-                    fill: true
                 }],
                 yAxisFormatter: (value) => '$' + (value / 1000).toFixed(0) + 'K'
             },

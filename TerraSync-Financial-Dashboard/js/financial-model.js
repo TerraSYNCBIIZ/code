@@ -60,7 +60,7 @@ class TerrasyncFinancialModel {
             servicePerAcre: 59,             // Market validated: $59/acre/month
             saasPerUser: 50,                // $50/user/month
             saasAdoptionRate: 0.20,         // 20% adoption rate
-            additionalPerTerritory: 12000,  // Calibrated: $12,000/territory (additional services)
+            additionalPerTerritory: 0,      // Additional services not currently used
             productSalePerAcre: 1800,       // $1,800/acre (seasonal)
             installationPerAcre: 700,       // $700/acre (seasonal)
             productPenetration: 0.15,       // 15% penetration

@@ -1,5 +1,5 @@
 [build]
-  publish = "."
+  publish = "TerraSync-Financial-Dashboard"
 
 [[headers]]
   for = "/*"
