@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 12: Strategic Growth</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide-header {
+            margin-bottom: 30px;
+        }
+
+        .growth-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            height: calc(100vh - 280px);
+            min-height: 500px;
+        }
+
+        .map-section {
+            width: 100%;
+            max-width: 850px;
+            background: rgba(31, 41, 55, 0.6);
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 280px;
+            background: rgba(31, 41, 55, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .map-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 16px;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .location-group {
+            text-align: center;
+        }
+
+        .location-status {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .current-status {
+            color: #22c55e;
+        }
+
+        .expanding-status {
+            color: #fbbf24;
+        }
+
+        .location-list {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .location-item {
+            margin-bottom: 8px;
+        }
+
+        .growth-stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #22c55e;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #d1d5db;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Strategic Growth</h1>
+            </div>
+
+            <div class="growth-container">
+                <!-- Map Section -->
+                <div class="map-section">
+                    <div class="map-container">
+                        <img src="Screenshot 2025-05-26 172058.png" alt="TerraSync Strategic Growth Map">
+                    </div>
+                    
+                    <div class="locations-grid">
+                        <div class="location-group">
+                            <div class="location-status current-status">Current</div>
+                            <div class="location-list">
+                                <div class="location-item">Knoxville</div>
+                                <div class="location-item">West Palm Beach</div>
+                            </div>
+                        </div>
+                        
+                        <div class="location-group">
+                            <div class="location-status expanding-status">Expanding</div>
+                            <div class="location-list">
+                                <div class="location-item">Atlanta</div>
+                                <div class="location-item">Nashville</div>
+                                <div class="location-item">Orlando</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Growth Stats -->
+                <div class="growth-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Markets</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">By 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

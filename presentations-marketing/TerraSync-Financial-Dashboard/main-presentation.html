@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Main Pitch Deck</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #111827;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .slide-wrapper {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-wrapper.active {
+            display: block;
+        }
+
+        .slide-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+        }
+
+        /* Header with navigation */
+        .presentation-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            pointer-events: none;
+        }
+
+        .slide-counter,
+        .confidential-header,
+        .back-to-portal {
+            pointer-events: auto;
+        }
+
+        .back-to-portal {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-portal:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            transform: translateY(-2px);
+        }
+
+        .slide-counter {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .terrasync-logo-mini {
+            height: 28px;
+            width: 28px;
+            background: transparent;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terrasync-logo-mini img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .confidential-header {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Bottom Navigation */
+        .bottom-navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(31, 41, 55, 0.95);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+
+        .bottom-navigation:hover {
+            opacity: 1;
+        }
+
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.6);
+            transform: scale(1.1);
+        }
+
+        .nav-button i {
+            color: #22c55e;
+            font-size: 1rem;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e5e7eb;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 16px;
+        }
+
+        .slide-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(156, 163, 175, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #22c55e;
+            transform: scale(1.2);
+        }
+
+        /* Progress Bar */
+        .slide-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(31, 41, 55, 0.5);
+            z-index: 999;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="presentation-container">
+        <!-- Header -->
+        <div class="presentation-header">
+            <div class="slide-counter">
+                <div class="terrasync-logo-mini">
+                    <img src="icon.png" alt="TerraSync Logo">
+                </div>
+                <span id="current-slide">1</span>
+                <span>of</span>
+                <span id="total-slides">15</span>
+            </div>
+            <div class="confidential-header">
+                TerraSync Investor Brief - Confidential
+            </div>
+            <a href="portal.html" class="back-to-portal">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portal
+            </a>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="slide-progress">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-navigation">
+            <button class="nav-button" id="prev-btn" onclick="previousSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="slide-indicator">
+                <span id="slide-number">1</span>
+                <div class="slide-dots" id="slide-dots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <button class="nav-button" id="next-btn" onclick="nextSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Slide Content -->
+        <div class="slide-wrapper active" id="slide-1">
+            <iframe src="NEW-slide-01-problem.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-2">
+            <iframe src="NEW-slide-02-solution.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-3">
+            <iframe src="NEW-slide-04-founder.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-4">
+            <iframe src="NEW-slide-03-opportunity.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-5">
+            <iframe src="NEW-slide-07-proof-value.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-6">
+            <iframe src="NEW-slide-05-competitive.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-7">
+            <iframe src="NEW-slide-06-market-validation.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-8">
+            <iframe src="NEW-slide-08-business-model.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-9">
+            <iframe src="NEW-slide-10-target-markets.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-10">
+            <iframe src="NEW-slide-12-team.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-11">
+            <iframe src="NEW-slide-13-leadership.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-12">
+            <iframe src="NEW-slide-14-financial-projections.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-13">
+            <iframe src="NEW-slide-15-risk-factors.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-14">
+            <iframe src="NEW-slide-16-investment-ask.html" class="slide-frame"></iframe>
+        </div>
+
+        <div class="slide-wrapper" id="slide-15">
+            <iframe src="appendix-hub.html" class="slide-frame"></iframe>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 15;
+
+        function initializeDots() {
+            const dotsContainer = document.getElementById('slide-dots');
+            dotsContainer.innerHTML = '';
+
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i === currentSlide) dot.classList.add('active');
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateSlideDisplay() {
+            // Hide all slides
+            document.querySelectorAll('.slide-wrapper').forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // Show current slide
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+            // Update counter
+            document.getElementById('current-slide').textContent = currentSlide;
+            document.getElementById('total-slides').textContent = totalSlides;
+            document.getElementById('slide-number').textContent = currentSlide;
+
+            // Update progress bar
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index + 1 === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        function goToSlide(slideNumber) {
+            if (slideNumber >= 1 && slideNumber <= totalSlides) {
+                currentSlide = slideNumber;
+                updateSlideDisplay();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function (event) {
+            switch (event.key) {
+                case 'ArrowLeft':
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                    nextSlide();
+                    break;
+                case 'Home':
+                    goToSlide(1);
+                    break;
+                case 'End':
+                    goToSlide(totalSlides);
+                    break;
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeDots();
+            updateSlideDisplay();
+        });
+    </script>
+</body>
+
+</html>

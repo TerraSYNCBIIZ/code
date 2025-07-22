@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 8: Business Model</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .business-model-container {
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            height: calc(100vh - 150px);
+            justify-content: space-between;
+        }
+
+        .model-hero {
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #22c55e;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: #ffffff;
+            font-weight: 600;
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        .strategy-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .strategy-step {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .step-description {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            line-height: 1.3;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #22c55e;
+        }
+
+        .key-metrics {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .metrics-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            color: #22c55e;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            color: #22c55e;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Business Model</h1>
+            </div>
+
+            <div class="business-model-container">
+                <div class="model-hero">
+                    <h2 class="hero-title">Strategic Growth Model</h2>
+                    <p class="hero-subtitle">Services build the foundation for software-enabled national expansion</p>
+                </div>
+
+                <div class="strategy-flow">
+                    <div class="strategy-step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Service Foundation</div>
+                        <div class="step-description">Build relationships</div>
+                    </div>
+                    
+                    <div class="flow-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="strategy-step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Software Integration</div>
+                        <div class="step-description">Create stickiness</div>
+                    </div>
+                    
+                    <div class="flow-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="strategy-step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">National Expansion</div>
+                        <div class="step-description">Scale everywhere</div>
+                    </div>
+                </div>
+
+                <div class="key-metrics">
+                    <h3 class="metrics-title">Strategic Growth Model</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">$59</div>
+                            <div class="metric-label">Per Acre Monthly Recurring</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">33%</div>
+                            <div class="metric-label">Service → SaaS Conversion</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">$4.5K</div>
+                            <div class="metric-label">Average SaaS Monthly</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

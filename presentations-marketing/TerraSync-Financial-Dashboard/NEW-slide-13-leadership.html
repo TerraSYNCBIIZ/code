@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 13: Our Team & Advisors</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        .slide-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 30px;
+            height: 100%;
+        }
+
+        .org-chart-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Core Org Chart Structure */
+        .org-chart, .org-chart ul, .org-chart li {
+            position: relative;
+        }
+        
+        .org-chart {
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .org-chart ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .org-chart li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 60px 15px 0;
+            position: relative;
+        }
+
+        /* Extra spacing for Wesley Pitts at the top */
+        .org-chart > li {
+            padding-top: 20px;
+        }
+
+        /* --- Corrected Connector Lines --- */
+        .org-chart li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #4B5563;
+        }
+
+        .org-chart li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px; /* Further increased height */
+            background-color: #4B5563;
+        }
+
+        .org-chart > li > ul::before {
+            content: '';
+            position: absolute;
+            top: -45px; /* Moved line down to create space from Wesley's card */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 45px; /* Adjusted height to match new position */
+            background-color: #4B5563;
+        }
+        
+        .org-chart > li::before, .org-chart > li::after {
+            display: none;
+        }
+
+        .org-chart li:first-child::after { left: 50%; width: 50%; }
+        .org-chart li:last-child::after { right: 50%; width: 50%; }
+        .org-chart li:only-child::after { display: none; }
+
+        /* --- Node Card Styling --- */
+        .node-card {
+            background: linear-gradient(145deg, #2d3748, #1a202c);
+            border: 1px solid #4a5568;
+            border-radius: 12px;
+            padding: 15px 20px;
+            width: 210px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .node-card:hover {
+            transform: translateY(-8px);
+            border-color: #22c55e;
+            box-shadow: 0 12px 35px rgba(34, 197, 94, 0.2);
+        }
+
+        /* Extra space for Wesley's card from the horizontal line */
+        .org-chart > li > .node-card {
+            margin-bottom: 20px;
+        }
+
+        .node-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #374151;
+            border: 3px solid #22c55e;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #e2e8f0;
+            overflow: hidden;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
+        }
+        
+        .node-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .node-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .node-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #22c55e;
+            margin-top: 4px;
+        }
+        
+        .department-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background-color: rgba(45, 55, 72, 0.5);
+        }
+        
+        .dev-team .node-card { border-color: #f59e0b; }
+        .dev-team .node-card:hover { box-shadow: 0 12px 35px rgba(245, 158, 11, 0.2); }
+        .dev-team .node-title { color: #f59e0b; }
+        .dev-team .node-image { border-color: #f59e0b; box-shadow: 0 0 12px rgba(245, 158, 11, 0.25); }
+
+        /* --- Advisors Section --- */
+        .advisors-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 25px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+        }
+
+        .advisors-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .advisors-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .advisor-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #E2E8F0;
+            background-color: rgba(45, 55, 72, 0.6);
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: 1px solid #4a5568;
+            transition: all 0.3s ease;
+        }
+        .advisor-name:hover {
+            transform: translateY(-3px);
+            background-color: #2d3748;
+            color: #FFFFFF;
+            border-color: #22c55e;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header" style="margin-bottom: 5px;">
+                <h1 class="slide-title">Our Team & Advisors</h1>
+            </div>
+
+            <div class="org-chart-container">
+                <ul class="org-chart">
+                    <li>
+                        <div class="node-card">
+                            <div class="node-image"><img src="../../media-assets/graphics/Fotogenic_6bda502e-2cc6-4331-9b93-643f1ede5cb4.jpg" alt="Wesley Pitts"></div>
+                            <h2 class="node-name">Wesley Pitts</h2>
+                            <p class="node-title">Founder & CEO</p>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="department-title">Knoxville</div>
+                                <ul>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-image"><img src="../../media-assets/graphics/hudson.jpg" alt="Hudson Schmid"></div>
+                                            <h3 class="node-name">Hudson Schmid</h3>
+                                            <p class="node-title">Sales & Strategy</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-image"><i class="fas fa-cogs"></i></div>
+                                            <h3 class="node-name">William Pitts</h3>
+                                            <p class="node-title">Operations Lead</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="department-title">West Palm</div>
+                                <ul>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-image"><img src="../../media-assets/graphics/jet.webp" alt="Jeffrey Tickle"></div>
+                                            <h3 class="node-name">Jeffrey Tickle</h3>
+                                            <p class="node-title">Operations</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-image"><img src="../../media-assets/graphics/alex.jpg" alt="Alex Koenig"></div>
+                                            <h3 class="node-name">Alex Koenig</h3>
+                                            <p class="node-title">Sales</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dev-team">
+                                <div class="department-title">Development</div>
+                                <ul>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-image"><i class="fas fa-laptop-code"></i></div>
+                                            <h3 class="node-name">Development Team</h3>
+                                            <p class="node-title">3 Software Developers</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="advisors-container">
+                <h3 class="advisors-title">Key Advisors</h3>
+                <div class="advisors-list">
+                    <div class="advisor-name">Dr. John Sorochan</div>
+                    <div class="advisor-name">Jim Lipinska</div>
+                    <div class="advisor-name">Jeff Cheek</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

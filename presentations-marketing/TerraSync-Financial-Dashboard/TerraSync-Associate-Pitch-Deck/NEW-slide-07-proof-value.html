@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 7: Our Strategic Evolution</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .evolution-container {
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 10px;
+        }
+
+        .evolution-timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-stage {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            padding: 15px;
+            position: relative;
+            text-align: center;
+        }
+
+        .stage-header {
+            margin-bottom: 12px;
+        }
+
+        .stage-number {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 auto 8px;
+        }
+
+        .stage-year {
+            font-size: 0.75rem;
+            color: #22c55e;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stage-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 4px;
+            line-height: 1.1;
+        }
+
+        .stage-content {
+            margin-bottom: 12px;
+        }
+
+        .stage-description {
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .stage-insight {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 0.75rem;
+            color: #22c55e;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .insight-icon {
+            font-size: 0.9rem;
+            color: #22c55e;
+        }
+
+        .years-ahead {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            border-radius: 6px;
+            padding: 8px;
+        }
+
+        .years-number {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 2px;
+        }
+
+        .years-label {
+            font-size: 0.65rem;
+            color: #22c55e;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .strategic-position {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .position-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .position-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .position-card {
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .position-icon {
+            font-size: 1.4rem;
+            color: #22c55e;
+            margin-bottom: 6px;
+        }
+
+        .position-card-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .position-card-desc {
+            font-size: 0.75rem;
+            color: #d1d5db;
+            line-height: 1.2;
+        }
+
+        .key-advantage {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .advantage-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 6px;
+        }
+
+        .advantage-text {
+            font-size: 0.85rem;
+            color: #e5e7eb;
+            line-height: 1.3;
+        }
+
+        .highlight {
+            color: #22c55e;
+            font-weight: 700;
+        }
+
+        .position-subtitle {
+            color: #e5e7eb;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        /* Remove arrow styles since we're going horizontal */
+        .evolution-arrow {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Proof of Value</h1>
+            </div>
+
+            <div class="evolution-container">
+                <div class="evolution-timeline">
+                    <div class="timeline-stage">
+                        <div class="stage-header">
+                            <div class="stage-number">1</div>
+                            <div class="stage-year">2022-2023</div>
+                            <div class="stage-title">KnoxBots<br/>Residential</div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="stage-description">
+                                Robotic mowing for residential properties. Learned market dynamics quickly.
+                            </div>
+                            <div class="stage-insight">
+                                <i class="fas fa-lightbulb insight-icon"></i>
+                                "Market becoming commoditized. Go commercial."
+                            </div>
+                        </div>
+                        <div class="years-ahead">
+                            <div class="years-number">6mo</div>
+                            <div class="years-label">Ahead</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-stage">
+                        <div class="stage-header">
+                            <div class="stage-number">2</div>
+                            <div class="stage-year">2023-2024</div>
+                            <div class="stage-title">Commercial<br/>Robotic Mowing</div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="stage-description">
+                                Pivoted to complex commercial environments.
+                            </div>
+                            <div class="stage-insight">
+                                <i class="fas fa-laptop-code insight-icon"></i>
+                                "Commercial requires IT solutions, not just mowers."
+                            </div>
+                        </div>
+                        <div class="years-ahead">
+                            <div class="years-number">1yr</div>
+                            <div class="years-label">Ahead</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-stage">
+                        <div class="stage-header">
+                            <div class="stage-number">3</div>
+                            <div class="stage-year">2024-Present</div>
+                            <div class="stage-title">TerraSync<br/>GMA Platform</div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="stage-description">
+                                Holistic GMA focus, not just equipment sales.
+                            </div>
+                            <div class="stage-insight">
+                                <i class="fas fa-puzzle-piece insight-icon"></i>
+                                "We are a technology integration business."
+                            </div>
+                        </div>
+                        <div class="years-ahead">
+                            <div class="years-number">5yrs</div>
+                            <div class="years-label">Ahead</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategic-position">
+                    <h2 class="position-title">Our Second Mover Advantage</h2>
+                    <p class="position-subtitle">
+                        We let others make the first mistakes. Our pivots gave us a <span class="highlight">software head start</span> while competitors are still entering the market.
+                    </p>
+
+                    <div class="position-grid">
+                        <div class="position-card">
+                            <i class="fas fa-eye position-icon"></i>
+                            <div class="position-card-title">Forward Vision</div>
+                            <div class="position-card-desc">Learned to look years ahead</div>
+                        </div>
+
+                        <div class="position-card">
+                            <i class="fas fa-code position-icon"></i>
+                            <div class="position-card-title">Software-First</div>
+                            <div class="position-card-desc">Platform built during market entry</div>
+                        </div>
+
+                        <div class="position-card">
+                            <i class="fas fa-puzzle-piece position-icon"></i>
+                            <div class="position-card-title">Integration-Centric</div>
+                            <div class="position-card-desc">Success is in the platform, not just the product</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Business Model</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .business-model-container {
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .model-hero {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        .revenue-streams {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stream-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .revenue-stream {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .revenue-stream:hover {
+            transform: translateY(-2px);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        .stream-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .stream-icon {
+            font-size: 1.5rem;
+            color: #22c55e;
+            min-width: 24px;
+        }
+
+        .stream-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stream-amount {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .stream-description {
+            font-size: 0.85rem;
+            color: #d1d5db;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .stream-details {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            line-height: 1.3;
+        }
+
+        .territory-model {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(139, 92, 246, 0.08) 100%);
+            border: 2px solid rgba(168, 85, 247, 0.4);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .territory-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #a855f7;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .territory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .territory-metric {
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #a855f7;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: #c084fc;
+            font-weight: 500;
+        }
+
+        .profit-split {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            margin-top: 8px;
+        }
+
+        .highlight {
+            color: #22c55e;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Business Model</h1>
+                <p class="slide-subtitle">Four Revenue Streams, Scalable Territory Model</p>
+            </div>
+
+            <div class="business-model-container">
+                <div class="model-hero">
+                    <div class="hero-title">Hybrid Recurring Revenue Model</div>
+                    <div class="hero-subtitle">Predictable recurring income + transaction-based growth revenue</div>
+                </div>
+
+                <div class="revenue-streams">
+                    <div class="stream-column">
+                        <div class="revenue-stream">
+                            <div class="stream-header">
+                                <i class="fas fa-sync-alt stream-icon"></i>
+                                <div class="stream-title">Recurring Service Revenue</div>
+                            </div>
+                            <div class="stream-amount">$59/acre/month</div>
+                            <div class="stream-description">
+                                Monthly grounds maintenance automation services including mowing, monitoring, and optimization.
+                            </div>
+                            <div class="stream-details">
+                                Primary revenue stream • 70% gross margin • High retention
+                            </div>
+                        </div>
+
+                        <div class="revenue-stream">
+                            <div class="stream-header">
+                                <i class="fas fa-tools stream-icon"></i>
+                                <div class="stream-title">Installation Revenue</div>
+                            </div>
+                            <div class="stream-amount">$700/acre</div>
+                            <div class="stream-description">
+                                One-time setup and installation services for new automation systems.
+                            </div>
+                            <div class="stream-details">
+                                Transaction-based • 60% gross margin • 15% penetration rate
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stream-column">
+                        <div class="revenue-stream">
+                            <div class="stream-header">
+                                <i class="fas fa-laptop stream-icon"></i>
+                                <div class="stream-title">SaaS Platform Revenue</div>
+                            </div>
+                            <div class="stream-amount">$50/user/month</div>
+                            <div class="stream-description">
+                                TerraSYNC Hub software platform for automation management and analytics.
+                            </div>
+                            <div class="stream-details">
+                                Recurring • 85% gross margin • 20% adoption target
+                            </div>
+                        </div>
+
+                        <div class="revenue-stream">
+                            <div class="stream-header">
+                                <i class="fas fa-shopping-cart stream-icon"></i>
+                                <div class="stream-title">Product Sales Revenue</div>
+                            </div>
+                            <div class="stream-amount">$1,800/acre</div>
+                            <div class="stream-description">
+                                Equipment sales including mowers, sensors, and automation hardware.
+                            </div>
+                            <div class="stream-details">
+                                Transaction-based • 20% gross margin • 15% penetration rate
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="territory-model">
+                    <div class="territory-title">Territory Partnership Model</div>
+                    <div class="territory-grid">
+                        <div class="territory-metric">
+                            <div class="metric-value">$100K</div>
+                            <div class="metric-label">Investment</div>
+                        </div>
+                        <div class="territory-metric">
+                            <div class="metric-value">1,500</div>
+                            <div class="metric-label">Max Acres</div>
+                        </div>
+                        <div class="territory-metric">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Partner Share</div>
+                        </div>
+                        <div class="territory-metric">
+                            <div class="metric-value">60%</div>
+                            <div class="metric-label">TerraSync Share</div>
+                        </div>
+                    </div>
+                    <div class="profit-split">
+                        Partners invest $100K and manage local operations. <span class="highlight">TerraSync provides platform, training, and ongoing support</span> while retaining 60% of gross profits.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

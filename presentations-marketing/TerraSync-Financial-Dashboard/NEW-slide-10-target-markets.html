@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 11: Go-to-Market Strategy</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide-header .slide-title {
+            text-transform: uppercase;
+        }
+        .gtm-container {
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 15px;
+        }
+
+        .gtm-hero {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #e5e7eb;
+            line-height: 1.4;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .content-section {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .strategy-overview-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .strategy-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .strategy-flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .flow-step {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            font-weight: 600;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .flow-arrow {
+            color: #22c55e;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .strategy-steps {
+            display: grid;
+            gap: 10px;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .strategy-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strategy-step .step-number {
+            background: #22c55e;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .strategy-step .step-text {
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        .playbook-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .playbook-step {
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .step-number {
+            background: #22c55e;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 4px;
+        }
+
+        .step-description {
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            line-height: 1.3;
+        }
+
+        .step-arrow {
+            align-self: center;
+            color: #22c55e;
+            font-size: 1.2rem;
+            margin: 4px 0;
+        }
+
+        .compact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .client-card {
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .client-logo-placeholder {
+            width: 80px;
+            height: 50px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px dashed rgba(34, 197, 94, 0.4);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-size: 0.7rem;
+            color: #22c55e;
+            text-align: center;
+        }
+
+        .client-logo {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 4px;
+            margin: 0 auto 6px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px;
+        }
+
+        .client-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .client-detail {
+            font-size: 0.7rem;
+            color: #9ca3af;
+        }
+
+        .success-metrics {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .metrics-text {
+            font-size: 0.8rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .bottom-sections {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .why-works-section {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .why-works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .why-item {
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .why-icon {
+            font-size: 1.2rem;
+            color: #22c55e;
+            margin-bottom: 6px;
+        }
+
+        .why-text {
+            font-size: 0.75rem;
+            color: #e5e7eb;
+            line-height: 1.2;
+            font-weight: 500;
+        }
+
+        .expansion-section {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .expansion-markets {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .market-item {
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .market-icon {
+            font-size: 1.2rem;
+            color: #22c55e;
+            flex-shrink: 0;
+        }
+
+        .market-info {
+            flex: 1;
+        }
+
+        .market-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .market-desc {
+            font-size: 0.7rem;
+            color: #9ca3af;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: #22c55e;
+            font-weight: 700;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 120px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px dashed rgba(34, 197, 94, 0.4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        /* New Simplified GTM Styles */
+        .gtm-hero-simple {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .gtm-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #22c55e;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .gtm-subtitle {
+            font-size: 1.6rem;
+            color: #e5e7eb;
+            font-weight: 600;
+        }
+
+        .strategy-flow-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step-large {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+            border: 3px solid rgba(34, 197, 94, 0.5);
+            border-radius: 15px;
+            padding: 20px 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .flow-arrow-large {
+            font-size: 2.5rem;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .clients-showcase {
+            margin: 40px 0;
+        }
+
+        .clients-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .client-highlight {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .client-highlight:hover {
+            transform: translateY(-5px);
+            border-color: rgba(34, 197, 94, 0.7);
+        }
+
+        .client-logo-large {
+            width: 80px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            display: block;
+        }
+
+        .client-name-large {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .client-status {
+            font-size: 0.9rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .key-metric {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 4px solid rgba(34, 197, 94, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .metric-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #22c55e;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .metric-text {
+            font-size: 1.4rem;
+            color: #e5e7eb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">TRACTION & GTM</h1>
+                <p class="slide-subtitle">Golf Course-First Approach to Critical Mass Adoption</p>
+            </div>
+
+            <div class="gtm-container">
+                
+                <!-- Hero Message -->
+                <div class="gtm-hero-simple">
+                    <h2 class="gtm-title">Range Pickers = Golf Course Gold Rush</h2>
+                    <p class="gtm-subtitle">More golf courses across America = Critical mass faster</p>
+                </div>
+
+                <!-- Strategy Flow - Big and Visual -->
+                <div class="strategy-flow-visual">
+                    <div class="flow-step-large">Range Picker Entry</div>
+                    <div class="flow-arrow-large">→</div>
+                    <div class="flow-step-large">Platform Introduction</div>
+                    <div class="flow-arrow-large">→</div>
+                    <div class="flow-step-large">Mower Add-on</div>
+                    <div class="flow-arrow-large">→</div>
+                    <div class="flow-step-large">Full Ecosystem Lock-in</div>
+                </div>
+
+                <!-- Current Clients Highlight -->
+                <div class="clients-showcase">
+                    <h3 class="clients-title">Current Golf Course Clients</h3>
+                    <div class="clients-grid">
+                        <div class="client-highlight">
+                            <img src="windriver.jpg" alt="Wind River Golf Course" class="client-logo-large">
+                            <div class="client-name-large">Wind River</div>
+                            <div class="client-status">Range Picker Only</div>
+                        </div>
+                        <div class="client-highlight">
+                            <img src="vilage golf club.png" alt="Village Golf Club" class="client-logo-large">
+                            <div class="client-name-large">Village Golf Club</div>
+                            <div class="client-status">Set for June</div>
+                        </div>
+                        <div class="client-highlight">
+                            <img src="osprey.jpg" alt="Osprey Point Golf Course" class="client-logo-large">
+                            <div class="client-name-large">Osprey Point</div>
+                            <div class="client-status">Range + Mowing</div>
+                        </div>
+                        <div class="client-highlight">
+                            <img src="john prince.png" alt="John Prince Golf Learning Center" class="client-logo-large">
+                            <div class="client-name-large">John Prince</div>
+                            <div class="client-status">Range + Mowing</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Metric -->
+                <div class="key-metric">
+                    <div class="metric-number">85%</div>
+                    <div class="metric-text">Expand to Full Platform Within 12 Months</div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

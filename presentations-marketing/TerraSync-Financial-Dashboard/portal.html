@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Grounds Maintenance Automation</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Master Slide Wrapper Styles */
+        .deck-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Landing Page Styles */
+        .landing-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        }
+
+        .landing-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(75, 85, 99, 0.12) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .landing-page.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .landing-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-container img {
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(34, 197, 94, 0.3));
+        }
+
+        .presentation-title {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 24px;
+            color: #e5e7eb;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .founder-info {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .founder-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #22c55e;
+            box-shadow: 0 5px 25px rgba(34, 197, 94, 0.2);
+            margin-bottom: 20px;
+        }
+
+        /* Lock Button Styles */
+        .lock-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 3000;
+            padding: 12px 20px;
+            background: rgba(239, 68, 68, 0.9);
+            border: 2px solid rgba(239, 68, 68, 0.4);
+            border-radius: 8px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lock-button:hover {
+            background: rgba(239, 68, 68, 1);
+            border-color: rgba(239, 68, 68, 0.8);
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .lock-button i {
+            font-size: 1rem;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #e5e7eb;
+            margin: 0;
+        }
+
+        .founder-title {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin: 4px 0 0 0;
+        }
+
+        .deck-selection-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .enter-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.8) 0%, rgba(22, 163, 74, 0.9) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 50px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(10px);
+            min-width: 240px;
+            justify-content: center;
+        }
+
+        .enter-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.5);
+            border-color: rgba(34, 197, 94, 0.8);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 1) 0%, rgba(22, 163, 74, 1) 100%);
+        }
+
+        .associate-button {
+            background: linear-gradient(135deg, rgba(75, 85, 99, 0.8) 0%, rgba(55, 65, 81, 0.9) 100%);
+            border: 2px solid rgba(75, 85, 99, 0.4);
+            box-shadow: 0 8px 30px rgba(75, 85, 99, 0.3);
+        }
+
+        .associate-button:hover {
+            background: linear-gradient(135deg, rgba(75, 85, 99, 1) 0%, rgba(55, 65, 81, 1) 100%);
+            border-color: rgba(75, 85, 99, 0.8);
+            box-shadow: 0 15px 40px rgba(75, 85, 99, 0.5);
+        }
+
+        .enter-button i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .enter-button:hover i {
+            transform: translateX(3px);
+        }
+
+        .confidential-notice {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: fadeIn 1.5s ease-out 1.2s both;
+        }
+
+        .version-info {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 0.8rem;
+            color: #4b5563;
+            animation: fadeIn 1.5s ease-out 1.5s both;
+        }
+
+        /* Landing page animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .presentation-title {
+                font-size: 2rem;
+            }
+
+            .logo-container img {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="deck-container">
+        <!-- Lock Button -->
+        <a href="#" class="lock-button" id="lock-button">
+            <i class="fas fa-lock"></i>
+            Lock Portal
+        </a>
+        
+        <!-- Landing Page -->
+        <div class="landing-page" id="landing-page">
+            <div class="landing-container">
+                <div class="logo-container">
+                    <img src="Green_on_Transparent_Logo_.png" alt="TerraSync Logo" />
+                </div>
+                <h1 class="presentation-title">Grounds Maintenance Automation</h1>
+
+                <div class="founder-info">
+                    <img src="Fotogenic_6bda502e-2cc6-4331-9b93-643f1ede5cb4.jpg" alt="Wesley Pitts, Founder"
+                        class="founder-photo">
+                    <h2 class="founder-name">Presenting Wesley Pitts</h2>
+                    <p class="founder-title">Founder</p>
+                </div>
+
+                <div class="deck-selection-buttons">
+                    <a href="#" class="enter-button" id="enter-main-presentation">
+                        Main Pitch Deck <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <!-- Associate Pitch Deck - DISABLED -->
+                    <!-- <a href="TerraSync-Associate-Pitch-Deck/pitch-deck.html" class="enter-button associate-button">
+                        Associate Pitch Deck <i class="fas fa-arrow-right"></i>
+                    </a> -->
+                    <!-- Financial Dashboard - DISABLED -->
+                    <!-- <a href="dashboard.html" class="enter-button" onclick="sessionStorage.setItem('terrasyncAuth', 'true')" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.9) 100%); border: 2px solid rgba(59, 130, 246, 0.4); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);">
+                        Financial Dashboard <i class="fas fa-chart-line"></i>
+                    </a> -->
+                </div>
+            </div>
+            <div class="confidential-notice">Confidential & Proprietary</div>
+            <div class="version-info">Q3 2024 Edition</div>
+        </div>
+    </div>
+
+    <script>
+        // Simple redirect for main presentation
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('enter-main-presentation').addEventListener('click', function (e) {
+                e.preventDefault();
+                // Redirect to the full main presentation with navigation
+                window.location.href = 'main-presentation.html';
+            });
+
+            // Lock button functionality
+            document.getElementById('lock-button').addEventListener('click', function (e) {
+                e.preventDefault();
+                // Clear the session authentication and redirect to password page
+                sessionStorage.removeItem('terrasyncAuth');
+                window.location.href = 'password.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

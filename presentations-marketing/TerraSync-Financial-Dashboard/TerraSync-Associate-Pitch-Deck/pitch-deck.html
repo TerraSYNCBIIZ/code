@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Grounds Maintenance Automation</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Master Slide Wrapper Styles */
+        .deck-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Landing Page Styles */
+        .landing-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        }
+
+        .landing-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(75, 85, 99, 0.12) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .landing-page.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .landing-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-container img {
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(34, 197, 94, 0.3));
+        }
+
+        .presentation-title {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 24px;
+            color: #e5e7eb;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .founder-info {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .founder-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #22c55e;
+            box-shadow: 0 5px 25px rgba(34, 197, 94, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #e5e7eb;
+            margin: 0;
+        }
+        
+        .founder-title {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin: 4px 0 0 0;
+        }
+
+        .deck-selection-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .enter-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.8) 0%, rgba(22, 163, 74, 0.9) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 50px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(10px);
+            min-width: 240px;
+            justify-content: center;
+        }
+
+        .enter-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.5);
+            border-color: rgba(34, 197, 94, 0.8);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 1) 0%, rgba(22, 163, 74, 1) 100%);
+        }
+
+        .associate-button {
+            background: linear-gradient(135deg, rgba(75, 85, 99, 0.8) 0%, rgba(55, 65, 81, 0.9) 100%);
+            border: 2px solid rgba(75, 85, 99, 0.4);
+            box-shadow: 0 8px 30px rgba(75, 85, 99, 0.3);
+        }
+
+        .associate-button:hover {
+            background: linear-gradient(135deg, rgba(75, 85, 99, 1) 0%, rgba(55, 65, 81, 1) 100%);
+            border-color: rgba(75, 85, 99, 0.8);
+            box-shadow: 0 15px 40px rgba(75, 85, 99, 0.5);
+        }
+
+        .financial-button {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.9) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .financial-button:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 1) 0%, rgba(37, 99, 235, 1) 100%);
+            border-color: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5);
+        }
+
+        .enter-button i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .enter-button:hover i {
+            transform: translateX(3px);
+        }
+
+        .confidential-notice {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: fadeIn 1.5s ease-out 1.2s both;
+        }
+
+        .version-info {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 0.8rem;
+            color: #4b5563;
+            animation: fadeIn 1.5s ease-out 1.5s both;
+        }
+
+        /* Slide Presentation Styles */
+        .presentation-mode {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .presentation-mode.visible {
+            opacity: 1;
+        }
+
+        .slide-wrapper {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 30px;
+            box-sizing: border-box;
+        }
+
+        .slide-wrapper.active {
+            display: block;
+        }
+
+        .slide-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+        }
+
+        .deck-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .deck-header.visible {
+            opacity: 1;
+        }
+
+        .slide-counter, .confidential-header, .back-to-portal {
+            pointer-events: auto;
+        }
+
+        .back-to-portal {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-portal:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            transform: translateY(-2px);
+        }
+
+        .slide-counter {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .terrasync-logo-mini {
+            height: 28px;
+            width: 28px;
+            background: transparent;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terrasync-logo-mini img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .confidential-header {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Bottom Navigation Pills - Hidden by default, shows on hover */
+        .bottom-navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(31, 41, 55, 0.95);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-50%) translateY(20px);
+        }
+
+        .bottom-navigation.visible {
+            opacity: 0.3;
+        }
+
+        .bottom-navigation.visible:hover {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0px);
+        }
+
+        /* Hover trigger area at bottom of screen */
+        .navigation-trigger {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .navigation-trigger:hover + .bottom-navigation,
+        .bottom-navigation:hover {
+            opacity: 1 !important;
+            transform: translateX(-50%) translateY(0px) !important;
+        }
+
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.6);
+            transform: scale(1.1);
+        }
+
+        .nav-button i {
+            color: #22c55e;
+            font-size: 1rem;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-button:disabled:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+            transform: none;
+        }
+
+        .slide-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e5e7eb;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 16px;
+        }
+
+        .slide-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(156, 163, 175, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #22c55e;
+            transform: scale(1.2);
+        }
+
+        .slide-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(31, 41, 55, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide-progress.visible {
+            opacity: 1;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+            transition: width 0.3s ease;
+        }
+
+        /* Ensure slide content fits properly */
+        .slide {
+            padding: 40px 50px 20px 50px !important;
+            height: calc(100vh - 60px) !important;
+            overflow: hidden !important;
+            box-sizing: border-box;
+        }
+
+        /* Keyboard hint - smaller and less intrusive */
+        .keyboard-hint {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.7rem;
+            color: #4b5563;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .keyboard-hint.visible {
+            opacity: 0.6;
+        }
+
+        /* Landing page animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .presentation-title {
+                font-size: 2rem;
+            }
+            .presentation-subtitle {
+                font-size: 1rem;
+            }
+            .logo-container img {
+                max-width: 300px;
+            }
+        }
+    </style>
+    <script>
+        // Authentication check
+        if (sessionStorage.getItem('terrasyncAuth') !== 'true') {
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body>
+    
+    <div class="deck-container">
+        <!-- Landing Page -->
+        <div class="landing-page" id="landing-page">
+            <div class="landing-container">
+                <div class="logo-container">
+                    <img src="Green_on_Transparent_Logo_.png" alt="TerraSync Logo" />
+                </div>
+                <h1 class="presentation-title">Grounds Maintenance Automation</h1>
+                <div style="margin-top: 10px; color: #9ca3af; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Associate Version
+                </div>
+                
+                <div class="founder-info">
+                    <img src="Fotogenic_6bda502e-2cc6-4331-9b93-643f1ede5cb4.jpg" alt="Wesley Pitts, Founder" class="founder-photo">
+                    <h2 class="founder-name">Presenting Wesley Pitts</h2>
+                    <p class="founder-title">Founder</p>
+                </div>
+
+                <div class="deck-selection-buttons">
+                    <a href="../pitch-deck.html" class="enter-button">
+                        Main Pitch Deck <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#" class="enter-button associate-button" id="enter-associate-presentation">
+                        Associate Pitch Deck <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="../index.html" class="enter-button financial-button">
+                        Financial Dashboard <i class="fas fa-chart-line"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="confidential-notice">Confidential & Proprietary</div>
+            <div class="version-info">Q3 2024 Edition</div>
+        </div>
+
+        <!-- Presentation Mode -->
+        <div class="presentation-mode" id="presentation-mode">
+            <!-- Master Deck Header -->
+            <div class="deck-header" id="deck-header">
+                <div class="slide-counter">
+                    <div class="terrasync-logo-mini">
+                        <img src="icon.png" alt="TerraSync Logo">
+                    </div>
+                    <span id="current-slide">1</span>
+                    <span>of</span>
+                    <span id="total-slides">15</span>
+                </div>
+                <div class="confidential-header">
+                    TerraSync Investor Brief - Confidential
+                </div>
+                <a href="../pitch-portal.html" class="back-to-portal">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Portal
+                </a>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="slide-progress" id="slide-progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <!-- Navigation trigger area -->
+            <div class="navigation-trigger"></div>
+            
+            <!-- Bottom Navigation Pills -->
+            <div class="bottom-navigation" id="bottom-navigation">
+                <button class="nav-button" id="prev-btn" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="slide-indicator">
+                    <span id="slide-number">1</span>
+                    <div class="slide-dots" id="slide-dots">
+                        <!-- Dots will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <button class="nav-button" id="next-btn" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Keyboard Hint -->
+            <div class="keyboard-hint" id="keyboard-hint">
+                ← → Keys
+            </div>
+
+            <!-- Slide Content Wrappers - Warren Buffett Reorganized Order -->
+            <div class="slide-wrapper active" id="slide-1">
+                <iframe src="NEW-slide-01-problem.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-2">
+                <iframe src="NEW-slide-03-solution.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-3">
+                <iframe src="NEW-slide-04-founder.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-4">
+                <iframe src="NEW-slide-02-opportunity.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-5">
+                <iframe src="NEW-slide-07-proof-value.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-6">
+                <iframe src="NEW-slide-05-competitive.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-7">
+                <iframe src="NEW-slide-06-market-validation.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-8">
+                <iframe src="NEW-slide-08-business-model.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-9">
+                <iframe src="NEW-slide-09-traction.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-10">
+                <iframe src="NEW-slide-10-target-markets.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-11">
+                <iframe src="NEW-slide-11-product-showcase.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-12">
+                <iframe src="NEW-slide-12-team.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-13">
+                <iframe src="NEW-slide-13-future-vision.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-14">
+                <iframe src="NEW-slide-14-financial-projections.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-15">
+                <iframe src="NEW-slide-15-risk-factors.html" class="slide-frame"></iframe>
+            </div>
+
+            <div class="slide-wrapper" id="slide-16">
+                <iframe src="NEW-slide-16-investment-ask.html" class="slide-frame"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 16;
+        let presentationStarted = false;
+
+        function enterPresentation() {
+            presentationStarted = true;
+            
+            // Hide landing page
+            document.getElementById('landing-page').classList.add('hidden');
+            
+            // Show presentation mode
+            setTimeout(() => {
+                document.querySelector('.presentation-mode').classList.add('visible');
+                document.getElementById('deck-header').classList.add('visible');
+                document.getElementById('slide-progress').classList.add('visible');
+                document.getElementById('bottom-navigation').classList.add('visible');
+                document.getElementById('keyboard-hint').classList.add('visible');
+            }, 400);
+            
+            // Initialize presentation
+            initializeDots();
+            updateSlideDisplay();
+        }
+
+        function initializeDots() {
+            const dotsContainer = document.getElementById('slide-dots');
+            dotsContainer.innerHTML = '';
+            
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i === currentSlide) dot.classList.add('active');
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateSlideDisplay() {
+            if (!presentationStarted) return;
+            
+            // Hide all slides
+            document.querySelectorAll('.slide-wrapper').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show current slide
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+            
+            // Update counter
+            document.getElementById('current-slide').textContent = currentSlide;
+            document.getElementById('slide-number').textContent = currentSlide;
+            
+            // Update progress bar
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+            
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index + 1 === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        function goToSlide(slideNumber) {
+            if (slideNumber >= 1 && slideNumber <= totalSlides) {
+                currentSlide = slideNumber;
+                updateSlideDisplay();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (!presentationStarted) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    enterPresentation();
+                }
+                return;
+            }
+            
+            switch(event.key) {
+                case 'ArrowLeft':
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                    nextSlide();
+                    break;
+                case 'Home':
+                    goToSlide(1);
+                    break;
+                case 'End':
+                    goToSlide(totalSlides);
+                    break;
+            }
+        });
+
+        // Authentication check
+        function checkAuthentication() {
+            if (sessionStorage.getItem('terrasyncAuth') !== 'true') {
+                window.location.href = 'index.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Initialize (show landing page first)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication first
+            if (!checkAuthentication()) {
+                return;
+            }
+            // Landing page is shown by default
+            // Add click listener for the associate presentation button
+            document.getElementById('enter-associate-presentation').addEventListener('click', function(e) {
+                e.preventDefault();
+                enterPresentation();
+            });
+        });
+    </script>
+</body>
+</html> 

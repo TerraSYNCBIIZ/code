@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 8: Growth Strategy</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .growth-container {
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center the content vertically */
+            height: calc(100vh - 200px); /* Adjust height to fit */
+        }
+
+        .current-traction-section {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .traction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .traction-metric .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 4px;
+        }
+
+        .traction-metric .metric-label {
+            font-size: 1rem;
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        .strategy-hero {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .strategy-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .strategy-subtitle {
+            font-size: 0.95rem;
+            color: #e5e7eb;
+            line-height: 1.4;
+        }
+
+        .critical-mass-section {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .section-header {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .entry-points-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .entry-point {
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 10px;
+            padding: 15px 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .entry-point:hover {
+            transform: translateY(-2px);
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+
+        .entry-icon {
+            font-size: 1.6rem;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .entry-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .entry-description {
+            font-size: 0.75rem;
+            color: #d1d5db;
+            line-height: 1.2;
+        }
+
+        .strategy-pillars {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+
+        .pillar-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .pillar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pillar-icon {
+            font-size: 1.2rem;
+        }
+
+        .pillar-points {
+            list-style: none;
+        }
+
+        .pillar-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: #e5e7eb;
+            line-height: 1.3;
+        }
+
+        .point-bullet {
+            color: #22c55e;
+            font-weight: bold;
+            margin-top: 1px;
+        }
+
+        .competitive-advantage {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .advantage-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .advantage-text {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            color: #22c55e;
+            font-weight: 700;
+        }
+
+        .strategy-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            color: #22c55e;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .flow-arrow {
+            color: #22c55e;
+            font-size: 1rem;
+        }
+
+        .goal-highlight {
+            text-align: center; 
+            margin-top: 12px; 
+            padding: 12px; 
+            background: rgba(34, 197, 94, 0.1); 
+            border-radius: 6px; 
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .goal-text {
+            color: #22c55e; 
+            font-weight: 600; 
+            font-size: 0.85rem;
+        }
+
+        .goal-icon {
+            margin-right: 6px;
+        }
+
+        /* New Simplified Styles - Optimized for Fit */
+        .ecosystem-hero {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .ecosystem-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #22c55e;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .ecosystem-subtitle {
+            font-size: 1.5rem;
+            color: #e5e7eb;
+            font-weight: 600;
+        }
+
+        .entry-visual-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .entry-visual {
+            text-align: center;
+        }
+
+        .entry-image-placeholder {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 0.8rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .entry-image {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border: 4px solid rgba(34, 197, 94, 0.5);
+            border-radius: 20px;
+            margin: 0 auto 15px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .entry-image:hover {
+            transform: scale(1.05);
+            border-color: rgba(34, 197, 94, 0.8);
+        }
+
+        .entry-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .simple-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .flow-item {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 12px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .key-insight {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .insight-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .insight-text {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Market Traction</h1>
+            </div>
+
+            <div class="growth-container">
+
+                <!-- Hero Message -->
+                <div class="ecosystem-hero">
+                    <h2 class="ecosystem-title">The Apple Playbook</h2>
+                    <p class="ecosystem-subtitle">Multiple entry points → Ecosystem lock-in</p>
+                </div>
+
+                <!-- Visual Entry Points -->
+                <div class="entry-visual-grid">
+                    <div class="entry-visual">
+                        <img src="../../Photos/1746478024512.jpg" alt="Staff Management" class="entry-image">
+                        <div class="entry-label">Staff</div>
+                    </div>
+                    <div class="entry-visual">
+                        <img src="../../media-assets/graphics/GC-with-Many-Sprinklers-On-2-1500x1200.jpg" alt="Irrigation System" class="entry-image">
+                        <div class="entry-label">Irrigation</div>
+                    </div>
+                    <div class="entry-visual">
+                        <img src="../../Photos/1749117782798.jpg" alt="Robotic Mower" class="entry-image">
+                        <div class="entry-label">Mowers</div>
+                    </div>
+                    <div class="entry-visual">
+                        <img src="../../Photos/1749117779188.jpg" alt="Golf Equipment" class="entry-image">
+                        <div class="entry-label">Equipment</div>
+                    </div>
+                </div>
+
+                <!-- Simple Flow -->
+                <div class="simple-flow">
+                    <div class="flow-item">Try One Tool</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">Love the Platform</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">Can't Leave</div>
+                </div>
+
+                <!-- Key Insight -->
+                <div class="key-insight">
+                    <h3 class="insight-title">We Win When Competitors Win</h3>
+                    <p class="insight-text">More automation = bigger market = more integrations needed</p>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

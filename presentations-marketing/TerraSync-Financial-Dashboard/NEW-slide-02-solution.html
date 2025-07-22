@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Our Solution</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding: 40px 20px 20px 20px !important;
+            /* Reduced padding for more space */
+            height: calc(100vh - 60px) !important;
+        }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1600px; /* Increased max width */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-header {
+            margin-bottom: 25px;
+            /* Increased margin to move away from watermark */
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .slide-header .slide-title {
+            text-transform: uppercase;
+        }
+
+        .solution-hero {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            padding: 20px 40px;
+            border-radius: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            margin-bottom: 15px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+        
+        .hero-title .green-text {
+            color: #22c55e;
+        }
+
+        .hero-tagline {
+            display: none; /* Hide the tagline since we're removing TerraSYNC Hub */
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.4;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .main-platform-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            padding: 15px 0;
+            width: 100%;
+        }
+
+        .platform-visual {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
+            border-radius: 20px;
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+            height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.2);
+        }
+
+        .platform-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 60%);
+        }
+
+        /* SVG Hub Animation - Balanced size to fit container */
+        .terrasync-hub-svg {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            position: relative;
+            z-index: 2;
+            transform: scale(1.4); /* Balanced scale - bigger but fits */
+        }
+
+        .hub-center {
+            fill: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            stroke: #22c55e;
+            stroke-width: 2;
+            filter: drop-shadow(0 4px 16px rgba(34, 197, 94, 0.3));
+        }
+
+        .connection-line {
+            stroke: rgba(34, 197, 94, 0.6);
+            stroke-width: 2;
+            opacity: 0.8;
+        }
+
+        .tech-node {
+            fill: rgba(31, 41, 55, 0.9);
+            stroke: rgba(34, 197, 94, 0.5);
+            stroke-width: 1.5;
+            transition: all 0.2s ease;
+        }
+
+        .tech-node:hover {
+            fill: rgba(34, 197, 94, 0.1);
+            stroke: #22c55e;
+            stroke-width: 2;
+        }
+
+        .node-text {
+            fill: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 10px;
+            text-anchor: middle;
+            dominant-baseline: central;
+        }
+
+        .node-title {
+            fill: #22c55e;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            text-anchor: middle;
+            dominant-baseline: central;
+        }
+
+        .hub-text {
+            fill: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-anchor: middle;
+            dominant-baseline: central;
+        }
+
+        .hub-subtitle {
+            fill: rgba(255, 255, 255, 0.9);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 11px;
+            text-anchor: middle;
+            dominant-baseline: central;
+        }
+
+        .node-icon {
+            fill: #22c55e;
+            font-size: 14px;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            text-anchor: middle;
+            dominant-baseline: central;
+        }
+
+        .key-benefits {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 12px;
+            /* Reduced gap */
+        }
+
+        .benefits-title {
+            font-size: 1.3rem;
+            /* Slightly reduced size */
+            font-weight: 700;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 8px;
+            /* Reduced margin */
+            text-transform: uppercase;
+        }
+
+        .benefit-item {
+            display: flex;
+            flex-direction: row;
+            /* Reverted to horizontal layout */
+            align-items: center;
+            gap: 16px;
+            padding: 10px 14px;
+            /* Reduced padding */
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(55, 65, 81, 0.7) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 1.6rem;
+            /* Slightly reduced size */
+            color: #22c55e;
+            min-width: 30px;
+        }
+
+        .benefit-content {
+            text-align: left;
+        }
+
+        .benefit-title {
+            font-size: 0.9rem;
+            /* Slightly reduced size */
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .benefit-text {
+            font-size: 0.8rem;
+            /* Slightly reduced size */
+            color: #d1d5db;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">The TerraSync Solution</h1>
+            </div>
+
+            <div class="solution-hero">
+                <h2 class="hero-title">One <span class="green-text">Platform</span><br>All <span class="green-text">Automation</span></h2>
+            </div>
+
+            <div class="main-platform-container">
+                <div class="platform-visual">
+                    <svg class="terrasync-hub-svg" viewBox="0 0 600 450">
+                        <!-- Gradients -->
+                        <defs>
+                            <radialGradient id="hubGradient" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#22c55e" />
+                                <stop offset="100%" stop-color="#16a34a" />
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Connection Lines -->
+                        <line class="connection-line" x1="300" y1="225" x2="300" y2="115" />
+                        <line class="connection-line" x1="300" y1="225" x2="460" y2="145" />
+                        <line class="connection-line" x1="300" y1="225" x2="460" y2="305" />
+                        <line class="connection-line" x1="300" y1="225" x2="300" y2="360" />
+                        <line class="connection-line" x1="300" y1="225" x2="140" y2="305" />
+                        <line class="connection-line" x1="300" y1="225" x2="140" y2="145" />
+
+                        <!-- Integration Layer -->
+                        <rect class="tech-node" x="150" y="60" width="300" height="50" rx="8" />
+                        <text class="node-icon" x="175" y="80">&#xf1e6;</text>
+                        <text class="node-title" x="300" y="80">All Automation Technologies</text>
+                        <text class="node-text" x="300" y="95">Mowers • Irrigation • Drones • Equipment</text>
+
+                        <!-- Data Layer -->
+                        <rect class="tech-node" x="450" y="140" width="120" height="40" rx="8" />
+                        <text class="node-icon" x="470" y="155">&#xf080;</text>
+                        <text class="node-title" x="530" y="155">Data Analytics</text>
+                        <text class="node-text" x="510" y="168">& Insights</text>
+
+                        <!-- Operations Layer -->
+                        <rect class="tech-node" x="450" y="280" width="120" height="40" rx="8" />
+                        <text class="node-icon" x="470" y="295">&#xf0c0;</text>
+                        <text class="node-title" x="530" y="295">Operations</text>
+                        <text class="node-text" x="510" y="308">Management</text>
+
+                        <!-- Service Layer -->
+                        <rect class="tech-node" x="250" y="350" width="100" height="40" rx="8" />
+                        <text class="node-icon" x="270" y="365">&#xf0ad;</text>
+                        <text class="node-title" x="315" y="365">Service</text>
+                        <text class="node-text" x="300" y="378">Support</text>
+
+                        <!-- Platform Layer -->
+                        <rect class="tech-node" x="30" y="280" width="120" height="40" rx="8" />
+                        <text class="node-icon" x="50" y="295">&#xf279;</text>
+                        <text class="node-title" x="110" y="295">Platform</text>
+                        <text class="node-text" x="90" y="308">Integration</text>
+
+                        <!-- Map Layer -->
+                        <rect class="tech-node" x="30" y="140" width="120" height="40" rx="8" />
+                        <text class="node-icon" x="50" y="155">&#xf279;</text>
+                        <text class="node-title" x="110" y="155">Map-Based</text>
+                        <text class="node-text" x="90" y="168">Control</text>
+
+                        <!-- Central Hub -->
+                        <rect class="hub-center" x="200" y="200" width="200" height="50" rx="12"
+                            fill="url(#hubGradient)" />
+                        <text class="node-icon" x="225" y="220" style="fill: white;">&#xf279;</text>
+                        <text class="hub-text" x="320" y="220">TerraSYNC Hub</text>
+                        <text class="hub-subtitle" x="320" y="235">Map-Based AI Platform</text>
+                    </svg>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

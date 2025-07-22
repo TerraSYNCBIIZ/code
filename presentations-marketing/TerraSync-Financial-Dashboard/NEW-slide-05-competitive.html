@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 6: Competitive Landscape</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding-top: 60px !important; /* Pushes title down from watermark */
+        }
+        .competitive-container {
+            width: 100%;
+            max-width: 1500px;
+            margin-top: 10px; /* Reduced buffer/margin from title */
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px); /* Use more vertical space */
+        }
+
+        .competitive-matrix {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            padding: 35px; /* Increased padding for bigger chart */
+            margin-bottom: 15px; /* Reduced margin to save space */
+            overflow-x: auto;
+            flex-grow: 1; /* Allow chart to take more space */
+            position: relative; /* For legend positioning */
+        }
+
+        .legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(31, 41, 55, 0.9);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.7rem;
+            color: #e5e7eb;
+            display: flex;
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-symbol {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-right: 8px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .legend-text {
+            font-weight: 500;
+        }
+
+        .matrix-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 20px; /* Reduced margin */
+            text-transform: uppercase;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(31, 41, 55, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            font-size: 0.85rem; /* Increased base font size */
+            table-layout: fixed;
+        }
+
+        .matrix-table th {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #ffffff;
+            padding: 15px 8px; /* Increased padding for bigger chart */
+            font-weight: 600;
+            font-size: 0.95rem; /* Larger header font size for better readability */
+            text-align: center;
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+            vertical-align: middle;
+            line-height: 1.1;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+
+        .matrix-table th:first-child {
+            text-align: left;
+            width: 140px;
+        }
+
+        .matrix-table th:not(:first-child) {
+            width: calc((100% - 140px) / 6); /* Updated width for 6 columns total */
+        }
+
+        .matrix-table td {
+            padding: 12px 6px; /* Increased padding for bigger chart */
+            border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+            border-right: 1px solid rgba(75, 85, 99, 0.3);
+            text-align: center;
+            font-size: 0.75rem; /* Larger font size */
+            vertical-align: middle;
+            line-height: 1.0;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+
+        .matrix-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #e5e7eb;
+            background: rgba(55, 65, 81, 0.6);
+            font-size: 0.85rem; /* Larger font size */
+        }
+
+        .check-mark, .x-mark, .partial-mark {
+            font-size: 1.4rem; /* Larger symbols for bigger chart */
+            font-weight: 900; /* Bolder symbols */
+        }
+
+        .check-mark {
+            color: #22c55e;
+        }
+
+        .x-mark {
+            color: #ef4444;
+        }
+
+        .partial-mark {
+            color: #f59e0b;
+        }
+
+        .terrasync-column {
+            background: rgba(34, 197, 94, 0.15) !important;
+            border-left: 3px solid #22c55e;
+            font-weight: 600;
+        }
+
+        .business-model-text {
+            font-size: 0.85rem; /* Even larger font size for better readability */
+            color: #d1d5db;
+            line-height: 1.1;
+            word-wrap: break-word;
+            font-weight: 500; /* Slightly bolder for better visibility */
+        }
+
+        .key-differentiator {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            flex-shrink: 0; /* Don't shrink this section */
+        }
+
+        .differentiator-title {
+            font-size: 2.2rem; /* Much larger, bold statement */
+            font-weight: 800;
+            color: #22c55e;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .simple-advantage {
+            font-size: 1.4rem; /* Large, readable text */
+            color: #ffffff;
+            font-weight: 600;
+            margin-top: 10px;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Competitive Landscape</h1>
+            </div>
+
+            <div class="competitive-container">
+                <div class="competitive-matrix">
+                    <div class="legend">
+                        <div class="legend-item">
+                            <span class="legend-symbol check-mark">✓</span>
+                            <span class="legend-text">Full Capability</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-symbol partial-mark">◐</span>
+                            <span class="legend-text">Partial/Limited</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-symbol x-mark">✗</span>
+                            <span class="legend-text">No Capability</span>
+                        </div>
+                    </div>
+                    <h3 class="matrix-title">Strategic Market Advantages</h3>
+                    <table class="matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Competitive Differentiators</th>
+                                <th class="terrasync-column">TerraSync</th>
+                                <th>GreenSight<br/>TurfCloud</th>
+                                <th>MyGoat</th>
+                                <th>Robotics/<br/>Automation</th>
+                                <th>Equipment<br/>Dealers/OEMs</th>
+                                <th>Traditional<br/>Landscapers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Full Technology Integration</td>
+                                <td class="terrasync-column"><span class="check-mark">✓</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                            </tr>
+                            <tr>
+                                <td>Proprietary Software Platform</td>
+                                <td class="terrasync-column"><span class="check-mark">✓</span></td>
+                                <td><span class="check-mark">✓</span></td>
+                                <td><span class="check-mark">✓</span></td>
+                                <td><span class="check-mark">✓</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                            </tr>
+                            <tr>
+                                <td>Product-Agnostic Integration</td>
+                                <td class="terrasync-column"><span class="check-mark">✓</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                            </tr>
+                            <tr>
+                                <td>Technology vs Equipment Focus</td>
+                                <td class="terrasync-column">
+                                    <div class="business-model-text">Technology Integration</div>
+                                </td>
+                                <td>
+                                    <div class="business-model-text">Drone + Limited Robotics</div>
+                                </td>
+                                <td>
+                                    <div class="business-model-text">Robotics Software Only</div>
+                                </td>
+                                <td>
+                                    <div class="business-model-text">Automation Software</div>
+                                </td>
+                                <td>
+                                    <div class="business-model-text">Product Sales</div>
+                                </td>
+                                <td>
+                                    <div class="business-model-text">Equipment Management</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Service + Software Integration</td>
+                                <td class="terrasync-column"><span class="check-mark">✓</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="check-mark">✓</span></td>
+                                <td><span class="check-mark">✓</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                            </tr>
+                            <tr>
+                                <td>Hyper-Local Service Model</td>
+                                <td class="terrasync-column"><span class="check-mark">✓</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="check-mark">✓</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Multi-Vendor Relationships</td>
+                                <td class="terrasync-column"><span class="check-mark">✓</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                                <td><span class="x-mark">✗</span></td>
+                                <td><span class="partial-mark">◐</span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="key-differentiator">
+                    <h3 class="differentiator-title">Our Unfair Advantage</h3>
+                    <p class="simple-advantage">Second-Mover Advantage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

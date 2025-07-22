@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRASYNC - Financial Projections Dashboard</title>
+    
+    <!-- External Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/dashboard-styles.css">
+    
+    <script src="js/unified-financial-model.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>TERRASYNC FINANCIAL PROJECTIONS</h1>
+            <p style="color: #9ca3af; font-size: 1.2rem;">Live Financial Model</p>
+        </div>
+        
+
+
+        <!-- Access to Detailed 60-Month Financial Pro Forma -->
+        <div style="text-align: center; margin: 30px 0; padding: 30px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%); border-radius: 20px; border: 2px solid rgba(34, 197, 94, 0.4); box-shadow: 0 8px 32px rgba(34, 197, 94, 0.15);">
+            <div style="margin-bottom: 20px;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #22c55e; margin-bottom: 15px;">
+                    <path d="M3 3h18v18H3z"/>
+                    <path d="M21 9H3"/>
+                    <path d="M21 15H3"/>
+                    <path d="M12 3v18"/>
+                </svg>
+                <h3 style="color: #22c55e; margin-bottom: 10px; font-size: 1.6rem; font-weight: 700;">TerraSync Financial Pro Forma</h3>
+                <p style="color: #9ca3af; margin-bottom: 0; font-size: 1.1rem; line-height: 1.4;">Complete 60-Month Financial Projections</p>
+                <p style="color: #cbd5e1; font-size: 0.95rem; margin: 8px 0 0 0;">Annual summaries • Quarterly breakdowns • Monthly details • Export capabilities</p>
+            </div>
+            <a href="financial-proforma.html" 
+               style="display: inline-flex; align-items: center; gap: 15px; padding: 20px 40px; 
+                      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); 
+                      border: 2px solid rgba(34, 197, 94, 0.6); border-radius: 16px; 
+                      color: #ffffff; text-decoration: none; font-size: 1.2rem; 
+                      font-weight: 700; transition: all 0.3s ease; 
+                      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+                      text-transform: uppercase; letter-spacing: 0.5px;"
+               onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(34, 197, 94, 0.5)'"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(34, 197, 94, 0.4)'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                View Complete Pro Forma
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- FINANCIAL PROJECTIONS -->
+        <div id="projections" class="tab-content active">
+            <div class="scenario-controls">
+                <div class="time-slider-compact">
+                    <i class="icon icon-calendar" style="color: #9ca3af; font-size: 0.85rem;"></i>
+                    <input type="range" 
+                           id="timeSlider" 
+                           class="time-slider-small" 
+                           min="0" 
+                           max="59" 
+                           value="0" 
+                           oninput="updateMetricsForMonth(this.value)">
+                    <span style="color: #22c55e; font-size: 0.9rem; font-weight: 600; min-width: 100px;" id="currentMonthLabel">April 2025</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="chart-container">
+                    <div class="section-title" style="display: flex; align-items: center; gap: 12px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #22c55e;">
+                            <path d="M3 3v18h18M7 12l4-4 4 4 4-4"/>
+                        </svg>
+                        Growth Trajectory
+                    </div>
+                    <div class="chart-controls">
+                        <button class="chart-btn active" onclick="switchChart('revenue')">Total Revenue</button>
+                        <button class="chart-btn" onclick="switchChart('acres')">Acres</button>
+                        <button class="chart-btn" onclick="switchChart('locations')">Locations</button>
+                    </div>
+                    <canvas id="mainChart" width="800" height="400"></canvas>
+                </div>
+                
+                <div class="metrics-panel">
+                    <div class="metric-card">
+                        <div class="metric-value" id="currentRevenue">$0</div>
+                        <div class="metric-label">Monthly Revenue</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="currentAcres">0</div>
+                        <div class="metric-label">Total Acres Managed</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="currentLocations">0</div>
+                        <div class="metric-label">Active Locations</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="currentCashFlow">$0</div>
+                        <div class="metric-label">Monthly Net Cash Flow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let projections = [];
+        let mainChart = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                console.log("Initializing financial model...");
+                const model = new UnifiedFinancialModel(assumptions);
+                projections = model.runSimulation(60);
+                console.log("Simulation complete. Projections:", projections);
+                console.log("First projection:", projections[0]);
+                console.log("First projection revenues:", projections[0]?.revenues);
+                console.log("First projection revenue breakdown:", projections[0]?.revenues?.breakdown);
+                console.log("Revenue object structure:", Object.keys(projections[0]?.revenues || {}));
+                console.log("Sample revenue data:", {
+                    total: projections[0]?.revenues?.total,
+                    serviceRevenue: projections[0]?.revenues?.breakdown?.serviceRevenue,
+                    productRevenue: projections[0]?.revenues?.breakdown?.productRevenue,
+                    installationRevenue: projections[0]?.revenues?.breakdown?.installationRevenue,
+                    saasRevenue: projections[0]?.revenues?.breakdown?.saasRevenue
+                });
+
+                const ctx = document.getElementById('mainChart').getContext('2d');
+                mainChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: projections.map(p => {
+                            const date = new Date('2025-04-01T00:00:00Z');
+                            date.setUTCMonth(date.getUTCMonth() + p.month);
+                            return date;
+                        }),
+                        datasets: []
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: { unit: 'month' },
+                                ticks: { color: '#9ca3af' },
+                                grid: { color: '#374151' }
+                            },
+                            y: {
+                                ticks: { 
+                                    color: '#9ca3af',
+                                    callback: function(value) {
+                                        if (Math.abs(value) >= 1000000)
+                                            return '$' + (value / 1000000).toFixed(1) + 'M';
+                                        if (Math.abs(value) >= 1000)
+                                            return '$' + (value / 1000).toFixed(0) + 'K';
+                                        return '$' + value;
+                                    }
+                                },
+                                grid: { color: '#374151' }
+                            }
+                        },
+                        plugins: {
+                            legend: { labels: { color: '#e5e7eb' } }
+                        }
+                    }
+                });
+
+                switchChart('revenue');
+                updateMetricsForMonth(0);
+
+            } catch (error) {
+                console.error('Failed to initialize dashboard:', error);
+                document.body.innerHTML = '<h1 style="color:red; text-align:center; margin-top: 50px;">Error initializing dashboard. Check console.</h1>';
+            }
+        });
+
+        function switchChart(metric) {
+            document.querySelectorAll('.chart-btn').forEach((btn, index) => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick') === `switchChart('${metric}')`) {
+                    btn.classList.add('active');
+                }
+            });
+
+            switch(metric) {
+                case 'revenue':
+                    const serviceData = projections.map(p => p.revenues?.breakdown?.serviceRevenue || 0);
+                    const productData = projections.map(p => p.revenues?.breakdown?.productRevenue || 0);
+                    const installationData = projections.map(p => p.revenues?.breakdown?.installationRevenue || 0);
+                    const saasData = projections.map(p => p.revenues?.breakdown?.saasRevenue || 0);
+                    
+                    const hasBreakdownData = projections[0]?.revenues?.breakdown;
+                    
+                    if (hasBreakdownData) {
+                        mainChart.data.datasets = [
+                            {
+                                label: 'Service Revenue',
+                                data: serviceData,
+                                borderColor: '#22c55e',
+                                backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 3,
+                                pointRadius: 2,
+                                pointHoverRadius: 6,
+                            },
+                            {
+                                label: 'Product Revenue',
+                                data: productData,
+                                borderColor: '#3b82f6',
+                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 3,
+                                pointRadius: 2,
+                                pointHoverRadius: 6,
+                            },
+                            {
+                                label: 'Installation Revenue',
+                                data: installationData,
+                                borderColor: '#f59e0b',
+                                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 3,
+                                pointRadius: 2,
+                                pointHoverRadius: 6,
+                            },
+                            {
+                                label: 'SaaS Revenue',
+                                data: saasData,
+                                borderColor: '#8b5cf6',
+                                backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 3,
+                                pointRadius: 2,
+                                pointHoverRadius: 6,
+                            }
+                        ];
+                    } else {
+                        mainChart.data.datasets = [{
+                            label: 'Total Revenue',
+                            data: projections.map(p => p.revenues?.total || 0),
+                            borderColor: '#22c55e',
+                            backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                            fill: true,
+                            tension: 0.4,
+                            borderWidth: 3,
+                        }];
+                    }
+                    break;
+                    
+                case 'acres':
+                    mainChart.data.datasets = [{
+                        label: 'Total Acres Managed',
+                        data: projections.map(p => p.totalAcres),
+                        borderColor: '#eab308',
+                        backgroundColor: 'rgba(234, 179, 8, 0.2)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3,
+                    }];
+                    break;
+                    
+                case 'locations':
+                    mainChart.data.datasets = [{
+                        label: 'Active Locations',
+                        data: projections.map(p => p.locations),
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3,
+                    }];
+                    break;
+            }
+            
+            mainChart.update();
+        }
+
+        function updateMetricsForMonth(monthIndex) {
+            const month = Number(monthIndex);
+            const data = projections[month];
+
+            const date = new Date('2025-04-01T00:00:00Z');
+            date.setUTCMonth(date.getUTCMonth() + month);
+            document.getElementById('currentMonthLabel').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+            document.getElementById('currentRevenue').textContent = '$' + Math.round(data.revenues.total).toLocaleString();
+            document.getElementById('currentAcres').textContent = Math.round(data.totalAcres).toLocaleString();
+            document.getElementById('currentLocations').textContent = data.locations;
+            document.getElementById('currentCashFlow').textContent = '$' + Math.round(data.netCashFlow).toLocaleString();
+        }
+
+    </script>
+</body>
+</html>

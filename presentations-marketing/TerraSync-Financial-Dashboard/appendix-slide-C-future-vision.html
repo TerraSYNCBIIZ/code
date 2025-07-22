@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 14: Exit Strategy</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .vision-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 200px);
+            width: 100%;
+        }
+
+        .vision-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            max-width: 1200px;
+        }
+
+        .vision-step {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .vision-step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px auto;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        .step-icon i {
+            font-size: 3rem;
+            color: #ffffff;
+        }
+
+        .step-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .step-subtitle {
+            font-size: 1.3rem;
+            color: #9ca3af;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .timeline-step {
+            font-size: 1rem;
+            color: #22c55e;
+            font-weight: 600;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .flow-arrow {
+            color: #22c55e;
+            font-size: 2.5rem;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .vision-logo {
+            max-width: 450px;
+            height: auto;
+            filter: drop-shadow(0 8px 25px rgba(34, 197, 94, 0.4));
+            opacity: 0.95;
+        }
+
+        .slide-title {
+            margin-top: 20px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Future Vision</h1>
+            </div>
+
+            <div class="logo-section">
+                <img src="Green_on_Transparent_Logo_.png" alt="TerraSync Logo" class="vision-logo">
+            </div>
+
+            <div class="vision-container">
+                <div class="vision-flow">
+                    <div class="vision-step">
+                        <div class="step-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="step-title">Regional Dominance</div>
+                        <div class="step-subtitle">Golf Course Footprint</div>
+                        <div class="timeline-step">Software Beta</div>
+                    </div>
+                    
+                    <div class="flow-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="vision-step">
+                        <div class="step-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="step-title">National Expansion</div>
+                        <div class="step-subtitle">Golf Courses Nationwide</div>
+                        <div class="timeline-step">Software Launch</div>
+                    </div>
+                    
+                    <div class="flow-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="vision-step">
+                        <div class="step-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="step-title">Market Leader</div>
+                        <div class="step-subtitle">Grounds Maintenance Automation</div>
+                        <div class="timeline-step">Industry Standard</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

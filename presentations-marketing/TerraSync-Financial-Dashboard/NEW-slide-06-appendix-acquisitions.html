@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Appendix: Key Acquisitions</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .appendix-container {
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 5px;
+        }
+
+        .companies-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .company-block {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .company-logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .company-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        .acquisitions-list {
+            space-y: 8px;
+        }
+
+        .acquisition-item {
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 6px;
+        }
+
+        .acquisition-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .acquisition-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .acquisition-year {
+            font-size: 0.7rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .acquisition-type {
+            font-size: 0.7rem;
+            color: #22c55e;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .acquisition-value {
+            font-size: 0.75rem;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .acquisition-desc {
+            font-size: 0.7rem;
+            color: #d1d5db;
+            line-height: 1.2;
+        }
+
+        .source-note {
+            font-size: 0.6rem;
+            color: #9ca3af;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .undisclosed {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Appendix: Key Acquisitions</h1>
+            </div>
+
+            <div class="appendix-container">
+                <div class="companies-section">
+                    <div class="company-block">
+                        <div class="company-header">
+                            <img src="assets/logos/husqvarna.png" alt="Husqvarna Logo" class="company-logo-img">
+                            <div class="company-name">Husqvarna Group</div>
+                        </div>
+                        
+                        <div class="acquisitions-list">
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">Robin Autopilot</div>
+                                    <div class="acquisition-year">2021</div>
+                                </div>
+                                <div class="acquisition-type">Increased Investment & Ownership</div>
+                                <div class="acquisition-value undisclosed">Value: Undisclosed</div>
+                                <div class="acquisition-desc">Autonomous lawn care robotics platform with service network</div>
+                            </div>
+
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">Mowbot</div>
+                                    <div class="acquisition-year">2021</div>
+                                </div>
+                                <div class="acquisition-type">Acquired by Robin Autopilot</div>
+                                <div class="acquisition-value undisclosed">Value: Undisclosed</div>
+                                <div class="acquisition-desc">Robotic mowing technology and customer base</div>
+                            </div>
+
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">Orbit Irrigation</div>
+                                    <div class="acquisition-year">2021</div>
+                                </div>
+                                <div class="acquisition-type">Full Acquisition</div>
+                                <div class="acquisition-value">Value: $480 Million</div>
+                                <div class="acquisition-desc">Leading residential watering solutions in North America</div>
+                            </div>
+
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">ETwater</div>
+                                    <div class="acquisition-year">2024</div>
+                                </div>
+                                <div class="acquisition-type">Smart Irrigation Acquisition</div>
+                                <div class="acquisition-value undisclosed">Value: Undisclosed</div>
+                                <div class="acquisition-desc">Pioneer in smart irrigation management for commercial market</div>
+                            </div>
+
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">Franklin Robotics</div>
+                                    <div class="acquisition-year">2018</div>
+                                </div>
+                                <div class="acquisition-type">25% Minority Stake</div>
+                                <div class="acquisition-value undisclosed">Value: Undisclosed</div>
+                                <div class="acquisition-desc">Agricultural robotics and automation technology</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="company-block">
+                        <div class="company-header">
+                            <img src="assets/logos/toro.png" alt="Toro Logo" class="company-logo-img">
+                            <div class="company-name">The Toro Company</div>
+                        </div>
+                        
+                        <div class="acquisitions-list">
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">Left Hand Robotics</div>
+                                    <div class="acquisition-year">2021</div>
+                                </div>
+                                <div class="acquisition-type">Full Acquisition</div>
+                                <div class="acquisition-value undisclosed">Value: Undisclosed</div>
+                                <div class="acquisition-desc">Autonomous snow removal and grounds maintenance robotics</div>
+                            </div>
+
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">TURFLYNX</div>
+                                    <div class="acquisition-year">2021</div>
+                                </div>
+                                <div class="acquisition-type">Technology Acquisition</div>
+                                <div class="acquisition-value undisclosed">Value: Undisclosed</div>
+                                <div class="acquisition-desc">Turf management software and automation platform</div>
+                            </div>
+
+                            <div class="acquisition-item">
+                                <div class="acquisition-header">
+                                    <div class="acquisition-name">Intimidator Group</div>
+                                    <div class="acquisition-year">2022</div>
+                                </div>
+                                <div class="acquisition-type">Full Acquisition</div>
+                                <div class="acquisition-value">Value: $400 Million</div>
+                                <div class="acquisition-desc">Spartan Mowers - zero-turn commercial mowing equipment</div>
+                            </div>
+                        </div>
+
+                        <div class="source-note">
+                            Sources: Husqvarna Group press releases, Toro Company SEC filings, PR Newswire, Business Wire
+                        </div>
+                    </div>
+                </div>
+
+                <div class="back-button">
+                    <button onclick="window.location.href='NEW-slide-06-market-validation.html'" class="back-btn">
+                        Back to Market Validation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

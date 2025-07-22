@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Slide 2: Visionary Founder</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding-top: 60px !important; /* Pushes title down */
+        }
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            width: 100%;
+            max-width: 1400px;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .founder-image-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .founder-image-container {
+            position: relative;
+            width: 280px;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(34, 197, 94, 0.3);
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        }
+
+        .founder-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(1.1) contrast(1.05);
+        }
+
+        .founder-credentials {
+            margin-top: 20px;
+            text-align: center;
+            background: rgba(31, 41, 55, 0.6);
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .founder-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .founder-subtitle {
+            font-size: 1rem;
+            color: #d1d5db;
+            font-weight: 400;
+        }
+
+        .founder-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .founder-name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .founder-tagline {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            margin-bottom: 16px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .story-section {
+            margin-bottom: 12px;
+        }
+
+        .story-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 16px;
+            background: rgba(31, 41, 55, 0.4);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.2);
+        }
+
+        .story-icon {
+            font-size: 1.6rem;
+            color: #22c55e;
+            min-width: 40px;
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .story-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .story-content p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.5;
+        }
+
+        .story-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .pill {
+            background: rgba(34, 197, 94, 0.15);
+            color: #d1d5db;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .pill-tech {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            text-align: center;
+        }
+
+        .achievement-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .achievement-label {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            font-weight: 500;
+        }
+
+        .vision-statement {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 16px;
+            border-radius: 16px;
+            margin-top: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+        }
+
+        .vision-quote {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #ffffff;
+            line-height: 1.25;
+            text-align: center;
+            position: relative;
+        }
+
+        .vision-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #22c55e;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.6;
+        }
+
+        .vision-quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: #22c55e;
+            position: absolute;
+            bottom: -40px;
+            right: -10px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-content">
+            <div class="slide-header">
+                <h1 class="slide-title">Visionary Leadership</h1>
+            </div>
+
+            <div class="founder-grid">
+                <div class="founder-image-section">
+                    <div class="founder-image-container">
+                        <img src="Fotogenic_6bda502e-2cc6-4331-9b93-643f1ede5cb4.jpg" alt="Wesley Pitts - TerraSync Founder" class="founder-image">
+                    </div>
+                    
+                    <div class="founder-credentials">
+                        <div class="founder-title">Wesley Pitts</div>
+                        <div class="founder-subtitle">Founder</div>
+                    </div>
+
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-number">5</div>
+                            <div class="achievement-label">Years Experience</div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-number">$55K</div>
+                            <div class="achievement-label">Grants Awarded</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="founder-content">
+                    <h2 class="founder-name">Wesley Pitts</h2>
+
+                    <div class="story-section">
+                        <div class="story-item">
+                            <div class="story-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="story-content">
+                                <h3>International Foundation</h3>
+                                <div class="story-pills">
+                                    <span class="pill">Lived in Europe 18 Years</span>
+                                    <span class="pill">Founded & Sold Business Overseas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="story-item">
+                            <div class="story-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="story-content">
+                                <h3>Service & Education</h3>
+                                <div class="story-pills">
+                                    <span class="pill">University of Tennessee</span>
+                                    <span class="pill">Air National Guard</span>
+                                    <span class="pill pill-tech">Technical & Operational Expertise</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="story-item">
+                            <div class="story-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="story-content">
+                                <h3>Technical Founder & Builder</h3>
+                                <div class="story-pills">
+                                    <span class="pill">Coined "GMA"</span>
+                                    <span class="pill">Founded KNOXBOTS, then founded TerraSync</span>
+                                    <span class="pill pill-tech">Leads all technical & operational development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vision-statement">
+                        <p class="vision-quote">
+                            From Budapest to Tennessee, my mission is to scale TerraSync nationwide - transforming an entire industry through the GMA revolution I pioneered, creating the definitive platform that makes autonomous grounds maintenance the new standard.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

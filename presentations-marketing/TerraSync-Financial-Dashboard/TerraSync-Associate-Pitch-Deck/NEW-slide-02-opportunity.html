@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - A Market at its Inflection Point</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding-top: 60px !important; /* Correct spacing from top */
+            justify-content: center; /* Center horizontally */
+        }
+        .opportunity-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 25px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .slide-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+            text-transform: uppercase; /* Make title all caps */
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #e5e7eb;
+            font-weight: 500;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .growth-chart {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .timeline-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .timeline-point {
+            text-align: center;
+        }
+        
+        .timeline-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .timeline-year {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .timeline-arrow {
+            font-size: 2.5rem;
+            color: #22c55e;
+            opacity: 0.8;
+        }
+
+        .driver-card {
+            background: rgba(31, 41, 55, 0.8); /* Darker background */
+            padding: 25px;
+            border-radius: 16px;
+            border: 2px solid rgba(34, 197, 94, 0.4); /* Highlight border */
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .driver-icon {
+            font-size: 2.2rem;
+            color: #22c55e;
+            margin-bottom: 16px;
+        }
+
+        .driver-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .driver-description {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            line-height: 1.5;
+        }
+        
+        .source-note {
+            grid-column: 1 / -1;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 15px;
+            font-style: italic;
+            text-align: center;
+        }
+        .source-link {
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 600;
+            background: rgba(34, 197, 94, 0.15);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            transition: all 0.2s ease;
+        }
+        .source-link:hover {
+            background: rgba(34, 197, 94, 0.3);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="opportunity-container">
+            <div class="slide-header">
+                <h1 class="slide-title">Market Dynamics</h1>
+            </div>
+
+            <div class="growth-chart">
+                <h2 class="chart-title">Verifiable Market Growth</h2>
+                <div class="timeline-container">
+                    <div class="timeline-point">
+                        <div class="timeline-value">$2.2B</div>
+                        <div class="timeline-year">2023</div>
+                    </div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-point">
+                        <div class="timeline-value">$4.3B</div>
+                        <div class="timeline-year">2029</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="driver-card">
+                <i class="fas fa-globe-europe driver-icon"></i>
+                <h3 class="driver-title">The Adoption Gap</h3>
+                <p class="driver-description"><b>Europe:</b> 15% Adoption<br><b>US:</b> <1% Adoption<br>Massive & Proven Growth Runway.</p>
+            </div>
+
+            <div class="driver-card">
+                <i class="fas fa-dollar-sign driver-icon"></i>
+                <h3 class="driver-title">Economic Necessity</h3>
+                <p class="driver-description">Soaring Labor Costs.<br>Automation is a Requirement, Not a Luxury.</p>
+            </div>
+
+            <div class="driver-card">
+                <i class="fas fa-cogs driver-icon"></i>
+                <h3 class="driver-title">Proven Technology</h3>
+                <p class="driver-description">Field-Tested & Reliable.<br>Clear ROI in Under 2 Years.</p>
+            </div>
+            
+            <p class="source-note">
+                Sources: 
+                <a href="https://www.mordorintelligence.com/industry-reports/robotic-lawn-mower-market" target="_blank" class="source-link">Mordor Intelligence</a> & 
+                <a href="https://www.researchandmarkets.com/report/robotic-lawn-mower" target="_blank" class="source-link">Research and Markets</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

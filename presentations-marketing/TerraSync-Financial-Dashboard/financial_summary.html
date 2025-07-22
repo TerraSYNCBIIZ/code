@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Model Summary</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: #f0f0f0; margin: 20px; }
+        h1 { color: #28a745; text-align: center; }
+        #summary-container { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; min-width: 1800px; }
+        th, td { padding: 12px 15px; border: 1px solid #333; text-align: right; }
+        th { background-color: #28a745; color: #111; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+        thead th { position: sticky; top: 0; background-color: #28a745; z-index: 10; }
+        tr:nth-child(even) { background-color: #2c2c2c; }
+        tr:hover { background-color: #3a3a3a; }
+        .positive { color: #77dd77; font-weight: bold; }
+        .negative { color: #ff6961; font-weight: bold; }
+        .section-header { background-color: #222; color: #28a745; font-weight: bold; }
+        .annual-summary td { background-color: #28a745; color: #000; font-weight: bold; border-top: 2px solid #fff; }
+        
+        /* Drill-down sections */
+        .drill-down-section { margin: 30px 0; padding: 20px; background-color: #2c2c2c; border-radius: 8px; border: 1px solid #444; }
+        .drill-down-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #444; }
+        .drill-down-header h2 { margin: 0; color: #28a745; font-size: 18px; }
+        .drill-down-toggle { font-size: 16px; font-weight: bold; color: #28a745; transition: transform 0.3s ease; }
+        .drill-down-toggle.expanded { transform: rotate(180deg); }
+        .drill-down-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .drill-down-content.expanded { max-height: 2000px; padding-top: 20px; }
+        
+        /* Enhanced cost breakdown styles */
+        .cost-breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .cost-category { background-color: #1a1a1a; padding: 15px; border-radius: 6px; border: 1px solid #333; }
+        .cost-category h3 { margin: 0 0 10px 0; color: #28a745; font-size: 14px; }
+        .cost-item { display: flex; justify-content: space-between; margin: 5px 0; font-size: 12px; }
+        .cost-item-label { color: #ccc; }
+        .cost-item-value { color: #77dd77; font-weight: bold; }
+        
+        /* Assumptions analysis styles */
+        .assumptions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-top: 20px; }
+        .assumption-category { background-color: #1a1a1a; padding: 15px; border-radius: 6px; border: 1px solid #333; }
+        .assumption-category h3 { margin: 0 0 15px 0; color: #28a745; font-size: 14px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .assumption-item { margin: 8px 0; font-size: 12px; display: flex; justify-content: space-between; }
+        .assumption-label { color: #ccc; flex: 1; }
+        .assumption-value { color: #77dd77; font-weight: bold; text-align: right; margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Pro-Level Financial Summary (V3)</h1>
+    <div id="summary-container">
+        <div id="summary-table"></div>
+        
+        <!-- Enhanced Cost Breakdown Drill-down -->
+        <div class="drill-down-section">
+            <div class="drill-down-header" onclick="toggleDrillDown('cost-breakdown')">
+                <h2>Enhanced Cost Breakdown Analysis</h2>
+                <span class="drill-down-toggle" id="cost-breakdown-toggle">▼</span>
+            </div>
+            <div class="drill-down-content" id="cost-breakdown-content">
+                <div id="cost-breakdown-analysis"></div>
+            </div>
+        </div>
+        
+        <!-- Assumptions Analysis Drill-down -->
+        <div class="drill-down-section">
+            <div class="drill-down-header" onclick="toggleDrillDown('assumptions')">
+                <h2>In-Depth Assumptions Analysis</h2>
+                <span class="drill-down-toggle" id="assumptions-toggle">▼</span>
+            </div>
+            <div class="drill-down-content" id="assumptions-content">
+                <div id="assumptions-analysis"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Model Files in Correct Order -->
+    <script src="js/model-assumptions.js"></script>
+    <script src="js/personnel-model.js"></script>
+    <script src="js/enhanced-cost-integration.js"></script>
+    <script src="js/financial-model-v2.js"></script>
+
+    <script>
+        // Helper functions to extract enhanced cost breakdown
+        // Note: Equipment, Vehicles, Facilities, and Management are components of Enhanced Territory costs
+        // They are shown separately for visibility but are already included in Total Costs calculation
+        function getEquipmentCosts(p) {
+            if (!p.costs.enhancedCostAnalysis) return 0;
+            const breakdown = p.costs.enhancedCostAnalysis.breakdown;
+            return (breakdown.depreciation || 0) + (breakdown.maintenance || 0) + 
+                   (breakdown.fuel || 0) + (breakdown.electricity || 0) + 
+                   (breakdown.labor || 0) + (breakdown.insurance || 0);
+        }
+        
+        function getVehicleCosts(p) {
+            if (!p.costs.enhancedCostAnalysis) return 0;
+            return p.costs.enhancedCostAnalysis.breakdown.vehicles || 0;
+        }
+        
+        function getFacilityCosts(p) {
+            if (!p.costs.enhancedCostAnalysis) return 0;
+            const breakdown = p.costs.enhancedCostAnalysis.breakdown;
+            return (breakdown.facilities || 0) + (breakdown.permits || 0) + 
+                   (breakdown.tools || 0) + (breakdown.perAcre || 0);
+        }
+        
+        function getManagementCosts(p) {
+            if (!p.costs.enhancedCostAnalysis) return 0;
+            const breakdown = p.costs.enhancedCostAnalysis.breakdown;
+            return (breakdown.management || 0) + (breakdown.marketing || 0);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const model = new FinancialModelV2(assumptions);
+                const projections = model.runSimulation(60);
+
+                let tableHtml = '<table><thead>';
+                tableHtml += `
+                    <tr>
+                        <th rowspan="2">Date</th>
+                        <th colspan="3">Growth</th>
+                        <th colspan="3">New Acres</th>
+                        <th colspan="3">Metrics</th>
+                        <th colspan="5">Revenue Breakdown</th>
+                        <th colspan="8">Cost Breakdown</th>
+                        <th rowspan="2">Net Cash Flow</th>
+                    </tr>
+                    <tr>
+                        <th>Locations</th><th>Golf Clients</th><th>Other Clients</th><th>Acres</th>
+                        <th>Total New</th><th>New Golf</th><th>New Other</th>
+                        <th>SaaS Golf Clients</th><th>Avg Clients/Loc</th><th>Avg Acres/Loc</th>
+                        <th>Service</th><th>Install</th><th>Product</th><th>SaaS</th><th>Total Revenue</th>
+                        <th>Salaries</th><th>CAC</th><th>Operations</th><th>Equipment</th><th>Vehicles</th><th>Facilities</th><th>Management</th><th>Total Costs</th>
+                    </tr>
+                `;
+                tableHtml += '</thead><tbody>';
+
+                const startDate = new Date('2025-05-01');
+                let annualTotals = createAnnualTotalsObject();
+
+                projections.forEach((p, index) => {
+                    const currentDate = new Date(startDate);
+                    currentDate.setMonth(startDate.getMonth() + index);
+                    const dateString = `${currentDate.toLocaleString('default', { month: 'short' })} ${currentDate.getFullYear()}`;
+
+                    // Accumulate totals for the year
+                    accumulateAnnualTotals(annualTotals, p);
+
+                    const netCashFlowClass = p.netCashFlow >= 0 ? 'positive' : 'negative';
+                    tableHtml += `
+                        <tr>
+                            <td>${dateString}</td>
+                            <td>${p.locations}</td>
+                            <td>${p.golfClients}</td>
+                            <td>${p.otherClients}</td>
+                            <td>${Math.round(p.totalAcres)}</td>
+                            <td>${Math.round(p.newAcresThisMonth)}</td>
+                            <td>${Math.round(p.newGolfAcres)}</td>
+                            <td>${Math.round(p.newOtherAcres)}</td>
+                            <td>${p.saasGolfClients}</td>
+                            <td>${p.avgClientsPerLocation}</td>
+                            <td>${p.avgAcresPerLocation}</td>
+                            <td>${Math.round(p.revenues.recurring.service).toLocaleString()}</td>
+                            <td>${Math.round(p.revenues.oneTime.installation).toLocaleString()}</td>
+                            <td>${Math.round(p.revenues.oneTime.product).toLocaleString()}</td>
+                            <td>${Math.round(p.revenues.recurring.saas).toLocaleString()}</td>
+                            <td><b>${Math.round(p.revenues.total).toLocaleString()}</b></td>
+                            <td>${Math.round(p.costs.breakdown.salaryCosts).toLocaleString()}</td>
+                            <td>${Math.round(p.costs.breakdown.totalAcquisitionCosts).toLocaleString()}</td>
+                            <td>${Math.round(p.costs.breakdown.totalOperationalCosts).toLocaleString()}</td>
+                            <td>${Math.round(getEquipmentCosts(p)).toLocaleString()}</td>
+                            <td>${Math.round(getVehicleCosts(p)).toLocaleString()}</td>
+                            <td>${Math.round(getFacilityCosts(p)).toLocaleString()}</td>
+                            <td>${Math.round(getManagementCosts(p)).toLocaleString()}</td>
+                            <td><b>${Math.round(p.costs.totalCosts).toLocaleString()}</b></td>
+                            <td class="${netCashFlowClass}"><b>${Math.round(p.netCashFlow).toLocaleString()}</b></td>
+                        </tr>
+                    `;
+
+                    // If it's the end of a year (December) or the last projection, add the summary row
+                    if (currentDate.getMonth() === 11 || index === projections.length - 1) {
+                        tableHtml += generateAnnualSummaryRow(annualTotals, p, currentDate.getFullYear());
+                        annualTotals = createAnnualTotalsObject(); // Reset for next year
+                    }
+                });
+
+                tableHtml += '</tbody></table>';
+                document.getElementById('summary-table').innerHTML = tableHtml;
+                
+                // Generate enhanced cost breakdown
+                generateCostBreakdownAnalysis(projections);
+                
+                // Generate assumptions analysis
+                generateAssumptionsAnalysis();
+
+            } catch (error) {
+                console.error("Failed to generate financial summary:", error);
+                document.getElementById('summary-table').innerHTML = `<p style="color: #ff6961;">Error generating summary. Check console.</p>`;
+            }
+        });
+
+        function createAnnualTotalsObject() {
+            return {
+                newAcresThisMonth: 0, newGolfAcres: 0, newOtherAcres: 0,
+                service: 0, installation: 0, product: 0, saas: 0, totalRevenue: 0,
+                salaryCosts: 0, totalAcquisitionCosts: 0, totalOperationalCosts: 0, 
+                equipment: 0, vehicles: 0, facilities: 0, management: 0,
+                totalCosts: 0, netCashFlow: 0
+            };
+        }
+
+        function accumulateAnnualTotals(totals, p) {
+            totals.newAcresThisMonth += p.newAcresThisMonth;
+            totals.newGolfAcres += p.newGolfAcres;
+            totals.newOtherAcres += p.newOtherAcres;
+            totals.service += p.revenues.recurring.service;
+            totals.installation += p.revenues.oneTime.installation;
+            totals.product += p.revenues.oneTime.product;
+            totals.saas += p.revenues.recurring.saas;
+            totals.totalRevenue += p.revenues.total;
+            totals.salaryCosts += p.costs.breakdown.salaryCosts;
+            totals.totalAcquisitionCosts += p.costs.breakdown.totalAcquisitionCosts;
+            totals.totalOperationalCosts += p.costs.breakdown.totalOperationalCosts;
+            totals.equipment += getEquipmentCosts(p);
+            totals.vehicles += getVehicleCosts(p);
+            totals.facilities += getFacilityCosts(p);
+            totals.management += getManagementCosts(p);
+            totals.totalCosts += p.costs.totalCosts;
+            totals.netCashFlow += p.netCashFlow;
+        }
+
+        function generateAnnualSummaryRow(totals, lastMonthData, year) {
+            const netCashFlowClass = totals.netCashFlow >= 0 ? 'positive' : 'negative';
+            return `
+                <tr class="annual-summary">
+                    <td><b>END OF ${year}</b></td>
+                    <td>${lastMonthData.locations}</td>
+                    <td>${lastMonthData.golfClients}</td>
+                    <td>${lastMonthData.otherClients}</td>
+                    <td>${Math.round(lastMonthData.totalAcres)}</td>
+                    <td>${Math.round(totals.newAcresThisMonth)}</td>
+                    <td>${Math.round(totals.newGolfAcres)}</td>
+                    <td>${Math.round(totals.newOtherAcres)}</td>
+                    <td>${lastMonthData.saasGolfClients}</td>
+                    <td>${lastMonthData.avgClientsPerLocation}</td>
+                    <td>${lastMonthData.avgAcresPerLocation}</td>
+                    <td>${Math.round(totals.service).toLocaleString()}</td>
+                    <td>${Math.round(totals.installation).toLocaleString()}</td>
+                    <td>${Math.round(totals.product).toLocaleString()}</td>
+                    <td>${Math.round(totals.saas).toLocaleString()}</td>
+                    <td><b>${Math.round(totals.totalRevenue).toLocaleString()}</b></td>
+                    <td>${Math.round(totals.salaryCosts).toLocaleString()}</td>
+                    <td>${Math.round(totals.totalAcquisitionCosts).toLocaleString()}</td>
+                    <td>${Math.round(totals.totalOperationalCosts).toLocaleString()}</td>
+                    <td>${Math.round(totals.equipment).toLocaleString()}</td>
+                    <td>${Math.round(totals.vehicles).toLocaleString()}</td>
+                    <td>${Math.round(totals.facilities).toLocaleString()}</td>
+                    <td>${Math.round(totals.management).toLocaleString()}</td>
+                    <td><b>${Math.round(totals.totalCosts).toLocaleString()}</b></td>
+                    <td class="${netCashFlowClass}"><b>${Math.round(totals.netCashFlow).toLocaleString()}</b></td>
+                </tr>
+            `;
+        }
+        
+        // Drill-down functionality
+        function toggleDrillDown(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const toggle = document.getElementById(sectionId + '-toggle');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                toggle.classList.remove('expanded');
+                toggle.textContent = '▼';
+            } else {
+                content.classList.add('expanded');
+                toggle.classList.add('expanded');
+                toggle.textContent = '▲';
+            }
+        }
+        
+        // Generate enhanced cost breakdown analysis
+        function generateCostBreakdownAnalysis(projections) {
+            // Use the last month's data for current analysis
+            const lastProjection = projections[projections.length - 1];
+            
+            if (!lastProjection || !lastProjection.costs.enhancedCostAnalysis) {
+                document.getElementById('cost-breakdown-analysis').innerHTML = '<p>Enhanced cost analysis not available</p>';
+                return;
+            }
+            
+            const analysis = lastProjection.costs.enhancedCostAnalysis;
+            const breakdown = analysis.breakdown;
+            
+            let html = '<div class="cost-breakdown-grid">';
+            
+            // Equipment Costs
+            html += `
+                <div class="cost-category">
+                    <h3>Equipment Costs</h3>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Depreciation</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.depreciation || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Maintenance</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.maintenance || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Fuel</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.fuel || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Electricity</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.electricity || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Labor</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.labor || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Insurance</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.insurance || 0).toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Vehicle Costs
+            html += `
+                <div class="cost-category">
+                    <h3>Vehicle & Transportation</h3>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Vehicle Costs</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.vehicles || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Per Territory</span>
+                        <span class="cost-item-value">$1,850/month</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Includes</span>
+                        <span class="cost-item-value">Vehicle, Fuel, Insurance, Trailer</span>
+                    </div>
+                </div>
+            `;
+            
+            // Facility Costs
+            html += `
+                <div class="cost-category">
+                    <h3>Facilities & Operations</h3>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Facilities</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.facilities || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Permits & Compliance</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.permits || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Tools & Consumables</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.tools || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Per-Acre Costs</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.perAcre || 0).toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Management Costs
+            html += `
+                <div class="cost-category">
+                    <h3>Management & Marketing</h3>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Territory Management</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.management || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Marketing Allocation</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.marketing || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Other Overhead</span>
+                        <span class="cost-item-value">$${Math.round(breakdown.other || 0).toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Total Summary
+            html += `
+                <div class="cost-category">
+                    <h3>Total Enhanced Costs</h3>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Total Monthly Cost</span>
+                        <span class="cost-item-value">$${Math.round(analysis.totalCost || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Cost Per Acre</span>
+                        <span class="cost-item-value">$${Math.round(analysis.costPerAcre || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-item-label">Confidence Level</span>
+                        <span class="cost-item-value">${Math.round((analysis.confidence || 0) * 100)}%</span>
+                    </div>
+                </div>
+            `;
+            
+            html += '</div>';
+            document.getElementById('cost-breakdown-analysis').innerHTML = html;
+        }
+        
+        // Generate assumptions analysis
+        function generateAssumptionsAnalysis() {
+            let html = '<div class="assumptions-grid">';
+            
+            // Client & Growth Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>Client Growth & Acquisition</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Golf Course Initial Acres</span>
+                        <span class="assumption-value">${assumptions.clientProfile.golfCourse.initialAcres} acres</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Golf Course Max Acres</span>
+                        <span class="assumption-value">${assumptions.clientProfile.golfCourse.maxAcres} acres</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Other Client Initial Acres</span>
+                        <span class="assumption-value">${assumptions.clientProfile.other.initialAcres} acres</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Other Client Max Acres</span>
+                        <span class="assumption-value">${assumptions.clientProfile.other.maxAcres} acres</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Year 1 Growth Rate</span>
+                        <span class="assumption-value">${(assumptions.clientAcreageGrowthCurve.year1 * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Year 2 Growth Rate</span>
+                        <span class="assumption-value">${(assumptions.clientAcreageGrowthCurve.year2 * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Year 3 Growth Rate</span>
+                        <span class="assumption-value">${(assumptions.clientAcreageGrowthCurve.year3 * 100)}%</span>
+                    </div>
+                </div>
+            `;
+            
+            // Location Expansion
+            html += `
+                <div class="assumption-category">
+                    <h3>Location Expansion Schedule</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2026 New Locations</span>
+                        <span class="assumption-value">${assumptions.locationAcquisitionSchedule[2026]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2027 New Locations</span>
+                        <span class="assumption-value">${assumptions.locationAcquisitionSchedule[2027]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2028 New Locations</span>
+                        <span class="assumption-value">${assumptions.locationAcquisitionSchedule[2028]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2029 New Locations</span>
+                        <span class="assumption-value">${assumptions.locationAcquisitionSchedule[2029]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Max Golf Courses per Location</span>
+                        <span class="assumption-value">${assumptions.locationCapacity.maxGolfCourses}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Max Acres per Location</span>
+                        <span class="assumption-value">${assumptions.locationCapacity.maxAcres}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Revenue Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>Revenue Streams</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Service Revenue per Acre/Month</span>
+                        <span class="assumption-value">$${assumptions.revenueStreams.servicePerAcreMonthly}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Installation Revenue per Acre</span>
+                        <span class="assumption-value">$${assumptions.revenueStreams.installationPerAcre}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Product Sale per Acre</span>
+                        <span class="assumption-value">$${assumptions.revenueStreams.productSalePerAcre}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Small Team SaaS Monthly</span>
+                        <span class="assumption-value">$${assumptions.saas.pricingTiers.smallTeam.price}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Professional SaaS Monthly</span>
+                        <span class="assumption-value">$${assumptions.saas.pricingTiers.professional.price}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Enterprise SaaS Monthly</span>
+                        <span class="assumption-value">$${assumptions.saas.pricingTiers.enterprise.price}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Salary Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>Salary Structure (Bootstrap)</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Field Service Tech (Start)</span>
+                        <span class="assumption-value">$${assumptions.salaries.fieldServiceTech.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Sales Ops (Start)</span>
+                        <span class="assumption-value">$${assumptions.salaries.salesOps.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Developer (Start)</span>
+                        <span class="assumption-value">$${assumptions.salaries.developer.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Executive Assistant (Start)</span>
+                        <span class="assumption-value">$${assumptions.salaries.executiveAssistant.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Founder (Start)</span>
+                        <span class="assumption-value">$${assumptions.founderSalaryTiers.level1.salary.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Founder (Max)</span>
+                        <span class="assumption-value">$${assumptions.founderSalaryTiers.level4.salary.toLocaleString()}/month</span>
+                    </div>
+                </div>
+            `;
+            
+            // Operational Cost Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>Operational Costs</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Professional Services (Tier 1)</span>
+                        <span class="assumption-value">$${assumptions.operationalCosts.G_and_A.professional_services_monthly.tier1_cost.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Business Software per Employee</span>
+                        <span class="assumption-value">$${assumptions.operationalCosts.G_and_A.general_business_software_per_employee}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Corporate Insurance Base</span>
+                        <span class="assumption-value">$${assumptions.operationalCosts.G_and_A.corporate_insurance_annual.base.toLocaleString()}/year</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Insurance per Location</span>
+                        <span class="assumption-value">$${assumptions.operationalCosts.G_and_A.corporate_insurance_annual.per_location_adder.toLocaleString()}/year</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">IT Security per Employee</span>
+                        <span class="assumption-value">$${assumptions.operationalCosts.tech_and_it.it_security_software_per_employee}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">New Hire Tech Kit</span>
+                        <span class="assumption-value">$${assumptions.operationalCosts.tech_and_it.new_hire_tech_kit.toLocaleString()}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Base Operational Costs per Location</span>
+                        <span class="assumption-value">$${assumptions.operationalCosts.per_location.base_operational_costs.toLocaleString()}/month</span>
+                    </div>
+                </div>
+            `;
+            
+            // Acquisition Cost Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>Customer Acquisition Costs</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Travel per Client</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.per_client.travel.toLocaleString()}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Entertainment per Client</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.per_client.entertainment.toLocaleString()}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Sales Commission Rate</span>
+                        <span class="assumption-value">${(assumptions.acquisitionCosts.personnel_allocation.sales_commission_rate * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Marketing Budget (Months 0-6)</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.general_S_and_M.base_marketing_budget.months_0_6.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Marketing Budget (Months 7-12)</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.general_S_and_M.base_marketing_budget.months_7_12.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Marketing Budget (Months 13-24)</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.general_S_and_M.base_marketing_budget.months_13_24.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Marketing Budget (25+ Months)</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.general_S_and_M.base_marketing_budget.months_25_plus.toLocaleString()}/month</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Conference Budget (Year 1)</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.general_S_and_M.annual_conference_budget.year_1.toLocaleString()}/year</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Conference Budget (Year 3+)</span>
+                        <span class="assumption-value">$${assumptions.acquisitionCosts.general_S_and_M.annual_conference_budget.year_3_plus.toLocaleString()}/year</span>
+                    </div>
+                </div>
+            `;
+            
+            // SaaS Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>SaaS Model Assumptions</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Trial Period</span>
+                        <span class="assumption-value">${assumptions.saas.freemium.trialPeriodMonths} month(s)</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Initial Adoption Rate</span>
+                        <span class="assumption-value">${(assumptions.saas.freemium.initialAdoptionRate * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Trial to Paid Conversion</span>
+                        <span class="assumption-value">${(assumptions.saas.freemium.conversionToPaidRate * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2026 Direct SaaS Clients</span>
+                        <span class="assumption-value">${assumptions.saas.directToSaaSAcquisition[2026]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2027 Direct SaaS Clients</span>
+                        <span class="assumption-value">${assumptions.saas.directToSaaSAcquisition[2027]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2028 Direct SaaS Clients</span>
+                        <span class="assumption-value">${assumptions.saas.directToSaaSAcquisition[2028]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2029 Direct SaaS Clients</span>
+                        <span class="assumption-value">${assumptions.saas.directToSaaSAcquisition[2029]}</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">SaaS Product Purchase Rate</span>
+                        <span class="assumption-value">${(assumptions.saas.saasProductSales.adoptionRate * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Average Product Purchase</span>
+                        <span class="assumption-value">$${assumptions.saas.saasProductSales.averagePurchaseValue.toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Profit Margin Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>Profit Margins</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Service Margin</span>
+                        <span class="assumption-value">${(assumptions.margins.service * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Installation Margin</span>
+                        <span class="assumption-value">${(assumptions.margins.installation * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Product Margin</span>
+                        <span class="assumption-value">${(assumptions.margins.product * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">SaaS Margin</span>
+                        <span class="assumption-value">${(assumptions.margins.saas * 100)}%</span>
+                    </div>
+                </div>
+            `;
+            
+            // Churn & Conversion Assumptions
+            html += `
+                <div class="assumption-category">
+                    <h3>Churn & Conversion Rates</h3>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2025 Churn Rate</span>
+                        <span class="assumption-value">${(assumptions.churnRateSchedule[2025] * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2026 Churn Rate</span>
+                        <span class="assumption-value">${(assumptions.churnRateSchedule[2026] * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2027 Churn Rate</span>
+                        <span class="assumption-value">${(assumptions.churnRateSchedule[2027] * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">Min Client Age for Churn</span>
+                        <span class="assumption-value">${assumptions.minClientAgeForChurnMonths} months</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2026 Service → SaaS Conversion</span>
+                        <span class="assumption-value">${(assumptions.serviceToSaaSConversionRate[2026] * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2027 Service → SaaS Conversion</span>
+                        <span class="assumption-value">${(assumptions.serviceToSaaSConversionRate[2027] * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2028 Service → SaaS Conversion</span>
+                        <span class="assumption-value">${(assumptions.serviceToSaaSConversionRate[2028] * 100)}%</span>
+                    </div>
+                    <div class="assumption-item">
+                        <span class="assumption-label">2029 Service → SaaS Conversion</span>
+                        <span class="assumption-value">${(assumptions.serviceToSaaSConversionRate[2029] * 100)}%</span>
+                    </div>
+                </div>
+            `;
+            
+            html += '</div>';
+            document.getElementById('assumptions-analysis').innerHTML = html;
+        }
+    </script>
+
+</body>
+</html>

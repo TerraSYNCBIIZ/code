@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Model Loading</title>
+</head>
+<body>
+    <h1>Testing Model Loading</h1>
+    <div id="result"></div>
+    
+    <script src="js/model-assumptions.js"></script>
+    <script src="js/personnel-model.js"></script>
+    <script src="js/enhanced-cost-integration.js"></script>
+    <script src="js/financial-model-v2.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                // Test if classes are defined
+                if (typeof FinancialModelV2 !== 'undefined') {
+                    resultDiv.innerHTML += '<p style="color: green;">✓ FinancialModelV2 class is defined</p>';
+                } else {
+                    resultDiv.innerHTML += '<p style="color: red;">✗ FinancialModelV2 class is not defined</p>';
+                }
+                
+                if (typeof assumptions !== 'undefined') {
+                    resultDiv.innerHTML += '<p style="color: green;">✓ assumptions object is defined</p>';
+                } else {
+                    resultDiv.innerHTML += '<p style="color: red;">✗ assumptions object is not defined</p>';
+                }
+                
+                if (typeof PersonnelModel !== 'undefined') {
+                    resultDiv.innerHTML += '<p style="color: green;">✓ PersonnelModel class is defined</p>';
+                } else {
+                    resultDiv.innerHTML += '<p style="color: red;">✗ PersonnelModel class is not defined</p>';
+                }
+                
+                if (typeof EnhancedCostIntegration !== 'undefined') {
+                    resultDiv.innerHTML += '<p style="color: green;">✓ EnhancedCostIntegration class is defined</p>';
+                } else {
+                    resultDiv.innerHTML += '<p style="color: red;">✗ EnhancedCostIntegration class is not defined</p>';
+                }
+                
+                // Try to create the model
+                const model = new FinancialModelV2(assumptions);
+                resultDiv.innerHTML += '<p style="color: green;">✓ FinancialModelV2 instantiated successfully</p>';
+                
+                // Try to run simulation
+                const projections = model.runSimulation(5);
+                resultDiv.innerHTML += '<p style="color: green;">✓ Simulation ran successfully, ' + projections.length + ' projections generated</p>';
+                
+            } catch (error) {
+                resultDiv.innerHTML += '<p style="color: red;">✗ Error: ' + error.message + '</p>';
+                resultDiv.innerHTML += '<p style="color: red;">Stack: ' + error.stack + '</p>';
+            }
+        });
+    </script>
+</body>
+</html>

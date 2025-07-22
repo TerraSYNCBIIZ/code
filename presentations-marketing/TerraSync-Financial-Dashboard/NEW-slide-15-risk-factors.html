@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSync - Risk Factors & Mitigation</title>
+    <link rel="stylesheet" href="terrasync-slides-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .slide {
+            padding: 40px 60px !important;
+            height: calc(100vh - 80px) !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .risk-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .main-message {
+            margin-bottom: 45px;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .main-subtitle {
+            font-size: 1.6rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .risks-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .risk-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 25px 15px;
+            background: rgba(31, 41, 55, 0.4);
+            border: 2px solid rgba(251, 146, 60, 0.3);
+            border-radius: 16px;
+        }
+
+        .risk-icon {
+            font-size: 3.5rem;
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        .risk-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .risk-desc {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            line-height: 1.3;
+        }
+
+        .protection-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .arrow {
+            font-size: 2.5rem;
+            color: #22c55e;
+        }
+
+        .shield-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .shield-icon {
+            font-size: 4rem;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .shield-label {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        .bottom-message {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .bottom-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 15px;
+        }
+
+        .bottom-text {
+            font-size: 1.2rem;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        .highlight {
+            color: #22c55e;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="risk-container">
+            <div class="main-message">
+                <h1 class="main-title">We Know The Risks</h1>
+                <p class="main-subtitle">And we're building protection</p>
+            </div>
+
+            <div class="risks-section">
+                <div class="risk-item">
+                    <i class="fas fa-users risk-icon"></i>
+                    <h3 class="risk-title">Slow Adoption</h3>
+                    <p class="risk-desc">Market may adopt slower than projected</p>
+                </div>
+                
+                <div class="risk-item">
+                    <i class="fas fa-rocket risk-icon"></i>
+                    <h3 class="risk-title">Execution Risk</h3>
+                    <p class="risk-desc">Scaling platform & team challenges</p>
+                </div>
+                
+                <div class="risk-item">
+                    <i class="fas fa-chess risk-icon"></i>
+                    <h3 class="risk-title">Big Tech Entry</h3>
+                    <p class="risk-desc">Major players could build competing platforms</p>
+                </div>
+            </div>
+
+            <div class="protection-section">
+                <i class="fas fa-arrow-down arrow"></i>
+                <div class="shield-container">
+                    <i class="fas fa-shield-alt shield-icon"></i>
+                    <div class="shield-label">Our Defense</div>
+                </div>
+            </div>
+
+            <div class="bottom-message">
+                <h2 class="bottom-title">Competitors Become Collaborators</h2>
+                <p class="bottom-text">
+                    <span class="highlight">Vendor-agnostic platform</span> forces all manufacturers to work with us. 
+                    <span class="highlight">We don't depend on one</span> - they all depend on us.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
