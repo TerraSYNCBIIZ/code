@@ -11,12 +11,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .slide {
+            position: relative;
             padding: 70px 40px 30px 40px !important;
             height: calc(100vh - 100px) !important;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+        }
+        .slide::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: url('icon.png') no-repeat center center;
+            background-size: contain;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .investment-container {
@@ -172,7 +187,7 @@
     <div class="slide">
         <div class="investment-container">
             <div class="logo-section">
-                <img src="../../Photos/Green_on_Transparent_Logo_.png" alt="TerraSync Logo" class="terrasync-logo-img">
+                <img src="Green_on_Transparent_Logo_.png" alt="TerraSync Logo" class="terrasync-logo-img">
                 <div class="logo-tagline">Grounds Maintenance Automation</div>
             </div>
 

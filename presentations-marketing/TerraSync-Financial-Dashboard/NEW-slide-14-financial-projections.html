@@ -11,12 +11,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .slide {
+            position: relative;
             padding-top: 60px !important;
             padding-bottom: 20px !important;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+        .slide::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: url('icon.png') no-repeat center center;
+            background-size: contain;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .main-message {
