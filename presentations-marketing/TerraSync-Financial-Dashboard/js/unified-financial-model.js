@@ -796,6 +796,7 @@ class UnifiedFinancialModel {
             revenues,
             costs,
             netCashFlow,
+            cumulativeARR: this.state.cumulativeARR, // FIX: Add the missing ARR value
             // Add team/personnel data
             team: this.personnelModel.team.length,
             newHires: costs.newHiresThisMonth ? costs.newHiresThisMonth.length : 0,
