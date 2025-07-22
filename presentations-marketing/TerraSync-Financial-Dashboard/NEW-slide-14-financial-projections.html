@@ -459,7 +459,7 @@
         function calculateExactMetrics() {
             try {
                 // Initialize the same model as financial summary
-                const model = new FinancialModelV2(assumptions);
+                const model = new UnifiedFinancialModel(assumptions);
                 const projections = model.runSimulation(60);
                 
                 console.log('Projections loaded:', projections.length);

@@ -12,6 +12,93 @@
     <!-- CSS Styles -->
     <link rel="stylesheet" href="css/dashboard-styles.css">
     
+    <style>
+        /* Enhanced Assumptions Section Styling */
+        .assumptions-container .assumption-card {
+            background: rgba(55, 65, 81, 0.6) !important;
+            border: 1px solid rgba(75, 85, 99, 0.3) !important;
+            border-radius: 12px !important;
+            padding: 20px !important;
+            transition: transform 0.3s ease !important;
+            margin-bottom: 0 !important;
+            height: fit-content;
+        }
+        
+        .assumptions-container .assumption-card:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15) !important;
+            border-color: rgba(34, 197, 94, 0.5) !important;
+        }
+        
+        .assumptions-container .assumption-title {
+            color: #22c55e !important;
+            font-weight: 600 !important;
+            margin-bottom: 15px !important;
+            font-size: 1.1rem !important;
+            border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
+            padding-bottom: 10px !important;
+        }
+        
+        .assumptions-container .assumption-row {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            padding: 10px 0 !important;
+            border-bottom: 1px solid rgba(75, 85, 99, 0.1) !important;
+        }
+        
+        .assumptions-container .assumption-row:last-child {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+        
+        .assumptions-container .assumption-label {
+            color: #d1d5db !important;
+            font-size: 0.9rem !important;
+            font-weight: 500 !important;
+            flex: 1 !important;
+            line-height: 1.4 !important;
+        }
+        
+        .assumptions-container .assumption-value {
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            text-align: right !important;
+            flex: 1 !important;
+            line-height: 1.4 !important;
+        }
+        
+        .assumptions-container .assumption-value.positive {
+            color: #22c55e !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .assumptions-container .assumption-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+                gap: 15px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .assumptions-container .assumption-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            .assumptions-container .assumption-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 5px !important;
+            }
+            
+            .assumptions-container .assumption-value {
+                text-align: left !important;
+            }
+        }
+    </style>
+    
     <script src="js/unified-financial-model.js"></script>
 </head>
 <body>
@@ -107,12 +194,700 @@
                     </svg>
                 </a>
             </div>
+            
+            <!-- NEW Financial Model Assumptions Section -->
+            <div class="assumptions-container" style="background: rgba(31, 41, 55, 0.4); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 16px; padding: 25px; margin-top: 25px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);">
+                <div class="assumptions-header" style="display: flex; align-items: center; gap: 12px; color: #22c55e; font-size: 1.4rem; font-weight: 600; margin-bottom: 20px;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #22c55e;">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm2-4h-2V7h2v6z"/>
+                    </svg>
+                    Financial Model Assumptions
+                </div>
+                <div class="assumptions-tabs" style="display: flex; gap: 5px; margin-bottom: 25px; justify-content: center; background: rgba(31, 41, 55, 0.4); border-radius: 12px; padding: 10px; border: 1px solid rgba(34, 197, 94, 0.2);">
+                    <button class="assumption-tab-btn active" onclick="switchAssumptionTab('growth')" style="padding: 12px 20px; background: rgba(34, 197, 94, 0.3); border: 2px solid #22c55e; border-radius: 10px; color: #22c55e; cursor: pointer; transition: all 0.3s ease; font-weight: 500; flex: 1; text-align: center; max-width: 200px;">Client & Growth</button>
+                    <button class="assumption-tab-btn" onclick="switchAssumptionTab('territory')" style="padding: 12px 20px; background: rgba(55, 65, 81, 0.6); border: 2px solid rgba(75, 85, 99, 0.3); border-radius: 10px; color: #d1d5db; cursor: pointer; transition: all 0.3s ease; font-weight: 500; flex: 1; text-align: center; max-width: 200px;">Territory</button>
+                    <button class="assumption-tab-btn" onclick="switchAssumptionTab('revenue')" style="padding: 12px 20px; background: rgba(55, 65, 81, 0.6); border: 2px solid rgba(75, 85, 99, 0.3); border-radius: 10px; color: #d1d5db; cursor: pointer; transition: all 0.3s ease; font-weight: 500; flex: 1; text-align: center; max-width: 200px;">Revenue</button>
+                    <button class="assumption-tab-btn" onclick="switchAssumptionTab('costs')" style="padding: 12px 20px; background: rgba(55, 65, 81, 0.6); border: 2px solid rgba(75, 85, 99, 0.3); border-radius: 10px; color: #d1d5db; cursor: pointer; transition: all 0.3s ease; font-weight: 500; flex: 1; text-align: center; max-width: 200px;">Costs</button>
+                    <button class="assumption-tab-btn" onclick="switchAssumptionTab('market')" style="padding: 12px 20px; background: rgba(55, 65, 81, 0.6); border: 2px solid rgba(75, 85, 99, 0.3); border-radius: 10px; color: #d1d5db; cursor: pointer; transition: all 0.3s ease; font-weight: 500; flex: 1; text-align: center; max-width: 200px;">Market</button>
+                </div>
+                
+                <div id="growth" class="assumption-content active" style="display: block;">
+                    <div class="assumption-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div class="assumption-card">
+                            <div class="assumption-title">Client Acquisition Schedule</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 1 (2025)</span>
+                                <span class="assumption-value">3-7 other clients, 1-3 golf courses per month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 2 (2026)</span>
+                                <span class="assumption-value">Golf: 25% monthly, Other: 50% monthly</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 3+ (2027)</span>
+                                <span class="assumption-value">Golf: 55% monthly, Other: 60% monthly</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Mature Market (2030+)</span>
+                                <span class="assumption-value">Golf: 8% monthly, Other: 5% monthly</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Client Mix Evolution</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2025 Focus</span>
+                                <span class="assumption-value">30% Golf, 70% Other</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2026 Balanced</span>
+                                <span class="assumption-value">50% Golf, 50% Other</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2027+ Golf Focus</span>
+                                <span class="assumption-value">70-85% Golf, 15-30% Other</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">SaaS Conversion</span>
+                                <span class="assumption-value">15-50% convert from service to SaaS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Client Size & Growth</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Golf Course Range</span>
+                                <span class="assumption-value">80-120 acres (start 80-100)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Other Clients Range</span>
+                                <span class="assumption-value">5-40 acres (start 5-15)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Golf Maturity Time</span>
+                                <span class="assumption-value">36 months to full size</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Other Maturity Time</span>
+                                <span class="assumption-value">18 months to full size</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Churn & Retention</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Monthly Churn Rate</span>
+                                <span class="assumption-value">0.5% (2025-2027), 0.6-0.7% (2028+)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Min Age for Churn</span>
+                                <span class="assumption-value">6 months minimum</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">SaaS Trial Conversion</span>
+                                <span class="assumption-value">75% convert from trial to paid</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">SaaS Freemium Adoption</span>
+                                <span class="assumption-value">50% start on trial</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Client Acreage Growth Curve</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Golf Course Growth Pattern</span>
+                                <span class="assumption-value">Slow start (10%), Accelerate (80%), Plateau (10%)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Other Clients Pattern</span>
+                                <span class="assumption-value">More linear growth over 18 months</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 1 Annual Growth</span>
+                                <span class="assumption-value">30% of potential</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 2 Annual Growth</span>
+                                <span class="assumption-value positive">40% of potential</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 3 Annual Growth</span>
+                                <span class="assumption-value">30% of potential (mature)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="territory" class="assumption-content" style="display: none;">
+                    <div class="assumption-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div class="assumption-card">
+                            <div class="assumption-title">Territory Expansion Schedule</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current (Month 0)</span>
+                                <span class="assumption-value positive">2 territories (Knoxville + West Palm)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 1 (Months 0-11)</span>
+                                <span class="assumption-value">NO NEW TERRITORIES - Foundation phase</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 2 (Months 12-23)</span>
+                                <span class="assumption-value positive">Add 8 territories (total: 10)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 3 (Months 24-36)</span>
+                                <span class="assumption-value positive">Add 12 territories (total: 22)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 4 (Months 37-49)</span>
+                                <span class="assumption-value">Add 8 territories (total: 30)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Year 5+ (Month 50+)</span>
+                                <span class="assumption-value">Add 2 territories (total: 32)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Territory Maturity Curve</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Month 1-3</span>
+                                <span class="assumption-value">25-75 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Month 6</span>
+                                <span class="assumption-value">150 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Month 12</span>
+                                <span class="assumption-value positive">400 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Month 24</span>
+                                <span class="assumption-value">800 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Month 48 (Mature)</span>
+                                <span class="assumption-value positive">1,200 acres max capacity</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Territory Capacity Limits</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Max Golf Courses</span>
+                                <span class="assumption-value">60 per territory</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Max Total Acres</span>
+                                <span class="assumption-value">1,800 per territory</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">New Market Size</span>
+                                <span class="assumption-value">100 potential clients each</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current Starting Base</span>
+                                <span class="assumption-value positive">62 acres (50 Knox + 12 WPB)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">2025 Foundation Phase</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Growth Rate (2025)</span>
+                                <span class="assumption-value">2 acres/month (slow foundation)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Growth Rate (2026+)</span>
+                                <span class="assumption-value positive">25 acres/month (normal growth)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Focus Strategy</span>
+                                <span class="assumption-value">Perfect operations before expansion</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Real Current State</span>
+                                <span class="assumption-value positive">0.27% market penetration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="revenue" class="assumption-content" style="display: none;">
+                    <div class="assumption-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div class="assumption-card">
+                            <div class="assumption-title">Core Revenue Streams</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Service (per acre/month)</span>
+                                <span class="assumption-value positive">$59</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Installation (per acre)</span>
+                                <span class="assumption-value positive">$700</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Product Sale (per acre)</span>
+                                <span class="assumption-value positive">$1,700</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Combined One-Time</span>
+                                <span class="assumption-value positive">$2,400 per new acre</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">SaaS Pricing Tiers</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Trial (Month 1)</span>
+                                <span class="assumption-value">$500</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Small Team (≤4 users)</span>
+                                <span class="assumption-value positive">$2,500/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Professional (≤10 users)</span>
+                                <span class="assumption-value positive">$5,000/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Enterprise (≤25 users)</span>
+                                <span class="assumption-value positive">$8,000/month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">SaaS Add-Ons & Features</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">AI Features</span>
+                                <span class="assumption-value">$2,500/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Premium Support</span>
+                                <span class="assumption-value">$1,200/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">On-Site Support</span>
+                                <span class="assumption-value">$2,000 base + $40/acre</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Additional Users</span>
+                                <span class="assumption-value">$150/user/month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">SaaS Growth & Adoption</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Launch Date</span>
+                                <span class="assumption-value positive">Month 14 (SaaS revenue starts)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Direct SaaS Acquisition</span>
+                                <span class="assumption-value">10-50 new SaaS clients/year</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Product Sales to SaaS</span>
+                                <span class="assumption-value">25% buy $5,000 avg products</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Tier Upgrade Rate</span>
+                                <span class="assumption-value">15% to Pro, 10% to Enterprise</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Service-to-SaaS Conversion Rates</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2026 Conversion</span>
+                                <span class="assumption-value">15% of service clients convert</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2027 Conversion</span>
+                                <span class="assumption-value positive">25% conversion rate</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2028 Conversion</span>
+                                <span class="assumption-value positive">40% conversion rate</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2029+ Mature Rate</span>
+                                <span class="assumption-value positive">50% conversion rate</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Recurring Product Revenue</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Base Purchase Probability</span>
+                                <span class="assumption-value">2% per month per client</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Mature Client Bonus</span>
+                                <span class="assumption-value">+1% if age > 2 years, +1% if age > 4 years</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Large Client Bonus</span>
+                                <span class="assumption-value">+0.5% if >50 acres, +0.5% if >100 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Average Purchase Value</span>
+                                <span class="assumption-value">$800 base + $8/acre</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Profit Margins</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Service Margin</span>
+                                <span class="assumption-value positive">70%</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Installation Margin</span>
+                                <span class="assumption-value">60%</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Product Margin</span>
+                                <span class="assumption-value">25%</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">SaaS Margin</span>
+                                <span class="assumption-value positive">90%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="costs" class="assumption-content" style="display: none;">
+                    <div class="assumption-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div class="assumption-card">
+                            <div class="assumption-title">Starting Team & Salaries</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Field Service Tech</span>
+                                <span class="assumption-value">$2,000/month ($24K/year)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Sales Ops</span>
+                                <span class="assumption-value">$2,000/month ($24K/year)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Executive Assistant</span>
+                                <span class="assumption-value">$2,000/month ($24K/year)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Developer (Month 4)</span>
+                                <span class="assumption-value">$2,500/month (3 developers)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Founder Salary</span>
+                                <span class="assumption-value">$2,000/month (bootstrap)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Salary Scaling (ARR-Based)</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">At $200K ARR</span>
+                                <span class="assumption-value">Tech: $42K, Sales: $48K</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">At $500K ARR</span>
+                                <span class="assumption-value positive">Tech: $54K, Sales: $66K, Founder: $72K</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">At $1M ARR</span>
+                                <span class="assumption-value positive">Tech: $66K, Sales: $84K</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Developer Schedule</span>
+                                <span class="assumption-value">$54K (Month 10), $84K (Month 18)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Operational Costs</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Rent & Utilities (per location)</span>
+                                <span class="assumption-value">$3,000/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Support Cost (per client)</span>
+                                <span class="assumption-value">$100/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Operations (per acre)</span>
+                                <span class="assumption-value">$10/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">West Palm Commission</span>
+                                <span class="assumption-value">40% of (Revenue - OpEx)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">G&A Costs</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Professional Services</span>
+                                <span class="assumption-value">$2,500-$8,000/month (ARR-based)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Business Software</span>
+                                <span class="assumption-value">$50/employee/month</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Corporate Insurance</span>
+                                <span class="assumption-value">$12K base + $2K/location/year</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">IT Security</span>
+                                <span class="assumption-value">$25/employee/month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Acquisition Costs</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Travel per Client</span>
+                                <span class="assumption-value">$4,500 (flights, hotels)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Entertainment per Client</span>
+                                <span class="assumption-value">$3,000 (dinners, events)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Sales Commission</span>
+                                <span class="assumption-value">10% of first year TCV</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Marketing Budget</span>
+                                <span class="assumption-value">$2,500-$12,000/month (growth stage)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Year-Specific Cost Multipliers</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2025 (Foundation)</span>
+                                <span class="assumption-value">Acquisition: 30%, Operational: 60%</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2026 (Growth)</span>
+                                <span class="assumption-value">Acquisition: 120%, Operational: 100%</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2028+ (Efficient)</span>
+                                <span class="assumption-value">Acquisition: 80%, Operational: 95%</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">2029+ (Software Focus)</span>
+                                <span class="assumption-value">Acquisition: 50%, Operational: 90%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Enhanced Territory Cost Model</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Base Cost per Acre</span>
+                                <span class="assumption-value">$12/month (dynamic)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Territory Complexity Factor</span>
+                                <span class="assumption-value">+5% cost per additional territory</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Tech Maturity Factor</span>
+                                <span class="assumption-value">-0.5% cost per month (efficiency gains)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Seasonal Adjustment</span>
+                                <span class="assumption-value">0.7x (Dec) to 1.3x (Summer)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Dynamic Hiring Schedule</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Field Techs Needed</span>
+                                <span class="assumption-value">1 per 200 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Developer Hiring</span>
+                                <span class="assumption-value positive">3 developers in Month 4</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">New Hire Tech Kit</span>
+                                <span class="assumption-value">$2,500 one-time cost</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">IT Security per Employee</span>
+                                <span class="assumption-value">$25/month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="market" class="assumption-content" style="display: none;">
+                    <div class="assumption-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div class="assumption-card">
+                            <div class="assumption-title">Total Addressable Market</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Total Addressable Acres</span>
+                                <span class="assumption-value positive">23,000+ acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current Penetration</span>
+                                <span class="assumption-value">0.27% (62 / 23,000)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Growth Potential</span>
+                                <span class="assumption-value positive">370x expansion opportunity</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Annual Market Value</span>
+                                <span class="assumption-value positive">$16.3M (23,000 × $59 × 12)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Knoxville Market</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Addressable Acres</span>
+                                <span class="assumption-value">3,000+ acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current Acres</span>
+                                <span class="assumption-value positive">50 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current Penetration</span>
+                                <span class="assumption-value">1.7% (50 / 3,000)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Annual TAM</span>
+                                <span class="assumption-value">$2.1M (3,000 × $59 × 12)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">West Palm Beach Market</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Addressable Acres</span>
+                                <span class="assumption-value positive">20,000+ acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current Acres</span>
+                                <span class="assumption-value">12 acres</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Current Penetration</span>
+                                <span class="assumption-value">0.06% (12 / 20,000)</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Annual TAM</span>
+                                <span class="assumption-value positive">$14.2M (20,000 × $59 × 12)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Market Segments</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Golf Courses</span>
+                                <span class="assumption-value">Primary target - extensive acreage</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Corporate Properties</span>
+                                <span class="assumption-value">Office complexes, commercial landscaping</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Municipal Properties</span>
+                                <span class="assumption-value">Parks, public spaces, city facilities</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">High-End Residential</span>
+                                <span class="assumption-value">Large properties with irrigation needs</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Competitive Landscape</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Market Position</span>
+                                <span class="assumption-value positive">First-mover advantage in tech-enabled service</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Unit Economics Validation</span>
+                                <span class="assumption-value positive">$59/acre proven and profitable</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Territory Model</span>
+                                <span class="assumption-value">Scalable franchise-like approach</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Technology Moat</span>
+                                <span class="assumption-value">SaaS platform creates switching costs</span>
+                            </div>
+                        </div>
+                        
+                        <div class="assumption-card">
+                            <div class="assumption-title">Market Penetration Goals</div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">5-Year Target</span>
+                                <span class="assumption-value positive">5-10% market penetration</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Territory Count Target</span>
+                                <span class="assumption-value">32 territories by Year 5</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Revenue at 5% Penetration</span>
+                                <span class="assumption-value positive">$815K annual revenue</span>
+                            </div>
+                            <div class="assumption-row">
+                                <span class="assumption-label">Revenue at 10% Penetration</span>
+                                <span class="assumption-value positive">$1.6M annual revenue</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 
     <script>
         let projections = [];
         let mainChart = null;
+        
+        // Assumptions section toggle functions
+        function toggleAssumptions() {
+            const content = document.getElementById('assumptions-content');
+            const chevron = document.getElementById('assumptions-chevron');
+            const toggleText = document.getElementById('assumptions-toggle-text');
+            
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                chevron.style.transform = 'rotate(180deg)';
+                toggleText.textContent = 'Hide Assumptions';
+            } else {
+                content.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+                toggleText.textContent = 'View All Assumptions';
+            }
+        }
+        
+        function toggleCategory(categoryId) {
+            const content = document.getElementById(categoryId);
+            const button = content.previousElementSibling.querySelector('button');
+            const chevron = button.querySelector('.category-chevron');
+            
+            // Toggle the category content
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                chevron.style.transform = 'rotate(180deg)';
+                button.classList.add('active');
+            } else {
+                content.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+                button.classList.remove('active');
+            }
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             try {
@@ -299,6 +1074,34 @@
             document.getElementById('currentAcres').textContent = Math.round(data.totalAcres).toLocaleString();
             document.getElementById('currentLocations').textContent = data.locations;
             document.getElementById('currentCashFlow').textContent = '$' + Math.round(data.netCashFlow).toLocaleString();
+        }
+
+        // Assumptions tab switching functionality
+        function switchAssumptionTab(tabName) {
+            // Hide all assumption contents
+            document.querySelectorAll('.assumption-content').forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+            
+            // Reset all assumption tab buttons to inactive state
+            document.querySelectorAll('.assumption-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = 'rgba(55, 65, 81, 0.6)';
+                btn.style.border = '2px solid rgba(75, 85, 99, 0.3)';
+                btn.style.color = '#d1d5db';
+            });
+            
+            // Show selected content
+            const selectedContent = document.getElementById(tabName);
+            selectedContent.classList.add('active');
+            selectedContent.style.display = 'block';
+            
+            // Set active tab styling
+            event.target.classList.add('active');
+            event.target.style.background = 'rgba(34, 197, 94, 0.3)';
+            event.target.style.border = '2px solid #22c55e';
+            event.target.style.color = '#22c55e';
         }
 
     </script>

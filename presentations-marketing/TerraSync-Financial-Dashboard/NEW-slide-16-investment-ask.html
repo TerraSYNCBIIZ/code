@@ -235,7 +235,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             try {
-                const model = new FinancialModelV2(assumptions);
+                const model = new UnifiedFinancialModel(assumptions);
                 const projections = model.runSimulation(60); // 5 years
 
                 const lastMonth = projections[projections.length - 1];
