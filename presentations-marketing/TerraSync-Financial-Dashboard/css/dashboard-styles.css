@@ -43,6 +43,62 @@ body {
 .icon-gem::before { content: '\f3a5'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
 .icon-warning::before { content: '\f071'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
 
+/* ASSUMPTIONS SECTION STYLES */
+.assumption-category {
+    border-bottom: 1px solid rgba(75, 85, 99, 0.2);
+}
+
+.assumption-category:last-child {
+    border-bottom: none;
+}
+
+.assumption-category-header {
+    padding: 18px 24px;
+    background: rgba(31, 41, 55, 0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid rgba(75, 85, 99, 0.1);
+    border-radius: 12px 12px 0 0;
+}
+
+.assumption-category-header:hover {
+    background: rgba(31, 41, 55, 0.8);
+}
+
+.assumption-category-header h3 {
+    color: #e5e7eb;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.assumption-category-header h3 i {
+    color: #22c55e;
+}
+
+.category-chevron {
+    width: 14px;
+    height: 14px;
+    color: #9ca3af;
+    transition: transform 0.2s ease;
+}
+
+.assumption-category-content {
+    display: none;
+    padding: 0;
+    background: #0f1419;
+}
+
+.assumption-category-content.expanded {
+    display: block;
+}
+
 /* HEADER STYLES */
 .header {
     text-align: center;
