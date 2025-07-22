@@ -612,9 +612,12 @@
                     console.log(`Annual Churn Rate: ${(annualChurnRate*100).toFixed(1)}%`);
                 }
                 
-                // Update main revenue headline with total 5-year projection
+                // Update main revenue headline with total 5-year projection if element exists
                 const totalFiveYearRevenue = Object.values(annualTotals).reduce((sum, data) => sum + data.totalRevenue, 0);
-                document.querySelector('.revenue-headline').textContent = `$${(totalFiveYearRevenue / 1000000).toFixed(0)}M+ Revenue`;
+                const revenueHeadline = document.querySelector('.revenue-headline');
+                if (revenueHeadline) {
+                    revenueHeadline.textContent = `$${(totalFiveYearRevenue / 1000000).toFixed(0)}M+ Revenue`;
+                }
                 
             } catch (error) {
                 console.error('Error calculating metrics:', error);
