@@ -103,6 +103,16 @@ class FinancialModelV2 {
             revenues,
             costs,
             netCashFlow,
+            // Add team/personnel data
+            team: this.personnelModel.team.length,
+            newHires: newHiresThisMonth.length,
+            teamByRole: {
+                salesOps: this.personnelModel.team.filter(e => e.role === 'Sales Ops').length,
+                fieldServiceTech: this.personnelModel.team.filter(e => e.role === 'Field Service Tech').length,
+                developer: this.personnelModel.team.filter(e => e.role === 'Developer').length,
+                executiveAssistant: this.personnelModel.team.filter(e => e.role === 'Executive Assistant').length,
+                accountManager: this.personnelModel.team.filter(e => e.role === 'Account Manager').length,
+            },
         });
     }
 
