@@ -595,10 +595,9 @@
                     document.getElementById('ltv-cac-metric').textContent = `${ltvCacRatio.toFixed(1)}:1`;
                     document.getElementById('profit-margin-metric').textContent = `${(profitMargin * 100).toFixed(1)}%`;
 
-                    // Calculate and display 2029 ARR
+                    // Calculate 2029 ARR for logging purposes
                     const lastMonth2029 = projections[projections.length - 1];
                     const arr2029 = lastMonth2029.revenues.recurring.service * 12 + lastMonth2029.revenues.recurring.saas * 12;
-                    document.getElementById('arr-2029-metric').textContent = `${(arr2029 / 1000000).toFixed(1)}M`;
                     
                     console.log(`\n=== FINAL METRICS (2029 - matching live model) ===`);
                     console.log(`ACV (ARPA): $${(arpa/1000).toFixed(0)}K`);
