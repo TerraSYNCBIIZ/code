@@ -5,20 +5,21 @@
 
 const assumptions = {
 
-    // --- 1. CLIENT & LOCATION GROWTH (DEFINITIVE RAMP-UP MODEL) ---
+    // --- 1. CLIENT & LOCATION GROWTH (CONTROLLED 2025 RAMP-UP) ---
+    // Starting point: July 2025 (month 4) = 62 acres
     firstYearAcquisitionSchedule: {
-        month_0: { golf: 0, other: 3 },   // April 2025
-        month_1: { golf: 0, other: 3 },   // May 2025
-        month_2: { golf: 0, other: 3 },   // June 2025
-        month_3: { golf: 0, other: 4 },   // July 2025
-        month_4: { golf: 1, other: 2 },   // Aug 2025
-        month_5: { golf: 1, other: 3 },   // Sep 2025
-        month_6: { golf: 1, other: 4 },   // Oct 2025
-        month_7: { golf: 1, other: 5 },   // Nov 2025
-        month_8: { golf: 2, other: 5 },   // Dec 2025
-        month_9: { golf: 2, other: 6 },   // Jan 2026
-        month_10: { golf: 2, other: 6 },  // Feb 2026
-        month_11: { golf: 3, other: 7 },  // Mar 2026
+        month_0: { golf: 0, other: 0 },   // March 2025 - no growth yet
+        month_1: { golf: 0, other: 0 },   // April 2025 - no growth yet
+        month_2: { golf: 0, other: 0 },   // May 2025 - no growth yet
+        month_3: { golf: 0, other: 0 },   // June 2025 - no growth yet  
+        month_4: { golf: 0, other: 0 },   // July 2025 - 62 acres (CURRENT STATE)
+        month_5: { golf: 0, other: 1 },   // Aug 2025 - gentle start: +1 small client (~5-10 acres)
+        month_6: { golf: 0, other: 1 },   // Sep 2025 - +1 small client
+        month_7: { golf: 0, other: 1 },   // Oct 2025 - +1 small client
+        month_8: { golf: 0, other: 2 },   // Nov 2025 - +2 small clients
+        month_9: { golf: 0, other: 2 },   // Dec 2025 - +2 small clients
+        month_10: { golf: 0, other: 2 },  // Jan 2026 - +2 small clients
+        month_11: { golf: 1, other: 1 },  // Feb 2026 - FIRST golf course + 1 small (spread the big jump)
     },
     clientAcquisitionRateSchedule: {
         2026: { golf: 0.25, other: 0.5 },
@@ -37,9 +38,9 @@ const assumptions = {
         other:      { initialAcres: 3,  maxAcres: 40 }, 
     },
     clientAcreageGrowthCurve: {
-        year1: 0.30, 
-        year2: 0.40, 
-        year3: 0.30,
+        year1: 0.25,  // 25% of potential growth in first year (slightly slower)
+        year2: 0.45,  // 45% in second year (main growth)
+        year3: 0.30,  // 30% in third year (completion)
     },
     churnRateSchedule: {
         2025: 0.005,
@@ -109,45 +110,116 @@ const assumptions = {
 
     // --- 3. COSTS & PERSONNEL ---
     salaries: {
-        fieldServiceTech: 2000, // Bootstrap: $24K/year
-        salesOps: 2000, // Bootstrap: $24K/year
-        developer: 2500, // Bootstrap: $30K/year
-        executiveAssistant: 2000, // Bootstrap: $24K/year
-        accountManager: 3000, // Bootstrap: $36K/year
+        fieldServiceTech: 2000, // $24K/year - owner-operators (West Palm)
+        salesOps: 2500, // $30K/year base + commissions
+        developer: 2500, // $30K/year - current developer rate
+        executiveAssistant: 2500, // $30K/year - operations support
+        accountManager: 4500, // $54K/year - when hired later
+        // Corporate Infrastructure Roles
+        accountant: 5000, // $60K/year - transition from outsourced
+        hrManager: 5500, // $66K/year - HR specialist
+        operationsManager: 6500, // $78K/year - regional ops management
+        marketingManager: 5500, // $66K/year - dedicated marketing
+        customerSuccessManager: 4500, // $54K/year - client retention
+        itManager: 6000, // $72K/year - internal IT support
+        coo: 12000, // $144K/year - Chief Operating Officer
+        cfo: 15000, // $180K/year - Chief Financial Officer
     },
-    // More aggressive salary scaling as business grows
+    
+    // Sales Ops Commission Structure
+    salesCommissions: {
+        newClientCommission: 500, // $500 per new client
+        acreCommissionRate: 10, // $10 per acre per year in service contract
+        saasCommissionRate: 0.05, // 5% of monthly SaaS revenue
+        installationCommissionRate: 0.03, // 3% of installation revenue
+    },
+    // AGGRESSIVE salary scaling as business grows (competitive tech company rates)
     salaryScaling: {
         fieldServiceTech: [
-            { arrThreshold: 200000, salary: 3500 }, // $42K at $200K ARR
-            { arrThreshold: 500000, salary: 4500 }, // $54K at $500K ARR
-            { arrThreshold: 1000000, salary: 5500 }, // $66K at $1M ARR
+            { arrThreshold: 300000, salary: 3500 }, // $42K at $300K ARR
+            { arrThreshold: 750000, salary: 4500 }, // $54K at $750K ARR
+            { arrThreshold: 1500000, salary: 5500 }, // $66K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 6500 }, // $78K at $3M ARR
         ],
         salesOps: [
-            { arrThreshold: 200000, salary: 4000 }, // $48K at $200K ARR
-            { arrThreshold: 500000, salary: 5500 }, // $66K at $500K ARR
-            { arrThreshold: 1000000, salary: 7000 }, // $84K at $1M ARR
+            { arrThreshold: 300000, salary: 4000 }, // $48K base at $300K ARR (+ commissions)
+            { arrThreshold: 750000, salary: 5500 }, // $66K base at $750K ARR (+ commissions)
+            { arrThreshold: 1500000, salary: 7000 }, // $84K base at $1.5M ARR (+ commissions)
+            { arrThreshold: 3000000, salary: 8500 }, // $102K base at $3M ARR (+ commissions)
+        ],
+        developer: [
+            { arrThreshold: 300000, salary: 5000 }, // $60K at $300K ARR
+            { arrThreshold: 750000, salary: 7000 }, // $84K at $750K ARR
+            { arrThreshold: 1500000, salary: 9500 }, // $114K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 12000 }, // $144K at $3M ARR (competitive tech salary)
+            { arrThreshold: 5000000, salary: 15000 }, // $180K at $5M ARR (senior tech salary)
         ],
         executiveAssistant: [
-            { arrThreshold: 500000, salary: 3500 }, // $42K at $500K ARR
-            { arrThreshold: 1000000, salary: 4500 }, // $54K at $1M ARR
+            { arrThreshold: 300000, salary: 3500 }, // $42K at $300K ARR
+            { arrThreshold: 750000, salary: 4500 }, // $54K at $750K ARR
+            { arrThreshold: 1500000, salary: 5500 }, // $66K at $1.5M ARR
         ],
         accountManager: [
-            { arrThreshold: 100000, salary: 5000 }, // $60K when first hired
+            { arrThreshold: 300000, salary: 6000 }, // $72K at $300K ARR
+            { arrThreshold: 750000, salary: 7500 }, // $90K at $750K ARR
+            { arrThreshold: 1500000, salary: 9500 }, // $114K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 12000 }, // $144K at $3M ARR
+        ],
+        // Corporate Infrastructure Salary Scaling
+        accountant: [
+            { arrThreshold: 500000, salary: 6000 }, // $72K at $500K ARR
+            { arrThreshold: 1500000, salary: 7500 }, // $90K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 9000 }, // $108K at $3M ARR
+        ],
+        hrManager: [
+            { arrThreshold: 1000000, salary: 7000 }, // $84K at $1M ARR
+            { arrThreshold: 2500000, salary: 8500 }, // $102K at $2.5M ARR
+            { arrThreshold: 5000000, salary: 10000 }, // $120K at $5M ARR
+        ],
+        operationsManager: [
+            { arrThreshold: 750000, salary: 7500 }, // $90K at $750K ARR
+            { arrThreshold: 2000000, salary: 9000 }, // $108K at $2M ARR
+            { arrThreshold: 4000000, salary: 11000 }, // $132K at $4M ARR
+        ],
+        marketingManager: [
             { arrThreshold: 500000, salary: 6500 }, // $78K at $500K ARR
-            { arrThreshold: 1000000, salary: 8000 }, // $96K at $1M ARR
+            { arrThreshold: 1500000, salary: 8000 }, // $96K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 10000 }, // $120K at $3M ARR
+        ],
+        customerSuccessManager: [
+            { arrThreshold: 750000, salary: 5500 }, // $66K at $750K ARR
+            { arrThreshold: 2000000, salary: 7000 }, // $84K at $2M ARR
+            { arrThreshold: 4000000, salary: 8500 }, // $102K at $4M ARR
+        ],
+        itManager: [
+            { arrThreshold: 1000000, salary: 7500 }, // $90K at $1M ARR
+            { arrThreshold: 2500000, salary: 9000 }, // $108K at $2.5M ARR
+            { arrThreshold: 5000000, salary: 11000 }, // $132K at $5M ARR
+        ],
+        coo: [
+            { arrThreshold: 2000000, salary: 15000 }, // $180K at $2M ARR
+            { arrThreshold: 4000000, salary: 18000 }, // $216K at $4M ARR
+            { arrThreshold: 7000000, salary: 22000 }, // $264K at $7M ARR
+        ],
+        cfo: [
+            { arrThreshold: 3000000, salary: 18000 }, // $216K at $3M ARR
+            { arrThreshold: 6000000, salary: 22000 }, // $264K at $6M ARR
+            { arrThreshold: 10000000, salary: 25000 }, // $300K at $10M ARR
         ]
     },
     developerSalarySchedule: {
-        raise1_month: 10,
-        raise1_amount: 4500, // $54K/year
-        raise2_month: 18,
-        raise2_amount: 7000, // $84K/year
+        raise1_month: 12, // After 1 year
+        raise1_amount: 3000, // $36K/year
+        raise2_month: 24, // After 2 years  
+        raise2_amount: 4000, // $48K/year
     },
     founderSalaryTiers: {
-        level1: { threshold: 0, salary: 2000 }, // Bootstrap: $24K/year
-        level2: { threshold: 500000, salary: 6000 }, // $72K/year
-        level3: { threshold: 2000000, salary: 10000 }, // $120K/year
-        level4: { threshold: 5000000, salary: 15000 }, // $180K/year
+        level1: { threshold: 0, salary: 2000 }, // $24K/year - current bootstrap phase
+        level2: { threshold: 300000, salary: 5000 }, // $60K/year at $300K ARR
+        level3: { threshold: 750000, salary: 8000 }, // $96K/year at $750K ARR
+        level4: { threshold: 1500000, salary: 12000 }, // $144K/year at $1.5M ARR
+        level5: { threshold: 3000000, salary: 17000 }, // $204K/year at $3M ARR
+        level6: { threshold: 5000000, salary: 22000 }, // $264K/year at $5M ARR (competitive CEO salary)
     },
     costs: {
         rentAndUtilitiesPerLocation: 3000,
@@ -175,7 +247,9 @@ const assumptions = {
         // 4.2. Technology & IT
         tech_and_it: {
             it_security_software_per_employee: 25,
-            new_hire_tech_kit: 2500
+            new_hire_tech_kit: 2500,
+            new_hire_training_cost: 3500, // Training and onboarding per new employee
+            ongoing_training_budget_per_employee_annual: 2000 // Continuing education/training
         },
         // 4.3. Per Location Costs
         per_location: {

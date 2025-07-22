@@ -5,20 +5,21 @@
 
 const assumptions = {
 
-    // --- 1. CLIENT & LOCATION GROWTH (DEFINITIVE RAMP-UP MODEL) ---
+    // --- 1. CLIENT & LOCATION GROWTH (CONTROLLED 2025 RAMP-UP) ---
+    // Starting point: July 2025 (month 4) = 62 acres
     firstYearAcquisitionSchedule: {
-        month_0: { golf: 0, other: 3 },   // April 2025
-        month_1: { golf: 0, other: 3 },   // May 2025
-        month_2: { golf: 0, other: 3 },   // June 2025
-        month_3: { golf: 0, other: 4 },   // July 2025
-        month_4: { golf: 1, other: 2 },   // Aug 2025
-        month_5: { golf: 1, other: 3 },   // Sep 2025
-        month_6: { golf: 1, other: 4 },   // Oct 2025
-        month_7: { golf: 1, other: 5 },   // Nov 2025
-        month_8: { golf: 2, other: 5 },   // Dec 2025
-        month_9: { golf: 2, other: 6 },   // Jan 2026
-        month_10: { golf: 2, other: 6 },  // Feb 2026
-        month_11: { golf: 3, other: 7 },  // Mar 2026
+        month_0: { golf: 0, other: 0 },   // March 2025 - no growth yet
+        month_1: { golf: 0, other: 0 },   // April 2025 - no growth yet
+        month_2: { golf: 0, other: 0 },   // May 2025 - no growth yet
+        month_3: { golf: 0, other: 0 },   // June 2025 - no growth yet  
+        month_4: { golf: 0, other: 0 },   // July 2025 - 62 acres (CURRENT STATE)
+        month_5: { golf: 0, other: 1 },   // Aug 2025 - gentle start: +1 small client
+        month_6: { golf: 0, other: 1 },   // Sep 2025 - gradual: +1 more client
+        month_7: { golf: 1, other: 1 },   // Oct 2025 - add first golf client
+        month_8: { golf: 1, other: 2 },   // Nov 2025 - smooth ramp-up
+        month_9: { golf: 1, other: 2 },   // Dec 2025 - steady growth
+        month_10: { golf: 1, other: 2 },  // Jan 2026 - consistent growth
+        month_11: { golf: 2, other: 2 },  // Feb 2026 - preparing for territory expansion
     },
     clientAcquisitionRateSchedule: {
         2026: { golf: 0.25, other: 0.5 },
@@ -42,13 +43,13 @@ const assumptions = {
         golfCourse: { 
             minAcres: 80, 
             maxAcres: 120,
-            initialAcresRange: { min: 80, max: 100 }, // Start smaller, grow to full size
+            initialAcresRange: { min: 8, max: 12 }, // Start SMALL, grow to full size over 3 years
             maturityTimeMonths: 36 // 3 years to reach full maturity
         },
         other: { 
             minAcres: 5, 
             maxAcres: 40,
-            initialAcresRange: { min: 5, max: 15 }, // Start smaller, grow to full size
+            initialAcresRange: { min: 3, max: 8 }, // Start small, grow to full size
             maturityTimeMonths: 18 // 1.5 years to reach full maturity
         }
     },
@@ -209,26 +210,37 @@ const assumptions = {
         executiveAssistant: 2000, // Bootstrap: $24K/year
         accountManager: 3000, // Bootstrap: $36K/year
     },
-    // More aggressive salary scaling as business grows
+    // AGGRESSIVE salary scaling as business grows (competitive tech company rates)
     salaryScaling: {
         fieldServiceTech: [
-            { arrThreshold: 200000, salary: 3500 }, // $42K at $200K ARR
-            { arrThreshold: 500000, salary: 4500 }, // $54K at $500K ARR
-            { arrThreshold: 1000000, salary: 5500 }, // $66K at $1M ARR
+            { arrThreshold: 300000, salary: 3500 }, // $42K at $300K ARR
+            { arrThreshold: 750000, salary: 4500 }, // $54K at $750K ARR
+            { arrThreshold: 1500000, salary: 5500 }, // $66K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 6500 }, // $78K at $3M ARR
         ],
         salesOps: [
-            { arrThreshold: 200000, salary: 4000 }, // $48K at $200K ARR
-            { arrThreshold: 500000, salary: 5500 }, // $66K at $500K ARR
-            { arrThreshold: 1000000, salary: 7000 }, // $84K at $1M ARR
+            { arrThreshold: 300000, salary: 4000 }, // $48K base at $300K ARR (+ commissions)
+            { arrThreshold: 750000, salary: 5500 }, // $66K base at $750K ARR (+ commissions)
+            { arrThreshold: 1500000, salary: 7000 }, // $84K base at $1.5M ARR (+ commissions)
+            { arrThreshold: 3000000, salary: 8500 }, // $102K base at $3M ARR (+ commissions)
+        ],
+        developer: [
+            { arrThreshold: 300000, salary: 5000 }, // $60K at $300K ARR
+            { arrThreshold: 750000, salary: 7000 }, // $84K at $750K ARR
+            { arrThreshold: 1500000, salary: 9500 }, // $114K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 12000 }, // $144K at $3M ARR (competitive tech salary)
+            { arrThreshold: 5000000, salary: 15000 }, // $180K at $5M ARR (senior tech salary)
         ],
         executiveAssistant: [
-            { arrThreshold: 500000, salary: 3500 }, // $42K at $500K ARR
-            { arrThreshold: 1000000, salary: 4500 }, // $54K at $1M ARR
+            { arrThreshold: 300000, salary: 3500 }, // $42K at $300K ARR
+            { arrThreshold: 750000, salary: 4500 }, // $54K at $750K ARR
+            { arrThreshold: 1500000, salary: 5500 }, // $66K at $1.5M ARR
         ],
         accountManager: [
-            { arrThreshold: 100000, salary: 5000 }, // $60K when first hired
-            { arrThreshold: 500000, salary: 6500 }, // $78K at $500K ARR
-            { arrThreshold: 1000000, salary: 8000 }, // $96K at $1M ARR
+            { arrThreshold: 300000, salary: 6000 }, // $72K at $300K ARR
+            { arrThreshold: 750000, salary: 7500 }, // $90K at $750K ARR
+            { arrThreshold: 1500000, salary: 9500 }, // $114K at $1.5M ARR
+            { arrThreshold: 3000000, salary: 12000 }, // $144K at $3M ARR
         ]
     },
     developerSalarySchedule: {
@@ -238,10 +250,12 @@ const assumptions = {
         raise2_amount: 7000, // $84K/year
     },
     founderSalaryTiers: {
-        level1: { threshold: 0, salary: 2000 }, // Bootstrap: $24K/year
-        level2: { threshold: 500000, salary: 6000 }, // $72K/year
-        level3: { threshold: 2000000, salary: 10000 }, // $120K/year
-        level4: { threshold: 5000000, salary: 15000 }, // $180K/year
+        level1: { threshold: 0, salary: 2000 }, // $24K/year - current bootstrap phase
+        level2: { threshold: 300000, salary: 5000 }, // $60K/year at $300K ARR
+        level3: { threshold: 750000, salary: 8000 }, // $96K/year at $750K ARR
+        level4: { threshold: 1500000, salary: 12000 }, // $144K/year at $1.5M ARR
+        level5: { threshold: 3000000, salary: 17000 }, // $204K/year at $3M ARR
+        level6: { threshold: 5000000, salary: 22000 }, // $264K/year at $5M ARR (competitive CEO salary)
     },
     costs: {
         rentAndUtilitiesPerLocation: 3000,
@@ -269,7 +283,9 @@ const assumptions = {
         // 4.2. Technology & IT
         tech_and_it: {
             it_security_software_per_employee: 25,
-            new_hire_tech_kit: 2500
+            new_hire_tech_kit: 2500,
+            new_hire_training_cost: 3500, // Training and onboarding per new employee
+            ongoing_training_budget_per_employee_annual: 2000 // Continuing education/training
         },
         // 4.3. Per Location Costs
         per_location: {
@@ -348,6 +364,8 @@ class PersonnelModel {
 
     getFounderSalary(currentARR) {
         const tiers = this.assumptions.founderSalaryTiers;
+        if (currentARR >= tiers.level6.threshold) return tiers.level6.salary;
+        if (currentARR >= tiers.level5.threshold) return tiers.level5.salary;
         if (currentARR >= tiers.level4.threshold) return tiers.level4.salary;
         if (currentARR >= tiers.level3.threshold) return tiers.level3.salary;
         if (currentARR >= tiers.level2.threshold) return tiers.level2.salary;
@@ -373,11 +391,106 @@ class PersonnelModel {
             this.team.forEach(e => { if (e.role === 'Developer') e.salary = devSchedule.raise2_amount; });
         }
 
-        // --- Dynamic Hiring Logic ---
-        const requiredTechs = Math.floor(metrics.totalAcres / 200);
+        // --- REALISTIC Field Service Tech Logic (FIXED VERSION) ---
+        // Only service acres need field techs (1 tech per 500 acres of physical turf)
+        const serviceAcres = metrics.serviceAcres || 0;
         const currentTechs = this.team.filter(e => e.role === 'Field Service Tech').length;
-        if (requiredTechs > currentTechs) {
-            this.team.push({ role: 'Field Service Tech', salary: this.assumptions.salaries.fieldServiceTech, location: 'New Hire', startMonth: month });
+        const acresPerTech = 500; // Your target ratio
+        const requiredTechsByService = Math.max(1, Math.ceil(serviceAcres / acresPerTech));
+
+        // --- Account Manager Hiring Logic ---
+        const currentAccountManagers = this.team.filter(e => e.role === 'Account Manager').length;
+        const clientCount = metrics.clientCount || 0;
+        const currentARR = metrics.currentARR || 0;
+        
+        // First account manager at 20 clients or $500K ARR
+        if (currentAccountManagers === 0 && (clientCount >= 20 || currentARR >= 500000)) {
+            this.team.push({ role: 'Account Manager', salary: this.assumptions.salaries.accountManager, location: 'New Hire', startMonth: month });
+        }
+        // Additional account managers: 1 per 50 clients or per $2M ARR
+        else if (currentAccountManagers > 0) {
+            const requiredByClients = Math.floor(clientCount / 50);
+            const requiredByARR = Math.floor(currentARR / 2000000);
+            const requiredAccountManagers = Math.max(requiredByClients, requiredByARR);
+            
+            if (requiredAccountManagers > currentAccountManagers) {
+                this.team.push({ role: 'Account Manager', salary: this.assumptions.salaries.accountManager, location: 'New Hire', startMonth: month });
+            }
+        }
+
+        // --- Additional Sophisticated Hiring Logic ---
+        // Executive Assistant scaling based on team size
+        const currentExecAssistants = this.team.filter(e => e.role === 'Executive Assistant').length;
+        const totalTeamSize = this.team.length;
+        if (currentExecAssistants === 1 && totalTeamSize >= 15) {
+            // Add second executive assistant when team reaches 15 people
+            this.team.push({ role: 'Executive Assistant', salary: this.assumptions.salaries.executiveAssistant, location: 'New Hire', startMonth: month });
+        }
+
+        // Additional developers based on SaaS growth, client demands, and product complexity
+        const currentDevelopers = this.team.filter(e => e.role === 'Developer').length;
+        const saasRevenue = metrics.saasRevenue || 0; // Monthly SaaS revenue
+        
+        // Developer scaling logic:
+        let requiredDevelopers = 3; // Starting team
+        
+        if (saasRevenue > 25000 || clientCount >= 100) requiredDevelopers = Math.max(requiredDevelopers, 4);
+        if (saasRevenue > 50000 || clientCount >= 200) requiredDevelopers = Math.max(requiredDevelopers, 5);
+        if (saasRevenue > 75000 || clientCount >= 300) requiredDevelopers = Math.max(requiredDevelopers, 6);
+        
+        // Scale beyond 6 developers based on SaaS revenue
+        if (saasRevenue > 75000) {
+            const scaleDevelopers = Math.min(10, 6 + Math.floor((saasRevenue - 75000) / 40000));
+            requiredDevelopers = Math.max(requiredDevelopers, scaleDevelopers);
+        }
+        
+        if (requiredDevelopers > currentDevelopers && month > 3) { // Allow some ramp-up time
+            console.log(`Month ${month}: Hiring Developer #${currentDevelopers + 1}. SaaS Revenue: $${saasRevenue}, Clients: ${clientCount}`);
+            this.team.push({ role: 'Developer', salary: this.assumptions.salaries.developer, location: 'Remote/HQ', startMonth: month });
+        }
+
+        // Sales Ops scaling based on client acquisition rate
+        const currentSalesOps = this.team.filter(e => e.role === 'Sales Ops').length;
+        const newClientsThisMonth = metrics.newClientsThisMonth || 0;
+        if (currentSalesOps === 1 && clientCount >= 100 && newClientsThisMonth >= 8) {
+            // Add second sales ops when managing 100+ clients with high acquisition rate
+            this.team.push({ role: 'Sales Ops', salary: this.assumptions.salaries.salesOps, location: 'New Hire', startMonth: month });
+        }
+
+        // --- LOCATION-BASED SCALING LOGIC ---
+        const locationCount = metrics.locationCount || 1;
+        const newLocationsThisMonth = metrics.newLocationsThisMonth || 0;
+
+        // Field Service Tech scaling: Ensure adequate coverage per location + service acres
+        const clientsPerLocation = Math.floor(clientCount / locationCount);
+        if (clientsPerLocation >= 5) {
+            const minTechsByLocation = locationCount; // At least 1 tech per established location
+            const requiredTechsTotal = Math.max(minTechsByLocation, requiredTechsByService);
+            
+            if (requiredTechsTotal > currentTechs && serviceAcres > 250) {
+                console.log(`Month ${month}: Hiring Field Service Tech. Service Acres: ${serviceAcres}, Locations: ${locationCount}, Required: ${requiredTechsTotal}, Current: ${currentTechs}`);
+                this.team.push({ role: 'Field Service Tech', salary: this.assumptions.salaries.fieldServiceTech, location: `Location ${locationCount}`, startMonth: month });
+            }
+        }
+
+        // Sales Ops scaling: Add regional sales ops for every 4-5 locations
+        if (locationCount >= 5 && currentSalesOps < Math.ceil(locationCount / 4)) {
+            this.team.push({ role: 'Sales Ops', salary: this.assumptions.salaries.salesOps, location: `Regional - ${Math.ceil(locationCount / 4)}`, startMonth: month });
+        }
+
+        // Account Manager regional scaling: 1 per 2-3 locations once locations are established
+        if (locationCount >= 3) {
+            const requiredAMsByLocation = Math.floor(locationCount / 2.5);
+            const requiredAMs = Math.max(requiredAMsByLocation, currentAccountManagers);
+            
+            if (requiredAMs > currentAccountManagers) {
+                this.team.push({ role: 'Account Manager', salary: this.assumptions.salaries.accountManager, location: `Regional - ${requiredAMs}`, startMonth: month });
+            }
+        }
+
+        // Executive Assistant scaling: Add operations coordinator for multi-location management
+        if (locationCount >= 8 && currentExecAssistants < 3) {
+            this.team.push({ role: 'Executive Assistant', salary: this.assumptions.salaries.executiveAssistant, location: 'Operations Coordinator', startMonth: month });
         }
     }
 
@@ -527,28 +640,90 @@ class UnifiedFinancialModel {
         this.personnelModel.initializeStartingTeam();
         this.state = {
             clients: [
-                { id: 1, type: 'golfCourse', startMonth: -2, age: 2, maxAcres: 120, initialAcres: 10, currentAcres: 10, saas: { plan: 'none' }, locationId: 1 },
-                { id: 2, type: 'golfCourse', startMonth: -1, age: 1, maxAcres: 120, initialAcres: 10, currentAcres: 10, saas: { plan: 'none' }, locationId: 1 },
+                // Start with minimal clients that will grow to ~62 acres by July (month 4)
+                // Knoxville - start with ~15 acres
+                { id: 1, type: 'golfCourse', startMonth: -6, age: 6, maxAcres: 120, initialAcres: 8, currentAcres: 8, maturityTimeMonths: 36, saas: { plan: 'none' }, locationId: 1 },
+                { id: 2, type: 'other', startMonth: -3, age: 3, maxAcres: 40, initialAcres: 3, currentAcres: 3, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 1 },
+                { id: 3, type: 'other', startMonth: -2, age: 2, maxAcres: 40, initialAcres: 4, currentAcres: 4, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 1 },
+                
+                // West Palm - start with ~5 acres  
+                { id: 4, type: 'other', startMonth: -2, age: 2, maxAcres: 40, initialAcres: 3, currentAcres: 3, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 2 },
+                { id: 5, type: 'other', startMonth: -1, age: 1, maxAcres: 40, initialAcres: 2, currentAcres: 2, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 2 },
             ],
             locations: this.getTerritoryList(0),
             cumulativeARR: 0,
         };
         this.projections = [];
+        
+        // Verify initial state
+        const initialAcres = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
+        console.log(`INITIAL STATE VERIFICATION: ${initialAcres} total acres`);
+        console.log(`  Knoxville clients: ${this.state.clients.filter(c => c.locationId === 1).map(c => c.currentAcres).join('+')} = ${this.state.clients.filter(c => c.locationId === 1).reduce((sum, c) => sum + c.currentAcres, 0)} acres`);
+        console.log(`  West Palm clients: ${this.state.clients.filter(c => c.locationId === 2).map(c => c.currentAcres).join('+')} = ${this.state.clients.filter(c => c.locationId === 2).reduce((sum, c) => sum + c.currentAcres, 0)} acres`);
     }
 
     runMonthlyCycle(month) {
+        // ULTRA DEBUG: Track acres at every step
+        if (month <= 6) {
+            const initialAcres = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
+            console.log(`\n=== MONTH ${month} ULTRA DEBUG ===`);
+            console.log(`BEFORE any changes: ${initialAcres} acres`);
+            console.log(`Initial clients:`, this.state.clients.map(c => `${c.type} ${c.currentAcres}acres`));
+        }
+        
         this.updateLocations(month);
+        
+        if (month <= 6) {
+            const afterLocations = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
+            console.log(`AFTER updateLocations: ${afterLocations} acres`);
+        }
+        
         this.updateClientState(month);
+        
+        if (month <= 6) {
+            const afterClientState = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
+            console.log(`AFTER updateClientState: ${afterClientState} acres`);
+            console.log(`Client acres after update:`, this.state.clients.map(c => `${c.type} ${c.currentAcres}acres`));
+        }
         
         const newClients = this.acquireNewClients(month);
         const newClientsAcquired = newClients.length;
         this.state.clients.push(...newClients);
 
+        if (month <= 6) {
+            const afterNewClients = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
+            console.log(`AFTER acquireNewClients: ${afterNewClients} acres (added ${newClientsAcquired} clients)`);
+        }
+
         const { churnedClientsCount } = this.applyChurn(month);
 
-        const totalAcres = this.calculateTotalAcres(month);
+        if (month <= 6) {
+            const afterChurn = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
+            console.log(`AFTER applyChurn: ${afterChurn} acres (churned ${churnedClientsCount} clients)`);
+        }
+
+        // Calculate total acres from ACTUAL client data, not theoretical territory data
+        const totalAcres = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
         const previousTotalAcres = this.projections.length > 0 ? this.projections[this.projections.length - 1].totalAcres : 0;
         const newAcresThisMonth = totalAcres - previousTotalAcres;
+        
+        // Track sources of new acres for better understanding
+        const newClientAcres = newClients.reduce((sum, c) => sum + c.initialAcres, 0);
+        const existingClientGrowthAcres = newAcresThisMonth - newClientAcres;
+        
+        // Debug acre growth for key months  
+        if (month >= 4 && month <= 16) {
+            const monthNames = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'];
+            const monthName = monthNames[month % 12];
+            const year = month < 12 ? '2025' : '2026';
+            
+            console.log(`Month ${month} (${monthName} ${year}) ACRE BREAKDOWN:`);
+            console.log(`  Total Acres: ${totalAcres.toFixed(1)} (was ${previousTotalAcres.toFixed(1)})`);
+            console.log(`  New Acres This Month: ${newAcresThisMonth.toFixed(1)}`);
+            console.log(`    - From New Clients: ${newClientAcres.toFixed(1)} (${newClients.length} clients)`);
+            console.log(`    - From Existing Growth: ${existingClientGrowthAcres.toFixed(1)}`);
+            console.log(`  Active Clients: ${this.state.clients.length}`);
+        }
 
         const revenues = this.calculateRevenues(month, newAcresThisMonth);
         
@@ -563,13 +738,8 @@ class UnifiedFinancialModel {
         }
 
         this.state.cumulativeARR = totalRecurringRevenue * 12;
-        const costs = this.calculateCosts(revenues, month, newClientsAcquired);
-        const netCashFlow = revenues.total - costs.totalCosts;
-
-        const currentGolfAcres = this.state.clients.filter(c => c.type === 'golfCourse').reduce((sum, c) => sum + c.currentAcres, 0);
-        const newGolfAcres = currentGolfAcres - (this.projections.length > 0 ? this.projections[this.projections.length - 1].golfAcres : 0);
-        const newOtherAcres = newAcresThisMonth - newGolfAcres;
-
+        
+        // Calculate service vs SaaS acres BEFORE calculating costs (needed for field tech hiring)
         let serviceAcres = 0;
         let saasAcres = 0;
         this.state.clients.forEach(client => {
@@ -582,6 +752,25 @@ class UnifiedFinancialModel {
             }
         });
 
+        // Count SaaS clients for account manager scaling
+        const saasClients = this.state.clients.filter(c => 
+            (c.type === 'golfCourse' || c.type === 'other') && 
+            c.saas.plan !== 'none' && 
+            c.saas.plan !== 'trial'
+        ).length + this.state.clients.filter(c => c.type === 'saasOnly').length;
+
+        const costs = this.calculateCosts(revenues, month, newClientsAcquired, serviceAcres, saasClients);
+        const netCashFlow = revenues.total - costs.totalCosts;
+
+        const currentGolfAcres = this.state.clients.filter(c => c.type === 'golfCourse').reduce((sum, c) => sum + c.currentAcres, 0);
+        const newGolfAcres = currentGolfAcres - (this.projections.length > 0 ? this.projections[this.projections.length - 1].golfAcres : 0);
+        const newOtherAcres = newAcresThisMonth - newGolfAcres;
+
+        // Debug team data
+        if (month % 6 === 0) {
+            console.log(`Month ${month} - Team size: ${this.personnelModel.team.length}, Team:`, this.personnelModel.team.map(e => e.role));
+        }
+
         this.projections.push({
             month,
             locations: this.state.locations.length,
@@ -590,7 +779,8 @@ class UnifiedFinancialModel {
             churnedClients: churnedClientsCount,
             weightedGrossMargin,
             golfClients: this.state.clients.filter(c => c.type === 'golfCourse').length,
-            otherClients: this.state.clients.filter(c => c.type === 'other' || c.type === 'saasOnly').length,
+            otherClients: this.state.clients.filter(c => c.type === 'other').length,
+            saasOnlyClients: this.state.clients.filter(c => c.type === 'saasOnly').length,
             saasGolfClients: this.state.clients.filter(c => c.type === 'golfCourse' && c.saas.plan !== 'none' && c.saas.plan !== 'trial').length,
             avgClientsPerLocation: (this.state.clients.length / this.state.locations.length).toFixed(2),
             avgAcresPerLocation: (totalAcres / this.state.locations.length).toFixed(2),
@@ -599,11 +789,23 @@ class UnifiedFinancialModel {
             serviceAcres,
             saasAcres,
             newAcresThisMonth,
+            newClientAcres, // New acres from acquiring new clients
+            existingClientGrowthAcres, // New acres from existing clients expanding
             newGolfAcres,
             newOtherAcres,
             revenues,
             costs,
             netCashFlow,
+            // Add team/personnel data
+            team: this.personnelModel.team.length,
+            newHires: costs.newHiresThisMonth ? costs.newHiresThisMonth.length : 0,
+            teamByRole: {
+                salesOps: this.personnelModel.team.filter(e => e.role === 'Sales Ops').length,
+                fieldServiceTech: this.personnelModel.team.filter(e => e.role === 'Field Service Tech').length,
+                developer: this.personnelModel.team.filter(e => e.role === 'Developer').length,
+                executiveAssistant: this.personnelModel.team.filter(e => e.role === 'Executive Assistant').length,
+                accountManager: this.personnelModel.team.filter(e => e.role === 'Account Manager').length,
+            },
         });
     }
 
@@ -635,8 +837,8 @@ class UnifiedFinancialModel {
                     for (let i = 0; i < event.count; i++) {
                         territories.push({
                             id: territoryId++,
-                            startMonth: 0,
-                            age: currentMonth
+                            startMonth: -12, // Existing locations started 12 months ago
+                            age: currentMonth + 12 // They've been operating for 12+ months
                         });
                     }
                 } else if (event.action === 'add') {
@@ -674,27 +876,8 @@ class UnifiedFinancialModel {
     }
 
     calculateTotalAcres(month) {
-        // Start with actual current state: 62 acres at month 0
-        if (month === 0) {
-            return 62; // Actual current acres (50 Knoxville + 12 West Palm)
-        }
-        
-        const territories = this.getTerritoryList(month);
-        let totalAcres = 62; // Start from current base
-        
-        // Add new acres for each month of growth
-        for (let m = 1; m <= month; m++) {
-            const monthTerritories = this.getTerritoryList(m);
-            for (const territory of monthTerritories) {
-                totalAcres += this.calculateNewAcresForTerritory(territory.age, m);
-            }
-            
-            // Apply churn rate (0.5% monthly)
-            const churnLoss = totalAcres * this.assumptions.churnRateSchedule[2025];
-            totalAcres = Math.max(62, totalAcres - churnLoss); // Don't go below starting point
-        }
-        
-        return totalAcres;
+        // ALWAYS use actual client data - no more territory calculations!
+        return this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
     }
 
     calculateTerritoryAcres(age) {
@@ -714,36 +897,83 @@ class UnifiedFinancialModel {
 
     acquireNewClients(month) {
         const newClientsList = [];
-        const territories = this.getTerritoryList(month);
+        const year = 2025 + Math.floor(month / 12);
 
-        territories.forEach(loc => {
-            const acresInLocation = this.state.clients.filter(c => c.locationId === loc.id).reduce((sum, c) => sum + c.currentAcres, 0);
-            const newAcres = this.calculateNewAcresForTerritory(loc.age, month);
+        console.log(`\n=== ACQUIRE NEW CLIENTS DEBUG - MONTH ${month} ===`);
+        console.log(`Year calculated: ${year}`);
+        console.log(`Month/12 = ${month}/12 = ${month / 12}`);
+        console.log(`Math.floor(${month / 12}) = ${Math.floor(month / 12)}`);
 
-            if (acresInLocation < this.assumptions.locationCapacity.maxAcres) {
-                // Use dynamic client mix based on year
-                const year = 2025 + Math.floor(month / 12);
-                const clientMix = this.assumptions.clientMixByYear[year] || this.assumptions.clientMixByYear[2029];
-                const golfProbability = clientMix.golfCourse;
+        // For the first year (2025), use the controlled acquisition schedule
+        if (year === 2025) {
+            console.log(`Using CONTROLLED SCHEDULE for 2025`);
+            const monthKey = `month_${month}`;
+            const schedule = this.assumptions.firstYearAcquisitionSchedule[monthKey];
+            
+            console.log(`Looking for schedule key: ${monthKey}`);
+            console.log(`Schedule found:`, schedule);
+            
+            if (schedule) {
+                console.log(`CONTROLLED: Adding ${schedule.golf} golf + ${schedule.other} other clients`);
                 
-                // Calculate number of new clients based on average client size for the year
-                let avgClientSize = 10; // Default
-                if (year === 2025) {
-                    avgClientSize = 8; // Smaller clients in early phase
-                } else if (year >= 2027) {
-                    avgClientSize = 12; // Larger clients as we focus on golf
+                // Add golf clients
+                for (let i = 0; i < schedule.golf; i++) {
+                    newClientsList.push(this.createNewClient(month, 'golfCourse', month < 6 ? 1 : 2));
                 }
                 
-                const newClients = Math.max(1, Math.floor(newAcres / avgClientSize));
-                
-                for (let i = 0; i < newClients; i++) {
-                    const isGolfCourse = Math.random() < golfProbability;
-                    const clientType = isGolfCourse ? 'golfCourse' : 'other';
-                    newClientsList.push(this.createNewClient(month, clientType, loc.id));
+                // Add other clients  
+                for (let i = 0; i < schedule.other; i++) {
+                    newClientsList.push(this.createNewClient(month, 'other', month < 6 ? 1 : 2));
                 }
+            } else {
+                console.log(`NO SCHEDULE FOUND for ${monthKey} - adding 0 clients`);
             }
-        });
+        } else {
+            console.log(`Using TERRITORY-BASED ACQUISITION for ${year}`);
+            const territories = this.getTerritoryList(month);
+            console.log(`Territories found:`, territories.length, territories);
 
+            territories.forEach(loc => {
+                const acresInLocation = this.state.clients.filter(c => c.locationId === loc.id).reduce((sum, c) => sum + c.currentAcres, 0);
+                const newAcres = this.calculateNewAcresForTerritory(loc.age, month);
+                
+                console.log(`Territory ${loc.id}: age=${loc.age}, newAcres=${newAcres}, currentAcres=${acresInLocation}`);
+
+                if (acresInLocation < this.assumptions.locationCapacity.maxAcres) {
+                    const clientMix = this.assumptions.clientMixByYear[year] || this.assumptions.clientMixByYear[2029];
+                    const golfProbability = clientMix.golfCourse;
+                    
+                    let avgClientSize = 12;
+                    const newClients = Math.max(1, Math.floor(newAcres / avgClientSize));
+                    
+                    console.log(`TERRITORY: Adding ${newClients} clients for territory ${loc.id}`);
+                    
+                    for (let i = 0; i < newClients; i++) {
+                        const isGolfCourse = Math.random() < golfProbability;
+                        const clientType = isGolfCourse ? 'golfCourse' : 'other';
+                        newClientsList.push(this.createNewClient(month, clientType, loc.id));
+                    }
+                }
+            });
+        }
+
+        // Direct SaaS-only client acquisition (software-native customers)
+        const { directToSaaSAcquisition } = this.assumptions.saas;
+        if (directToSaaSAcquisition[year]) {
+            const annualSaaSClients = directToSaaSAcquisition[year];
+            const monthlySaaSClients = annualSaaSClients / 12;
+            const startOfYearMonth = (year - 2025) * 12;
+            const saasClientsAddedThisYear = this.state.clients.filter(c => c.type === 'saasOnly' && c.startMonth >= startOfYearMonth && c.startMonth < month).length;
+            
+            // Check if we should add a SaaS-only client this month
+            const targetSaaSClientsForThisMonth = Math.floor((month - startOfYearMonth + 1) * monthlySaaSClients);
+            if (targetSaaSClientsForThisMonth > saasClientsAddedThisYear) {
+                console.log(`Adding direct SaaS client in month ${month} for year ${year}`);
+                newClientsList.push(this.createSaaSClient(month, 'smallTeam'));
+            }
+        }
+
+        console.log(`TOTAL NEW CLIENTS CREATED: ${newClientsList.length}`);
         return newClientsList;
     }
 
@@ -825,10 +1055,11 @@ class UnifiedFinancialModel {
                 const freemiumConversionRate = this.assumptions.saas.freemium.conversionToPaidRate + (this.assumptions.saas.freemium.saasMaturityBonus * month);
                 client.saas.plan = Math.random() < freemiumConversionRate ? 'smallTeam' : 'none';
             }
-            if (month >= 12 && client.currentAcres < client.maxAcres) {
+            // Enable client growth from the beginning, not just after month 12
+            if (client.currentAcres < client.maxAcres && client.age >= 0) {
                 const clientAgeInYears = Math.floor(client.age / 12);
                 const growthRateKey = `year${clientAgeInYears + 1}`;
-                const growthRate = this.assumptions.clientAcreageGrowthCurve[growthRateKey] || 0;
+                const growthRate = this.assumptions.clientAcreageGrowthCurve[growthRateKey] || 0.30; // Default to 30% year 1 growth
                 const potentialGrowth = (client.maxAcres - client.initialAcres) * growthRate;
                 client.currentAcres = Math.min(client.maxAcres, client.currentAcres + (potentialGrowth / 12));
             }
@@ -867,21 +1098,13 @@ class UnifiedFinancialModel {
     calculateRevenues(month, newAcresThisMonth) {
         let serviceRevenue = 0, installationRevenue = 0, productRevenue = 0, saasRevenue = 0;
 
-        // Core installation/product revenue from new acres (existing logic)
+        // Core installation/product revenue from new acres ONLY (one-time per acre)
         if (newAcresThisMonth > 0) {
             installationRevenue = newAcresThisMonth * this.assumptions.revenueStreams.installationPerAcre;
             productRevenue = newAcresThisMonth * this.assumptions.revenueStreams.productSalePerAcre;
         }
 
-        // Add recurring product sales from existing clients (equipment replacements, upgrades, maintenance products)
-        const existingClientsProductSales = this.calculateRecurringProductSales(month);
-        productRevenue += existingClientsProductSales;
-
-        const newSaaSOnlyClientsCount = this.state.clients.filter(c => c.age === 0 && c.type === 'saasOnly').length;
-        if (newSaaSOnlyClientsCount > 0) {
-            const saasClientsBuyingProduct = newSaaSOnlyClientsCount * this.assumptions.saas.saasProductSales.adoptionRate;
-            productRevenue += saasClientsBuyingProduct * this.assumptions.saas.saasProductSales.averagePurchaseValue;
-        }
+        // NO recurring product sales - product revenue only happens with new acres
 
         this.state.clients.forEach(client => {
             let isSaaSPaying = false;
@@ -915,57 +1138,22 @@ class UnifiedFinancialModel {
         };
     }
 
-    calculateRecurringProductSales(month) {
-        // Realistic recurring product sales: equipment replacements, upgrades, maintenance products
-        let recurringProductRevenue = 0;
-        
-        // Only start recurring sales after month 6 (business is established)
-        if (month < 6) return 0;
-        
-        // Filter existing clients (not brand new this month)
-        const existingClients = this.state.clients.filter(c => c.age > 0);
-        
-        existingClients.forEach(client => {
-            if (client.type === 'saasOnly') return; // SaaS-only clients don't buy maintenance products
-            
-            // Base monthly purchase probability based on client age and acres
-            let purchaseProbability = 0.02; // 2% base chance per month
-            
-            // Older clients more likely to need replacements
-            if (client.age > 24) purchaseProbability += 0.01; // +1% for clients over 2 years
-            if (client.age > 48) purchaseProbability += 0.01; // +1% for clients over 4 years
-            
-            // Larger clients more likely to need ongoing products
-            if (client.currentAcres > 50) purchaseProbability += 0.005;
-            if (client.currentAcres > 100) purchaseProbability += 0.005;
-            
-            // Seasonal adjustment (higher in spring/summer)
-            const seasonalMultiplier = this.getSeasonalProductMultiplier(month);
-            purchaseProbability *= seasonalMultiplier;
-            
-            // Random purchase decision
-            if (Math.random() < purchaseProbability) {
-                // Average recurring purchase value (lower than initial product sale)
-                const averageRecurringPurchase = 800 + (client.currentAcres * 8); // $800 base + $8 per acre
-                recurringProductRevenue += averageRecurringPurchase;
-            }
-        });
-        
-        return recurringProductRevenue;
-    }
-    
-    getSeasonalProductMultiplier(month) {
-        // Seasonal pattern for product sales (higher in spring/summer)
-        const seasonalFactors = [
-            0.8, 0.8, 1.0, 1.2, 1.3, 1.3, // Jan-Jun
-            1.2, 1.2, 1.1, 1.0, 0.9, 0.8  // Jul-Dec
-        ];
-        return seasonalFactors[month % 12];
-    }
 
-    calculateCosts(revenues, month, newClientsThisMonthCount) {
+    calculateCosts(revenues, month, newClientsThisMonthCount, serviceAcres = 0, saasClients = 0) {
         const totalAcres = this.state.clients.reduce((sum, c) => sum + c.currentAcres, 0);
-        this.personnelModel.updateTeam({ totalAcres }, month);
+        const newLocationsThisMonth = this.state.locations.filter(loc => loc.startMonth === month);
+        const metrics = {
+            totalAcres,
+            serviceAcres, // Add serviceAcres for realistic field tech hiring
+            saasClients, // Add saasClients for account manager scaling
+            clientCount: this.state.clients.length,
+            currentARR: this.state.cumulativeARR,
+            saasRevenue: revenues.breakdown?.saasRevenue || 0,
+            newClientsThisMonth: newClientsThisMonthCount,
+            locationCount: this.state.locations.length,
+            newLocationsThisMonth: newLocationsThisMonth.length
+        };
+        this.personnelModel.updateTeam(metrics, month);
         const newHiresThisMonth = this.personnelModel.getNewHires(month);
 
         // --- ENHANCED COST CALCULATION ---
@@ -1052,6 +1240,16 @@ class UnifiedFinancialModel {
         const salesTeamCount = salesOpsEmployees.length + 1; // +1 for founder
         totalAcquisitionCosts += salesTeamCount * smBudgets.sales_software_seat_cost;
 
+        // 1d. Demo Equipment Costs
+        // One-time demo equipment cost for new locations
+        if (newLocationsThisMonth.length > 0) {
+            totalAcquisitionCosts += newLocationsThisMonth.length * acqAssumptions.per_location.one_time_demo_equipment;
+        }
+        
+        // Annual demo equipment upkeep (monthly portion)
+        const totalLocations = this.state.locations.length;
+        totalAcquisitionCosts += (totalLocations * acqAssumptions.per_location.annual_demo_upkeep) / 12;
+
         // --- 2. OPERATIONAL COSTS ---
         let totalOperationalCosts = 0;
 
@@ -1073,11 +1271,16 @@ class UnifiedFinancialModel {
         const tech = opAssumptions.tech_and_it;
         totalOperationalCosts += tech.it_security_software_per_employee * this.personnelModel.team.length * operationalCostMultiplier;
         totalOperationalCosts += newHiresThisMonth.length * tech.new_hire_tech_kit * operationalCostMultiplier;
+        
+        // Training costs for new hires
+        totalOperationalCosts += newHiresThisMonth.length * tech.new_hire_training_cost * operationalCostMultiplier;
+        
+        // Ongoing training budget for all employees (annual cost spread monthly)
+        totalOperationalCosts += (this.personnelModel.team.length * tech.ongoing_training_budget_per_employee_annual / 12) * operationalCostMultiplier;
 
         // 2c. Location-Based Costs
         const locCosts = opAssumptions.per_location;
-        const newLocationsThisMonth = this.state.locations.filter(loc => loc.startMonth === month).length;
-        totalOperationalCosts += newLocationsThisMonth * locCosts.one_time_security_setup * operationalCostMultiplier;
+        totalOperationalCosts += newLocationsThisMonth.length * locCosts.one_time_security_setup * operationalCostMultiplier;
         totalOperationalCosts += this.state.locations.length * (locCosts.base_operational_costs + locCosts.annual_insurance / 12) * operationalCostMultiplier;
         
         // 2d. West Palm Commission (Special Case)
@@ -1102,9 +1305,15 @@ class UnifiedFinancialModel {
         
         const totalCosts = cleanUnallocatedSalaries + cleanAcquisitionCosts + cleanOperationalCosts + cleanEnhancedCosts;
         
-        // Debug logging
-        console.log(`Month ${month}: Salary: $${cleanUnallocatedSalaries}, Acquisition: $${cleanAcquisitionCosts}, Operational: $${cleanOperationalCosts}, Enhanced: $${cleanEnhancedCosts}, Total: $${totalCosts}`);
-        console.log(`Month ${month}: Enhanced cost analysis:`, enhancedCostAnalysis);
+        // Debug logging for first few months
+        if (month <= 3) {
+            console.log(`Month ${month} DETAILED COSTS:`);
+            console.log(`  New Locations This Month: ${newLocationsThisMonth.length}`);
+            console.log(`  Demo Equipment Costs: $${newLocationsThisMonth.length * acqAssumptions.per_location.one_time_demo_equipment}`);
+            console.log(`  Marketing Budget: Monthly marketing cost applied`);
+            console.log(`  Salary: $${cleanUnallocatedSalaries}, Acquisition: $${cleanAcquisitionCosts}, Operational: $${cleanOperationalCosts}, Enhanced: $${cleanEnhancedCosts}`);
+            console.log(`  Total: $${totalCosts}`);
+        }
         
         return { 
             totalCosts, 
@@ -1114,7 +1323,8 @@ class UnifiedFinancialModel {
                 totalOperationalCosts: cleanOperationalCosts,
                 enhancedTerritoryCosts: cleanEnhancedCosts
             },
-            enhancedCostAnalysis: enhancedCostAnalysis
+            enhancedCostAnalysis: enhancedCostAnalysis,
+            newHiresThisMonth: newHiresThisMonth
         };
     }
 }

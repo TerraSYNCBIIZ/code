@@ -310,6 +310,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             try {
                 console.log("Initializing financial pro forma...");
+                console.log("Checking if UnifiedFinancialModel exists:", typeof UnifiedFinancialModel);
+                console.log("Checking if assumptions exists:", typeof assumptions);
                 const model = new UnifiedFinancialModel(assumptions);
                 projections = model.runSimulation(60);
                 console.log("Simulation complete. Projections:", projections);
@@ -337,8 +339,12 @@
                                 <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">Total Clients</th>
                                 <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">Golf Clients</th>
                                 <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">Other Clients</th>
+                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(99, 102, 241, 0.15);">SaaS-Only Clients</th>
                                 <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%;">Total Acres</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">New Acres</th>
+                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(34, 197, 94, 0.15);">Golf Acres</th>
+                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(139, 92, 246, 0.15);">Other Acres</th>
+                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(34, 197, 94, 0.1);">New Acres (Existing)</th>
+                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(59, 130, 246, 0.1);">New Acres (New Clients)</th>
                                 <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(34, 197, 94, 0.2);">Service Rev</th>
                                 <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(34, 197, 94, 0.2);">Install Rev</th>
                                 <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(34, 197, 94, 0.2);">Product Rev</th>
@@ -387,8 +393,12 @@
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 500; font-size: 11px;">${projection.clients || 0}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 500; color: #22c55e; font-size: 11px;">${projection.golfClients || 0}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 500; color: #8b5cf6; font-size: 11px;">${projection.otherClients || 0}</td>
+                        <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 500; color: #6366f1; font-size: 11px;">${projection.saasOnlyClients || 0}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 600; font-size: 11px;">${Math.round(projection.totalAcres || 0).toLocaleString()}</td>
-                        <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: ${newAcres > 0 ? '#22c55e' : '#94a3b8'}; font-size: 11px;">${Math.round(newAcres).toLocaleString()}</td>
+                        <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: #22c55e; font-weight: 500; font-size: 11px;">${Math.round(projection.golfAcres || 0).toLocaleString()}</td>
+                        <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: #8b5cf6; font-weight: 500; font-size: 11px;">${Math.round((projection.totalAcres || 0) - (projection.golfAcres || 0)).toLocaleString()}</td>
+                        <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: ${(projection.existingClientGrowthAcres || 0) > 0 ? '#22c55e' : '#94a3b8'}; font-size: 11px;">${Math.round(projection.existingClientGrowthAcres || 0).toLocaleString()}</td>
+                        <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: ${(projection.newClientAcres || 0) > 0 ? '#3b82f6' : '#94a3b8'}; font-size: 11px;">${Math.round(projection.newClientAcres || 0).toLocaleString()}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: #22c55e; font-weight: 500; font-size: 11px;">$${Math.round(projection.revenues?.breakdown?.serviceRevenue || 0).toLocaleString()}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: #22c55e; font-weight: 500; font-size: 11px;">$${Math.round(projection.revenues?.breakdown?.installationRevenue || 0).toLocaleString()}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; color: #22c55e; font-weight: 500; font-size: 11px;">$${Math.round(projection.revenues?.breakdown?.productRevenue || 0).toLocaleString()}</td>
@@ -417,7 +427,7 @@
         }
 
         function exportToCSV() {
-            let csv = 'Month,Date,Locations,Total Clients,Golf Clients,Other Clients,Total Acres,New Acres,Service Revenue,Installation Revenue,Product Revenue,SaaS Revenue,Total Revenue,Salary Costs,Acquisition Costs,Operational Costs,Equipment & Facilities Costs,Total Costs,Net Cash Flow,Team Count,Cumulative ARR,Margin %\\n';
+            let csv = 'Month,Date,Locations,Total Clients,Golf Clients,Other Clients,SaaS-Only Clients,Total Acres,Golf Acres,Other Acres,New Acres (Existing),New Acres (New Clients),Service Revenue,Installation Revenue,Product Revenue,SaaS Revenue,Total Revenue,Salary Costs,Acquisition Costs,Operational Costs,Equipment & Facilities Costs,Total Costs,Net Cash Flow,Team Count,Cumulative ARR,Margin %\\n';
             
             projections.forEach((projection, index) => {
                 const date = new Date('2025-04-01T00:00:00Z');
@@ -435,7 +445,7 @@
                 const totalCosts = costs.totalCosts || 0;
                 const margin = revenue > 0 ? ((revenue - totalCosts) / revenue * 100) : 0;
                 
-                csv += `${projection.month},"${dateStr}",${projection.locations || 0},${projection.clients || 0},${projection.golfClients || 0},${projection.otherClients || 0},${Math.round(projection.totalAcres || 0)},${Math.round(newAcres)},${Math.round(projection.revenues?.breakdown?.serviceRevenue || 0)},${Math.round(projection.revenues?.breakdown?.installationRevenue || 0)},${Math.round(projection.revenues?.breakdown?.productRevenue || 0)},${Math.round(projection.revenues?.breakdown?.saasRevenue || 0)},${Math.round(projection.revenues?.total || 0)},${Math.round(breakdown.salaryCosts || 0)},${Math.round(breakdown.totalAcquisitionCosts || 0)},${Math.round(breakdown.totalOperationalCosts || 0)},${Math.round(breakdown.enhancedTerritoryCosts || 0)},${Math.round(costs.totalCosts || 0)},${Math.round(projection.netCashFlow || 0)},${projection.team || projection.teamCount || 0},${Math.round(projection.cumulativeARR || 0)},${margin.toFixed(1)}\\n`;
+                csv += `${projection.month},"${dateStr}",${projection.locations || 0},${projection.clients || 0},${projection.golfClients || 0},${projection.otherClients || 0},${projection.saasOnlyClients || 0},${Math.round(projection.totalAcres || 0)},${Math.round(projection.golfAcres || 0)},${Math.round((projection.totalAcres || 0) - (projection.golfAcres || 0))},${Math.round(projection.existingClientGrowthAcres || 0)},${Math.round(projection.newClientAcres || 0)},${Math.round(projection.revenues?.breakdown?.serviceRevenue || 0)},${Math.round(projection.revenues?.breakdown?.installationRevenue || 0)},${Math.round(projection.revenues?.breakdown?.productRevenue || 0)},${Math.round(projection.revenues?.breakdown?.saasRevenue || 0)},${Math.round(projection.revenues?.total || 0)},${Math.round(breakdown.salaryCosts || 0)},${Math.round(breakdown.totalAcquisitionCosts || 0)},${Math.round(breakdown.totalOperationalCosts || 0)},${Math.round(breakdown.enhancedTerritoryCosts || 0)},${Math.round(costs.totalCosts || 0)},${Math.round(projection.netCashFlow || 0)},${projection.team || projection.teamCount || 0},${Math.round(projection.cumulativeARR || 0)},${margin.toFixed(1)}\\n`;
             });
             
             const blob = new Blob([csv], { type: 'text/csv' });
