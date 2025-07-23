@@ -1,0 +1,772 @@
+<!-- KNOXBOTS ROI Calculator - Start -->
+<div id="knox-calculator-wrapper">
+  <!-- Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+  
+  <style>
+    /* Embedded CSS */
+    #knox-calculator-wrapper {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+      color: #222222;
+      line-height: 1.6;
+    }
+    
+    #knox-calculator-wrapper * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #knox-calculator-wrapper .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 25px;
+      perspective: 1000px;
+    }
+    
+    #knox-calculator-wrapper h1 {
+      font-size: 28px;
+      margin-top: 30px;
+      grid-column: 1 / -1;
+      grid-row: 1;
+      font-weight: 700;
+      font-style: italic;
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    
+    #knox-calculator-wrapper h1::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: #ed9708;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+    
+    #knox-calculator-wrapper .input-section {
+      grid-column: 1;
+      grid-row: 2;
+      padding: 10px 0;
+      transform: translateZ(0);
+      transition: transform 0.3s ease;
+      height: fit-content;
+    }
+    
+    #knox-calculator-wrapper .result-section {
+      grid-column: 2;
+      grid-row: 2;
+      background: #333333;
+      color: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 120px;
+      overflow: hidden;
+      transform: translateZ(0);
+      transition: transform 0.3s ease;
+      align-self: start;
+      height: fit-content;
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
+      border-top: 3px solid #ed9708;
+    }
+    
+    #knox-calculator-wrapper .slider-container {
+      margin-bottom: 24px;
+      padding: 0 0 5px 0;
+    }
+    
+    #knox-calculator-wrapper .slider-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      align-items: center;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: normal;
+      font-size: 15px;
+    }
+    
+    #knox-calculator-wrapper .slider-value {
+      font-weight: 600;
+      display: inline-block;
+      background: white;
+      color: #ed9708;
+      padding: 4px 10px;
+      border-radius: 5px;
+      border: 1px solid #ed9708;
+      margin-left: 12px;
+      min-width: 60px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(236, 150, 8, 0.1);
+    }
+    
+    #knox-calculator-wrapper .slider-endpoints {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #ffffff;
+      padding: 0 2px;
+    }
+    
+    #knox-calculator-wrapper .slider-endpoints span {
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+    
+    #knox-calculator-wrapper .slider-description {
+      font-size: 13px;
+      color: #ffffff;
+      margin-top: 6px;
+      font-weight: 400;
+    }
+    
+    #knox-calculator-wrapper input[type="range"] {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: #E2E8F0;
+      border-radius: 4px;
+      outline: none;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    
+    #knox-calculator-wrapper input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #ed9708;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(236, 150, 8, 0.3);
+      transition: transform 0.2s ease;
+    }
+    
+    #knox-calculator-wrapper input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+    }
+    
+    #knox-calculator-wrapper .result-item {
+      margin-bottom: 20px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #knox-calculator-wrapper .result-label {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      letter-spacing: normal;
+    }
+    
+    #knox-calculator-wrapper .result-value {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      color: #ffffff;
+      letter-spacing: normal;
+      line-height: 1.2;
+    }
+    
+    #knox-calculator-wrapper .result-section .savings {
+      background: linear-gradient(135deg, rgba(236, 150, 8, 0.15), rgba(244, 168, 48, 0.1));
+      border-color: rgba(236, 150, 8, 0.2);
+      margin: 25px 0;
+    }
+    
+    #knox-calculator-wrapper .cta-button {
+      background-color: #ed9708;
+      color: #222;
+      border: none;
+      padding: 12px 0;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: auto;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(236, 150, 8, 0.2);
+    }
+    
+    #knox-calculator-wrapper .cta-button:hover {
+      opacity: 0.9;
+    }
+    
+    #knox-calculator-wrapper .disclaimer {
+      margin-top: 24px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #ffffff;
+      text-align: left;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.03),
+        0 0 0 1px rgba(0, 0, 0, 0.04);
+      width: 100%;
+    }
+    
+    #knox-calculator-wrapper .disclaimer strong {
+      color: #ed9708;
+      font-weight: 600;
+    }
+    
+    #knox-calculator-wrapper .climate-selector {
+      margin-bottom: 24px;
+    }
+    
+    #knox-calculator-wrapper .selector-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    
+    #knox-calculator-wrapper .selector-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    
+    #knox-calculator-wrapper .zone-button {
+      background: transparent;
+      border: 1px solid #E2E8F0;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 5px;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex: 1;
+      text-align: center;
+    }
+    
+    #knox-calculator-wrapper .zone-button.active {
+      background: #ed9708;
+      border-color: #ed9708;
+      color: #222;
+      font-weight: 600;
+    }
+    
+    #knox-calculator-wrapper .zone-button:hover:not(.active) {
+      border-color: #ff9f0c;
+      color: #ed9708;
+    }
+    
+    #knox-calculator-wrapper .zone-description {
+      font-size: 13px;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      #knox-calculator-wrapper .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        perspective: none;
+      }
+      
+      #knox-calculator-wrapper h1 {
+        font-size: 22px;
+        margin-top: 0;
+        margin-bottom: 15px;
+        grid-row: 1;
+      }
+      
+      #knox-calculator-wrapper .input-section {
+        position: relative;
+        top: 0;
+        grid-row: 2;
+      }
+      
+      #knox-calculator-wrapper .result-section {
+        position: relative;
+        top: 0;
+        grid-row: 3;
+        max-height: none;
+        overflow-y: visible;
+      }
+      
+      #knox-calculator-wrapper {
+        padding: 15px;
+      }
+      
+      #knox-calculator-wrapper .result-value {
+        font-size: 24px;
+      }
+      
+      #knox-calculator-wrapper .cta-button {
+        padding: 12px 20px;
+        font-size: 13px;
+      }
+      
+      #knox-calculator-wrapper .result-item {
+        padding: 15px;
+      }
+      
+      #knox-calculator-wrapper .disclaimer {
+        margin-top: 20px;
+      }
+    }
+  </style>
+  
+  <div id="knox-calculator">
+    <div id="knox-root"></div>
+  </div>
+
+  <!-- React Dependencies -->
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+  
+  <!-- Main App -->
+  <script>
+    (function() {
+      // Constants for calculations
+      const ROBOT_BASE_COST = 40000;  // Base cost of robot
+      const ROBOT_MAINTENANCE_PERCENT = 0.05;  // 5% of base cost for annual maintenance
+      const ROBOT_MAINTENANCE = ROBOT_BASE_COST * ROBOT_MAINTENANCE_PERCENT;  // Annual maintenance
+      const ROBOT_DEPRECIATION_YEARS = 5;  // Years for depreciation
+      const ROBOT_ANNUAL_ELECTRICITY = 1000;  // Fixed annual electricity cost
+      const ROBOT_MONTHLY_SERVICE_FEE = 400;  // Monthly subscription and support fee
+      const ROBOT_ANNUAL_SERVICE_FEE = ROBOT_MONTHLY_SERVICE_FEE * 12;  // Annual service fee
+
+      // Traditional method costs
+      const TRADITIONAL_GANG_COST = 6000;  // Cost per gang
+      const UTV_COST = 15000;  // Cost of utility vehicle
+      const TRADITIONAL_MAINTENANCE_PERCENT = 0.1;  // 10% of equipment cost for maintenance
+      const TRADITIONAL_DEPRECIATION_YEARS = 4;  // Years for depreciation (changed from 3 to 4)
+      const TRADITIONAL_GAS_HOURLY = 1.5;  // Gallons per hour
+
+      // Operating days by climate zone
+      const OPERATING_DAYS = {
+        southern: 300,  // Longer growing season
+        transition: 240  // Shorter growing season
+      };
+
+      const DAYS_PER_YEAR = 365;
+
+      // Debounce function to prevent excessive calculations
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Format currency with proper rounding
+      function formatCurrency(value) {
+        // Handle edge cases
+        if (typeof value !== 'number' || !Number.isFinite(value)) {
+          return '0.00';
+        }
+        
+        // Round to 2 decimal places to avoid floating point issues
+        const roundedValue = Math.round(value * 100) / 100;
+        
+        return new Intl.NumberFormat('en-US', { 
+          style: 'decimal',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(roundedValue);
+      }
+
+      // Smooth animation function with RAF and proper timing
+      function animateValue(start, end, duration, callback) {
+        // Handle edge cases
+        if (typeof start !== 'number' || typeof end !== 'number' || 
+            !Number.isFinite(start) || !Number.isFinite(end)) {
+          callback(end);
+          return;
+        }
+
+        const startTime = performance.now();
+        let frameId;
+
+        const updateValue = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Smooth easing function
+          const easeOutQuart = 1 - (1 - progress) ** 4;
+          const current = start + (end - start) * easeOutQuart;
+          
+          callback(current);
+          
+          if (progress < 1) {
+            frameId = requestAnimationFrame(updateValue);
+          }
+        };
+        
+        frameId = requestAnimationFrame(updateValue);
+
+        // Cleanup function to cancel animation if needed
+        return () => {
+          if (frameId) {
+            cancelAnimationFrame(frameId);
+          }
+        };
+      }
+
+      // Slider component with enhanced stability
+      function Slider(props) {
+        const { label, min, max, value, step, onChange, unit, description, minLabel, maxLabel } = props;
+        const [isAnimating, setIsAnimating] = React.useState(false);
+        
+        const handleChange = React.useCallback((e) => {
+          const newValue = Number.parseFloat(e.target.value);
+          if (!Number.isNaN(newValue) && Number.isFinite(newValue)) {
+            onChange(newValue);
+            
+            // Add faster ripple effect to slider value
+            const valueElement = e.target.parentElement.querySelector('.slider-value');
+            if (valueElement && !isAnimating) {
+              setIsAnimating(true);
+              valueElement.style.transform = 'scale(1.1)';
+              setTimeout(() => {
+                valueElement.style.transform = 'scale(1)';
+                setIsAnimating(false);
+              }, 100);
+            }
+          }
+        }, [onChange, isAnimating]);
+        
+        return React.createElement(
+          'div',
+          { className: 'slider-container' },
+          React.createElement(
+            'div',
+            { className: 'slider-label' },
+            React.createElement('span', null, label),
+            React.createElement(
+              'span',
+              { 
+                className: 'slider-value',
+                style: { transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)' }
+              },
+              unit === '$' ? `$${value}` : `${value} ${unit}`
+            )
+          ),
+          React.createElement('input', {
+            type: 'range',
+            min: min,
+            max: max,
+            value: value,
+            step: step,
+            onChange: handleChange,
+            onInput: handleChange,
+            style: { 
+              touchAction: 'none',
+              WebkitAppearance: 'none',
+              cursor: 'pointer'
+            }
+          }),
+          React.createElement(
+            'div',
+            { className: 'slider-endpoints' },
+            React.createElement('span', null, minLabel || (unit === '$' ? `$${min}` : `${min} ${unit}`)),
+            React.createElement('span', null, maxLabel || (unit === '$' ? `$${max}` : `${max} ${unit}`))
+          ),
+          description && React.createElement('div', { className: 'slider-description' }, description)
+        );
+      }
+
+      // Enhanced Result Item component with additional info
+      function ResultItem(props) {
+        const { label, value, isSubLabel, isSavings, additionalInfo } = props;
+        const [displayValue, setDisplayValue] = React.useState(value);
+        const animationCleanupRef = React.useRef(null);
+        
+        React.useEffect(() => {
+          // Clean up previous animation if it exists
+          if (animationCleanupRef.current) {
+            animationCleanupRef.current();
+          }
+
+          try {
+            const start = Number.parseFloat(displayValue.replace(/,/g, ''));
+            const end = Number.parseFloat(value.replace(/,/g, ''));
+            
+            if (!Number.isNaN(start) && !Number.isNaN(end) && 
+                Number.isFinite(start) && Number.isFinite(end)) {
+              animationCleanupRef.current = animateValue(start, end, 200, (current) => {
+                setDisplayValue(formatCurrency(current));
+              });
+            } else {
+              setDisplayValue(value);
+            }
+          } catch (error) {
+            console.error('Animation error:', error);
+            setDisplayValue(value);
+          }
+
+          return () => {
+            if (animationCleanupRef.current) {
+              animationCleanupRef.current();
+            }
+          };
+        }, [value, displayValue]);
+
+        return React.createElement(
+          'div',
+          { className: `result-item${isSavings ? ' savings' : ''}` },
+          React.createElement('div', { className: 'result-label' }, label),
+          isSubLabel && React.createElement('div', { className: 'result-label' }, '*Including Depreciation*'),
+          React.createElement('div', { className: 'result-value' }, displayValue),
+          additionalInfo && React.createElement('div', { 
+            className: 'slider-description', 
+            style: { marginTop: '10px', fontSize: '12px' }
+          }, additionalInfo)
+        );
+      }
+
+      // Enhanced Disclaimer Component
+      function Disclaimer() {
+        return React.createElement(
+          'div',
+          { className: 'disclaimer' },
+          React.createElement('p', null, [
+            'This cost comparison tool by ',
+            React.createElement('strong', null, 'KNOXBOTS'),
+            ' is provided ',
+            React.createElement('strong', null, 'strictly for estimation purposes'),
+            ' and should ',
+            React.createElement('strong', null, 'not be considered as professional financial guidance or advisory services.'),
+            ' All estimates rely on data you provide, and real-world outcomes ',
+            React.createElement('strong', null, 'will likely differ'),
+            ' based on economic conditions, unexpected costs, and various operational factors not accounted for in this simplified model.'
+          ])
+        );
+      }
+
+      // Climate Zone selector component
+      function ClimateSelector(props) {
+        const { value, onChange } = props;
+        
+        return React.createElement(
+          'div',
+          { className: 'climate-selector' },
+          React.createElement('div', { className: 'selector-label' }, 'Climate Zone'),
+          React.createElement(
+            'div',
+            { className: 'selector-options' },
+            React.createElement(
+              'button',
+              {
+                type: 'button',
+                className: `zone-button${value === 'southern' ? ' active' : ''}`,
+                onClick: () => onChange('southern')
+              },
+              'Southern'
+            ),
+            React.createElement(
+              'button',
+              {
+                type: 'button',
+                className: `zone-button${value === 'transition' ? ' active' : ''}`,
+                onClick: () => onChange('transition')
+              },
+              'Transition'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'zone-description' },
+            value === 'southern' 
+              ? 'Longer growing season (~300 days/year)'
+              : 'Shorter growing season (~240 days/year)'
+          )
+        );
+      }
+
+      // Main App Component with enhanced interactivity
+      function App() {
+        const [gangs, setGangs] = React.useState(4);
+        const [hoursPerDay, setHoursPerDay] = React.useState(5);
+        const [gasPrice, setGasPrice] = React.useState(2.75);
+        const [hourlyWage, setHourlyWage] = React.useState(14.50);
+        const [climateZone, setClimateZone] = React.useState('southern');
+        
+        // Calculate results with memoization
+        const results = React.useMemo(() => {
+          const operatingDays = OPERATING_DAYS[climateZone];
+          const annualHours = hoursPerDay * operatingDays;
+          
+          // Calculate robotic costs (fixed annual costs independent of hours)
+          const robotDepreciation = ROBOT_BASE_COST / ROBOT_DEPRECIATION_YEARS;
+          const roboticAnnualCost = robotDepreciation + ROBOT_MAINTENANCE + ROBOT_ANNUAL_ELECTRICITY + ROBOT_ANNUAL_SERVICE_FEE;
+          
+          // Calculate traditional costs (these scale with hours)
+          const totalEquipmentCost = (gangs * TRADITIONAL_GANG_COST) + UTV_COST;
+          const equipmentDepreciation = totalEquipmentCost / TRADITIONAL_DEPRECIATION_YEARS;
+          const equipmentMaintenance = totalEquipmentCost * TRADITIONAL_MAINTENANCE_PERCENT;
+          const gasUsage = TRADITIONAL_GAS_HOURLY * annualHours * gasPrice;
+          const laborCost = hourlyWage * annualHours;
+          const traditionalAnnualCost = equipmentDepreciation + equipmentMaintenance + gasUsage + laborCost;
+          
+          // Calculate savings and ROI
+          const annualSavings = traditionalAnnualCost - roboticAnnualCost;
+          const roiPeriod = annualSavings > 0 ? ROBOT_BASE_COST / annualSavings : 0;
+          
+          return {
+            roboticAnnualCost,
+            traditionalAnnualCost,
+            annualSavings,
+            roiPeriod
+          };
+        }, [gangs, hoursPerDay, gasPrice, hourlyWage, climateZone]);
+        
+        return React.createElement(
+          'div',
+          { className: 'container' },
+          React.createElement('h1', null, 'Robotic Ball Picker ROI Calculator'),
+          React.createElement(
+            'div',
+            { className: 'input-section' },
+            React.createElement(ClimateSelector, {
+              value: climateZone,
+              onChange: setClimateZone
+            }),
+            React.createElement(Slider, {
+              label: "Number of Gangs",
+              min: 1,
+              max: 5,
+              value: gangs,
+              step: 1,
+              onChange: setGangs,
+              unit: "Gangs",
+              description: "How many Gangs do you currently use",
+              minLabel: "1 Gang",
+              maxLabel: "5 Gangs"
+            }),
+            React.createElement(Slider, {
+              label: "Hours per Day",
+              min: 0,
+              max: 14,
+              value: hoursPerDay,
+              step: 1,
+              onChange: setHoursPerDay,
+              unit: "Hours",
+              description: "How Many Hours per Day do You Pick",
+              minLabel: "0 Hours",
+              maxLabel: "14 Hours"
+            }),
+            React.createElement(Slider, {
+              label: "Gas Price",
+              min: 0,
+              max: 8,
+              value: gasPrice,
+              step: 0.01,
+              onChange: setGasPrice,
+              unit: "$",
+              description: "Cost of Gas Per Gallon",
+              minLabel: "$0",
+              maxLabel: "$8"
+            }),
+            React.createElement(Slider, {
+              label: "Hourly Wage",
+              min: 0,
+              max: 42.5,
+              value: hourlyWage,
+              step: 0.05,
+              onChange: setHourlyWage,
+              unit: "$",
+              description: "How Much does The Employee Make Per Hour",
+              minLabel: "$0",
+              maxLabel: "$42.5"
+            }),
+            React.createElement(Disclaimer)
+          ),
+          
+          React.createElement(
+            'div',
+            { className: 'result-section' },
+            React.createElement(ResultItem, {
+              label: 'Robotic Annual Cost',
+              value: `$${formatCurrency(results.roboticAnnualCost)}`,
+              isSubLabel: true
+            }),
+            React.createElement(ResultItem, {
+              label: 'Traditional Annual Cost',
+              value: `$${formatCurrency(results.traditionalAnnualCost)}`,
+              isSubLabel: true,
+              additionalInfo: 'Variable costs depend on usage hours'
+            }),
+            React.createElement(ResultItem, {
+              label: 'Savings Per Year',
+              value: `$${formatCurrency(results.annualSavings)}`,
+              isSavings: true
+            }),
+            React.createElement(ResultItem, {
+              label: 'ROI Period (Years)',
+              value: formatCurrency(results.roiPeriod)
+            }),
+            React.createElement(
+              'a',
+              {
+                className: 'cta-button',
+                href: 'https://www.knoxbots.com/book/0489b56a',
+                target: '_blank',
+                rel: 'noopener noreferrer'
+              },
+              'GET STARTED'
+            )
+          )
+        );
+      }
+
+      // Initialize App once the DOM is ready
+      function initKnoxCalculator() {
+        if (document.getElementById('knox-root')) {
+          ReactDOM.render(
+            React.createElement(App),
+            document.getElementById('knox-root')
+          );
+        }
+      }
+
+      // Run initialization when DOM is ready or when invoked
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initKnoxCalculator);
+      } else {
+        initKnoxCalculator();
+      }
+    })();
+  </script>
+</div>
+<!-- KNOXBOTS ROI Calculator - End -->

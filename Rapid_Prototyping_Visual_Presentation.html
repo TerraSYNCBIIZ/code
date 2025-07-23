@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Prototyping Masterclass - TERRASYNC Case Study</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff20" points="0,0 1000,300 1000,1000 0,700"/><polygon fill="%23ffffff15" points="100,100 900,400 900,900 100,600"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content p {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            opacity: 1;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.05rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00ff88;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .section:nth-child(odd) {
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Customer Journey Visualization */
+        .journey-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .journey-step {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .journey-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .journey-step .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .journey-step h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .journey-step p {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        /* Value/Cost Matrix */
+        .matrix-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .matrix-header {
+            font-weight: 700;
+            padding: 1rem;
+            background: #667eea;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .matrix-cell {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .matrix-cell.high-priority {
+            background: #68d391;
+            color: white;
+            border-color: #38a169;
+        }
+
+        .matrix-cell.medium-priority {
+            background: #fbd38d;
+            color: #744210;
+            border-color: #ed8936;
+        }
+
+        .matrix-cell.low-priority {
+            background: #fed7d7;
+            color: #c53030;
+            border-color: #e53e3e;
+        }
+
+        /* Technology Stack Visual */
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .tech-card:hover::before {
+            opacity: 1;
+            animation: shine 0.5s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-benefit {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -20px;
+            border-left-color: white;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -20px;
+            border-right-color: white;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -60px;
+        }
+
+        /* Workshop Section */
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .workshop-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workshop-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .workshop-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tool-icon {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .tool-icon i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Call to Action */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #00ff88;
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Chart Containers */
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            position: relative;
+            height: 400px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+            .workshop-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item { width: calc(100% - 40px); left: 40px !important; text-align: left; }
+            .timeline-item::after { left: -20px !important; border-right-color: white !important; border-left-color: transparent !important; }
+            .timeline-dot { left: -60px !important; }
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-aos="fade-up">Rapid Prototyping Masterclass</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">From Idea to Revenue-Generating Platform</p>
+                <p data-aos="fade-up" data-aos-delay="400" style="font-size: 1.8rem; margin-bottom: 2rem;">Startup Studio Week 6</p>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Discovery Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Phase 1: Deep Customer Understanding</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #718096; margin-bottom: 2rem;" data-aos="fade-up" data-aos-delay="200">
+                "I didn't build a product. I became friends with my customers."
+            </p>
+            
+            <div class="journey-container">
+                <div class="journey-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">1</div>
+                    <h3>Who Is My Customer?</h3>
+                    <p>Golf course superintendents, commercial property managers, university groundskeepers, corporate campus facilities</p>
+                </div>
+                <div class="journey-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">2</div>
+                    <h3>How Do They Think?</h3>
+                    <p>Pain-driven decision making, budget-conscious but ROI-focused, technology-hesitant but efficiency-hungry</p>
+                </div>
+                <div class="journey-step" data-aos="fade-up" data-aos-delay="500">
+                    <div class="step-number">3</div>
+                    <h3>What Do They Want?</h3>
+                    <p>NOT just robotic mowers - they want ONE dashboard that controls EVERYTHING</p>
+                </div>
+            </div>
+
+            <!-- Customer Interview Questions -->
+            <div style="background: #f7fafc; border-radius: 15px; padding: 2rem; margin: 2rem 0;" data-aos="fade-up" data-aos-delay="600">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Customer Interview Framework</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h4 style="color: #667eea; margin-bottom: 1rem;">Current State Questions</h4>
+                        <ul style="color: #718096;">
+                            <li>"Walk me through your worst maintenance day"</li>
+                            <li>"What takes the most time in your week?"</li>
+                            <li>"Where do you lose the most money?"</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #667eea; margin-bottom: 1rem;">Dream State Questions</h4>
+                        <ul style="color: #718096;">
+                            <li>"If you had unlimited budget, what would change?"</li>
+                            <li>"What would make you look like a hero?"</li>
+                            <li>"What keeps you up at night?"</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #667eea; margin-bottom: 1rem;">Solution Validation</h4>
+                        <ul style="color: #718096;">
+                            <li>"Would you pay $X for Y solution?"</li>
+                            <li>"What would need to be true to switch?"</li>
+                            <li>"Who else needs to approve this?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Definition Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Phase 2: Problem Definition & Scope Narrowing</h2>
+            
+            <!-- Problem Stack -->
+            <div style="text-align: center; margin: 2rem 0;" data-aos="fade-up" data-aos-delay="200">
+                <div style="display: inline-block; background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; border-radius: 10px; padding: 1rem 2rem; margin: 0.5rem;">
+                    Surface Problem: "Robotic mowers are hard to manage"
+                </div>
+                <div style="margin: 1rem 0; font-size: 2rem;">↓</div>
+                <div style="display: inline-block; background: linear-gradient(135deg, #ffa726, #ff9800); color: white; border-radius: 10px; padding: 1rem 2rem; margin: 0.5rem;">
+                    Real Problem: "Operations are fragmented across systems"
+                </div>
+                <div style="margin: 1rem 0; font-size: 2rem;">↓</div>
+                <div style="display: inline-block; background: linear-gradient(135deg, #66bb6a, #4caf50); color: white; border-radius: 10px; padding: 1rem 2rem; margin: 0.5rem;">
+                    Core Problem: "No unified intelligence layer"
+                </div>
+            </div>
+
+            <!-- Value/Cost Matrix -->
+            <div class="matrix-container" data-aos="fade-up" data-aos-delay="400">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Value/Cost Decision Matrix</h3>
+                <div class="matrix-grid">
+                    <div class="matrix-header">Solution Component</div>
+                    <div class="matrix-header">Implementation Cost</div>
+                    <div class="matrix-header">Customer Value</div>
+                    <div class="matrix-header">Priority</div>
+                    
+                    <div class="matrix-cell">Unified Dashboard</div>
+                    <div class="matrix-cell">LOW</div>
+                    <div class="matrix-cell">HIGH</div>
+                    <div class="matrix-cell high-priority">✅ MVP</div>
+                    
+                    <div class="matrix-cell">Real-time GPS</div>
+                    <div class="matrix-cell">MEDIUM</div>
+                    <div class="matrix-cell">HIGH</div>
+                    <div class="matrix-cell high-priority">✅ MVP</div>
+                    
+                    <div class="matrix-cell">Multi-brand Integration</div>
+                    <div class="matrix-cell">HIGH</div>
+                    <div class="matrix-cell">HIGH</div>
+                    <div class="matrix-cell medium-priority">🔄 Phase 2</div>
+                    
+                    <div class="matrix-cell">AI Scheduling</div>
+                    <div class="matrix-cell">HIGH</div>
+                    <div class="matrix-cell">MEDIUM</div>
+                    <div class="matrix-cell medium-priority">🔄 Phase 3</div>
+                    
+                    <div class="matrix-cell">Billing Automation</div>
+                    <div class="matrix-cell">LOW</div>
+                    <div class="matrix-cell">LOW</div>
+                    <div class="matrix-cell low-priority">❌ Later</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Phase 3: Rapid MVP Development</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #718096; margin-bottom: 2rem;" data-aos="fade-up" data-aos-delay="200">
+                "Speed beats perfection every time"
+            </p>
+
+            <div class="tech-stack">
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tech-icon"><i class="fab fa-react"></i></div>
+                    <div class="tech-name">React + Tailwind</div>
+                    <div class="tech-benefit">60% faster development</div>
+                </div>
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="tech-icon"><i class="fas fa-fire"></i></div>
+                    <div class="tech-name">Firebase</div>
+                    <div class="tech-benefit">80% time saved vs custom backend</div>
+                </div>
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="tech-icon"><i class="fas fa-map"></i></div>
+                    <div class="tech-name">Google Maps API</div>
+                    <div class="tech-benefit">90% time saved vs custom mapping</div>
+                </div>
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="tech-icon"><i class="fas fa-database"></i></div>
+                    <div class="tech-name">Firestore</div>
+                    <div class="tech-benefit">70% time saved vs PostgreSQL</div>
+                </div>
+            </div>
+
+            <!-- MVP Timeline -->
+            <div class="timeline" data-aos="fade-up" data-aos-delay="700">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Week 1-2</h3>
+                        <p>Firebase setup + basic UI</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Week 3-4</h3>
+                        <p>Google Maps integration</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Week 5-6</h3>
+                        <p>Real-time data pipeline</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Week 7-8</h3>
+                        <p>Customer testing + feedback</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Week 9-12</h3>
+                        <p>Refinement + first pilot customer</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Chart Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Phase 4: Market Validation & Growth</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div class="chart-container" data-aos="fade-up" data-aos-delay="300">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">Revenue Growth Trajectory</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart-container" data-aos="fade-up" data-aos-delay="400">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">Market Opportunity</h3>
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Success Metrics -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div style="background: linear-gradient(135deg, #4CAF50, #45a049); color: white; border-radius: 15px; padding: 2rem; text-align: center;" data-aos="fade-up" data-aos-delay="500">
+                    <h3>Customer Retention</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700;">100%</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #2196F3, #1976D2); color: white; border-radius: 15px; padding: 2rem; text-align: center;" data-aos="fade-up" data-aos-delay="600">
+                    <h3>Pilot Success</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700;">2 Sites</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #FF9800, #F57C00); color: white; border-radius: 15px; padding: 2rem; text-align: center;" data-aos="fade-up" data-aos-delay="700">
+                    <h3>Proof of Concept</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700;">✓ Proven</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Hands-On Workshop: Build Your MVP</h2>
+            
+            <div class="workshop-grid">
+                <div class="workshop-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Essential Tools Setup</h3>
+                    <div class="workshop-tools">
+                        <div class="tool-icon">
+                            <i class="fab fa-github"></i>
+                            <div style="font-size: 0.8rem;">GitHub</div>
+                        </div>
+                        <div class="tool-icon">
+                            <i class="fas fa-code"></i>
+                            <div style="font-size: 0.8rem;">Cursor IDE</div>
+                        </div>
+                        <div class="tool-icon">
+                            <i class="fab fa-git-alt"></i>
+                            <div style="font-size: 0.8rem;">Git</div>
+                        </div>
+                        <div class="tool-icon">
+                            <i class="fab fa-node-js"></i>
+                            <div style="font-size: 0.8rem;">Node.js</div>
+                        </div>
+                    </div>
+                    <p>Get everyone set up with the development environment</p>
+                </div>
+                
+                <div class="workshop-card" data-aos="fade-up" data-aos-delay="400" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <h3>Product Definition Exercise</h3>
+                    <div style="text-align: left; margin: 1rem 0;">
+                        <div style="margin: 0.5rem 0;">✅ Core product in one sentence</div>
+                        <div style="margin: 0.5rem 0;">✅ Primary customer identified</div>
+                        <div style="margin: 0.5rem 0;">✅ Biggest pain point defined</div>
+                        <div style="margin: 0.5rem 0;">✅ Dream outcome clarified</div>
+                        <div style="margin: 0.5rem 0;">✅ Micro-product scoped</div>
+                    </div>
+                    <p>Define your buildable 2-4 week MVP</p>
+                </div>
+            </div>
+
+            <!-- MCP Integration Explanation -->
+            <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; border-radius: 20px; padding: 3rem; margin: 3rem 0; text-align: center;" data-aos="fade-up" data-aos-delay="500">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">MCP: Model Context Protocol</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Standardized way for AI models to interact with external tools</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h4>AI Agents Help Build</h4>
+                        <p>Your product development process</p>
+                    </div>
+                    <div>
+                        <h4>Automated Testing</h4>
+                        <p>Continuous deployment pipeline</p>
+                    </div>
+                    <div>
+                        <h4>Documentation Generation</h4>
+                        <p>Auto-generated API docs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Formula Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">The Rapid Prototyping Formula</h2>
+            
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px; padding: 3rem; text-align: center; margin: 2rem 0;" data-aos="fade-up" data-aos-delay="300">
+                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem;">
+                    Customer Understanding + Problem Focus + Speed Tools + Market Validation = Success
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1.5rem;">
+                        <h4>Customer-First</h4>
+                        <p>Became friends before building</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1.5rem;">
+                        <h4>Ruthless Scope</h4>
+                        <p>Said NO to 80% of ideas</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1.5rem;">
+                        <h4>Speed Tools</h4>
+                        <p>Firebase + React for velocity</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1.5rem;">
+                        <h4>Proof Over Perfect</h4>
+                        <p>Revenue > theoretical planning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2 data-aos="fade-up">Ready to Build Your MVP?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;" data-aos="fade-up" data-aos-delay="200">
+                Turn your idea into revenue in 4 weeks
+            </p>
+            <div data-aos="fade-up" data-aos-delay="400">
+                <a href="https://github.com/TerraSYNCBIIZ/TERRASYNC" class="cta-button">
+                    <i class="fab fa-github"></i> Get the Starter Kit
+                </a>
+            </div>
+            <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;" data-aos="fade-up" data-aos-delay="600">
+                Wesley Pitts | wesleypitts@terrasync.biz | KnoxBots LLC (DBA TerraSYNC)
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Revenue Growth Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['May 2024', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan 2025'],
+                datasets: [{
+                    label: 'Monthly Revenue ($)',
+                    data: [0, 708, 1416, 2124, 2832, 3540, 3658, 3658, 3658],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Market Opportunity Chart
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        new Chart(marketCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Current (62 acres)', 'Available Market (23,000+ acres)'],
+                datasets: [{
+                    data: [62, 22938],
+                    backgroundColor: ['#667eea', '#e2e8f0'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for additional animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animations
+        document.querySelectorAll('.fade-in-up, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive elements
+        document.querySelectorAll('.metric-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px) scale(1)';
+            });
+        });
+
+        // Add click analytics (placeholder)
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('CTA clicked:', this.textContent);
+                // Add actual analytics tracking here
+            });
+        });
+    </script>
+</body>
+</html> 

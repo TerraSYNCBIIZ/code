@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNOXBOTS MaintainME Plan</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        :root {
+            --primary: #ed9708; /* KNOXBOTS Orange */
+            --secondary: #58595B; /* Smokey Gray */
+            --accent: #000000; /* Black */
+            --text-dark: #333333;
+            --text-light: #58595B; 
+            --white: #FFFFFF;
+            --light-bg: #f8f8f8;
+            --box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .brochure {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            height: 2.5in;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-image: url('https://images.unsplash.com/photo-1580982327559-c1202864eb05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            z-index: 1;
+        }
+        
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-image {
+            width: 250px;
+            height: auto;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 0 2rem;
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Content */
+        .content {
+            padding: 1rem 1.5rem;
+        }
+        
+        .tagline {
+            text-align: center;
+            padding: 1.5rem 0;
+            position: relative;
+        }
+        
+        .tagline h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .tagline p {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(237, 151, 8, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+        
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+        
+        /* Pricing and Tiers */
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .pricing-header {
+            background-color: var(--primary);
+            padding: 1.25rem;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .pricing-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .pricing-content {
+            padding: 1.5rem;
+            background-color: var(--white);
+        }
+        
+        .price-tag {
+            display: flex;
+            align-items: baseline;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-left: 0.25rem;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-footer {
+            padding: 1rem 1.5rem;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Service Tiers */
+        .tiers-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .tiers-header {
+            background-color: var(--primary);
+            padding: 1.25rem;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .tiers-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tiers-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .tiers-content {
+            padding: 1.5rem;
+            background-color: var(--white);
+        }
+        
+        .tier {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .tier:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .tier-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(237, 151, 8, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 0.9rem;
+            margin-right: 0.75rem;
+        }
+        
+        .tier h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .tier p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            padding-left: calc(30px + 0.75rem);
+            line-height: 1.5;
+        }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), #d68000);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .cta::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--accent);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        /* Print button */
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .print-button:hover {
+            background-color: #d68000;
+            transform: translateY(-2px);
+        }
+        
+        /* Print styles */
+        @media print {
+            @page {
+                size: letter;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .brochure {
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            .print-button {
+                display: none;
+            }
+            
+            /* Ensure page fits on single sheet */
+            .content {
+                overflow: visible;
+            }
+            
+            .features {
+                page-break-inside: avoid;
+            }
+            
+            .info-section {
+                page-break-inside: avoid;
+            }
+            
+            .cta {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Logo styling */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-triangle {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .logo-inner {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid var(--primary);
+            transform: rotate(60deg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-text {
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-knox {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-bots {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            color: white;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <div class="header">
+            <div class="logo-container">
+                <svg width="250" height="100" viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="2"/>
+                    <path d="M50 15 L85 75 L15 75 Z" fill="#ed9708" transform="rotate(30 50 50)"/>
+                    <text x="110" y="45" fill="#ed9708" font-family="Roboto" font-size="35" font-weight="700">KNOX</text>
+                    <text x="110" y="80" fill="white" font-family="Roboto" font-size="35" font-weight="700">BOTS</text>
+                    <text x="110" y="95" fill="white" font-family="Roboto" font-size="8" letter-spacing="2" font-weight="500">ROBOTIC MOWING</text>
+                </svg>
+            </div>
+            <div class="header-content">
+                <h1>MaintainME Plan</h1>
+                <p>Professional Care for Your Robotic Mower Investment</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="tagline" data-aos="fade-up">
+                <h2>Comprehensive Maintenance Coverage</h2>
+                <p>Our MaintainME plan delivers worry-free robotic lawn care with end-to-end professional support for 3 years.</p>
+            </div>
+            
+            <div class="features" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>3-Year Coverage</h3>
+                    <p>Comprehensive parts and labor coverage for manufacturer defects and normal wear and tear for your entire system.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Rapid Response</h3>
+                    <p>Guaranteed on-site service within 48-72 hours (business days) of your confirmed service request.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="feature-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Blade Replacements</h3>
+                    <p>Regular blade replacements and comprehensive system checkups based on your selected service tier.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Remote Monitoring</h3>
+                    <p>Continuous performance monitoring to proactively identify and address potential issues before they affect operation.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Training & Support</h3>
+                    <p>Unlimited phone support and on-site training to help you maximize your equipment's efficiency and effectiveness.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>50% Reinstallation Discount</h3>
+                    <p>One-time 50% discount on complete reinstallation during your 3-year term if you move or reconfigure your property.</p>
+                </div>
+            </div>
+            
+            <div class="info-section" data-aos="fade-up">
+                <div class="pricing-container">
+                    <div class="pricing-header">
+                        <h2>Simple, Transparent Pricing</h2>
+                        <p>Premium service at an affordable monthly rate</p>
+                    </div>
+                    <div class="pricing-content">
+                        <div class="price-tag">
+                            <div class="price">$100</div>
+                            <div class="price-period">/month</div>
+                        </div>
+                        <div class="price-note">for the first acre</div>
+                        
+                        <div class="price-tag">
+                            <div class="price">$59</div>
+                            <div class="price-period">/month</div>
+                        </div>
+                        <div class="price-note">for each additional acre</div>
+                    </div>
+                    <div class="pricing-footer">
+                        All with a simple 3-year agreement that aligns with your comprehensive coverage period.
+                    </div>
+                </div>
+                
+                <div class="tiers-container">
+                    <div class="tiers-header">
+                        <h2>Service Tiers</h2>
+                        <p>Choose the blade replacement schedule that fits your needs</p>
+                    </div>
+                    <div class="tiers-content">
+                        <div class="tier">
+                            <div class="tier-header">
+                                <div class="tier-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <h3>Athletic Tier</h3>
+                            </div>
+                            <p>Blade replacement every two weeks. Ideal for golf courses, sports fields, and premium properties.</p>
+                        </div>
+                        
+                        <div class="tier">
+                            <div class="tier-header">
+                                <div class="tier-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <h3>Pro Tier</h3>
+                            </div>
+                            <p>Blade replacement every four weeks. Perfect for businesses, schools, and high-standard residential properties.</p>
+                        </div>
+                        
+                        <div class="tier">
+                            <div class="tier-header">
+                                <div class="tier-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h3>Residential Tier</h3>
+                            </div>
+                            <p>Blade replacement every six weeks. Great for standard residential lawns with normal usage patterns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta" data-aos="fade-up">
+                <div class="cta-content">
+                    <h2>Ready to Maintain Your Mower?</h2>
+                    <p>Contact us today to set up your MaintainME plan and enjoy worry-free robotic lawn care for years to come.</p>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <p>(865) 888-0049</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p>hello@knoxbots.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p>121 E Jackson Ave, Box 4<br>Knoxville, TN 37915</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 KNOXBOTS, LLC. All rights reserved.</p>
+        </div>
+    </div>
+    
+    <button class="print-button no-print" onclick="window.print()">
+        <i class="fas fa-print"></i> Print Brochure
+    </button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        });
+    </script>
+</body>
+</html> 

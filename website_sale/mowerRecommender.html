@@ -1,0 +1,923 @@
+<div id="knoxbots-recommender-container">
+  <style>
+    #knoxbots-recommender-container {
+      font-family: 'Montserrat', sans-serif;
+      max-width: 1400px;
+      margin: 12px auto;
+      background-color: #333;
+      border-radius: 6px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      border-top: 2px solid #EC9608;
+      overflow: hidden;
+      color: white;
+    }
+    
+    #knoxbots-recommender-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #knoxbots-recommender-container .recommender-title {
+      background: linear-gradient(to bottom, rgba(236, 150, 8, 0.95), rgba(236, 150, 8, 0.85));
+      color: #222;
+      text-align: center;
+      padding: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    #knoxbots-recommender-container .recommender-content {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
+    
+    #knoxbots-recommender-container .input-group {
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    #knoxbots-recommender-container .input-label {
+      font-weight: 600;
+      font-size: 12px;
+      width: 50%;
+      align-self: center;
+    }
+    
+    #knoxbots-recommender-container .input-value-box {
+      background-color: white;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 5px 8px;
+      font-weight: 600;
+      font-size: 12px;
+      width: 85px;
+      text-align: center;
+      margin-left: auto;
+    }
+    
+    #knoxbots-recommender-container .slider-row {
+      width: 100%;
+      margin-top: 5px;
+      position: relative;
+    }
+    
+    #knoxbots-recommender-container .slider-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #knoxbots-recommender-container .input-range {
+      width: 100%;
+      height: 5px;
+      background: #C4B095;
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 3px;
+      margin: 6px 0;
+    }
+    
+    #knoxbots-recommender-container .input-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+    }
+    
+    #knoxbots-recommender-container .input-range::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+    }
+    
+    #knoxbots-recommender-container .range-values {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    #knoxbots-recommender-container .description {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      margin-left: auto;
+      text-align: right;
+      margin-top: 3px;
+      max-width: 70%;
+    }
+    
+    #knoxbots-recommender-container .find-btn {
+      background-color: #EC9608;
+      color: #222;
+      border: none;
+      padding: 7px 0;
+      border-radius: 3px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      margin: 10px 0 20px;
+      transition: opacity 0.2s;
+    }
+    
+    #knoxbots-recommender-container .find-btn:hover {
+      opacity: 0.9;
+    }
+    
+    #knoxbots-recommender-container .results-container {
+      display: none;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+    }
+    
+    #knoxbots-recommender-container .results-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    
+    #knoxbots-recommender-container .mower-recommendation {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    
+    #knoxbots-recommender-container .mower-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #EC9608;
+      margin-bottom: 5px;
+    }
+    
+    #knoxbots-recommender-container .mower-details {
+      font-size: 10px;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    #knoxbots-recommender-container .mower-capacity {
+      font-weight: 600;
+      font-size: 11px;
+      margin-top: 5px;
+    }
+    
+    #knoxbots-recommender-container .no-results {
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    #knoxbots-recommender-container .cta-button {
+      background-color: #EC9608;
+      color: #222;
+      border: none;
+      padding: 7px 0;
+      border-radius: 3px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 20px;
+      transition: opacity 0.2s;
+    }
+    
+    #knoxbots-recommender-container .cta-button:hover {
+      opacity: 0.9;
+    }
+    
+    /* Mobile responsive styling */
+    @media (max-width: 700px) {
+      #knoxbots-recommender-container .input-label {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      #knoxbots-recommender-container .input-value-box {
+        margin-left: 0;
+      }
+      
+      #knoxbots-recommender-container .description {
+        margin-left: 0;
+        text-align: left;
+        max-width: 100%;
+      }
+    }
+  </style>
+  
+  <div class="recommender-title">Find Your Perfect KNOXBOTS Mower</div>
+  
+  <div class="recommender-content">
+    <!-- Lawn Size Input -->
+    <div class="input-group">
+      <div class="input-label">Total Lawn Size (acres)</div>
+      <input type="text" class="input-value-box" id="lawn-size-value" value="1.0">
+      
+      <div class="slider-row">
+        <div class="slider-container">
+          <input type="range" min="0.1" max="50" value="1.0" step="0.1" class="input-range" id="lawn-size">
+          <div class="range-values">
+            <span>0.1</span>
+            <span>50</span>
+          </div>
+        </div>
+        <div class="description">Total area that needs to be mowed weekly</div>
+      </div>
+    </div>
+    
+    <!-- Sloped Area Input -->
+    <div class="input-group">
+      <div class="input-label">Sloped Area (acres)</div>
+      <input type="text" class="input-value-box" id="sloped-area-value" value="0.5">
+      
+      <div class="slider-row">
+        <div class="slider-container">
+          <input type="range" min="0" max="50" value="0.5" step="0.1" class="input-range" id="sloped-area">
+          <div class="range-values">
+            <span>0</span>
+            <span id="max-slope-area">1.0</span>
+          </div>
+        </div>
+        <div class="description">How much of your lawn is on a slope</div>
+      </div>
+    </div>
+    
+    <!-- Lawn Slope Input -->
+    <div class="input-group">
+      <div class="input-label">Maximum Lawn Slope (%)</div>
+      <input type="text" class="input-value-box" id="lawn-slope-value" value="10">
+      
+      <div class="slider-row">
+        <div class="slider-container">
+          <input type="range" min="0" max="45" value="10" step="1" class="input-range" id="lawn-slope">
+          <div class="range-values">
+            <span>0%</span>
+            <span>45%</span>
+          </div>
+        </div>
+        <div class="description">Maximum steepness of your sloped areas (35% is the maximum any robotic mower can handle)</div>
+      </div>
+    </div>
+    
+    <button class="find-btn" id="find-mowers-btn">Find My Mower</button>
+    
+    <div class="results-container" id="results-container">
+      <div class="results-title">Recommended Mowers for Your Lawn</div>
+      
+      <div id="recommendations-list">
+        <!-- Recommendations will be added here by JavaScript -->
+      </div>
+      
+      <button class="cta-button" onclick="window.location.href='https://www.terrasync.biz/appointment/3?'">Request A Consultation</button>
+    </div>
+  </div>
+  
+  <script>
+    (function() {
+      // Input elements
+      const lawnSize = document.getElementById('lawn-size');
+      const lawnSlope = document.getElementById('lawn-slope');
+      const slopedArea = document.getElementById('sloped-area');
+      
+      // Value display elements
+      const lawnSizeValue = document.getElementById('lawn-size-value');
+      const lawnSlopeValue = document.getElementById('lawn-slope-value');
+      const slopedAreaValue = document.getElementById('sloped-area-value');
+      const maxSlopeArea = document.getElementById('max-slope-area');
+      
+      // Results and buttons
+      const findBtn = document.getElementById('find-mowers-btn');
+      const resultsContainer = document.getElementById('results-container');
+      const recommendationsList = document.getElementById('recommendations-list');
+      
+      // Mower database with weekly capacity and slope capability
+      const mowers = [
+        {
+          name: "CEORA",
+          capacity: 23.55, // acres per week (adjusted for 2x mowing)
+          maxSlope: 10,    // percent
+          price: 32000,    // dollars
+          details: "Commercial grade mower for very large flat areas, with high capacity and extended battery life.",
+          needsReferenceStation: true
+        },
+        {
+          name: "HUSQVARNA 550 EPOS",
+          capacity: 3.16,
+          maxSlope: 15,
+          price: 5300,
+          details: "Satellite navigation with boundary wires for precise and repeatable mowing patterns on medium to large areas.",
+          needsReferenceStation: true
+        },
+        {
+          name: "HUSQVARNA 535 AWD EPOS",
+          capacity: 2.24,
+          maxSlope: 35,
+          price: 5000,
+          details: "All-wheel drive model with satellite navigation, perfect for challenging terrain and slopes.",
+          needsReferenceStation: true
+        },
+        {
+          name: "HUSQVARNA 535 AWD",
+          capacity: 1.22,
+          maxSlope: 35,
+          price: 3000,
+          details: "Robust all-wheel drive model that handles steep slopes and uneven terrain with excellent traction.",
+          needsReferenceStation: false
+        },
+        {
+          name: "HUSQVARNA 520 EPOS",
+          capacity: 1.61,
+          maxSlope: 15,
+          price: 3300,
+          details: "Satellite navigation model for smaller lawns with good precision and no boundary wires needed.",
+          needsReferenceStation: true
+        },
+        {
+          name: "KRESS 236",
+          capacity: 7.74,
+          maxSlope: 20,
+          price: 13800,
+          details: "High-capacity commercial mower with fast charging technology for large properties.",
+          needsReferenceStation: false
+        },
+        {
+          name: "KRESS 233",
+          capacity: 4.38,
+          maxSlope: 20,
+          price: 10800,
+          details: "Medium to large area mower with efficient operation and good slope handling capabilities.",
+          needsReferenceStation: false
+        },
+        {
+          name: "KRESS 174",
+          capacity: 1.75,
+          maxSlope: 20,
+          price: 5200,
+          details: "Compact but capable mower for small to medium sized lawns with moderate slopes.",
+          needsReferenceStation: false
+        },
+        {
+          name: "HUSQVARNA 550",
+          capacity: 1.58,
+          maxSlope: 15,
+          price: 3300,
+          details: "Reliable mid-range mower for small to medium lawns with standard navigation and good features.",
+          needsReferenceStation: false
+        },
+        {
+          name: "HUSQVARNA 520",
+          capacity: 0.81,
+          maxSlope: 15,
+          price: 2100,
+          details: "Entry-level robotic mower for smaller flat lawns, easy to set up and operate.",
+          needsReferenceStation: false
+        }
+      ];
+      
+      // Reference station cost
+      const REFERENCE_STATION_COST = 900; // $ per station
+      const ACRES_PER_REFERENCE_STATION = 15; // One station covers 15 acres
+      
+      // Calculate installation costs based on acreage
+      function calculateInstallationCost(acres) {
+        if (acres < 5) {
+          return acres * 800;
+        } else if (acres < 25) {
+          return acres * 700;
+        } else {
+          return acres * 600;
+        }
+      }
+      
+      // Calculate number of reference stations needed
+      function calculateReferenceStations(acres, needsReferenceStation) {
+        if (!needsReferenceStation) return 0;
+        return Math.ceil(acres / ACRES_PER_REFERENCE_STATION);
+      }
+      
+      // Format numbers with fixed decimals
+      function formatNumber(value, decimals = 1) {
+        return parseFloat(value).toFixed(decimals);
+      }
+      
+      // Format currency
+      function formatCurrency(value) {
+        return '$' + parseInt(value).toLocaleString('en-US');
+      }
+      
+      // Parse numeric input
+      function parseNumericInput(value) {
+        return parseFloat(value.replace(/[^\d.-]/g, '')) || 0;
+      }
+      
+      // Update sloped area max value when total lawn size changes
+      function updateSlopedAreaMax() {
+        const totalSize = parseFloat(lawnSize.value);
+        slopedArea.max = totalSize;
+        maxSlopeArea.textContent = totalSize.toFixed(1);
+        
+        // If sloped area is now greater than total lawn size, cap it
+        if (parseFloat(slopedArea.value) > totalSize) {
+          slopedArea.value = totalSize;
+          slopedAreaValue.value = formatNumber(totalSize);
+        }
+      }
+      
+      // Update slider values from input boxes
+      function updateSlidersFromInputs() {
+        const totalSize = parseNumericInput(lawnSizeValue.value);
+        let slopedSize = parseNumericInput(slopedAreaValue.value);
+        
+        // Make sure sloped area isn't greater than total area
+        if (slopedSize > totalSize) {
+          slopedSize = totalSize;
+          slopedAreaValue.value = formatNumber(totalSize);
+        }
+        
+        lawnSize.value = totalSize;
+        lawnSlope.value = parseNumericInput(lawnSlopeValue.value);
+        slopedArea.value = slopedSize;
+        
+        updateSlopedAreaMax();
+      }
+      
+      // Update input boxes from slider values
+      function updateInputsFromSliders() {
+        lawnSizeValue.value = formatNumber(lawnSize.value);
+        lawnSlopeValue.value = formatNumber(lawnSlope.value, 0);
+        slopedAreaValue.value = formatNumber(slopedArea.value);
+        
+        updateSlopedAreaMax();
+      }
+
+      // Helper function to calculate cost-efficiency ratio
+      function calculateCostEfficiency(mower, count, area) {
+        // Calculate "overkill factor" - how much of the mower's capacity is actually used
+        const usageEfficiency = Math.min(1, area / (mower.capacity * count));
+        
+        // Add a penalty for unused capacity to favor right-sized solutions
+        const effectiveCapacity = mower.capacity * count * usageEfficiency;
+        
+        // For small areas (< 2 acres), prioritize cheaper mowers even if less efficient
+        if (area < 2 && mower.price > 10000) {
+          return (mower.price * count * 1.5) / effectiveCapacity; // Apply penalty to expensive mowers for small lawns
+        }
+        
+        return (mower.price * count) / effectiveCapacity;
+      }
+      
+      // Find most cost-efficient combinations for flat areas
+      function findBestFlatSolution(area, flatCapableMowers) {
+        let solutions = [];
+        
+        // Single mower types
+        for (const mower of flatCapableMowers) {
+          // Skip CEORA for tiny lawns (less than 2 acres) - it's overkill
+          if (area < 2 && mower.name === "CEORA") {
+            continue;
+          }
+          
+          const count = Math.ceil(area / mower.capacity);
+          
+          // Calculate reference station costs
+          const referenceStations = calculateReferenceStations(area, mower.needsReferenceStation);
+          const referenceStationCost = referenceStations * REFERENCE_STATION_COST;
+          
+          // Calculate installation costs
+          const installationCost = calculateInstallationCost(area);
+          
+          // Total cost including mowers, reference stations, and installation
+          const totalEquipmentCost = mower.price * count;
+          const totalCost = totalEquipmentCost + referenceStationCost + installationCost;
+          
+          solutions.push({
+            mower: mower,
+            count: count,
+            totalCapacity: mower.capacity * count,
+            mowerCost: totalEquipmentCost,
+            referenceStations: referenceStations,
+            referenceStationCost: referenceStationCost,
+            installationCost: installationCost,
+            totalCost: totalCost,
+            costPerAcre: calculateCostEfficiency(mower, count, area),
+            area: area
+          });
+        }
+        
+        // Sort by cost per acre (most cost efficient first)
+        solutions.sort((a, b) => a.costPerAcre - b.costPerAcre);
+        return solutions[0]; // Return the most cost-efficient solution
+      }
+      
+      // Find most cost-efficient combinations for sloped areas
+      function findBestSlopeSolution(area, slope) {
+        let solutions = [];
+        
+        // Filter mowers that can handle the slope
+        const slopeCapableMowers = mowers.filter(mower => mower.maxSlope >= slope);
+        
+        // Single mower types
+        for (const mower of slopeCapableMowers) {
+          // Skip CEORA for tiny lawns (less than 2 acres) - it's overkill
+          if (area < 2 && mower.name === "CEORA") {
+            continue;
+          }
+          
+          const count = Math.ceil(area / mower.capacity);
+          
+          // Calculate reference station costs
+          const referenceStations = calculateReferenceStations(area, mower.needsReferenceStation);
+          const referenceStationCost = referenceStations * REFERENCE_STATION_COST;
+          
+          // Calculate installation costs
+          const installationCost = calculateInstallationCost(area);
+          
+          // Total cost including mowers, reference stations, and installation
+          const totalEquipmentCost = mower.price * count;
+          const totalCost = totalEquipmentCost + referenceStationCost + installationCost;
+          
+          solutions.push({
+            mower: mower,
+            count: count,
+            totalCapacity: mower.capacity * count,
+            mowerCost: totalEquipmentCost,
+            referenceStations: referenceStations,
+            referenceStationCost: referenceStationCost,
+            installationCost: installationCost,
+            totalCost: totalCost,
+            costPerAcre: calculateCostEfficiency(mower, count, area),
+            area: area
+          });
+        }
+        
+        // Sort by cost per acre (most cost efficient first)
+        solutions.sort((a, b) => a.costPerAcre - b.costPerAcre);
+        return solutions.length > 0 ? solutions[0] : null; // Return the most cost-efficient solution
+      }
+      
+      // Recommend mowers based on lawn size, sloped area, and slope percentage
+      function recommendMowers() {
+        const totalSize = parseFloat(lawnSize.value);
+        const slopedSize = parseFloat(slopedArea.value);
+        const flatSize = totalSize - slopedSize;
+        const slope = parseFloat(lawnSlope.value);
+        
+        // For flat areas, we can use any mower
+        // For sloped areas, we need mowers that can handle the slope
+        let flatCapableMowers = mowers.filter(mower => mower.maxSlope >= 0);
+        
+        // Check if slope is too steep for any mower
+        if (slope > 35) {
+          recommendationsList.innerHTML = `
+            <div class="no-results">
+              <strong>Warning:</strong> The slope of your lawn (${slope}%) exceeds 35%, which is the maximum 
+              any robotic mower can safely handle. For slopes this steep, we recommend consulting with our 
+              specialists for alternative solutions or traditional mowing options.
+            </div>
+          `;
+          resultsContainer.style.display = 'block';
+          return;
+        }
+        
+        // Check if we have any mowers that can handle the specified slope
+        let slopeCapableMowers = mowers.filter(mower => mower.maxSlope >= slope);
+        
+        if (slopeCapableMowers.length === 0 && slopedSize > 0) {
+          recommendationsList.innerHTML = `
+            <div class="no-results">
+              The slope of your lawn (${slope}%) is too steep for robotic mowers. 
+              We recommend consulting with our specialists for alternative solutions for your sloped areas.
+            </div>
+          `;
+          resultsContainer.style.display = 'block';
+          return;
+        }
+        
+        let recommendations = [];
+        
+        // CASE 1: If we have a slope-capable mower that can handle the entire property
+        let allAreaMowers = slopeCapableMowers.filter(mower => mower.capacity >= totalSize);
+        if (allAreaMowers.length > 0) {
+          // Find the most cost-efficient option
+          allAreaMowers.sort((a, b) => (a.price / a.capacity) - (b.price / b.capacity));
+          
+          // Calculate reference station costs and installation
+          const referenceStations = calculateReferenceStations(totalSize, allAreaMowers[0].needsReferenceStation);
+          const referenceStationCost = referenceStations * REFERENCE_STATION_COST;
+          const installationCost = calculateInstallationCost(totalSize);
+          const totalEquipmentCost = allAreaMowers[0].price;
+          const totalCost = totalEquipmentCost + referenceStationCost + installationCost;
+          
+          // Compare with using multiple smaller mowers
+          const bestSingleMower = {
+            type: 'single',
+            mower: allAreaMowers[0],
+            count: 1,
+            area: 'complete',
+            coverage: totalSize,
+            mowerCost: totalEquipmentCost,
+            referenceStations: referenceStations,
+            referenceStationCost: referenceStationCost,
+            installationCost: installationCost,
+            totalCost: totalCost
+          };
+          
+          // Find best multiple mower solution
+          const bestMultipleSolution = findBestSlopeSolution(totalSize, slope);
+          
+          // Compare costs and choose the better option
+          if (bestMultipleSolution && bestMultipleSolution.count > 1 && bestMultipleSolution.totalCost < bestSingleMower.totalCost) {
+            recommendations.push({
+              type: 'multiple',
+              mower: bestMultipleSolution.mower,
+              count: bestMultipleSolution.count,
+              area: 'complete',
+              coverage: totalSize,
+              mowerCost: bestMultipleSolution.mowerCost,
+              referenceStations: bestMultipleSolution.referenceStations,
+              referenceStationCost: bestMultipleSolution.referenceStationCost,
+              installationCost: bestMultipleSolution.installationCost,
+              totalCost: bestMultipleSolution.totalCost
+            });
+          } else {
+            recommendations.push(bestSingleMower);
+          }
+        }
+        
+        // CASE 2: Consider separate mowers for flat and sloped areas if we have both
+        if (flatSize > 0 && slopedSize > 0) {
+          const bestFlatSolution = findBestFlatSolution(flatSize, flatCapableMowers);
+          const bestSlopeSolution = findBestSlopeSolution(slopedSize, slope);
+          
+          if (bestFlatSolution && bestSlopeSolution) {
+            const totalCost = bestFlatSolution.totalCost + bestSlopeSolution.totalCost;
+            
+            const splitSolution = {
+              type: 'complex-split',
+              flatMower: bestFlatSolution.mower,
+              slopeMower: bestSlopeSolution.mower,
+              flatCount: bestFlatSolution.count,
+              slopeCount: bestSlopeSolution.count,
+              flatArea: flatSize,
+              slopeArea: slopedSize,
+              flatSolution: bestFlatSolution,
+              slopeSolution: bestSlopeSolution,
+              totalCost: totalCost
+            };
+            
+            // Check if already have a solution, compare costs
+            if (recommendations.length > 0) {
+              if (splitSolution.totalCost < recommendations[0].totalCost) {
+                recommendations = [splitSolution]; // Replace with more cost-effective solution
+              } else {
+                recommendations.push(splitSolution); // Add as alternative
+              }
+            } else {
+              recommendations.push(splitSolution);
+            }
+          }
+        }
+        
+        // CASE 3: If we need solutions for individual areas and have no recommendations yet
+        if (recommendations.length === 0) {
+          // Handle flat areas
+          if (flatSize > 0) {
+            const bestFlatSolution = findBestFlatSolution(flatSize, flatCapableMowers);
+            
+            // Handle sloped areas
+            if (slopedSize > 0 && slopeCapableMowers.length > 0) {
+              const bestSlopeSolution = findBestSlopeSolution(slopedSize, slope);
+              
+              if (bestFlatSolution && bestSlopeSolution) {
+                recommendations.push({
+                  type: 'complex-split',
+                  flatMower: bestFlatSolution.mower,
+                  slopeMower: bestSlopeSolution.mower,
+                  flatCount: bestFlatSolution.count,
+                  slopeCount: bestSlopeSolution.count,
+                  flatArea: flatSize,
+                  slopeArea: slopedSize,
+                  flatSolution: bestFlatSolution,
+                  slopeSolution: bestSlopeSolution,
+                  totalCost: bestFlatSolution.totalCost + bestSlopeSolution.totalCost
+                });
+              }
+            } else if (bestFlatSolution) {
+              // Just handle flat areas if there's no slope or no slope-capable mowers
+              recommendations.push({
+                type: 'multiple',
+                mower: bestFlatSolution.mower,
+                count: bestFlatSolution.count,
+                area: 'flat',
+                coverage: flatSize,
+                mowerCost: bestFlatSolution.mowerCost,
+                referenceStations: bestFlatSolution.referenceStations,
+                referenceStationCost: bestFlatSolution.referenceStationCost,
+                installationCost: bestFlatSolution.installationCost,
+                totalCost: bestFlatSolution.totalCost
+              });
+            }
+          } else if (slopedSize > 0 && slopeCapableMowers.length > 0) {
+            // Just handle sloped areas if there's no flat area
+            const bestSlopeSolution = findBestSlopeSolution(slopedSize, slope);
+            
+            if (bestSlopeSolution) {
+              recommendations.push({
+                type: 'multiple',
+                mower: bestSlopeSolution.mower,
+                count: bestSlopeSolution.count,
+                area: 'sloped',
+                coverage: slopedSize,
+                mowerCost: bestSlopeSolution.mowerCost,
+                referenceStations: bestSlopeSolution.referenceStations,
+                referenceStationCost: bestSlopeSolution.referenceStationCost,
+                installationCost: bestSlopeSolution.installationCost,
+                totalCost: bestSlopeSolution.totalCost
+              });
+            }
+          }
+        }
+        
+        // Sort recommendations by cost
+        recommendations.sort((a, b) => a.totalCost - b.totalCost);
+        
+        // Display recommendations
+        if (recommendations.length === 0) {
+          recommendationsList.innerHTML = `
+            <div class="no-results">
+              Your lawn size and slope combination is challenging.
+              Please contact our specialists for a custom solution.
+            </div>
+          `;
+        } else {
+          let html = '';
+          
+          recommendations.forEach((rec, index) => {
+            if (index > 1) return; // Only show top 2 recommendations
+            
+            if (rec.type === 'single') {
+              html += `
+                <div class="mower-recommendation">
+                  <div class="mower-name">${rec.mower.name}</div>
+                  <div class="mower-details">${rec.mower.details}</div>
+                  <div class="mower-capacity">Weekly Capacity: ${rec.mower.capacity} acres</div>
+                  <div class="mower-capacity">Max Slope: ${rec.mower.maxSlope}%</div>
+                  <div class="mower-details">This single mower can handle your entire ${rec.coverage.toFixed(1)} acre property.</div>
+                  <div class="cost-breakdown">
+                    <div>Equipment Cost: ${formatCurrency(rec.mowerCost)}</div>
+                    ${rec.referenceStations > 0 ? `<div>Reference Stations (${rec.referenceStations}): ${formatCurrency(rec.referenceStationCost)}</div>` : ''}
+                    <div>Installation: ${formatCurrency(rec.installationCost)}</div>
+                    <div class="total-cost">Total Investment: ${formatCurrency(rec.totalCost)}</div>
+                  </div>
+                </div>
+              `;
+            } else if (rec.type === 'split') {
+              html += `
+                <div class="mower-recommendation">
+                  <div class="mower-name">Zone Solution: ${rec.flatMower.name} + ${rec.slopeMower.name}</div>
+                  <div class="mower-details">
+                    For optimal efficiency, we recommend using different mowers for your flat and sloped areas:
+                  </div>
+                  <div class="mower-capacity">${rec.flatMower.name} - For ${rec.flatArea.toFixed(1)} acres of flat terrain</div>
+                  <div class="mower-capacity">${rec.slopeMower.name} - For ${rec.slopeArea.toFixed(1)} acres of sloped terrain (up to ${rec.slopeMower.maxSlope}%)</div>
+                  <div class="cost-breakdown">
+                    <div>Equipment Cost: ${formatCurrency(rec.flatMower.price + rec.slopeMower.price)}</div>
+                    <div>Installation: ${formatCurrency(calculateInstallationCost(rec.flatArea + rec.slopeArea))}</div>
+                    <div class="total-cost">Total Investment: ${formatCurrency(rec.totalCost)}</div>
+                  </div>
+                </div>
+              `;
+            } else if (rec.type === 'multiple') {
+              html += `
+                <div class="mower-recommendation">
+                  <div class="mower-name">${rec.count}x ${rec.mower.name}</div>
+                  <div class="mower-details">
+                    Using multiple units provides better coverage for your ${rec.area} terrain.
+                    ${rec.mower.details}
+                  </div>
+                  <div class="mower-capacity">Combined Weekly Capacity: ${formatNumber(rec.mower.capacity * rec.count)} acres</div>
+                  <div class="mower-capacity">Max Slope: ${rec.mower.maxSlope}%</div>
+                  <div class="cost-breakdown">
+                    <div>Equipment Cost: ${formatCurrency(rec.mowerCost)}</div>
+                    ${rec.referenceStations > 0 ? `<div>Reference Stations (${rec.referenceStations}): ${formatCurrency(rec.referenceStationCost)}</div>` : ''}
+                    <div>Installation: ${formatCurrency(rec.installationCost)}</div>
+                    <div class="total-cost">Total Investment: ${formatCurrency(rec.totalCost)}</div>
+                  </div>
+                </div>
+              `;
+            } else if (rec.type === 'multiple-split' || rec.type === 'complex-split') {
+              // Calculate reference stations and costs
+              const flatRefStations = rec.flatSolution ? rec.flatSolution.referenceStations : 0;
+              const slopeRefStations = rec.slopeSolution ? rec.slopeSolution.referenceStations : 0;
+              const totalRefStations = flatRefStations + slopeRefStations;
+              const totalRefStationCost = (flatRefStations + slopeRefStations) * REFERENCE_STATION_COST;
+              
+              // Calculate equipment costs
+              const flatEquipmentCost = rec.flatSolution ? rec.flatSolution.mowerCost : 0;
+              const slopeEquipmentCost = rec.slopeSolution ? rec.slopeSolution.mowerCost : 0;
+              const totalEquipmentCost = flatEquipmentCost + slopeEquipmentCost;
+              
+              // Installation costs
+              const totalInstallCost = rec.flatSolution && rec.slopeSolution 
+                ? rec.flatSolution.installationCost + rec.slopeSolution.installationCost
+                : calculateInstallationCost(rec.flatArea + rec.slopeArea);
+              
+              html += `
+                <div class="mower-recommendation">
+                  <div class="mower-name">Complete Solution: ${rec.flatCount}x ${rec.flatMower.name} + ${rec.slopeCount}x ${rec.slopeMower.name}</div>
+                  <div class="mower-details">
+                    For your mixed terrain property, we recommend a combination approach:
+                  </div>
+                  <div class="mower-capacity">${rec.flatCount}x ${rec.flatMower.name} - For ${rec.flatArea.toFixed(1)} acres of flat terrain</div>
+                  <div class="mower-capacity">${rec.slopeCount}x ${rec.slopeMower.name} - For ${rec.slopeArea.toFixed(1)} acres of sloped terrain (up to ${rec.slopeMower.maxSlope}%)</div>
+                  <div class="cost-breakdown">
+                    <div>Equipment Cost: ${formatCurrency(totalEquipmentCost)}</div>
+                    ${totalRefStations > 0 ? `<div>Reference Stations (${totalRefStations}): ${formatCurrency(totalRefStationCost)}</div>` : ''}
+                    <div>Installation: ${formatCurrency(totalInstallCost)}</div>
+                    <div class="total-cost">Total Investment: ${formatCurrency(rec.totalCost)}</div>
+                  </div>
+                </div>
+              `;
+            }
+          });
+          
+          recommendationsList.innerHTML = html;
+        }
+        
+        // Show results
+        resultsContainer.style.display = 'block';
+      }
+      
+      // Add some CSS for cost breakdown
+      const style = document.createElement('style');
+      style.textContent = `
+        #knoxbots-recommender-container .cost-breakdown {
+          margin-top: 15px;
+          padding-top: 10px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          font-size: 11px;
+        }
+        
+        #knoxbots-recommender-container .total-cost {
+          margin-top: 8px;
+          font-weight: 700;
+          color: #EC9608;
+          font-size: 13px;
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // Handle text input
+      function handleTextInput() {
+        updateSlidersFromInputs();
+      }
+      
+      // Handle slider input
+      function handleSliderInput() {
+        updateInputsFromSliders();
+      }
+      
+      // Handle focus out for text inputs
+      function handleFocusOut() {
+        updateInputsFromSliders();
+      }
+      
+      // Add event listeners
+      lawnSize.addEventListener('input', handleSliderInput);
+      lawnSlope.addEventListener('input', handleSliderInput);
+      slopedArea.addEventListener('input', handleSliderInput);
+      
+      lawnSizeValue.addEventListener('input', handleTextInput);
+      lawnSlopeValue.addEventListener('input', handleTextInput);
+      slopedAreaValue.addEventListener('input', handleTextInput);
+      
+      lawnSizeValue.addEventListener('focusout', handleFocusOut);
+      lawnSlopeValue.addEventListener('focusout', handleFocusOut);
+      slopedAreaValue.addEventListener('focusout', handleFocusOut);
+      
+      findBtn.addEventListener('click', recommendMowers);
+      
+      // Initialize displays
+      updateInputsFromSliders();
+    })();
+  </script>
+</div> 

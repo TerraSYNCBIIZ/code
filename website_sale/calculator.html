@@ -1,0 +1,686 @@
+<div id="terra-calculator-container">
+  <style>
+    #terra-calculator-container {
+      font-family: 'Montserrat', sans-serif;
+      max-width: 700px;
+      margin: 12px auto;
+      background-color: #333;
+      border-radius: 6px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      border-top: 2px solid #EC9608;
+      overflow: hidden;
+      color: white;
+    }
+    
+    #terra-calculator-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #terra-calculator-container .calculator-title {
+      background: linear-gradient(to bottom, rgba(236, 150, 8, 0.95), rgba(236, 150, 8, 0.85));
+      color: #222;
+      text-align: center;
+      padding: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    #terra-calculator-container .calculator-content {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    
+    #terra-calculator-container .calculator-inputs {
+      flex: 3;
+      padding: 16px;
+      max-width: 60%;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #terra-calculator-container .calculator-results {
+      flex: 2;
+      padding: 16px;
+      max-width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-calculator-container .input-group {
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    #terra-calculator-container .input-label {
+      font-weight: 600;
+      font-size: 12px;
+      width: 50%;
+      align-self: center;
+    }
+    
+    #terra-calculator-container .input-value-box {
+      background-color: white;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 5px 8px;
+      font-weight: 600;
+      font-size: 12px;
+      width: 85px;
+      text-align: center;
+      margin-left: auto;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    #terra-calculator-container .input-value-box:focus {
+      outline: none;
+      border-color: #EC9608;
+      box-shadow: 0 0 0 2px rgba(236, 150, 8, 0.3);
+    }
+    
+    #terra-calculator-container .input-value-box.error {
+      border-color: #ff4d4d;
+      box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.3);
+    }
+    
+    #terra-calculator-container .error-message {
+      color: #ff4d4d;
+      font-size: 10px;
+      width: 100%;
+      text-align: right;
+      margin-top: 3px;
+      height: 12px;
+    }
+    
+    #terra-calculator-container .slider-row {
+      width: 100%;
+      margin-top: 5px;
+      position: relative;
+    }
+    
+    #terra-calculator-container .slider-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-calculator-container .input-range {
+      width: 100%;
+      height: 5px;
+      background: #C4B095;
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 3px;
+      margin: 6px 0;
+    }
+    
+    #terra-calculator-container .input-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+    
+    #terra-calculator-container .input-range::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      background: #EC9608;
+    }
+    
+    #terra-calculator-container .input-range::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+    
+    #terra-calculator-container .input-range::-moz-range-thumb:hover {
+      transform: scale(1.1);
+      background: #EC9608;
+    }
+
+    #terra-calculator-container .slider-tooltip {
+      position: absolute;
+      background: #EC9608;
+      color: #222;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      top: -20px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    #terra-calculator-container .range-values {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    #terra-calculator-container .description {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      margin-left: auto;
+      text-align: right;
+      margin-top: 3px;
+      max-width: 70%;
+    }
+    
+    #terra-calculator-container .result-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    
+    #terra-calculator-container .result-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #EC9608;
+      margin: 5px 0;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    
+    #terra-calculator-container .result-label {
+      font-size: 11px;
+      margin: 2px 0;
+    }
+    
+    #terra-calculator-container .result-info {
+      margin-top: 10px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      flex-grow: 1;
+    }
+    
+    #terra-calculator-container .result-savings {
+      font-size: 20px;
+      font-weight: 700;
+      color: #EC9608;
+      margin: 10px 0;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    
+    #terra-calculator-container .cta-button {
+      background-color: #EC9608;
+      color: #222;
+      border: none;
+      padding: 7px 0;
+      border-radius: 3px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: auto;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    #terra-calculator-container .cta-button:hover {
+      background-color: #faa71b;
+      transform: translateY(-1px);
+    }
+    
+    #terra-calculator-container .cta-button:active {
+      transform: translateY(0);
+    }
+    
+    /* Animated highlight for updated results */
+    @keyframes highlight {
+      0% { color: #EC9608; }
+      50% { color: #ffffff; }
+      100% { color: #EC9608; }
+    }
+    
+    #terra-calculator-container .highlight {
+      animation: highlight 0.8s ease-out;
+    }
+    
+    /* Mobile responsive styling */
+    @media (max-width: 700px) {
+      #terra-calculator-container .calculator-content {
+        flex-direction: column;
+      }
+      
+      #terra-calculator-container .calculator-inputs,
+      #terra-calculator-container .calculator-results {
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      #terra-calculator-container .input-label {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      #terra-calculator-container .input-value-box {
+        margin-left: 0;
+      }
+      
+      #terra-calculator-container .description {
+        margin-left: 0;
+        text-align: left;
+        max-width: 100%;
+      }
+    }
+  </style>
+  
+  <div class="calculator-title">KNOXBOTS ROI Calculator</div>
+  
+  <div class="calculator-content">
+    <div class="calculator-inputs">
+      <!-- Traditional Mower Maintenance Cost -->
+      <div class="input-group">
+        <div class="input-label">Traditional Mower Maintenance Cost</div>
+        <input type="text" class="input-value-box" id="maintenance-cost-value" value="$8,000">
+        <div class="error-message" id="maintenance-cost-error"></div>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="maintenance-cost-tooltip">$8,000</div>
+            <input type="range" min="0" max="10000" value="8000" step="100" class="input-range" id="maintenance-cost">
+            <div class="range-values">
+              <span>$0</span>
+              <span>$10,000</span>
+            </div>
+          </div>
+          <div class="description">How Much is Spent Each Year on Maintenance</div>
+        </div>
+      </div>
+      
+      <!-- Cost of Traditional Fairway Mower -->
+      <div class="input-group">
+        <div class="input-label">Cost of Traditional Fairway Mower</div>
+        <input type="text" class="input-value-box" id="mower-cost-value" value="$120,000">
+        <div class="error-message" id="mower-cost-error"></div>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="mower-cost-tooltip">$120,000</div>
+            <input type="range" min="1000" max="150000" value="120000" step="1000" class="input-range" id="mower-cost">
+            <div class="range-values">
+              <span>$1,000</span>
+              <span>$150,000</span>
+            </div>
+          </div>
+          <div class="description">Cost of a Traditional Fairway Mower</div>
+        </div>
+      </div>
+      
+      <!-- Operator Hourly Wage -->
+      <div class="input-group">
+        <div class="input-label">Operator Hourly Wage</div>
+        <input type="text" class="input-value-box" id="hourly-wage-value" value="$25.00">
+        <div class="error-message" id="hourly-wage-error"></div>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="hourly-wage-tooltip">$25.00</div>
+            <input type="range" min="0" max="42.5" value="25" step="0.5" class="input-range" id="hourly-wage">
+            <div class="range-values">
+              <span>$0</span>
+              <span>$42.50</span>
+            </div>
+          </div>
+          <div class="description">How Much The Operator is Paid per Hour</div>
+        </div>
+      </div>
+      
+      <!-- Hours of Operation Per Year -->
+      <div class="input-group">
+        <div class="input-label">Hours of Operation per Year</div>
+        <input type="text" class="input-value-box" id="operation-hours-value" value="1,000">
+        <div class="error-message" id="operation-hours-error"></div>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="operation-hours-tooltip">1,000</div>
+            <input type="range" min="0" max="2000" value="1000" step="10" class="input-range" id="operation-hours">
+            <div class="range-values">
+              <span>0</span>
+              <span>2,000</span>
+            </div>
+          </div>
+          <div class="description">How Many Hours of Operation per Year</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="calculator-results">
+      <div class="result-title">Your Estimated ROI with KNOXBOTS</div>
+      
+      <div class="result-label">Annual Traditional Cost:</div>
+      <div class="result-value" id="traditional-cost">$33,000</div>
+      
+      <div class="result-label">5-Year Cost of Ownership:</div>
+      <div class="result-value" id="five-year-cost">$285,000</div>
+      
+      <div class="result-info">
+        By switching to KNOXBOTS automated solutions, you can significantly reduce labor costs, maintenance expenses, and equipment depreciation.
+      </div>
+      
+      <div class="result-label">Estimated 5-Year Savings:</div>
+      <div class="result-savings" id="total-savings">$142,500</div>
+      
+      <button class="cta-button" onclick="window.location.href='https://www.knoxbots.com/appointment/11?'">Get Your Custom Quote</button>
+    </div>
+  </div>
+  
+  <script>
+    (function() {
+      // Input elements
+      const maintenanceCost = document.getElementById('maintenance-cost');
+      const mowerCost = document.getElementById('mower-cost');
+      const hourlyWage = document.getElementById('hourly-wage');
+      const operationHours = document.getElementById('operation-hours');
+      
+      // Value display elements
+      const maintenanceCostValue = document.getElementById('maintenance-cost-value');
+      const mowerCostValue = document.getElementById('mower-cost-value');
+      const hourlyWageValue = document.getElementById('hourly-wage-value');
+      const operationHoursValue = document.getElementById('operation-hours-value');
+      
+      // Error message elements
+      const maintenanceCostError = document.getElementById('maintenance-cost-error');
+      const mowerCostError = document.getElementById('mower-cost-error');
+      const hourlyWageError = document.getElementById('hourly-wage-error');
+      const operationHoursError = document.getElementById('operation-hours-error');
+      
+      // Tooltip elements
+      const maintenanceCostTooltip = document.getElementById('maintenance-cost-tooltip');
+      const mowerCostTooltip = document.getElementById('mower-cost-tooltip');
+      const hourlyWageTooltip = document.getElementById('hourly-wage-tooltip');
+      const operationHoursTooltip = document.getElementById('operation-hours-tooltip');
+      
+      // Result elements
+      const traditionalCost = document.getElementById('traditional-cost');
+      const fiveYearCost = document.getElementById('five-year-cost');
+      const totalSavings = document.getElementById('total-savings');
+      
+      // Input validation regexes
+      const currencyRegex = /^[$]?[0-9,]*(\.[0-9]{0,2})?$/;
+      const numberRegex = /^[0-9,]*$/;
+      
+      // Format currency with 2 decimal places for hourly wage, 0 for others
+      function formatCurrency(value, decimals = 0) {
+        return '$' + value.toLocaleString('en-US', { 
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals 
+        });
+      }
+      
+      // Format number with commas
+      function formatNumber(value) {
+        return value.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      }
+      
+      // Parse currency input, handling decimals properly
+      function parseCurrency(value) {
+        // Remove $ and commas, then parse as float
+        return parseFloat(value.replace(/[$,]/g, '')) || 0;
+      }
+      
+      // Validate input based on type and range
+      function validateInput(input, value, min, max, isDecimal = false) {
+        const inputElement = document.getElementById(input + '-value');
+        const errorElement = document.getElementById(input + '-error');
+        
+        // Clear any existing error styles/messages
+        inputElement.classList.remove('error');
+        errorElement.textContent = '';
+        
+        // Check if value matches expected format
+        const regex = isDecimal ? currencyRegex : numberRegex;
+        if (!regex.test(inputElement.value)) {
+          inputElement.classList.add('error');
+          errorElement.textContent = 'Please enter a valid number';
+          return false;
+        }
+        
+        // Check if value is within range
+        if (value < min) {
+          inputElement.classList.add('error');
+          errorElement.textContent = `Minimum value is ${isDecimal ? formatCurrency(min, 2) : min}`;
+          return false;
+        }
+        
+        if (value > max) {
+          inputElement.classList.add('error');
+          errorElement.textContent = `Maximum value is ${isDecimal ? formatCurrency(max, 2) : formatNumber(max)}`;
+          return false;
+        }
+        
+        return true;
+      }
+      
+      // Update slider positions from input boxes with validation
+      function updateSlidersFromInputs() {
+        // Get values from inputs
+        const maintenanceValue = parseCurrency(maintenanceCostValue.value);
+        const mowerValue = parseCurrency(mowerCostValue.value);
+        const wageValue = parseCurrency(hourlyWageValue.value);
+        const hoursValue = parseCurrency(operationHoursValue.value);
+        
+        // Validate and update sliders if valid
+        const maintenanceValid = validateInput('maintenance-cost', maintenanceValue, 0, 10000);
+        const mowerValid = validateInput('mower-cost', mowerValue, 1000, 150000);
+        const wageValid = validateInput('hourly-wage', wageValue, 0, 42.5, true);
+        const hoursValid = validateInput('operation-hours', hoursValue, 0, 2000);
+        
+        // Only update sliders if values are valid
+        if (maintenanceValid) {
+          maintenanceCost.value = Math.min(Math.max(maintenanceValue, 0), 10000);
+          updateTooltip(maintenanceCost, maintenanceCostTooltip, formatCurrency(maintenanceValue));
+        }
+        
+        if (mowerValid) {
+          mowerCost.value = Math.min(Math.max(mowerValue, 1000), 150000);
+          updateTooltip(mowerCost, mowerCostTooltip, formatCurrency(mowerValue));
+        }
+        
+        if (wageValid) {
+          hourlyWage.value = Math.min(Math.max(wageValue, 0), 42.5);
+          updateTooltip(hourlyWage, hourlyWageTooltip, formatCurrency(wageValue, 2));
+        }
+        
+        if (hoursValid) {
+          operationHours.value = Math.min(Math.max(hoursValue, 0), 2000);
+          updateTooltip(operationHours, operationHoursTooltip, formatNumber(hoursValue));
+        }
+        
+        // Only calculate ROI if all inputs are valid
+        if (maintenanceValid && mowerValid && wageValid && hoursValid) {
+          calculateROI();
+        }
+      }
+      
+      // Update input boxes from slider values
+      function updateInputsFromSliders() {
+        maintenanceCostValue.value = formatCurrency(parseInt(maintenanceCost.value));
+        mowerCostValue.value = formatCurrency(parseInt(mowerCost.value));
+        hourlyWageValue.value = formatCurrency(parseFloat(hourlyWage.value), 2);
+        operationHoursValue.value = formatNumber(parseInt(operationHours.value));
+        
+        // Clear any error states since slider values are always valid
+        document.querySelectorAll('.input-value-box').forEach(input => input.classList.remove('error'));
+        document.querySelectorAll('.error-message').forEach(error => error.textContent = '');
+        
+        calculateROI();
+      }
+      
+      // Update tooltip position and value
+      function updateTooltip(slider, tooltip, value) {
+        const percent = (slider.value - slider.min) / (slider.max - slider.min);
+        const position = percent * (slider.offsetWidth - 20) + 10; // Adjust for thumb width
+        tooltip.style.left = `${position}px`;
+        tooltip.textContent = value;
+      }
+      
+      // Show tooltip during slider interaction
+      function showTooltip(tooltip) {
+        tooltip.style.opacity = '1';
+      }
+      
+      // Hide tooltip after slider interaction
+      function hideTooltip(tooltip) {
+        tooltip.style.opacity = '0';
+      }
+      
+      // Calculate ROI and update results with animation
+      function calculateROI() {
+        // Get values from sliders
+        const maintenance = parseInt(maintenanceCost.value);
+        const mower = parseInt(mowerCost.value);
+        const wage = parseFloat(hourlyWage.value);
+        const hours = parseInt(operationHours.value);
+        
+        // Calculate annual labor costs
+        const laborCost = wage * hours;
+        
+        // Calculate annual traditional cost
+        const annualCost = maintenance + laborCost;
+        
+        // Calculate 5-year cost of ownership
+        // (Annual cost × 5) + mower cost
+        const fiveYearTotal = (annualCost * 5) + mower;
+        
+        // Calculate estimated savings (assuming 50% savings with KNOXBOTS)
+        const savings = fiveYearTotal * 0.5;
+        
+        // Update result displays with animation
+        animateValueUpdate(traditionalCost, formatCurrency(annualCost));
+        animateValueUpdate(fiveYearCost, formatCurrency(fiveYearTotal));
+        animateValueUpdate(totalSavings, formatCurrency(savings));
+      }
+      
+      // Animate value updates with subtle highlight effect
+      function animateValueUpdate(element, newValue) {
+        // Update the text
+        element.textContent = newValue;
+        
+        // Remove existing highlight class and trigger reflow
+        element.classList.remove('highlight');
+        void element.offsetWidth; // Trigger reflow
+        
+        // Add highlight class to start animation
+        element.classList.add('highlight');
+      }
+      
+      // Handle slider input
+      function handleSliderInput(event) {
+        const slider = event.target;
+        const tooltip = document.getElementById(`${slider.id}-tooltip`);
+        
+        // Update input values
+        updateInputsFromSliders();
+        
+        // Update and show tooltip
+        if (slider.id === 'hourly-wage') {
+          updateTooltip(slider, tooltip, formatCurrency(parseFloat(slider.value), 2));
+        } else if (slider.id === 'operation-hours') {
+          updateTooltip(slider, tooltip, formatNumber(parseInt(slider.value)));
+        } else {
+          updateTooltip(slider, tooltip, formatCurrency(parseInt(slider.value)));
+        }
+        
+        showTooltip(tooltip);
+      }
+      
+      // Handle text input with debounce
+      let debounceTimeout;
+      function handleTextInput() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+          updateSlidersFromInputs();
+        }, 300); // 300ms debounce
+      }
+      
+      // Handle focus out for text inputs
+      function handleFocusOut(event) {
+        const input = event.target;
+        let value;
+        
+        // Parse the current value
+        if (input.id === 'hourly-wage-value') {
+          value = parseCurrency(input.value);
+          // Special handling for hourly wage with 2 decimal places
+          input.value = formatCurrency(value, 2);
+        } else if (input.id === 'operation-hours-value') {
+          value = parseCurrency(input.value);
+          input.value = formatNumber(value);
+        } else {
+          value = parseCurrency(input.value);
+          input.value = formatCurrency(value);
+        }
+        
+        // Clear any immediate debouncing and update
+        clearTimeout(debounceTimeout);
+        updateSlidersFromInputs();
+      }
+      
+      // Initialize tooltips
+      function initTooltips() {
+        updateTooltip(maintenanceCost, maintenanceCostTooltip, formatCurrency(parseInt(maintenanceCost.value)));
+        updateTooltip(mowerCost, mowerCostTooltip, formatCurrency(parseInt(mowerCost.value)));
+        updateTooltip(hourlyWage, hourlyWageTooltip, formatCurrency(parseFloat(hourlyWage.value), 2));
+        updateTooltip(operationHours, operationHoursTooltip, formatNumber(parseInt(operationHours.value)));
+      }
+      
+      // Add event listeners to sliders
+      function setupSliderEvents(slider, tooltip) {
+        slider.addEventListener('input', handleSliderInput);
+        slider.addEventListener('mousedown', () => showTooltip(tooltip));
+        slider.addEventListener('touchstart', () => showTooltip(tooltip), { passive: true });
+        slider.addEventListener('mouseup', () => hideTooltip(tooltip));
+        slider.addEventListener('touchend', () => hideTooltip(tooltip));
+        slider.addEventListener('mouseleave', () => hideTooltip(tooltip));
+      }
+      
+      // Setup all slider events
+      setupSliderEvents(maintenanceCost, maintenanceCostTooltip);
+      setupSliderEvents(mowerCost, mowerCostTooltip);
+      setupSliderEvents(hourlyWage, hourlyWageTooltip);
+      setupSliderEvents(operationHours, operationHoursTooltip);
+      
+      // Add event listeners to input boxes
+      maintenanceCostValue.addEventListener('input', handleTextInput);
+      mowerCostValue.addEventListener('input', handleTextInput);
+      hourlyWageValue.addEventListener('input', handleTextInput);
+      operationHoursValue.addEventListener('input', handleTextInput);
+      
+      // Add focus out event listeners to input boxes for formatting
+      maintenanceCostValue.addEventListener('focusout', handleFocusOut);
+      mowerCostValue.addEventListener('focusout', handleFocusOut);
+      hourlyWageValue.addEventListener('focusout', handleFocusOut);
+      operationHoursValue.addEventListener('focusout', handleFocusOut);
+      
+      // Initialize
+      initTooltips();
+      updateInputsFromSliders();
+      calculateROI();
+    })();
+  </script>
+</div> 

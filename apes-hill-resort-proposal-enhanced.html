@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSYNC Solutions - Executive Access Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(75, 85, 99, 0.12) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Password Gateway Styles */
+        .auth-gateway {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(20px);
+        }
+
+        .auth-container {
+            background: rgba(15, 15, 15, 0.95);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 24px;
+            padding: 60px 50px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+            animation: authPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes authPulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        .auth-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .auth-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e5e7eb;
+            margin-bottom: 10px;
+        }
+
+        .auth-subtitle {
+            font-size: 1rem;
+            color: #9ca3af;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .auth-form {
+            margin-bottom: 30px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(31, 41, 55, 0.8);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+            transform: scale(1.02);
+        }
+
+        .password-input::placeholder {
+            color: #6b7280;
+            letter-spacing: 1px;
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .auth-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        }
+
+        .auth-button:active {
+            transform: translateY(0);
+        }
+
+        .auth-footer {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 30px;
+        }
+
+        .auth-footer .highlight {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .proposal-content {
+            display: none;
+        }
+
+        .auth-gateway.hidden {
+            display: none;
+        }
+
+        .proposal-content.visible {
+            display: block;
+        }
+
+        /* Floating Pill Navigation */
+        .floating-nav {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 25px;
+            padding: 15px 8px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .floating-nav:hover {
+            background: rgba(15, 15, 15, 0.95);
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.2);
+        }
+
+        .nav-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(156, 163, 175, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot:hover {
+            background: #22c55e;
+            transform: scale(1.3);
+        }
+
+        .nav-dot.active {
+            background: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+        }
+
+        .nav-dot::after {
+            content: attr(data-section);
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 15, 15, 0.95);
+            color: #e5e7eb;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-dot:hover::after {
+            opacity: 1;
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        /* Special styling for different sections */
+        .nav-dot[data-section="Overview"] { background: rgba(34, 197, 94, 0.3); }
+        .nav-dot[data-section="Range Picker"] { background: rgba(236, 150, 8, 0.3); }
+        .nav-dot[data-section="Robotic Mowing"] { background: rgba(34, 197, 94, 0.3); }
+        .nav-dot[data-section="Deployment"] { background: rgba(147, 51, 234, 0.3); }
+        .nav-dot[data-section="Support"] { background: rgba(59, 130, 246, 0.3); }
+        .nav-dot[data-section="Process"] { background: rgba(239, 68, 68, 0.3); }
+        .nav-dot[data-section="Get Started"] { background: rgba(34, 197, 94, 0.5); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .company-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #EC9608;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .client-info {
+            background: rgba(31, 41, 55, 0.8);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+
+        .client-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .client-location {
+            font-size: 1.4rem;
+            color: #e5e7eb;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: #d1d5db;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 30px auto 0;
+        }
+
+        /* Image Placeholder Sections */
+        .image-placeholder {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px dashed rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        .image-placeholder i {
+            font-size: 3rem;
+            color: #22c55e;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Image Sections */
+        .image-section {
+            margin: 40px 0;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .section-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Specific image adjustments */
+        .range-picker-image {
+            height: 400px; /* Made taller for better view */
+        }
+
+        .mowing-image {
+            height: 400px; /* Made taller */
+            object-position: center 65%; /* Move image up just a tiny bit */
+        }
+
+        .team-training-image {
+            height: 450px; /* Made much taller for better view */
+            object-position: center 65%; /* Move image down just a tiny bit more */
+        }
+
+        .image-section:hover .hero-image,
+        .image-section:hover .section-image {
+            transform: scale(1.02);
+        }
+
+        /* Section Headers */
+        .section {
+            margin: 80px 0;
+            scroll-margin-top: 100px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #EC9608, #22c55e);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Product Cards with Images */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        .product-card {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(34, 197, 94, 0.3);
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .product-content {
+            padding: 30px;
+        }
+
+        .product-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .product-subtitle {
+            font-size: 1.1rem;
+            color: #EC9608;
+            font-weight: 600;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: #e5e7eb;
+            position: relative;
+            padding-left: 30px;
+            font-size: 0.95rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .spec-item {
+            padding: 12px;
+            background: rgba(55, 65, 81, 0.6);
+            border-radius: 8px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .spec-label {
+            color: #22c55e;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .spec-value {
+            color: #e5e7eb;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced Pricing */
+        .pricing-highlight {
+            background: linear-gradient(135deg, rgba(236, 150, 8, 0.2) 0%, rgba(236, 150, 8, 0.1) 100%);
+            border: 3px solid rgba(236, 150, 8, 0.5);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(236, 150, 8, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #EC9608;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-details {
+            color: #e5e7eb;
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Visual Process Flow */
+        .process-visual {
+            background: rgba(31, 41, 55, 0.4);
+            border: 2px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .step {
+            background: rgba(31, 41, 55, 0.8);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: #22c55e;
+            margin: 20px 0 15px 0;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .service-card {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(236, 150, 8, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            border-top: 6px solid #EC9608;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(236, 150, 8, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #EC9608;
+            margin-bottom: 20px;
+            text-align: center;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #EC9608;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-description {
+            color: #d1d5db;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* Call to Action Sections */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            border: 3px solid rgba(34, 197, 94, 0.4);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 25px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #22c55e;
+            color: #ffffff;
+            padding: 18px 35px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(34, 197, 94, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #22c55e;
+            color: #22c55e;
+        }
+
+        .cta-button.secondary:hover {
+            background: #22c55e;
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .floating-nav {
+                left: 10px;
+                padding: 10px 6px;
+            }
+            
+            .company-logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Gateway -->
+    <div class="auth-gateway hidden">
+        <div class="auth-container">
+            <div class="auth-content">
+                <div class="auth-logo">TerraSYNC</div>
+                <div class="auth-title">Executive Access Portal</div>
+                <div class="auth-subtitle">Enter the password to access the proposal</div>
+                <form class="auth-form">
+                    <input type="password" class="password-input" placeholder="Enter password">
+                    <button type="submit" class="auth-button">Access</button>
+                </form>
+                <div class="auth-footer">
+                    <span class="highlight">Note:</span> This access is valid for 48 hours.
+                </div>
+                <div class="error-message">Invalid password. Please try again.</div>
+                <div class="success-message">Access granted. Redirecting...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Pill Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-items">
+            <div class="nav-dot active" data-section="Overview" onclick="scrollToSection('hero')"></div>
+            <div class="nav-dot" data-section="Range Picker" onclick="scrollToSection('range-picker')"></div>
+            <div class="nav-dot" data-section="Robotic Mowing" onclick="scrollToSection('robotic-mowing')"></div>
+            <div class="nav-dot" data-section="Deployment" onclick="scrollToSection('deployment')"></div>
+            <div class="nav-dot" data-section="Support" onclick="scrollToSection('services')"></div>
+            <div class="nav-dot" data-section="Process" onclick="scrollToSection('process')"></div>
+            <div class="nav-dot" data-section="Get Started" onclick="scrollToSection('contact')"></div>
+        </div>
+    </nav>
+
+    <div class="container proposal-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section fade-in">
+            <div class="hero-content">
+                <div class="company-logo">TerraSYNC</div>
+                <div class="hero-subtitle">Advanced Golf Course Automation Solutions</div>
+                
+                <div class="client-info">
+                    <div class="client-name">Apes Hill Resort Inc.</div>
+                    <div class="client-location">Barbados</div>
+                </div>
+                
+                <div class="hero-description">
+                    We're thrilled to partner with Apes Hill Resort Inc. to bring revolutionary robotic automation to Barbados. Our cutting-edge solutions will transform your golf course operations, reduce costs, and deliver exceptional results.
+                </div>
+            </div>
+        </section>
+
+        <!-- Apes Hill Resort Golf Course Hero -->
+        <div class="image-section fade-in">
+            <img src="Photos/Apes-Hill-12th-hole-scaled.jpg" alt="Apes Hill Resort 12th Hole - Beautiful Caribbean Golf Course" class="hero-image">
+        </div>
+
+        <!-- Range Picker Section -->
+        <section id="range-picker" class="section fade-in">
+            <div class="section-header">
+                <h2 class="section-title">Range Picking Solution</h2>
+                <p class="section-subtitle">Revolutionary autonomous golf ball collection with industry-leading capacity and precision</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="Photos/Versatile-Range-Picker-Robot.webp" alt="Korechi Pik'r™-X Range Picker" class="product-image">
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-title">Korechi Pik'r™-X</div>
+                            <div class="product-subtitle">Industry's Most Versatile Range Picking Robot</div>
+                        </div>
+                        
+                        <div class="product-description">
+                            Engineered in stealth, the Korechi Pik'r™-X revolutionizes golf ball collection with up to 5 gangs of purpose-built pickers (18ft wide). Features exceptional maneuverability for sharp turns and steep slope climbing.
+                        </div>
+
+                        <ul class="feature-list">
+                            <li>Advanced sensor array with comprehensive obstacle detection</li>
+                            <li>High-precision satellite-guided autonomous navigation</li>
+                            <li>Extended runtime: 12-18 hours continuous operation</li>
+                            <li>Massive capacity: Up to 7,500 golf balls per circuit</li>
+                            <li>AI-powered smart basket management</li>
+                            <li>Optional automatic ball-dumping mechanism</li>
+                            <li>Robust powder-coated steel chassis construction</li>
+                            <li>Mobile app connectivity & control</li>
+                            <li>Proudly manufactured in Canada</li>
+                        </ul>
+
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Coverage:</div>
+                                <div class="spec-value">Up to 10.4 acres/hour (5 gangs)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Max Speed:</div>
+                                <div class="spec-value">3.7 mph (7 kph)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Battery Life:</div>
+                                <div class="spec-value">Up to 18 hours continuous</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Positioning:</div>
+                                <div class="spec-value">Multi-constellation GNSS RTK</div>
+                            </div>
+                        </div>
+
+                        <div class="pricing-highlight">
+                            <div class="price">$37,000 USD</div>
+                            <div class="price-details">1-Gang System • Charger Included</div>
+                            <div style="color: #EC9608; font-weight: 600; margin-top: 15px; font-size: 1.1rem;">Additional Gangs: $2,500 USD each</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Range Picker in Action -->
+            <div class="image-section fade-in">
+                <img src="Photos/DJI_0032(1).JPG" alt="Aerial view of range picker robot in operation on golf course" class="section-image range-picker-image">
+            </div>
+        </section>
+
+        <!-- Robotic Mowing Solutions -->
+        <section id="robotic-mowing" class="section fade-in">
+            <div class="section-header">
+                <h2 class="section-title">Robotic Mowing Solutions</h2>
+                <p class="section-subtitle">Professional-grade autonomous mowing with satellite precision and AI-powered efficiency</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Husqvarna CEORA -->
+                <div class="product-card">
+                    <img src="Photos/BQ-990955.webp" alt="Husqvarna CEORA Robotic Mower" class="product-image">
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-title">Husqvarna CEORA™</div>
+                            <div class="product-subtitle">Professional Autonomous Mowing System</div>
+                        </div>
+                        
+                        <div class="product-description">
+                            Designed exclusively for sports fields and golf courses, CEORA™ uses revolutionary EPOS™ satellite technology to deliver exceptional turf quality across expansive areas while freeing your crew for detail work.
+                        </div>
+
+                        <ul class="feature-list">
+                            <li>Husqvarna EPOS™ satellite-based navigation</li>
+                            <li>No physical boundary wires required</li>
+                            <li>Adaptive mowing schedules for quality control</li>
+                            <li>Integrated object avoidance sensors</li>
+                            <li>Safety lighting for 24/7 operation</li>
+                            <li>Over-the-air firmware updates</li>
+                            <li>Fleet management via Husqvarna Connect</li>
+                            <li>Whisper-quiet, zero-emission operation</li>
+                        </ul>
+
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Coverage:</div>
+                                <div class="spec-value">Up to 18 acres</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Cutting Width:</div>
+                                <div class="spec-value">26.8 inches</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Max Slope:</div>
+                                <div class="spec-value">20° capability</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Battery:</div>
+                                <div class="spec-value">Li-ion 49 Ah</div>
+                            </div>
+                        </div>
+
+                        <div class="pricing-highlight">
+                            <div class="price">$20,000 - $32,000 USD</div>
+                            <div class="price-details">Depending on configuration & features</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kress KR236 -->
+                <div class="product-card">
+                    <img src="Photos/Kress-Mission-Mega-RTKn-24000-KR236-36000m2-2-100x100.webp" alt="Kress KR236 RTK Mower" class="product-image">
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-title">Kress KR236</div>
+                            <div class="product-subtitle">RTK™ Satellite Precision Technology</div>
+                        </div>
+                        
+                        <div class="product-description">
+                            Revolutionary Kress RTK™ network delivers satellite-guided centimeter-level accuracy without property-specific antennas. Creates professional stripe patterns across expansive landscapes.
+                        </div>
+
+                        <ul class="feature-list">
+                            <li>RTK™ centimeter-level satellite accuracy</li>
+                            <li>MAP™ (Mowing Action Plan) intelligence</li>
+                            <li>Dual-layer system with 12 razor blades</li>
+                            <li>TeamWork™ multi-robot coordination</li>
+                            <li>OAS (Obstacle Avoidance System)</li>
+                            <li>Satellite-precise multi-zone management</li>
+                            <li>Auto-leveling cutting disc technology</li>
+                            <li>Real-time over-the-air updates</li>
+                            <li>GPS tracking with theft protection</li>
+                        </ul>
+
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Coverage:</div>
+                                <div class="spec-value">6 acres (recommended)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Cutting Width:</div>
+                                <div class="spec-value">13.78 inches</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Max Slope:</div>
+                                <div class="spec-value">30° (40% max)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Sound Level:</div>
+                                <div class="spec-value">62 dB (whisper quiet)</div>
+                            </div>
+                        </div>
+
+                        <div class="pricing-highlight">
+                            <div class="price">$20,000 - $32,000 USD</div>
+                            <div class="price-details">Advanced RTK configuration</div>
+                        </div>
+                    </div>
+                </div>
+
+                                 <!-- NEXMOW M2 -->
+                 <div class="product-card">
+                     <img src="Photos/PLAINVIEW_FRONT-1280x800.png" alt="NEXMOW M2 Robotic Mower" class="product-image">
+                     <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-title">NEXMOW M2</div>
+                            <div class="product-subtitle">Battery Swap & Stationary Flexibility</div>
+                        </div>
+                        
+                        <div class="product-description">
+                            Ultimate versatility with revolutionary battery swap technology for drop-and-go operations plus traditional stationary charging. Maximum operational flexibility for dynamic golf course management.
+                        </div>
+
+                        <ul class="feature-list">
+                            <li>Revolutionary battery swap technology</li>
+                            <li>Drop-and-go operational efficiency</li>
+                            <li>Stationary charging station compatibility</li>
+                            <li>Centralized fleet housing capability</li>
+                            <li>Professional-grade cutting precision</li>
+                            <li>Advanced GPS navigation & mapping</li>
+                            <li>All-weather resistant construction</li>
+                            <li>Remote monitoring & control system</li>
+                        </ul>
+
+                        <div class="pricing-highlight">
+                            <div class="price">$9,000 USD each</div>
+                            <div class="price-details">Recommended: 2 units for optimal coverage</div>
+                            <div style="color: #EC9608; font-weight: 700; margin-top: 15px; font-size: 1.2rem;">Total Package: $18,000 USD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robotic Mowing in Action -->
+            <div class="image-section fade-in">
+                <img src="Photos/1749117782713.jpg" alt="Professional robotic mowers creating perfect stripe patterns on golf course" class="section-image mowing-image">
+            </div>
+        </section>
+
+        <!-- Deployment Models -->
+        <section id="deployment" class="section fade-in">
+            <div class="section-header">
+                <h2 class="section-title">Deployment Options</h2>
+                <p class="section-subtitle">Flexible operational models designed to fit your course management style</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-anchor service-icon"></i>
+                    <div class="service-title">Standard Stationary Model</div>
+                    <div class="service-description">
+                        Mowers positioned over specific zones with virtual mapping. Continuous autonomous coverage with local charging stations. Perfect for dedicated area maintenance with consistent, reliable operation.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-shuttle-van service-icon"></i>
+                    <div class="service-title">Drop-and-Go Model</div>
+                    <div class="service-description">
+                        Battery swap technology enables central housing with team deployment to specific zones. More cost-effective and flexible, allowing dynamic coverage based on daily needs and conditions.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-cogs service-icon"></i>
+                    <div class="service-title">Hybrid Configuration</div>
+                    <div class="service-description">
+                        Best of both worlds - drop-and-go mowers with stationary capabilities. Full flexibility to adapt operations as your needs change, ensuring maximum return on investment.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operations Showcase -->
+            <div class="image-section fade-in">
+                <img src="Photos/1749117782798.jpg" alt="Professional robotic mower fleet operations showcase - multiple mowers lined up and ready for deployment" class="section-image operations-showcase-image">
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section fade-in">
+            <div class="section-header">
+                <h2 class="section-title">Comprehensive Support</h2>
+                <p class="section-subtitle">End-to-end service from consultation to ongoing support with local presence development</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-headset service-icon"></i>
+                    <div class="service-title">Ongoing Support Services</div>
+                    <div class="service-description">
+                        While building our Barbados presence, we provide comprehensive remote support. As adoption grows across the island, we'll establish a dedicated local support team for immediate on-site assistance.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-plane service-icon"></i>
+                    <div class="service-title">Demo Flights to West Palm Beach</div>
+                    <div class="service-description">
+                        Complimentary flights to our Florida facility for hands-on technology demonstrations. Meet our team, see equipment in action, and experience the full capabilities of our robotic solutions.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-tools service-icon"></i>
+                    <div class="service-title">Installation & Training</div>
+                    <div class="service-description">
+                        Complete professional installation with comprehensive 3-4 day training program. Your team will be fully prepared to operate and maintain the technology at peak performance levels.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-globe service-icon"></i>
+                    <div class="service-title">On-Site Consultation</div>
+                    <div class="service-description">
+                        Our team will fly to Barbados for personalized consultation, needs assessment, and implementation strategy development specifically tailored to Apes Hill Resort's requirements.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-cloud service-icon"></i>
+                    <div class="service-title">TerraSYNC Hub (Coming Soon)</div>
+                    <div class="service-description">
+                        Revolutionary cloud platform managing all technology, personnel, irrigation, and equipment in one unified dashboard. Includes predictive maintenance, scheduling, and comprehensive analytics.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fleet Management & Storage -->
+            <div class="image-section fade-in">
+                <img src="Photos/1749117779188.jpg" alt="Professional robotic mower fleet storage and management facility" class="section-image">
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="section fade-in">
+            <div class="section-header">
+                <h2 class="section-title">Implementation Process</h2>
+                <p class="section-subtitle">Streamlined 7-step journey from discovery to full operational support</p>
+            </div>
+            
+            <div class="process-visual">
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <i class="fas fa-phone step-icon"></i>
+                        <div class="step-title">Discovery Call</div>
+                        <div class="step-description">Initial consultation to understand your specific requirements, assess current operations, and determine optimal solutions for Apes Hill Resort.</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <i class="fas fa-handshake step-icon"></i>
+                        <div class="step-title">Initiation Fee</div>
+                        <div class="step-description">$1,000 USD investment to proceed with comprehensive assessment and detailed proposal development specifically for your course.</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <i class="fas fa-search step-icon"></i>
+                        <div class="step-title">Full Assessment</div>
+                        <div class="step-description">Complete evaluation of your golf course layout, terrain, and operational needs to determine optimal product selection and create detailed implementation quote.</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <i class="fas fa-eye step-icon"></i>
+                        <div class="step-title">Demo Options</div>
+                        <div class="step-description">Choose from West Palm Beach facility visit, on-site Barbados consultation, or virtual demonstration. One option included in assessment.</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <i class="fas fa-shipping-fast step-icon"></i>
+                        <div class="step-title">Order & Delivery</div>
+                        <div class="step-description">Product ordering, manufacturing coordination, and delivery to Barbados with full logistics management and customs coordination.</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <i class="fas fa-graduation-cap step-icon"></i>
+                        <div class="step-title">Installation & Training</div>
+                        <div class="step-description">Professional installation by certified technicians followed by comprehensive 3-4 day training program for your entire team.</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <i class="fas fa-life-ring step-icon"></i>
+                        <div class="step-title">Ongoing Support</div>
+                        <div class="step-description">Continuous remote support with plans for local technician establishment as TerraSYNC grows throughout the Caribbean region.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Training & Implementation -->
+            <div class="image-section fade-in">
+                <img src="Photos/1746478024512.jpg" alt="TerraSYNC team training session with complete robotic mower fleet deployment" class="section-image team-training-image">
+            </div>
+        </section>
+
+        
+
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="cta-section fade-in">
+            <div class="cta-title">Ready to Transform Apes Hill Resort?</div>
+            <div class="cta-text">
+                We're excited to bring revolutionary robotic automation to Barbados and establish TerraSYNC as the Caribbean's premier golf course technology partner.
+            </div>
+            <div class="cta-text">
+                Let's schedule your consultation to assess Apes Hill Resort's specific needs and design the perfect TerraSYNC solution.
+            </div>
+            
+                         <div class="cta-buttons">
+                 <a href="mailto:wesleypitts@terrasync.biz?subject=Apes Hill Resort - Ready to Get Started&body=Hi Wesley,%0D%0A%0D%0AI'm interested in moving forward with TerraSYNC solutions for Apes Hill Resort Inc. in Barbados.%0D%0A%0D%0APlease let me know the next steps.%0D%0A%0D%0AThank you!" class="cta-button">
+                     <i class="fas fa-envelope"></i>
+                     Ready to Get Started
+                 </a>
+                 <a href="https://start.terrasync.biz" class="cta-button secondary" target="_blank">
+                     <i class="fas fa-external-link-alt"></i>
+                     View Complete Catalog
+                 </a>
+             </div>
+        </section>
+
+
+    </div>
+
+
+
+    <script>
+        // Floating pill navigation functionality
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Update active navigation dot based on scroll position
+        function updateActiveNav() {
+            const sections = ['hero', 'range-picker', 'robotic-mowing', 'deployment', 'services', 'process', 'contact'];
+            const navDots = document.querySelectorAll('.nav-dot');
+            const scrollPos = window.scrollY + 100;
+
+            sections.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        navDots.forEach(dot => dot.classList.remove('active'));
+                        if (navDots[index]) {
+                            navDots[index].classList.add('active');
+                        }
+                    }
+                }
+            });
+        }
+
+        // Listen for scroll events
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Smooth scroll for any remaining anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Password authentication functionality
+        function checkAccess() {
+            const accessTime = localStorage.getItem('terrasync_access_time');
+            const currentTime = new Date().getTime();
+            const fortyEightHours = 48 * 60 * 60 * 1000; // 48 hours in milliseconds
+            
+            if (accessTime && (currentTime - accessTime) < fortyEightHours) {
+                // Still within 48 hours, show proposal
+                document.querySelector('.auth-gateway').classList.add('hidden');
+                document.querySelector('.proposal-content').classList.add('visible');
+                return true;
+            } else {
+                // More than 48 hours or no access, show gateway
+                localStorage.removeItem('terrasync_access_time');
+                document.querySelector('.auth-gateway').classList.remove('hidden');
+                document.querySelector('.proposal-content').classList.remove('visible');
+                return false;
+            }
+        }
+
+        // Check access on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAccess();
+            updateActiveNav();
+        });
+
+        document.querySelector('.auth-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.querySelector('.password-input').value.trim();
+            const errorMsg = document.querySelector('.error-message');
+            const successMsg = document.querySelector('.success-message');
+            
+            if (password === 'Barbados') {
+                // Store access time
+                localStorage.setItem('terrasync_access_time', new Date().getTime().toString());
+                
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'block';
+                successMsg.innerHTML = '<i class="fas fa-check"></i> Access granted. Welcome to the executive proposal...';
+                
+                setTimeout(() => {
+                    document.querySelector('.auth-gateway').classList.add('hidden');
+                    document.querySelector('.proposal-content').classList.add('visible');
+                }, 1500);
+            } else {
+                errorMsg.style.display = 'block';
+                successMsg.style.display = 'none';
+                errorMsg.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Invalid password. Access denied.';
+                
+                // Clear password field and shake effect
+                document.querySelector('.password-input').value = '';
+                document.querySelector('.auth-container').style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    document.querySelector('.auth-container').style.animation = '';
+                }, 500);
+            }
+        });
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<div id="terra-services-container">
+  <style>
+    #terra-services-container {
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    #terra-services-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #terra-services-container h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-weight: 700;
+      font-style: italic;
+      color: black;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+    
+    #terra-services-container h1::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background: #EC9608;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    #terra-services-container .services-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: stretch;
+    }
+    
+    #terra-services-container .service-card {
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 340px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-services-container .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    #terra-services-container .sync-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .maintain-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .installation-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .card-header {
+      padding: 20px;
+      text-align: center;
+      background: #ed9708;
+      position: relative;
+    }
+    
+    #terra-services-container .card-icon {
+      margin-bottom: 15px;
+      display: block;
+      height: 40px;
+      width: 40px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    #terra-services-container .card-icon svg {
+      height: 100%;
+      width: 100%;
+      fill: #222;
+    }
+    
+    #terra-services-container .card-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #222;
+    }
+    
+    #terra-services-container .card-header p {
+      color: #333;
+      font-weight: 500;
+    }
+    
+    #terra-services-container .card-description {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    #terra-services-container .pricing-section {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #terra-services-container .pricing-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    #terra-services-container .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    #terra-services-container .pricing-note {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 10px;
+      font-style: italic;
+    }
+    
+    #terra-services-container .price {
+      font-weight: 700;
+      color: #EC9608;
+    }
+    
+    #terra-services-container .card-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-services-container .features {
+      list-style: none;
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+    
+    #terra-services-container .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+    
+    #terra-services-container .features li:before {
+      content: "✓";
+      color: #EC9608;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    #terra-services-container .features li:last-child {
+      border-bottom: none;
+    }
+    
+    #terra-services-container .btn {
+      display: block;
+      background-color: #EC9608;
+      color: #222;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.3s;
+      margin-top: auto;
+    }
+    
+    #terra-services-container .btn:hover {
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      #terra-services-container .services-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #terra-services-container .service-card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+  
+  <h1>Our Services</h1>
+  
+  <div class="services-grid">
+    <!-- Sync Plan -->
+    <div class="service-card sync-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/>
+          </svg>
+        </span>
+        <h2>Sync Plan</h2>
+        <p>All-Inclusive Equipment Leasing</p>
+      </div>
+      <div class="card-description">
+        A comprehensive leasing solution with brand new equipment every 3 years, minimal upfront costs, and complete service coverage.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Monthly Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>0-5 acres:</span>
+          <span class="price">$400/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>5-25 acres:</span>
+          <span class="price">$270/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>25+ acres:</span>
+          <span class="price">$180/acre/month</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Brand new equipment every 3 years</li>
+          <li>24-48 hour on-site service response</li>
+          <li>Guaranteed mower loaner program</li>
+          <li>Full equipment automation setup</li>
+          <li>System integration & staff training</li>
+          <li>No hidden fees or extra charges*</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Get Started</a>
+      </div>
+    </div>
+    
+    <!-- Maintain Me Plan -->
+    <div class="service-card maintain-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10,4V3H8V4H5V6H19V4H16V3H14V4H10M17,14.4L15.6,13H12V11H10V13H8V9H6V20H18V16.4L17,14.4M16,18H8V15H10V17H12V15H14.2L15,15.8L16,16.6V18Z"/>
+          </svg>
+        </span>
+        <h2>Maintain Me Plan</h2>
+        <p>Comprehensive Maintenance Coverage</p>
+      </div>
+      <div class="card-description">
+        Fixed monthly payment plan covering repairs, preventive maintenance, and blade replacement for 3 years.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Monthly Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>Per acre:</span>
+          <span class="price">$59/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>First acre (first month):</span>
+          <span class="price">$100</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Repairs & maintenance coverage</li>
+          <li>Regular preventative servicing</li>
+          <li>Blade replacement included</li>
+          <li>Extended product lifetime</li>
+          <li>Local area service coverage</li>
+          <li>Professional technicians</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Get Started</a>
+      </div>
+    </div>
+    
+    <!-- Installation & Consulting -->
+    <div class="service-card installation-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"/>
+          </svg>
+        </span>
+        <h2>Installation & Consulting</h2>
+        <p>Expert Implementation Solutions</p>
+      </div>
+      <div class="card-description">
+        Comprehensive consulting and installation services for optimal grounds maintenance automation.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Installation Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>0-5 acres:</span>
+          <span class="price">$800/acre</span>
+        </div>
+        <div class="pricing-row">
+          <span>5-25 acres:</span>
+          <span class="price">$700/acre</span>
+        </div>
+        <div class="pricing-row">
+          <span>25+ acres:</span>
+          <span class="price">$600/acre</span>
+        </div>
+        <div class="pricing-note">Consulting costs are bundled with installation.</div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Complete ROI site assessment</li>
+          <li>Custom solution design</li>
+          <li>Multi-brand system integration</li>
+          <li>Holistic automation planning</li>
+          <li>Implementation management</li>
+          <li>Staff training programs</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Request Consultation</a>
+      </div>
+    </div>
+  </div>
+</div> 

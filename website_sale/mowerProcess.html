@@ -1,0 +1,677 @@
+<div id="mower-process-container">
+  <style>
+    #mower-process-container {
+      font-family: 'Montserrat', sans-serif;
+      max-width: 1200px;
+      margin: 60px auto 40px;
+      padding: 0 20px;
+      color: white;
+    }
+    
+    #mower-process-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #mower-process-container h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+      font-style: italic;
+      color: black;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+    
+    #mower-process-container h2::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background: #EC9608;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    #mower-process-container .process-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    
+    #mower-process-container .consultation-wrapper {
+      position: relative;
+      display: flex;
+      flex: 2;
+      margin: 0 -5px;
+      padding-top: 0;
+      margin-top: 0;
+    }
+    
+    #mower-process-container .consultation-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: 15px;
+      right: 15px;
+      bottom: -15px;
+      border: 2px dashed #EC9608;
+      border-radius: 12px;
+      z-index: 1;
+    }
+    
+    #mower-process-container .consultation-wrapper::after {
+      content: "Consultation Process";
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      color: #EC9608;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 0 15px;
+      z-index: 2;
+      text-shadow: 0px 0px 3px white, 0px 0px 5px white, 0px 0px 7px white, 0px 0px 10px white;
+    }
+    
+    #mower-process-container .process-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      padding: 0 10px;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+    
+    #mower-process-container .step-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #222;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+      border: 2px solid #EC9608;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      z-index: 3;
+      cursor: pointer;
+    }
+    
+    #mower-process-container .process-step:hover .step-icon {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      background-color: #2a2a2a;
+    }
+    
+    #mower-process-container .process-step:hover .step-title {
+      color: #000;
+    }
+    
+    #mower-process-container .step-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: none;
+      stroke: #EC9608;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.3s ease, transform 0.3s ease;
+    }
+    
+    #mower-process-container .process-step:hover .step-icon svg {
+      stroke: #ffa827;
+      transform: scale(1.1);
+    }
+    
+    #mower-process-container .step-number {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 26px;
+      height: 26px;
+      background-color: #EC9608;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #222;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border: 2px solid #222;
+      z-index: 4;
+    }
+    
+    #mower-process-container .step-content {
+      text-align: center;
+      position: relative;
+      width: 100%;
+    }
+    
+    #mower-process-container .step-title {
+      font-weight: 700;
+      color: #333;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+    
+    #mower-process-container .step-description {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.3;
+    }
+    
+    #mower-process-container .step-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
+      opacity: 0;
+      margin-top: 0;
+      background-color: rgba(255, 248, 235, 0.95);
+      border-radius: 8px;
+      padding: 0 15px;
+      color: #333;
+      border: 1px solid rgba(236, 150, 8, 0.2);
+    }
+    
+    #mower-process-container .step-details p {
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 12px;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    #mower-process-container .step-details.active {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 15px;
+      padding: 12px;
+    }
+    
+    #mower-process-container .expand-button {
+      margin-top: 10px;
+      background-color: transparent;
+      border: none;
+      color: #EC9608;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 11px;
+      transition: background-color 0.3s ease;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    #mower-process-container .expand-button:hover {
+      background-color: rgba(236, 150, 8, 0.1);
+    }
+    
+    #mower-process-container .expand-button svg {
+      width: 16px;
+      height: 16px;
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+    
+    #mower-process-container .expand-button.active svg {
+      transform: rotate(180deg);
+    }
+    
+    #mower-process-container .process-line {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      width: 90%;
+      height: 2px;
+      background-color: #ddd;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      #mower-process-container .step-icon {
+        width: 70px;
+        height: 70px;
+      }
+      
+      #mower-process-container .step-icon svg {
+        width: 35px;
+        height: 35px;
+      }
+      
+      #mower-process-container .step-title {
+        font-size: 16px;
+      }
+      
+      #mower-process-container .step-description {
+        font-size: 13px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      #mower-process-container .process-steps {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #mower-process-container .consultation-wrapper {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        margin-top: 10px;
+        padding-top: 15px;
+      }
+      
+      #mower-process-container .consultation-wrapper::before {
+        left: 0;
+        right: 0;
+        top: -15px;
+        bottom: 20px;
+      }
+      
+      #mower-process-container .consultation-wrapper::after {
+        left: 15px;
+        top: -5px;
+        transform: none;
+        background-color: transparent;
+        padding: 0 10px;
+        text-shadow: 0px 0px 3px white, 0px 0px 5px white, 0px 0px 7px white, 0px 0px 10px white;
+      }
+      
+      #mower-process-container .process-step {
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        padding: 0;
+        margin-top: 0;
+      }
+      
+      #mower-process-container .step-icon {
+        margin-bottom: 0;
+        margin-right: 20px;
+        flex-shrink: 0;
+      }
+      
+      #mower-process-container .step-content {
+        text-align: left;
+        flex: 1;
+        position: relative;
+        z-index: 2;
+      }
+      
+      #mower-process-container .step-title {
+        text-align: left;
+      }
+      
+      #mower-process-container .step-description {
+        text-align: left;
+      }
+      
+      #mower-process-container .step-details {
+        text-align: left;
+      }
+      
+      #mower-process-container .expand-button {
+        margin-left: 0;
+        justify-content: flex-start;
+      }
+      
+      #mower-process-container .process-line {
+        display: none;
+      }
+      
+      #mower-process-container .step-mobile-line {
+        position: absolute;
+        left: 40px;
+        top: 80px;
+        width: 2px;
+        height: calc(100% - 50px);
+        background-color: #ddd;
+        z-index: 1;
+      }
+      
+      #mower-process-container .process-step:last-child .step-mobile-line {
+        display: none;
+      }
+      
+      #mower-process-container .step-mobile-line.animated {
+        height: calc(100% - 50px) !important;
+      }
+      
+      #mower-process-container .step-details p {
+        text-align: left;
+        font-size: 11px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      #mower-process-container .step-icon {
+        width: 60px;
+        height: 60px;
+      }
+      
+      #mower-process-container .step-icon svg {
+        width: 30px;
+        height: 30px;
+      }
+      
+      #mower-process-container .step-mobile-line {
+        left: 30px;
+      }
+    }
+    
+    #mower-process-container .process-line.animated {
+      width: 90% !important;
+    }
+  </style>
+  
+  <h2>Our Robotic Mower Process</h2>
+  
+  <div class="process-steps">
+    <div class="process-line"></div>
+    
+    <!-- Step 1: Contact for Quote -->
+    <div class="process-step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" />
+          <path d="M12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13Z" />
+          <path d="M4 8V6H20V8" />
+          <path d="M17 15C16.06 14.37 14.7 14 13 14H11C9.3 14 7.94 14.37 7 15" />
+        </svg>
+        <span class="step-number">1</span>
+      </div>
+      <div class="step-mobile-line"></div>
+      <div class="step-content">
+        <div class="step-title">Contact for Quote</div>
+        <div class="step-description">Request a quote for your property.</div>
+        <button class="expand-button">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9L12 16L5 9" stroke="#EC9608" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="step-details">
+          <p>Contact us via phone, email, or website form. We'll respond within 24 hours to arrange your consultation.</p>
+          <p>Having basic property details ready helps us prepare better for your needs.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Consultation Process Wrapper -->
+    <div class="consultation-wrapper">
+      <!-- Step 2: On-site Assessment -->
+      <div class="process-step">
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 4.45C9.4 4.16 9.87 4 10.5 4C11.13 4 11.6 4.16 12 4.45C12.4 4.74 12.87 4.9 13.5 4.9C14.13 4.9 14.6 4.74 15 4.45V7.45C14.6 7.74 14.13 7.9 13.5 7.9C12.87 7.9 12.4 7.74 12 7.45C11.6 7.16 11.13 7 10.5 7C9.87 7 9.4 7.16 9 7.45V4.45Z" />
+            <path d="M9 10.45C9.4 10.16 9.87 10 10.5 10C11.13 10 11.6 10.16 12 10.45C12.4 10.74 12.87 10.9 13.5 10.9C14.13 10.9 14.6 10.74 15 10.45V13.45C14.6 13.74 14.13 13.9 13.5 13.9C12.87 13.9 12.4 13.74 12 13.45C11.6 13.16 11.13 13 10.5 13C9.87 13 9.4 13.16 9 13.45V10.45Z" />
+            <path d="M21 8L15.6 2.6C15.2 2.2 14.7 2 14.2 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V16" />
+            <path d="M18 15L21 12L18 9" />
+            <path d="M12 12H21" />
+          </svg>
+          <span class="step-number">2</span>
+        </div>
+        <div class="step-mobile-line"></div>
+        <div class="step-content">
+          <div class="step-title">On-site Assessment</div>
+          <div class="step-description">We analyze your property's unique features.</div>
+          <button class="expand-button">
+            Learn More
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 9L12 16L5 9" stroke="#EC9608" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="step-details">
+            <p>Our specialists visit your property to assess terrain, slopes, obstacles, and soil conditions.</p>
+            <p>We identify installation requirements and determine the ideal mower model for your lawn.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 3: Customized Plan -->
+      <div class="process-step">
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" />
+            <path d="M14 2V8H20" />
+            <path d="M16 13H8" />
+            <path d="M16 17H8" />
+            <path d="M10 9H8" />
+          </svg>
+          <span class="step-number">3</span>
+        </div>
+        <div class="step-mobile-line"></div>
+        <div class="step-content">
+          <div class="step-title">Customized Plan</div>
+          <div class="step-description">Custom solution tailored to your needs.</div>
+          <button class="expand-button">
+            Learn More
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 9L12 16L5 9" stroke="#EC9608" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="step-details">
+            <p>We create a tailored implementation plan with recommended models and boundary layouts.</p>
+            <p>You receive a detailed quote covering equipment, installation, and maintenance options.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 4: Installation -->
+    <div class="process-step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 9V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V9" />
+          <path d="M9 11L12 14L15 11" />
+          <path d="M12 3V14" />
+          <path d="M1 9H23" />
+        </svg>
+        <span class="step-number">4</span>
+      </div>
+      <div class="step-mobile-line"></div>
+      <div class="step-content">
+        <div class="step-title">Professional Installation</div>
+        <div class="step-description">Expert setup of your robotic mower system.</div>
+        <button class="expand-button">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9L12 16L5 9" stroke="#EC9608" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="step-details">
+          <p>Our certified technicians handle wire placement, charging station setup, and programming.</p>
+          <p>We thoroughly test the system and provide a complete walkthrough of your new mower.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 5: Ongoing Support -->
+    <div class="process-step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16V12" />
+          <path d="M12 8H12.01" />
+          <path d="M4.93 4.93L9.17 9.17" />
+          <path d="M14.83 14.83L19.07 19.07" />
+          <path d="M14.83 9.17L19.07 4.93" />
+          <path d="M14.83 9.17L18.36 5.64" />
+          <path d="M4.93 19.07L9.17 14.83" />
+        </svg>
+        <span class="step-number">5</span>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Ongoing Support</div>
+        <div class="step-description">Continuous service for optimal performance.</div>
+        <button class="expand-button">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9L12 16L5 9" stroke="#EC9608" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="step-details">
+          <p>We provide technical support, regular maintenance visits, and seasonal adjustments.</p>
+          <p>Our service includes performance tuning to 95% efficiency, blade replacements, and updates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Enhanced animations for elements coming into view
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      // Element is considered in viewport when it's 25% visible
+      return (
+        rect.top <= windowHeight * 0.75 &&
+        rect.bottom >= 0
+      );
+    }
+    
+    function handleScroll() {
+      // Animate steps
+      const steps = document.querySelectorAll('#mower-process-container .process-step');
+      let hasVisibleStep = false;
+      
+      steps.forEach((step, index) => {
+        if (isElementInViewport(step)) {
+          hasVisibleStep = true;
+          if (step.classList.contains('animated')) return;
+          
+          setTimeout(() => {
+            step.style.opacity = 1;
+            step.style.transform = 'translateY(0) translateX(0)';
+            step.classList.add('animated');
+          }, index * 200);
+        }
+      });
+      
+      // Animate mobile lines for steps that are animated
+      const animatedSteps = document.querySelectorAll('#mower-process-container .process-step.animated');
+      animatedSteps.forEach(step => {
+        const mobileLine = step.querySelector('.step-mobile-line');
+        if (mobileLine && !mobileLine.classList.contains('animated')) {
+          mobileLine.classList.add('animated');
+        }
+      });
+      
+      // Animate the process line when steps become visible
+      if (hasVisibleStep) {
+        const processLine = document.querySelector('#mower-process-container .process-line');
+        if (processLine && !processLine.classList.contains('animated')) {
+          processLine.classList.add('animated');
+        }
+      }
+    }
+    
+    // Handle expand/collapse of step details
+    function setupExpandButtons() {
+      const expandButtons = document.querySelectorAll('#mower-process-container .expand-button');
+      
+      expandButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Toggle active class on button
+          this.classList.toggle('active');
+          
+          // Find the details section
+          const details = this.nextElementSibling;
+          
+          // Toggle active class on details
+          details.classList.toggle('active');
+          
+          // Update button text
+          if (this.classList.contains('active')) {
+            this.childNodes[0].nodeValue = 'Show Less';
+          } else {
+            this.childNodes[0].nodeValue = 'Learn More';
+          }
+          
+          // Close other open details if any
+          const allDetails = document.querySelectorAll('#mower-process-container .step-details.active');
+          const allButtons = document.querySelectorAll('#mower-process-container .expand-button.active');
+          
+          allDetails.forEach(item => {
+            if (item !== details) {
+              item.classList.remove('active');
+            }
+          });
+          
+          allButtons.forEach(item => {
+            if (item !== button) {
+              item.classList.remove('active');
+              item.childNodes[0].nodeValue = 'Learn More';
+            }
+          });
+        });
+      });
+    }
+    
+    // Initial setup
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set initial styles for steps
+      const steps = document.querySelectorAll('#mower-process-container .process-step');
+      steps.forEach((step, index) => {
+        const isEven = index % 2 === 0;
+        step.style.opacity = 0;
+        
+        // Alternate directions for better visual effect
+        if (isEven) {
+          step.style.transform = 'translateY(30px) translateX(-20px)';
+        } else {
+          step.style.transform = 'translateY(30px) translateX(20px)';
+        }
+        
+        step.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      });
+      
+      // Set up process line animation
+      const processLine = document.querySelector('#mower-process-container .process-line');
+      if (processLine) {
+        processLine.style.width = '0%';
+        processLine.style.transition = 'width 1.2s ease-in-out';
+        processLine.classList.add('process-line-animate');
+      }
+      
+      // Add step mobile lines
+      const mobileLines = document.querySelectorAll('#mower-process-container .step-mobile-line');
+      mobileLines.forEach(line => {
+        line.style.height = '0';
+        line.style.transition = 'height 1s ease-in-out';
+      });
+      
+      // Set up expandable content
+      setupExpandButtons();
+      
+      // Check for elements in viewport on load
+      handleScroll();
+      
+      // Listen for scroll events
+      window.addEventListener('scroll', handleScroll);
+    });
+  </script>
+</div> 

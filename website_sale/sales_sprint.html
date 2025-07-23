@@ -1,0 +1,373 @@
+<t t-name="website.sales_sprint">
+    <div class="oe_structure">
+        <div class="container">
+            <div class="kb-sales-wrapper">
+                <div class="kb-style-container">
+                    <style>
+                        :root {
+                            --knox-orange: #FF9900;
+                            --knox-black: #000000;
+                            --knox-gray: #333333;
+                        }
+                        .kb-sales-wrapper {
+                            font-family: 'Inter', sans-serif;
+                            background-color: #FAFAFA;
+                            min-height: 100vh;
+                            margin: 0;
+                            padding: 0;
+                        }
+                        .kb-style-container {
+                            display: none;
+                        }
+                        .kb-font-loader {
+                            position: absolute;
+                            visibility: hidden;
+                            pointer-events: none;
+                        }
+                        .kb-sales-container {
+                            max-width: 96rem;
+                            margin: 0 auto;
+                            padding: 2rem;
+                        }
+                        .kb-section-title {
+                            font-size: 2.25rem;
+                            font-weight: 700;
+                            margin-bottom: 1.5rem;
+                            color: var(--knox-black);
+                            text-align: center;
+                            text-transform: uppercase;
+                            letter-spacing: 0.05em;
+                        }
+                        .kb-subsection-title {
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                            margin-bottom: 1rem;
+                            color: var(--knox-gray);
+                            border-left: 4px solid var(--knox-orange);
+                            padding-left: 1rem;
+                        }
+                        .kb-paragraph {
+                            font-size: 1.1rem;
+                            line-height: 1.75;
+                            margin-bottom: 1rem;
+                            color: var(--knox-gray);
+                        }
+                        .kb-list-item {
+                            font-size: 1.1rem;
+                            line-height: 1.75;
+                            margin-bottom: 0.75rem;
+                            color: var(--knox-gray);
+                        }
+                        .kb-kpi-box {
+                            background-color: white;
+                            border-radius: 1rem;
+                            padding: 1.5rem;
+                            margin-bottom: 1.5rem;
+                            border: 2px solid var(--knox-orange);
+                            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                            transition: transform 0.2s ease-in-out;
+                        }
+                        .kb-kpi-box:hover {
+                            transform: translateY(-5px);
+                        }
+                        .kb-kpi-title {
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                            color: var(--knox-black);
+                            margin-bottom: 0.75rem;
+                        }
+                        .kb-kpi-value {
+                            font-size: 1.75rem;
+                            font-weight: 700;
+                            color: var(--knox-orange);
+                        }
+                        .kb-logo-container {
+                            text-align: center;
+                            margin: 2rem 0 3rem 0;
+                            padding: 2rem;
+                            background-color: var(--knox-black);
+                            border-radius: 1rem;
+                            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                            max-width: 800px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        .kb-logo {
+                            max-width: 600px;
+                            height: auto;
+                        }
+                        .kb-accent-text {
+                            color: var(--knox-orange);
+                            font-weight: 600;
+                        }
+                        .kb-methodology-box {
+                            background-color: white;
+                            border-radius: 1rem;
+                            padding: 1.5rem;
+                            margin-bottom: 1.5rem;
+                            border: 1px solid #e5e7eb;
+                            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                            transition: transform 0.2s ease-in-out;
+                        }
+                        .kb-methodology-box:hover {
+                            transform: translateY(-5px);
+                        }
+                        .kb-methodology-title {
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                            color: var(--knox-orange);
+                            margin-bottom: 0.75rem;
+                            display: flex;
+                            align-items: center;
+                        }
+                        .kb-methodology-title::before {
+                            content: '';
+                            display: inline-block;
+                            width: 8px;
+                            height: 8px;
+                            background-color: var(--knox-orange);
+                            margin-right: 0.75rem;
+                            transform: rotate(45deg);
+                        }
+                        .kb-methodology-description {
+                            font-size: 1.1rem;
+                            line-height: 1.75;
+                            color: var(--knox-gray);
+                        }
+                        .kb-section {
+                            background: white;
+                            border-radius: 1rem;
+                            padding: 2rem;
+                            margin-bottom: 2rem;
+                            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                        }
+                        .kb-list-disc {
+                            list-style-type: none;
+                        }
+                        .kb-list-disc li::before {
+                            content: '•';
+                            color: var(--knox-orange);
+                            font-weight: bold;
+                            display: inline-block;
+                            width: 1em;
+                            margin-left: -1em;
+                        }
+                        @media (max-width: 768px) {
+                            .kb-sales-container {
+                                padding: 1rem;
+                            }
+                            .kb-section-title {
+                                font-size: 1.75rem;
+                            }
+                            .kb-logo {
+                                max-width: 100%;
+                            }
+                        }
+                    </style>
+                </div>
+                <div class="kb-font-loader">
+                    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+                </div>
+                <div class="kb-sales-container">
+                    <div class="kb-header">
+                        <h1 class="kb-section-title">2025 Sales Sprint Schedule</h1>
+                    </div>
+
+                    <section>
+                        <h2 class="kb-section-title">1. Goals & Objectives:</h2>
+                        <p class="kb-paragraph"><span class="kb-accent-text">Primary Goals:</span> Increase customer acquisition, boost revenue.</p>
+                        <h3 class="kb-subsection-title">SMART Objectives:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Acquire 40 new clients by the end of the sales sprint.</li>
+                            <li class="kb-list-item">Increase the total value of closed deals by $100,000 per person for the entire duration of both sprints.</li>
+                            <li class="kb-list-item">Increase the number of initial meetings set up by the sales team to 100 per person for the entire duration of both sprints.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">KPIs:</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; margin: 2rem 0;">
+                            <div class="kb-kpi-box" style="flex: 1; min-width: 200px; max-width: 300px;">
+                                <h4 class="kb-kpi-title">Number of new clients acquired</h4>
+                                <p class="kb-kpi-value">Target: 40</p>
+                            </div>
+                            <div class="kb-kpi-box" style="flex: 1; min-width: 200px; max-width: 300px;">
+                                <h4 class="kb-kpi-title">Total value of closed deals</h4>
+                                <p class="kb-kpi-value">Target: $100,000 per person</p>
+                            </div>
+                            <div class="kb-kpi-box" style="flex: 1; min-width: 200px; max-width: 300px;">
+                                <h4 class="kb-kpi-title">Number of initial meetings scheduled</h4>
+                                <p class="kb-kpi-value">Target: 100 per person</p>
+                            </div>
+                            <div class="kb-kpi-box" style="flex: 1; min-width: 200px; max-width: 300px;">
+                                <h4 class="kb-kpi-title">Conversion rate (meetings to deals)</h4>
+                                <p class="kb-kpi-value">Target: 40%</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="kb-section-title">2. Timeframe & Duration:</h2>
+                        <p class="kb-paragraph"><span class="kb-accent-text">Duration:</span> Two, two-week sales sprints.</p>
+                        <h3 class="kb-subsection-title">Start and End Date:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Sprint 1: 2024-05-06 - 2024-05-17 (End of Spring Semester)</li>
+                            <li class="kb-list-item">Sprint 2: 2024-06-03 - 2024-06-14 (Beginning of Summer)</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="kb-section-title">3. Target Audience & Market:</h2>
+                        <h3 class="kb-subsection-title">Target Audience:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item"><span class="kb-accent-text">Commercial Track:</span> Churches, universities, schools, private corporate offices.</li>
+                            <li class="kb-list-item"><span class="kb-accent-text">Residential Track:</span> Residential neighborhoods.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Market Segments:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Commercial Track</li>
+                            <li class="kb-list-item">Residential Track</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Key Characteristics, Needs, and Pain Points:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Tired of current landscaping service.</li>
+                            <li class="kb-list-item">Desire to save money.</li>
+                            <li class="kb-list-item">Concerned about noise from traditional mowers.</li>
+                            <li class="kb-list-item">Want to eliminate weeds and prevent weed/grass transplantation.</li>
+                            <li class="kb-list-item">Desire for a "cool" or modern landscaping solution.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="kb-section-title">4. Sales Team & Resources:</h2>
+                        <h3 class="kb-subsection-title">Sales Team Members:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Two people per track (Commercial and Residential).</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Roles and Responsibilities:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item"><span class="kb-accent-text">Sales Representatives:</span> Schedule demo appointments, installations, and follow-up meetings. Promote to sales role based on performance.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Available Resources:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Demo products.</li>
+                            <li class="kb-list-item">Website.</li>
+                            <li class="kb-list-item">Pamphlets.</li>
+                            <li class="kb-list-item">Internal app for reporting.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Training and Skill Development:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Initial one or two-day training session. Focus on product knowledge, sales techniques, and appointment setting.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="kb-section-title">5. Sales Strategy & Approach:</h2>
+                        <h3 class="kb-subsection-title">Sales Strategies and Tactics:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Door-to-door sales.</li>
+                            <li class="kb-list-item">Cold calling.</li>
+                            <li class="kb-list-item">Appointment setting.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Sales Methodologies:</h3>
+                        <div class="kb-methodology-box">
+                            <p class="kb-methodology-title">Solution Selling:</p>
+                            <p class="kb-methodology-description">Focuses on understanding the customer's needs and offering the product/service as a solution to their problems. For example, for a church, the solution might be less noise during services; for a school, it might be enhanced curb appeal.</p>
+                        </div>
+                        <div class="kb-methodology-box">
+                            <p class="kb-methodology-title">Value Selling:</p>
+                            <p class="kb-methodology-description">Emphasizes the value that the product or service brings to the customer. This could include cost savings, time savings, environmental benefits, or improved aesthetics. For example, demonstrate the long-term cost savings of your service compared to traditional landscaping.</p>
+                        </div>
+                        <div class="kb-methodology-box">
+                            <p class="kb-methodology-title">SPIN Selling:</p>
+                            <p class="kb-methodology-description">A questioning technique that guides the prospect to realize the value of your solution.</p>
+                            <ul class="kb-list-disc pl-5">
+                                <li class="kb-list-item">Situation: "Tell me about your current landscaping situation."</li>
+                                <li class="kb-list-item">Problem: "Are you experiencing issues with noise, weeds, or service quality?"</li>
+                                <li class="kb-list-item">Implication: "How do these issues affect your daily operations or your satisfaction?"</li>
+                                <li class="kb-list-item">Need-payoff: "Would a quieter, more efficient, and weed-free solution be valuable to you?"</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="kb-subsection-title">Lead Generation Plan:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Seamless AI (for contact information).</li>
+                            <li class="kb-list-item">Google (for identifying potential customers).</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Lead Qualification Process:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item"><span class="kb-accent-text">Residential:</span> Willingness to pay the contract price.</li>
+                            <li class="kb-list-item"><span class="kb-accent-text">Commercial:</span> Budget, need, and decision-making authority.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Sales Process:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Initial Contact (Sales Rep).</li>
+                            <li class="kb-list-item">Follow-up (Sales Rep).</li>
+                            <li class="kb-list-item">Decision-Making Meeting (Internal Sales Team).</li>
+                            <li class="kb-list-item">Sale (Internal Sales Team).</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Handling Objections and Closing Deals:</h3>
+                        <ul class="kb-list-disc pl-5">
+                             <li class="kb-list-item">[Handled by Internal Sales Team] The sales representatives' responsibility is to set the meeting, and the internal sales team will handle objections and close the deals.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="kb-section-title">6. Potential Challenges & Risks:</h2>
+                        <h3 class="kb-subsection-title">Potential Challenges:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Difficulty in scheduling initial meetings.</li>
+                            <li class="kb-list-item">Rejection from potential customers.</li>
+                            <li class="kb-list-item">Competition from existing landscaping services.</li>
+                            <li class="kb-list-item">Weather conditions affecting door-to-door sales.</li>
+                            <li class="kb-list-item">Misaligned expectations between what the sales rep offers and what the internal sales team can deliver.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Contingency Plans:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Provide sales representatives with effective objection handling scripts.</li>
+                            <li class="kb-list-item">Offer incentives for scheduled meetings (e.g., small gift card for the prospect, bonus for the rep).</li>
+                            <li class="kb-list-item">Develop marketing materials that highlight the unique value proposition.</li>
+                            <li class="kb-list-item">Provide rain gear or adjust schedules for inclement weather.</li>
+                             <li class="kb-list-item">Ensure clear communication and alignment between the sales representatives and the internal sales team.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="kb-section-title">7. Reporting & Communication:</h2>
+                        <h3 class="kb-subsection-title">Tracking and Reporting:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Daily stand-up meetings (via Zoom).</li>
+                            <li class="kb-list-item">Daily reporting of success rate on the internal app.</li>
+                            <li class="kb-list-item">Weekly review of the number of meetings set up.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Communication Plan:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Daily Zoom calls for updates and problem-solving.</li>
+                            <li class="kb-list-item">Use of internal app for reporting and communication.</li>
+                            <li class="kb-list-item">Weekly meetings to review progress and provide feedback.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Review Frequency:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Daily and weekly.</li>
+                        </ul>
+                        <h3 class="kb-subsection-title">Metrics to be Reviewed:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Number of meetings set up.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="kb-section-title">8. Budget:</h2>
+                        <h3 class="kb-subsection-title">Budget Allocation:</h3>
+                        <ul class="kb-list-disc pl-5">
+                            <li class="kb-list-item">Sales team compensation: $200 per week per person.</li>
+                            <li class="kb-list-item">Incentives for appointments set:
+                                <ul class="kb-list-disc pl-10">
+                                    <li class="kb-list-item">Residential: $200 per appointment set.</li>
+                                    <li class="kb-list-item">Commercial: $400 per appointment set.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</t>

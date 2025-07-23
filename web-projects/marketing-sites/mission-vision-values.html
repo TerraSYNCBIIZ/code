@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission, Vision, and Values | KnoxBots & TerraSYNC</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        :root {
+            --primary: #ed9708; /* KNOXBOTS Orange */
+            --secondary: #58595B; /* Smokey Gray */
+            --accent: #000000; /* Black */
+            --text-dark: #333333;
+            --text-light: #58595B; 
+            --white: #FFFFFF;
+            --light-bg: #f8f9fa;
+            --box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, var(--primary), #d68000);
+            color: var(--white);
+            border-radius: 15px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: var(--white);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 5rem;
+            padding: 2rem;
+        }
+
+        .section:nth-child(odd) {
+            grid-template-columns: 2fr 1fr;
+        }
+        
+        .section-icon {
+            font-size: 6rem;
+            color: var(--primary);
+            text-align: center;
+            opacity: 0.2;
+        }
+
+        .section-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 95%;
+        }
+
+        .values-section {
+            background: var(--light-bg);
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .values-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .values-section .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .terra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .terra-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary);
+        }
+
+        .terra-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+        }
+
+        .terra-letter {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            font-size: 6rem;
+            font-weight: 900;
+            color: var(--primary);
+            opacity: 0.1;
+            line-height: 1;
+            user-select: none;
+        }
+        
+        .terra-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .terra-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .principles-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            border-top: 1px solid #ddd;
+            padding-top: 3rem;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .value-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            text-align: left;
+            box-shadow: var(--box-shadow);
+            border-top: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+        }
+
+        .value-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            width: 50px;
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background: var(--light-bg);
+            margin-top: 4rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header" data-aos="fade-down">
+            <h1>Our Guiding Principles</h1>
+            <p>The core philosophy that drives KnoxBots LLC and our flagship platform, TerraSYNC.</p>
+        </header>
+
+        <section class="section" id="vision">
+             <div class="section-icon" data-aos="fade-right" data-aos-delay="200">
+                <i class="fas fa-eye"></i>
+            </div>
+            <div class="section-content" data-aos="fade-left">
+                <h2>Our Vision: The GMA Revolution</h2>
+                <p>Our vision is to lead the <strong>"GMA Revolution"</strong> (Grounds Maintenance Automation) by fundamentally transforming how grounds are managed. We are creating a new standard for commercial properties that encompasses the full spectrum of autonomous operations—including robotic mowing, range picking, line painting, irrigation, and drone analytics. This revolution isn't just about technology; it's about revolutionizing the management of personnel and time, empowering both in-house crews and outsourced landscaping companies to achieve unprecedented levels of efficiency and precision.</p>
+            </div>
+        </section>
+
+        <section class="section" id="mission">
+             <div class="section-content" data-aos="fade-right">
+                <h2>Our Mission</h2>
+                <p>Our mission is twofold: to build the <strong>TerraSYNC Hub</strong> as the definitive operating system for autonomous grounds maintenance, and to actively <strong>equip</strong> the industry with the technology, equipment, and support needed to embrace this new generation of automation. We are committed to helping our partners navigate their transition into the future of grounds management, ensuring they are perfectly positioned for success.</p>
+            </div>
+             <div class="section-icon" data-aos="fade-left" data-aos-delay="200">
+                <i class="fas fa-rocket"></i>
+            </div>
+        </section>
+
+        <div class="values-section" data-aos="fade-up">
+            <h2>Our Values: The TERRA Framework</h2>
+            <p class="subtitle">Our values are the bedrock of our company culture. They are captured in the TERRA framework, supported by foundational principles that guide our daily execution.</p>
+            
+            <div class="terra-grid">
+                <div class="terra-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="terra-letter">T</div>
+                    <h3>Think Like an Owner</h3>
+                    <p>Every team member is empowered to think and act like an owner. We take initiative, embrace responsibility, and hold ourselves accountable for results. "A-players hire A-players."</p>
+                </div>
+                <div class="terra-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="terra-letter">E</div>
+                    <h3>Embrace Simplicity & Clarity</h3>
+                    <p>True mastery lies in simplicity. We distill complex technologies into elegant, intuitive solutions and value clear, direct communication.</p>
+                </div>
+                <div class="terra-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="terra-letter">R</div>
+                    <h3>Relentlessly Pioneer</h3>
+                    <p>We are not just participants in the market; we are creators of it. We have an unyielding drive to innovate and build technology that defines an entire industry.</p>
+                </div>
+                <div class="terra-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="terra-letter">R</div>
+                    <h3>Resolve for Customers</h3>
+                    <p>We are deeply committed to understanding and solving the challenges our customers face, delivering practical, reliable, and tangible value at every level.</p>
+                </div>
+                <div class="terra-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="terra-letter">A</div>
+                    <h3>Act with Integrity</h3>
+                    <p>We operate with unwavering integrity. We build trust through transparency, honesty, and a commitment to our promises to our customers, partners, and each other.</p>
+                </div>
+            </div>
+
+            <h3 class="principles-title" data-aos="fade-up">Foundational Principles</h3>
+            <div class="principles-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="value-header">
+                        <i class="fas fa-filter value-icon"></i>
+                        <h3>Focus on the Signal</h3>
+                    </div>
+                    <p>We distinguish between crucial signals and distracting noise, focusing our energy on what truly matters for our customers and our mission without being sidetracked by fleeting trends.</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="value-header">
+                        <i class="fas fa-brain value-icon"></i>
+                        <h3>Cultivate a Growth Mindset</h3>
+                    </div>
+                    <p>We are lifelong learners, open to new ideas and unafraid to challenge our own assumptions. We see challenges as opportunities for growth.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 KnoxBots LLC (DBA TerraSYNC). All Rights Reserved.</p>
+    </footer>
+
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+    </script>
+
+</body>
+</html> 

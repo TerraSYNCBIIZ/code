@@ -1,0 +1,3082 @@
+<t name="Homepage" t-name="website.homepage">
+    <t t-call="website.layout">
+        <t t-set="pageName" t-value="'homepage'"/>
+        <div id="wrap" class="oe_structure"><section class="s_framed_intro o_cc o_cc3 o_colored_level pt216 parallax s_parallax_is_fixed s_parallax_no_overflow_hidden pb24" data-snippet="s_framed_intro" data-name="Framed Intro" style="position: relative;" data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Rainy/08_001&quot;,&quot;flip&quot;:[],&quot;showOnMobile&quot;:true,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;,&quot;animated&quot;:&quot;true&quot;}" data-scroll-background-ratio="1"><span class="s_parallax_bg oe_img_bg o_bg_img_center" style="background-image: url(&quot;/web/image/4705-5f272570/HNGC_Hole16_Drone%20%282%29.webp&quot;);" data-mimetype="image/webp" data-original-id="4700" data-original-src="/web/image/4700-5f272570/HNGC_Hole16_Drone%20%282%29.jpg" data-mimetype-before-conversion="image/jpeg" data-resize-width="1920" data-quality="100"/><div class="o_we_bg_filter" style="background-image: linear-gradient(135deg, rgba(19, 19, 16, 0.5) 0%, rgba(23, 22, 23, 0.83) 100%);"/><div class="o_we_shape o_web_editor_Rainy_08_001 o_we_animated o_shape_show_mobile"/>
+        <div class="container">
+            <div class="row o_grid_mode" data-row-count="14">
+                
+                
+                
+            <div class="o_grid_item o_colored_level g-col-lg-6 g-height-6 col-lg-6" style="z-index: 1; grid-area: 2 / 4 / 8 / 10;">
+                    <h1 class="display-4"><img src="/web/image/4703-585f47a9/8-Final-WhiteOrange-with-Transparent-Background-1.png" alt="" class="img img-fluid o_we_custom_image" data-mimetype="image/webp" data-original-id="4702" data-original-src="/web/image/4702-585f47a9/8-Final-WhiteOrange-with-Transparent-Background-1.png" data-mimetype-before-conversion="image/png" data-resize-width="NaN" loading="lazy"/><br/></h1><div class="s_hr pt32 pb32" data-snippet="s_hr" data-name="Separator">
+        <hr class="w-100 mx-auto" style="border-top-width: 3px; border-top-color: rgb(230, 230, 230);"/>
+    </div><section class="s_embed_code pb64 pt0 text-center" data-snippet="s_embed_code" data-name="Embed Code">
+        <template class="s_embed_code_saved"><div id="terra-sync-container">
+  <style>
+    #terra-sync-container {
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      width: 100%;
+    }
+    #terra-sync-container .centered-text {
+      font-size: 32px; 
+      font-family: 'Montserrat', sans-serif; 
+      font-style: italic; 
+      color: white; 
+      white-space: nowrap; 
+      overflow: visible; 
+      margin: 0 auto; 
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    #terra-sync-container .for-text {
+      font-weight: bold;
+      margin: 0 20px;
+      position: relative;
+    }
+    .word-container {
+      position: relative;
+      height: 36px;
+      width: 280px;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+    }
+    .word-container.left {
+      justify-content: flex-end;
+    }
+    .word-container.right {
+      justify-content: flex-start;
+    }
+    .word {
+      position: absolute;
+      font-weight: bold;
+      color: #EC9608;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .word.left {
+      right: 0;
+    }
+    .word.right {
+      left: 0;
+    }
+    .word.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .word.exit {
+      opacity: 0;
+      transform: translateY(-40px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    
+    /* Mobile responsive styling */
+    @media (max-width: 768px) {
+      #terra-sync-container .centered-text {
+        font-size: 24px;
+      }
+      #terra-sync-container .for-text {
+        margin: 0 10px;
+      }
+      .word-container {
+        height: 28px;
+        width: 200px;
+      }
+    }
+    
+    /* Small mobile devices */
+    @media (max-width: 480px) {
+      #terra-sync-container .centered-text {
+        font-size: 20px;
+      }
+      #terra-sync-container .for-text {
+        margin: 0 8px;
+      }
+      .word-container {
+        height: 24px;
+        width: 150px;
+      }
+      .word {
+        font-size: 19px;
+      }
+    }
+    
+    /* Very small mobile devices */
+    @media (max-width: 375px) {
+      #terra-sync-container {
+        width: 100%;
+        text-align: center;
+      }
+      #terra-sync-container .centered-text {
+        font-size: 18px;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 5px;
+        box-sizing: border-box;
+      }
+      #terra-sync-container .for-text {
+        margin: 8px 0;
+        font-size: 20px;
+      }
+      .word-container {
+        height: auto;
+        min-height: 24px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 5px 0;
+        position: relative;
+      }
+      .word-container.left {
+        justify-content: center;
+        order: 1;
+      }
+      .word-container.right {
+        justify-content: center;
+        order: 3;
+      }
+      .word {
+        position: relative;
+        width: auto;
+        max-width: 90%;
+        font-size: 17px;
+        text-align: center;
+        white-space: normal;
+        margin: 0 auto;
+        left: auto;
+        right: auto;
+        transform: translateY(40px);
+        hyphens: auto;
+        word-break: break-word;
+      }
+      .word.left, .word.right {
+        position: absolute;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) translateY(40px);
+      }
+      .word.active {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      .word.exit {
+        transform: translateX(-50%) translateY(-40px);
+      }
+      #terra-sync-container .for-text {
+        order: 2;
+      }
+    }
+    
+    /* Extra small mobile devices */
+    @media (max-width: 320px) {
+      #terra-sync-container .centered-text {
+        font-size: 16px;
+      }
+      .word {
+        font-size: 15px;
+      }
+    }
+  </style>
+  
+  <div class="centered-text">
+    <div class="word-container left" id="left-container"/>
+    
+    <span class="for-text">FOR</span>
+    
+    <div class="word-container right" id="right-container"/>
+  </div>
+
+  <script>
+    (function() {
+      // Define valid pairs based on logical relationships
+      const validPairs = [
+        // Range pickers only for golf
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"],
+        
+        // Line painters for specific facilities
+        ["AUTONOMOUS LINE PAINTERS", "GOLF"],
+        ["AUTONOMOUS LINE PAINTERS", "MUNICIPALITIES"],
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"],
+        ["AUTONOMOUS LINE PAINTERS", "UNIVERSITIES"],
+        
+        // Robotic mowers for everything
+        ["ROBOTIC MOWERS", "GOLF"],
+        ["ROBOTIC MOWERS", "UNIVERSITIES"],
+        ["ROBOTIC MOWERS", "MUNICIPALITIES"],
+        ["ROBOTIC MOWERS", "GOVERNMENT"],
+        ["ROBOTIC MOWERS", "ATHLETICS"],
+        ["ROBOTIC MOWERS", "EQUINE"],
+        ["ROBOTIC MOWERS", "SOLAR FIELDS"],
+        ["ROBOTIC MOWERS", "RESORTS"],
+        ["ROBOTIC MOWERS", "HIGH END RESIDENTIAL"],
+        
+        // Consulting for everything
+        ["CONSULTING", "GOLF"],
+        ["CONSULTING", "UNIVERSITIES"],
+        ["CONSULTING", "MUNICIPALITIES"],
+        ["CONSULTING", "GOVERNMENT"],
+        ["CONSULTING", "ATHLETICS"],
+        ["CONSULTING", "EQUINE"],
+        ["CONSULTING", "SOLAR FIELDS"],
+        ["CONSULTING", "RESORTS"],
+        ["CONSULTING", "HIGH END RESIDENTIAL"],
+        
+        // Installation for everything
+        ["INSTALLATION", "GOLF"],
+        ["INSTALLATION", "UNIVERSITIES"],
+        ["INSTALLATION", "MUNICIPALITIES"],
+        ["INSTALLATION", "GOVERNMENT"],
+        ["INSTALLATION", "ATHLETICS"],
+        ["INSTALLATION", "EQUINE"],
+        ["INSTALLATION", "SOLAR FIELDS"],
+        ["INSTALLATION", "RESORTS"],
+        ["INSTALLATION", "HIGH END RESIDENTIAL"]
+      ];
+      
+      // Define priority pairs that should appear more frequently
+      const priorityPairs = [
+        ["ROBOTIC MOWERS", "GOLF"],      // High priority - featured service
+        ["INSTALLATION", "HIGH END RESIDENTIAL"], // New high priority
+        ["ROBOTIC MOWERS", "UNIVERSITIES"], // High priority - important market
+        ["INSTALLATION", "SOLAR FIELDS"], // High priority - growing market
+        ["CONSULTING", "MUNICIPALITIES"],  // High priority - strategic focus
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"], // Added to ensure appearance
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"] // Added to ensure appearance
+      ];
+      
+      // Sequence for the first two animations (will show in this exact order)
+      const startingSequence = [
+        ["ROBOTIC MOWERS", "GOLF"],
+        ["INSTALLATION", "HIGH END RESIDENTIAL"],
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"], 
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"]
+      ];
+      let sequenceIndex = 0;
+      
+      // Priority boost factor - how much more likely priority pairs are to be selected
+      const PRIORITY_BOOST = 2.5;
+      
+      const leftContainer = document.getElementById("left-container");
+      const rightContainer = document.getElementById("right-container");
+      
+      let leftActiveElement = null;
+      let rightActiveElement = null;
+      
+      // Create a frequency weight map to bias selection
+      // Services with few applications should appear less frequently
+      const serviceWeights = {
+        "AUTONOMOUS RANGE PICKERS": 0.7,  // Increased from 0.4
+        "AUTONOMOUS LINE PAINTERS": 0.8,  // Increased from 0.6
+        "ROBOTIC MOWERS": 1.0,            // Regular frequency
+        "CONSULTING": 1.0,                // Regular frequency
+        "INSTALLATION": 1.0               // Regular frequency
+      };
+      
+      // Track recent displays to avoid repetition
+      const recentServices = [];  // Track recent left-side services
+      const recentDestinations = []; // Track recent right-side destinations
+      const recentPairs = [];     // Track full recent pairs
+      const MAX_HISTORY = 3;     // How many recent items to remember
+      
+      // Create all word elements
+      function setupWords() {
+        // Get unique words for both sides
+        const uniqueLeftWords = [...new Set(validPairs.map(pair =&gt; pair[0]))];
+        const uniqueRightWords = [...new Set(validPairs.map(pair =&gt; pair[1]))];
+        
+        // Setup left words (services)
+        uniqueLeftWords.forEach(word =&gt; {
+          const wordElement = document.createElement("span");
+          wordElement.textContent = word;
+          wordElement.className = "word left";
+          wordElement.dataset.word = word;
+          leftContainer.appendChild(wordElement);
+        });
+        
+        // Setup right words (destinations)
+        uniqueRightWords.forEach(word =&gt; {
+          const wordElement = document.createElement("span");
+          wordElement.textContent = word;
+          wordElement.className = "word right";
+          wordElement.dataset.word = word;
+          rightContainer.appendChild(wordElement);
+        });
+      }
+      
+      // Check if a pair is in the priority list
+      function isPriorityPair(leftWord, rightWord) {
+        return priorityPairs.some(pair =&gt; 
+          pair[0] === leftWord &amp;&amp; pair[1] === rightWord
+        );
+      }
+      
+      // Check if a pair was recently shown
+      function wasRecentlyShown(leftWord, rightWord) {
+        return recentPairs.some(pair =&gt; 
+          pair[0] === leftWord &amp;&amp; pair[1] === rightWord
+        );
+      }
+      
+      // Select the next pair to display
+      function selectNextPair() {
+        // If we're still in the starting sequence, use that
+        if (sequenceIndex &lt; startingSequence.length) {
+          return startingSequence[sequenceIndex++];
+        }
+        
+        // Collect all possible pairs excluding the most recent ones
+        const candidatePairs = [];
+        const weightedPairs = [];
+        
+        validPairs.forEach(([leftWord, rightWord]) =&gt; {
+          // Skip recently shown full pairs
+          if (wasRecentlyShown(leftWord, rightWord)) {
+            return;
+          }
+          
+          // Base weight from the service type
+          const baseWeight = serviceWeights[leftWord];
+          
+          // Calculate final weight with priority boost if applicable
+          let finalWeight = baseWeight;
+          if (isPriorityPair(leftWord, rightWord)) {
+            finalWeight *= PRIORITY_BOOST;
+          }
+          
+          // Add to candidates list
+          candidatePairs.push({
+            leftWord,
+            rightWord,
+            weight: finalWeight
+          });
+          
+          // Add to weighted selection pool (more weight = more entries)
+          const entries = Math.ceil(finalWeight * 10);
+          for (let i = 0; i &lt; entries; i++) {
+            weightedPairs.push([leftWord, rightWord]);
+          }
+        });
+        
+        // If we have candidates, randomly select one
+        if (weightedPairs.length &gt; 0) {
+          return weightedPairs[Math.floor(Math.random() * weightedPairs.length)];
+        }
+        
+        // Fallback: just pick any valid pair
+        const fallbackPair = validPairs[Math.floor(Math.random() * validPairs.length)];
+        return fallbackPair;
+      }
+      
+      function animatePair() {
+        // Remove active class from current active elements
+        if (leftActiveElement) {
+          leftActiveElement.classList.remove("active");
+          leftActiveElement.classList.add("exit");
+          
+          setTimeout(() =&gt; {
+            leftActiveElement.classList.remove("exit");
+          }, 500);
+        }
+        
+        if (rightActiveElement) {
+          rightActiveElement.classList.remove("active");
+          rightActiveElement.classList.add("exit");
+          
+          setTimeout(() =&gt; {
+            rightActiveElement.classList.remove("exit");
+          }, 500);
+        }
+        
+        // Get next pair using our weighted priority selection
+        const [leftWord, rightWord] = selectNextPair();
+        
+        // Update tracking of recent items
+        recentServices.unshift(leftWord);
+        if (recentServices.length &gt; MAX_HISTORY) {
+          recentServices.pop();
+        }
+        
+        recentDestinations.unshift(rightWord);
+        if (recentDestinations.length &gt; MAX_HISTORY) {
+          recentDestinations.pop();
+        }
+        
+        recentPairs.unshift([leftWord, rightWord]);
+        if (recentPairs.length &gt; MAX_HISTORY) {
+          recentPairs.pop();
+        }
+        
+        // Find and activate the elements
+        leftActiveElement = leftContainer.querySelector(`.word[data-word="${leftWord}"]`);
+        rightActiveElement = rightContainer.querySelector(`.word[data-word="${rightWord}"]`);
+        
+        leftActiveElement.classList.add("active");
+        rightActiveElement.classList.add("active");
+        
+        // Add a bit of timing variation to make the animation feel more natural
+        const nextDelay = 2800 + Math.floor(Math.random() * 600); // 2.8-3.4 seconds
+        
+        // Schedule next animation
+        setTimeout(animatePair, nextDelay);
+      }
+      
+      // Start animations with delay
+      function initAnimations() {
+        setupWords();
+        
+        // Start with the first pair in our sequence
+        const [initialService, initialDestination] = startingSequence[0];
+        sequenceIndex = 1; // Set to 1 since we're using the first sequence item
+        
+        // Update recent lists
+        recentServices.push(initialService);
+        recentDestinations.push(initialDestination);
+        recentPairs.push([initialService, initialDestination]);
+        
+        // Activate initial elements
+        leftActiveElement = leftContainer.querySelector(`.word[data-word="${initialService}"]`);
+        rightActiveElement = rightContainer.querySelector(`.word[data-word="${initialDestination}"]`);
+        
+        leftActiveElement.classList.add("active");
+        rightActiveElement.classList.add("active");
+        
+        // Schedule next animation with a slightly longer initial delay
+        setTimeout(animatePair, 3800);
+      }
+      
+      // Start animation when the document is ready
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        initAnimations();
+      } else {
+        window.addEventListener('DOMContentLoaded', initAnimations);
+      }
+    })();
+  </script>
+</div> </template>
+        <div class="s_embed_code_embedded container o_not_editable"><div id="terra-sync-container">
+  <style>
+    #terra-sync-container {
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      width: 100%;
+    }
+    #terra-sync-container .centered-text {
+      font-size: 32px; 
+      font-family: 'Montserrat', sans-serif; 
+      font-style: italic; 
+      color: white; 
+      white-space: nowrap; 
+      overflow: visible; 
+      margin: 0 auto; 
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    #terra-sync-container .for-text {
+      font-weight: bold;
+      margin: 0 20px;
+      position: relative;
+    }
+    .word-container {
+      position: relative;
+      height: 36px;
+      width: 280px;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+    }
+    .word-container.left {
+      justify-content: flex-end;
+    }
+    .word-container.right {
+      justify-content: flex-start;
+    }
+    .word {
+      position: absolute;
+      font-weight: bold;
+      color: #EC9608;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .word.left {
+      right: 0;
+    }
+    .word.right {
+      left: 0;
+    }
+    .word.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .word.exit {
+      opacity: 0;
+      transform: translateY(-40px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    
+    /* Mobile responsive styling */
+    @media (max-width: 768px) {
+      #terra-sync-container .centered-text {
+        font-size: 24px;
+      }
+      #terra-sync-container .for-text {
+        margin: 0 10px;
+      }
+      .word-container {
+        height: 28px;
+        width: 200px;
+      }
+    }
+    
+    /* Small mobile devices */
+    @media (max-width: 480px) {
+      #terra-sync-container .centered-text {
+        font-size: 20px;
+      }
+      #terra-sync-container .for-text {
+        margin: 0 8px;
+      }
+      .word-container {
+        height: 24px;
+        width: 150px;
+      }
+      .word {
+        font-size: 19px;
+      }
+    }
+    
+    /* Very small mobile devices */
+    @media (max-width: 375px) {
+      #terra-sync-container {
+        width: 100%;
+        text-align: center;
+      }
+      #terra-sync-container .centered-text {
+        font-size: 18px;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 5px;
+        box-sizing: border-box;
+      }
+      #terra-sync-container .for-text {
+        margin: 8px 0;
+        font-size: 20px;
+      }
+      .word-container {
+        height: auto;
+        min-height: 24px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 5px 0;
+        position: relative;
+      }
+      .word-container.left {
+        justify-content: center;
+        order: 1;
+      }
+      .word-container.right {
+        justify-content: center;
+        order: 3;
+      }
+      .word {
+        position: relative;
+        width: auto;
+        max-width: 90%;
+        font-size: 17px;
+        text-align: center;
+        white-space: normal;
+        margin: 0 auto;
+        left: auto;
+        right: auto;
+        transform: translateY(40px);
+        hyphens: auto;
+        word-break: break-word;
+      }
+      .word.left, .word.right {
+        position: absolute;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) translateY(40px);
+      }
+      .word.active {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      .word.exit {
+        transform: translateX(-50%) translateY(-40px);
+      }
+      #terra-sync-container .for-text {
+        order: 2;
+      }
+    }
+    
+    /* Extra small mobile devices */
+    @media (max-width: 320px) {
+      #terra-sync-container .centered-text {
+        font-size: 16px;
+      }
+      .word {
+        font-size: 15px;
+      }
+    }
+  </style>
+  
+  <div class="centered-text">
+    <div class="word-container left" id="left-container"/>
+    
+    <span class="for-text">FOR</span>
+    
+    <div class="word-container right" id="right-container"/>
+  </div>
+
+  <script>
+    (function() {
+      // Define valid pairs based on logical relationships
+      const validPairs = [
+        // Range pickers only for golf
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"],
+        
+        // Line painters for specific facilities
+        ["AUTONOMOUS LINE PAINTERS", "GOLF"],
+        ["AUTONOMOUS LINE PAINTERS", "MUNICIPALITIES"],
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"],
+        ["AUTONOMOUS LINE PAINTERS", "UNIVERSITIES"],
+        
+        // Robotic mowers for everything
+        ["ROBOTIC MOWERS", "GOLF"],
+        ["ROBOTIC MOWERS", "UNIVERSITIES"],
+        ["ROBOTIC MOWERS", "MUNICIPALITIES"],
+        ["ROBOTIC MOWERS", "GOVERNMENT"],
+        ["ROBOTIC MOWERS", "ATHLETICS"],
+        ["ROBOTIC MOWERS", "EQUINE"],
+        ["ROBOTIC MOWERS", "SOLAR FIELDS"],
+        ["ROBOTIC MOWERS", "RESORTS"],
+        ["ROBOTIC MOWERS", "HIGH END RESIDENTIAL"],
+        
+        // Consulting for everything
+        ["CONSULTING", "GOLF"],
+        ["CONSULTING", "UNIVERSITIES"],
+        ["CONSULTING", "MUNICIPALITIES"],
+        ["CONSULTING", "GOVERNMENT"],
+        ["CONSULTING", "ATHLETICS"],
+        ["CONSULTING", "EQUINE"],
+        ["CONSULTING", "SOLAR FIELDS"],
+        ["CONSULTING", "RESORTS"],
+        ["CONSULTING", "HIGH END RESIDENTIAL"],
+        
+        // Installation for everything
+        ["INSTALLATION", "GOLF"],
+        ["INSTALLATION", "UNIVERSITIES"],
+        ["INSTALLATION", "MUNICIPALITIES"],
+        ["INSTALLATION", "GOVERNMENT"],
+        ["INSTALLATION", "ATHLETICS"],
+        ["INSTALLATION", "EQUINE"],
+        ["INSTALLATION", "SOLAR FIELDS"],
+        ["INSTALLATION", "RESORTS"],
+        ["INSTALLATION", "HIGH END RESIDENTIAL"]
+      ];
+      
+      // Define priority pairs that should appear more frequently
+      const priorityPairs = [
+        ["ROBOTIC MOWERS", "GOLF"],      // High priority - featured service
+        ["INSTALLATION", "HIGH END RESIDENTIAL"], // New high priority
+        ["ROBOTIC MOWERS", "UNIVERSITIES"], // High priority - important market
+        ["INSTALLATION", "SOLAR FIELDS"], // High priority - growing market
+        ["CONSULTING", "MUNICIPALITIES"],  // High priority - strategic focus
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"], // Added to ensure appearance
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"] // Added to ensure appearance
+      ];
+      
+      // Sequence for the first two animations (will show in this exact order)
+      const startingSequence = [
+        ["ROBOTIC MOWERS", "GOLF"],
+        ["INSTALLATION", "HIGH END RESIDENTIAL"],
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"], 
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"]
+      ];
+      let sequenceIndex = 0;
+      
+      // Priority boost factor - how much more likely priority pairs are to be selected
+      const PRIORITY_BOOST = 2.5;
+      
+      const leftContainer = document.getElementById("left-container");
+      const rightContainer = document.getElementById("right-container");
+      
+      let leftActiveElement = null;
+      let rightActiveElement = null;
+      
+      // Create a frequency weight map to bias selection
+      // Services with few applications should appear less frequently
+      const serviceWeights = {
+        "AUTONOMOUS RANGE PICKERS": 0.7,  // Increased from 0.4
+        "AUTONOMOUS LINE PAINTERS": 0.8,  // Increased from 0.6
+        "ROBOTIC MOWERS": 1.0,            // Regular frequency
+        "CONSULTING": 1.0,                // Regular frequency
+        "INSTALLATION": 1.0               // Regular frequency
+      };
+      
+      // Track recent displays to avoid repetition
+      const recentServices = [];  // Track recent left-side services
+      const recentDestinations = []; // Track recent right-side destinations
+      const recentPairs = [];     // Track full recent pairs
+      const MAX_HISTORY = 3;     // How many recent items to remember
+      
+      // Create all word elements
+      function setupWords() {
+        // Get unique words for both sides
+        const uniqueLeftWords = [...new Set(validPairs.map(pair =&gt; pair[0]))];
+        const uniqueRightWords = [...new Set(validPairs.map(pair =&gt; pair[1]))];
+        
+        // Setup left words (services)
+        uniqueLeftWords.forEach(word =&gt; {
+          const wordElement = document.createElement("span");
+          wordElement.textContent = word;
+          wordElement.className = "word left";
+          wordElement.dataset.word = word;
+          leftContainer.appendChild(wordElement);
+        });
+        
+        // Setup right words (destinations)
+        uniqueRightWords.forEach(word =&gt; {
+          const wordElement = document.createElement("span");
+          wordElement.textContent = word;
+          wordElement.className = "word right";
+          wordElement.dataset.word = word;
+          rightContainer.appendChild(wordElement);
+        });
+      }
+      
+      // Check if a pair is in the priority list
+      function isPriorityPair(leftWord, rightWord) {
+        return priorityPairs.some(pair =&gt; 
+          pair[0] === leftWord &amp;&amp; pair[1] === rightWord
+        );
+      }
+      
+      // Check if a pair was recently shown
+      function wasRecentlyShown(leftWord, rightWord) {
+        return recentPairs.some(pair =&gt; 
+          pair[0] === leftWord &amp;&amp; pair[1] === rightWord
+        );
+      }
+      
+      // Select the next pair to display
+      function selectNextPair() {
+        // If we're still in the starting sequence, use that
+        if (sequenceIndex &lt; startingSequence.length) {
+          return startingSequence[sequenceIndex++];
+        }
+        
+        // Collect all possible pairs excluding the most recent ones
+        const candidatePairs = [];
+        const weightedPairs = [];
+        
+        validPairs.forEach(([leftWord, rightWord]) =&gt; {
+          // Skip recently shown full pairs
+          if (wasRecentlyShown(leftWord, rightWord)) {
+            return;
+          }
+          
+          // Base weight from the service type
+          const baseWeight = serviceWeights[leftWord];
+          
+          // Calculate final weight with priority boost if applicable
+          let finalWeight = baseWeight;
+          if (isPriorityPair(leftWord, rightWord)) {
+            finalWeight *= PRIORITY_BOOST;
+          }
+          
+          // Add to candidates list
+          candidatePairs.push({
+            leftWord,
+            rightWord,
+            weight: finalWeight
+          });
+          
+          // Add to weighted selection pool (more weight = more entries)
+          const entries = Math.ceil(finalWeight * 10);
+          for (let i = 0; i &lt; entries; i++) {
+            weightedPairs.push([leftWord, rightWord]);
+          }
+        });
+        
+        // If we have candidates, randomly select one
+        if (weightedPairs.length &gt; 0) {
+          return weightedPairs[Math.floor(Math.random() * weightedPairs.length)];
+        }
+        
+        // Fallback: just pick any valid pair
+        const fallbackPair = validPairs[Math.floor(Math.random() * validPairs.length)];
+        return fallbackPair;
+      }
+      
+      function animatePair() {
+        // Remove active class from current active elements
+        if (leftActiveElement) {
+          leftActiveElement.classList.remove("active");
+          leftActiveElement.classList.add("exit");
+          
+          setTimeout(() =&gt; {
+            leftActiveElement.classList.remove("exit");
+          }, 500);
+        }
+        
+        if (rightActiveElement) {
+          rightActiveElement.classList.remove("active");
+          rightActiveElement.classList.add("exit");
+          
+          setTimeout(() =&gt; {
+            rightActiveElement.classList.remove("exit");
+          }, 500);
+        }
+        
+        // Get next pair using our weighted priority selection
+        const [leftWord, rightWord] = selectNextPair();
+        
+        // Update tracking of recent items
+        recentServices.unshift(leftWord);
+        if (recentServices.length &gt; MAX_HISTORY) {
+          recentServices.pop();
+        }
+        
+        recentDestinations.unshift(rightWord);
+        if (recentDestinations.length &gt; MAX_HISTORY) {
+          recentDestinations.pop();
+        }
+        
+        recentPairs.unshift([leftWord, rightWord]);
+        if (recentPairs.length &gt; MAX_HISTORY) {
+          recentPairs.pop();
+        }
+        
+        // Find and activate the elements
+        leftActiveElement = leftContainer.querySelector(`.word[data-word="${leftWord}"]`);
+        rightActiveElement = rightContainer.querySelector(`.word[data-word="${rightWord}"]`);
+        
+        leftActiveElement.classList.add("active");
+        rightActiveElement.classList.add("active");
+        
+        // Add a bit of timing variation to make the animation feel more natural
+        const nextDelay = 2800 + Math.floor(Math.random() * 600); // 2.8-3.4 seconds
+        
+        // Schedule next animation
+        setTimeout(animatePair, nextDelay);
+      }
+      
+      // Start animations with delay
+      function initAnimations() {
+        setupWords();
+        
+        // Start with the first pair in our sequence
+        const [initialService, initialDestination] = startingSequence[0];
+        sequenceIndex = 1; // Set to 1 since we're using the first sequence item
+        
+        // Update recent lists
+        recentServices.push(initialService);
+        recentDestinations.push(initialDestination);
+        recentPairs.push([initialService, initialDestination]);
+        
+        // Activate initial elements
+        leftActiveElement = leftContainer.querySelector(`.word[data-word="${initialService}"]`);
+        rightActiveElement = rightContainer.querySelector(`.word[data-word="${initialDestination}"]`);
+        
+        leftActiveElement.classList.add("active");
+        rightActiveElement.classList.add("active");
+        
+        // Schedule next animation with a slightly longer initial delay
+        setTimeout(animatePair, 3800);
+      }
+      
+      // Start animation when the document is ready
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        initAnimations();
+      } else {
+        window.addEventListener('DOMContentLoaded', initAnimations);
+      }
+    })();
+  </script>
+</div></div>
+    </section>
+                </div><div class="o_grid_item g-col-lg-6 g-height-4 align-content-end o_colored_level col-lg-6" style="z-index: 2; grid-area: 11 / 1 / 15 / 7;">
+                    <p class="lead"><strong>Based in Knoxville KnoxBots-Turf (a company of TERRASYNC) provides <span class="o_text_highlight o_translate_inline o_text_highlight_underline" style="--text-highlight-width: 2px; --text-highlight-color: #EC9608;">autonomous and robotic mowing solutions</span> to keep your turf in top condition. Our systems offer reliable, hassle-free maintenance for both residential and commercial grounds.
+
+</strong></p>
+                    <p style="text-align: left;">
+                        <a class="btn btn-primary btn-lg" href="#Products"><span class="base-fs"><strong>VIEW OUR MOWERS</strong></span></a>
+                    </p>
+                </div></div>
+        </div>
+    </section><section class="s_three_columns o_colored_level o_cc o_cc1 pt32 pb72" data-vxml="001" data-vcss="001" data-snippet="s_three_columns" data-name="Columns" style="position: relative;" data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Rainy/01_001&quot;,&quot;flip&quot;:[],&quot;showOnMobile&quot;:true,&quot;shapeAnimationSpeed&quot;:&quot;-0.4&quot;,&quot;animated&quot;:&quot;true&quot;}"><div class="o_we_shape o_web_editor_Rainy_01_001 o_we_animated o_shape_show_mobile" style="background-image: url(&quot;/web_editor/shape/web_editor%2FRainy%2F01_001.svg?c1=%23ec9608&amp;c5=%231E1301&amp;shapeAnimationSpeed=-0.4&quot;);"/>
+        <div class="container">
+        
+            <div class="row d-flex o_grid_mode" data-row-count="17"><div class="o_grid_item g-col-lg-12 g-height-17 col-lg-12" style="grid-area: 1 / 1 / 18 / 13; z-index: 1;"><div class="col-lg-12">
+            
+            <section class="s_embed_code pt0 pb0 o_snippet_invisible text-center o_conditional_hidden" data-snippet="s_embed_code" data-name="Embed Code" data-visibility="conditional">
+        <template class="s_embed_code_saved"><div id="terra-services-container">
+  <style>
+    #terra-services-container {
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    #terra-services-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #terra-services-container h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-weight: 700;
+      font-style: italic;
+      color: black;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+    
+    #terra-services-container h1::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background: #EC9608;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    #terra-services-container .services-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: stretch;
+    }
+    
+    #terra-services-container .service-card {
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 340px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-services-container .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    #terra-services-container .sync-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .maintain-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .installation-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .card-header {
+      padding: 20px;
+      text-align: center;
+      background: #ed9708;
+      position: relative;
+    }
+    
+    #terra-services-container .card-icon {
+      margin-bottom: 15px;
+      display: block;
+      height: 40px;
+      width: 40px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    #terra-services-container .card-icon svg {
+      height: 100%;
+      width: 100%;
+      fill: #222;
+    }
+    
+    #terra-services-container .card-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #222;
+    }
+    
+    #terra-services-container .card-header p {
+      color: #333;
+      font-weight: 500;
+    }
+    
+    #terra-services-container .card-description {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    #terra-services-container .pricing-section {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #terra-services-container .pricing-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    #terra-services-container .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    #terra-services-container .pricing-note {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 10px;
+      font-style: italic;
+    }
+    
+    #terra-services-container .price {
+      font-weight: 700;
+      color: #EC9608;
+    }
+    
+    #terra-services-container .card-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-services-container .features {
+      list-style: none;
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+    
+    #terra-services-container .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+    
+    #terra-services-container .features li:before {
+      content: "✓";
+      color: #EC9608;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    #terra-services-container .features li:last-child {
+      border-bottom: none;
+    }
+    
+    #terra-services-container .btn {
+      display: block;
+      background-color: #EC9608;
+      color: #222;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.3s;
+      margin-top: auto;
+    }
+    
+    #terra-services-container .btn:hover {
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      #terra-services-container .services-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #terra-services-container .service-card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+  
+  <h1>Our Services</h1>
+  
+  <div class="services-grid">
+    
+    <div class="service-card sync-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/>
+          </svg>
+        </span>
+        <h2>Sync Plan</h2>
+        <p>All-Inclusive Equipment Leasing</p>
+      </div>
+      <div class="card-description">
+        A comprehensive leasing solution with brand new equipment every 3 years, minimal upfront costs, and complete service coverage.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Monthly Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>0-5 acres:</span>
+          <span class="price">$400/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>5-25 acres:</span>
+          <span class="price">$270/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>25+ acres:</span>
+          <span class="price">$180/acre/month</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Brand new equipment every 3 years</li>
+          <li>24-48 hour on-site service response</li>
+          <li>Guaranteed mower loaner program</li>
+          <li>Full equipment automation setup</li>
+          <li>System integration &amp; staff training</li>
+          <li>No hidden fees or extra charges*</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Get Started</a>
+      </div>
+    </div>
+    
+    
+    <div class="service-card maintain-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+            <path d="M10,4V3H8V4H5V6H19V4H16V3H14V4H10M17,14.4L15.6,13H12V11H10V13H8V9H6V20H18V16.4L17,14.4M16,18H8V15H10V17H12V15H14.2L15,15.8L16,16.6V18Z"/>
+          </svg>
+        </span>
+        <h2>Maintain Me Plan</h2>
+        <p>Comprehensive Maintenance Coverage</p>
+      </div>
+      <div class="card-description">
+        Fixed monthly payment plan covering repairs, preventive maintenance, and blade replacement for 3 years.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Monthly Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>Per acre:</span>
+          <span class="price">$59/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>First acre (first month):</span>
+          <span class="price">$100</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Repairs &amp; maintenance coverage</li>
+          <li>Regular preventative servicing</li>
+          <li>Blade replacement included</li>
+          <li>Extended product lifetime</li>
+          <li>Local area service coverage</li>
+          <li>Professional technicians</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Get Started</a>
+      </div>
+    </div>
+    
+    
+    <div class="service-card installation-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+            <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"/>
+          </svg>
+        </span>
+        <h2>Installation &amp; Consulting</h2>
+        <p>Expert Implementation Solutions</p>
+      </div>
+      <div class="card-description">
+        Comprehensive consulting and installation services for optimal grounds maintenance automation.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Installation Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>0-5 acres:</span>
+          <span class="price">$800/acre</span>
+        </div>
+        <div class="pricing-row">
+          <span>5-25 acres:</span>
+          <span class="price">$700/acre</span>
+        </div>
+        <div class="pricing-row">
+          <span>25+ acres:</span>
+          <span class="price">$600/acre</span>
+        </div>
+        <div class="pricing-note">Consulting costs are bundled with installation.</div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Complete ROI site assessment</li>
+          <li>Custom solution design</li>
+          <li>Multi-brand system integration</li>
+          <li>Holistic automation planning</li>
+          <li>Implementation management</li>
+          <li>Staff training programs</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Request Consultation</a>
+      </div>
+    </div>
+  </div>
+</div> </template>
+        <div class="s_embed_code_embedded container o_not_editable"><div id="terra-services-container">
+  <style>
+    #terra-services-container {
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    #terra-services-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #terra-services-container h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-weight: 700;
+      font-style: italic;
+      color: black;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+    
+    #terra-services-container h1::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background: #EC9608;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    #terra-services-container .services-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: stretch;
+    }
+    
+    #terra-services-container .service-card {
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 340px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-services-container .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    #terra-services-container .sync-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .maintain-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .installation-plan {
+      border-top: 3px solid #EC9608;
+    }
+    
+    #terra-services-container .card-header {
+      padding: 20px;
+      text-align: center;
+      background: #ed9708;
+      position: relative;
+    }
+    
+    #terra-services-container .card-icon {
+      margin-bottom: 15px;
+      display: block;
+      height: 40px;
+      width: 40px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    #terra-services-container .card-icon svg {
+      height: 100%;
+      width: 100%;
+      fill: #222;
+    }
+    
+    #terra-services-container .card-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #222;
+    }
+    
+    #terra-services-container .card-header p {
+      color: #333;
+      font-weight: 500;
+    }
+    
+    #terra-services-container .card-description {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    #terra-services-container .pricing-section {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #terra-services-container .pricing-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    #terra-services-container .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    #terra-services-container .pricing-note {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 10px;
+      font-style: italic;
+    }
+    
+    #terra-services-container .price {
+      font-weight: 700;
+      color: #EC9608;
+    }
+    
+    #terra-services-container .card-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-services-container .features {
+      list-style: none;
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+    
+    #terra-services-container .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+    
+    #terra-services-container .features li:before {
+      content: "✓";
+      color: #EC9608;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    #terra-services-container .features li:last-child {
+      border-bottom: none;
+    }
+    
+    #terra-services-container .btn {
+      display: block;
+      background-color: #EC9608;
+      color: #222;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.3s;
+      margin-top: auto;
+    }
+    
+    #terra-services-container .btn:hover {
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      #terra-services-container .services-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #terra-services-container .service-card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+  
+  <h1>Our Services</h1>
+  
+  <div class="services-grid">
+    
+    <div class="service-card sync-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/>
+          </svg>
+        </span>
+        <h2>Sync Plan</h2>
+        <p>All-Inclusive Equipment Leasing</p>
+      </div>
+      <div class="card-description">
+        A comprehensive leasing solution with brand new equipment every 3 years, minimal upfront costs, and complete service coverage.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Monthly Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>0-5 acres:</span>
+          <span class="price">$400/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>5-25 acres:</span>
+          <span class="price">$270/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>25+ acres:</span>
+          <span class="price">$180/acre/month</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Brand new equipment every 3 years</li>
+          <li>24-48 hour on-site service response</li>
+          <li>Guaranteed mower loaner program</li>
+          <li>Full equipment automation setup</li>
+          <li>System integration &amp;amp; staff training</li>
+          <li>No hidden fees or extra charges*</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Get Started</a>
+      </div>
+    </div>
+    
+    
+    <div class="service-card maintain-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+            <path d="M10,4V3H8V4H5V6H19V4H16V3H14V4H10M17,14.4L15.6,13H12V11H10V13H8V9H6V20H18V16.4L17,14.4M16,18H8V15H10V17H12V15H14.2L15,15.8L16,16.6V18Z"/>
+          </svg>
+        </span>
+        <h2>Maintain Me Plan</h2>
+        <p>Comprehensive Maintenance Coverage</p>
+      </div>
+      <div class="card-description">
+        Fixed monthly payment plan covering repairs, preventive maintenance, and blade replacement for 3 years.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Monthly Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>Per acre:</span>
+          <span class="price">$59/acre/month</span>
+        </div>
+        <div class="pricing-row">
+          <span>First acre (first month):</span>
+          <span class="price">$100</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Repairs &amp;amp; maintenance coverage</li>
+          <li>Regular preventative servicing</li>
+          <li>Blade replacement included</li>
+          <li>Extended product lifetime</li>
+          <li>Local area service coverage</li>
+          <li>Professional technicians</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Get Started</a>
+      </div>
+    </div>
+    
+    
+    <div class="service-card installation-plan">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+            <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"/>
+          </svg>
+        </span>
+        <h2>Installation &amp;amp; Consulting</h2>
+        <p>Expert Implementation Solutions</p>
+      </div>
+      <div class="card-description">
+        Comprehensive consulting and installation services for optimal grounds maintenance automation.
+      </div>
+      <div class="pricing-section">
+        <div class="pricing-title">Installation Pricing (per acre)</div>
+        <div class="pricing-row">
+          <span>0-5 acres:</span>
+          <span class="price">$800/acre</span>
+        </div>
+        <div class="pricing-row">
+          <span>5-25 acres:</span>
+          <span class="price">$700/acre</span>
+        </div>
+        <div class="pricing-row">
+          <span>25+ acres:</span>
+          <span class="price">$600/acre</span>
+        </div>
+        <div class="pricing-note">Consulting costs are bundled with installation.</div>
+      </div>
+      <div class="card-body">
+        <ul class="features">
+          <li>Complete ROI site assessment</li>
+          <li>Custom solution design</li>
+          <li>Multi-brand system integration</li>
+          <li>Holistic automation planning</li>
+          <li>Implementation management</li>
+          <li>Staff training programs</li>
+        </ul>
+        <a href="https://www.knoxbots.com/appointment/11?" class="btn">Request Consultation</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </section><h1 style="text-align: center;"><br/></h1>
+        </div></div>
+                
+                
+                
+            </div>
+        </div>
+    </section><section class="s_text_image o_cc o_cc1 o_colored_level pb0 pt192" data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Origins/02_001&quot;,&quot;colors&quot;:{&quot;c4&quot;:&quot;o-color-1&quot;,&quot;c5&quot;:&quot;o-color-4&quot;},&quot;flip&quot;:[],&quot;showOnMobile&quot;:true,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;}" data-snippet="s_image_text" data-name="Text - Image">
+        <div class="o_we_shape o_web_editor_Origins_02_001 o_shape_show_mobile" style="background-image: url(&quot;/web_editor/shape/web_editor%2FOrigins%2F02_001.svg?c4=o-color-1&amp;c5=o-color-4&quot;);"/>
+        <div class="container">
+            <div class="row o_grid_mode" data-row-count="2">
+                
+            <div class="o_colored_level o_grid_item g-col-lg-6 g-height-2 col-lg-6" style="z-index: 1; grid-area: 1 / 4 / 3 / 10;"><h1 style="text-align: center;"><em>OUR PRODUCTS</em></h1><p>
+
+</p></div></div>
+        </div>
+    </section><section data-snippet="s_dynamic_snippet_products" class="s_dynamic_snippet_products s_dynamic s_dynamic_empty o_colored_level o_cc o_cc4 pt0 pb176 s_product_product_horizontal_card o_dynamic_snippet_empty" data-custom-template-data="{}" data-name="Products" data-product-category-id="all" data-show-variants="true" data-number-of-records="16" data-filter-id="6" data-template-key="website_sale.dynamic_filter_template_product_product_horizontal_card" data-carousel-interval="5000" id="Products" data-anchor="true" data-number-of-elements="3" data-number-of-elements-small-devices="1" data-extra-classes="o_carousel_multiple_rows" data-row-per-slide="2" data-arrow-position="bottom">
+            <div class="container">
+                <div class="row s_nb_column_fixed">
+                    <section class="s_dynamic_snippet_title oe_unremovable oe_unmovable d-flex flex-column flex-md-row mb-lg-0 pb-3 pb-md-0 o_colored_level justify-content-between">
+                        <div>
+                            
+                            <p class="lead"><br/></p>
+                        </div>
+                        <div>
+                            <a class="s_dynamic_snippet_main_page_url btn btn-secondary" href="/shop" data-bs-original-title="See All">See all <i class="fa fa-long-arrow-right ms-2"/></a>
+                        </div>
+                    </section>
+                    <section class="s_dynamic_snippet_content oe_unremovable oe_unmovable o_not_editable col o_colored_level">
+                        <div class="css_non_editable_mode_hidden">
+                            <div class="missing_option_warning alert alert-info fade show d-none d-print-none rounded-0 o_default_snippet_text">
+                                Your Dynamic Snippet will be displayed here... This message is displayed because you did not provide both a filter and a template to use.<br/>
+                            </div>
+                        </div>
+                        <div class="dynamic_snippet_template"/>
+                    </section>
+                </div>
+            </div>
+            <style>
+                /* Hide add to cart buttons in product cards */
+                #Products .o_wsale_product_btn {
+                    display: none !important;
+                }
+                /* Adjust spacing where cart buttons would be */
+                #Products .o_wsale_product_information {
+                    padding-bottom: 15px;
+                }
+            </style>
+        </section><section class="s_company_team_shapes o_cc o_cc1 o_colored_level pt0 pb0" data-oe-shape-data="{'shape':'web_editor/Origins/05','colors':{'c3':'o-color-1'},'flip':[],'showOnMobile':false,'shapeAnimationSpeed':'0'}" data-snippet="s_company_team_shapes" data-name="Team Shapes" style="position: relative;"><div class="o_we_shape o_web_editor_Origins_05" style="background-image: url(&quot;/web_editor/shape/web_editor/Origins/05.svg?c3=o-color-1&quot;);"/>
+        
+        <div class="container">
+            <div class="row s_nb_column_fixed o_grid_mode" data-row-count="8">
+                <div class="o_colored_level o_grid_item g-col-lg-12 g-height-2 col-lg-12" style="grid-area: 1 / 1 / 3 / 13; z-index: 1;">
+                    <h2 style="text-align: center;"><span class="o_text_highlight o_translate_inline o_text_highlight_underline" style="--text-highlight-width: 4px; --text-highlight-color: var(--o-color-4);">OUR PARTNERS</span><br/></h2>
+    </div>
+                
+                
+                
+                
+                
+                
+            <div class="o_colored_level o_grid_item g-height-2 g-col-lg-3 col-lg-3" style="z-index: 4; --grid-item-padding-y: 8px; grid-area: 4 / 7 / 6 / 10;">
+                    <p><img src="/web/image/1964-24c63882/Korechi-Logo-Vector-30_09_2021.svg" alt="" class="img img-fluid o_we_custom_image" style="width: 100% !important;" data-mimetype="image/svg+xml" data-original-id="1964" data-original-src="/web/image/1964-24c63882/Korechi-Logo-Vector-30_09_2021.svg" data-mimetype-before-conversion="image/svg+xml" loading="lazy"/></p></div><div class="o_colored_level o_grid_item g-height-2 g-col-lg-3 col-lg-3" style="z-index: 3; --grid-item-padding-y: 15px; grid-area: 4 / 4 / 6 / 7;">
+                    <p><img src="/web/image/1967-4e5f1e75/logo-header.png" alt="" class="img-fluid rounded img o_we_custom_image" style="width: 100% !important;" data-mimetype="image/png" data-original-id="1967" data-original-src="/web/image/1967-4e5f1e75/logo-header.png" data-mimetype-before-conversion="image/png" loading="lazy"/></p></div><div class="o_colored_level o_grid_item g-height-2 g-col-lg-3 col-lg-3" style="z-index: 2; --grid-item-padding-y: 20px; grid-area: 4 / 1 / 6 / 4;">
+                    <p><img src="/web/image/4720-2ee351f2/Husqvarna_logo.svg" alt="" class="img img-fluid o_we_custom_image" style="width: 100% !important;" data-shape="web_editor/geometric_round/geo_round_square" data-shape-colors=";;;;" data-mimetype="image/svg+xml" data-original-id="1966" data-original-src="/web/image/1966-3b033f0a/Husqvarna_logo.svg.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-file-name="Husqvarna_logo.svg" data-width="1280" data-height="251" data-scale-x="1" data-scale-y="1" data-aspect-ratio="0/0" loading="lazy"/></p></div><div class="o_colored_level o_grid_item g-col-lg-6 g-height-3 col-lg-6" style="z-index: 0; --grid-item-padding-y: 35px; grid-area: 6 / 4 / 9 / 10;">
+                    <p><img src="/web/image/4731-950edbfa/Black_on_Transparent_Logo.png" alt="" class="img img-fluid o_we_custom_image" style="width: 100% !important;" data-mimetype="image/webp" data-original-id="4729" data-original-src="/web/image/4729-950edbfa/Black_on_Transparent_Logo.png" data-mimetype-before-conversion="image/png" data-resize-width="NaN" loading="lazy"/></p></div><div class="o_colored_level o_grid_item g-height-2 g-col-lg-3 col-lg-3" style="z-index: 0; --grid-item-padding-y: 35px; grid-area: 4 / 10 / 6 / 13;">
+                    <p><img src="/web/image/4718-0ac30b79/tinymobilerobots-logo.svg" alt="" class="img img-fluid o_we_custom_image" style="width: 100% !important;" data-mimetype="image/svg+xml" data-original-id="4718" data-original-src="/web/image/4718-0ac30b79/tinymobilerobots-logo.svg" data-mimetype-before-conversion="image/svg+xml" loading="lazy"/></p></div></div>
+        </div>
+    </section><section class="s_title o_cc1 o_colored_level pt16 pb88" data-vcss="001" data-oe-shape-data="{'shape':'web_editor/Origins/05','colors':{'c3':'o-color-4'},'flip':[],'showOnMobile':false,'shapeAnimationSpeed':'0'}" data-snippet="s_title" data-name="Title">
+        <div class="o_we_shape o_web_editor_Origins_05 bg-o-color-1" style="background-image: url(&quot;/web_editor/shape/web_editor/Origins/05.svg?c3=o-color-4&quot;);"/>
+        <div class="s_allow_columns container">
+            <h2 style="text-align: center;"><br/></h2>
+    </div>
+    </section><section class="s_call_to_action o_cc o_cc5 o_colored_level parallax s_parallax_is_fixed s_parallax_no_overflow_hidden pt0 o_half_screen_height pb72" style="background-position: 50% 73.2734%;" data-snippet="s_call_to_action" data-name="Call to Action" data-scroll-background-ratio="1"><span class="s_parallax_bg oe_img_bg o_bg_img_center" style="background-image: url(&quot;/web/image/4732-e2b02544/1736327730128.webp&quot;);" data-mimetype="image/webp" data-original-id="4725" data-original-src="/web/image/4725-e2b02544/1736327730128.jpg" data-mimetype-before-conversion="image/jpeg" data-resize-width="1920" data-quality="100"/>
+        <div class="o_we_bg_filter bg-black-50"/>
+        <div class="container-fluid">
+            <div class="row o_grid_mode" data-row-count="12">
+                
+                
+            <div class="o_colored_level o_grid_item g-height-11 g-col-lg-5 col-lg-5" style="z-index: 1; grid-area: 2 / 8 / 13 / 13;">
+                    <section class="s_embed_code pt0 pb0 text-center" data-snippet="s_embed_code" data-name="Embed Code">
+        <template class="s_embed_code_saved"><div id="terra-calculator-container">
+  <style>
+    #terra-calculator-container {
+      font-family: 'Montserrat', sans-serif;
+      max-width: 700px;
+      margin: 12px auto;
+      background-color: #333;
+      border-radius: 6px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      border-top: 2px solid #EC9608;
+      overflow: hidden;
+      color: white;
+    }
+    
+    #terra-calculator-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #terra-calculator-container .calculator-title {
+      background: linear-gradient(to bottom, rgba(236, 150, 8, 0.95), rgba(236, 150, 8, 0.85));
+      color: #222;
+      text-align: center;
+      padding: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    #terra-calculator-container .calculator-content {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    
+    #terra-calculator-container .calculator-inputs {
+      flex: 3;
+      padding: 16px;
+      max-width: 60%;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #terra-calculator-container .calculator-results {
+      flex: 2;
+      padding: 16px;
+      max-width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-calculator-container .input-group {
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    #terra-calculator-container .input-label {
+      font-weight: 600;
+      font-size: 12px;
+      width: 50%;
+      align-self: center;
+    }
+    
+    #terra-calculator-container .input-value-box {
+      background-color: white;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 5px 8px;
+      font-weight: 600;
+      font-size: 12px;
+      width: 85px;
+      text-align: center;
+      margin-left: auto;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    #terra-calculator-container .input-value-box:focus {
+      outline: none;
+      border-color: #EC9608;
+      box-shadow: 0 0 0 2px rgba(236, 150, 8, 0.3);
+    }
+    
+    #terra-calculator-container .input-value-box.error {
+      border-color: #ff4d4d;
+      box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.3);
+    }
+    
+    #terra-calculator-container .error-message {
+      color: #ff4d4d;
+      font-size: 10px;
+      width: 100%;
+      text-align: right;
+      margin-top: 3px;
+      height: 12px;
+    }
+    
+    #terra-calculator-container .slider-row {
+      width: 100%;
+      margin-top: 5px;
+      position: relative;
+    }
+    
+    #terra-calculator-container .slider-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-calculator-container .input-range {
+      width: 100%;
+      height: 5px;
+      background: #C4B095;
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 3px;
+      margin: 6px 0;
+    }
+    
+    #terra-calculator-container .input-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+    
+    #terra-calculator-container .input-range::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      background: #EC9608;
+    }
+    
+    #terra-calculator-container .input-range::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+    
+    #terra-calculator-container .input-range::-moz-range-thumb:hover {
+      transform: scale(1.1);
+      background: #EC9608;
+    }
+
+    #terra-calculator-container .slider-tooltip {
+      position: absolute;
+      background: #EC9608;
+      color: #222;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      top: -20px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    #terra-calculator-container .range-values {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    #terra-calculator-container .description {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      margin-left: auto;
+      text-align: right;
+      margin-top: 3px;
+      max-width: 70%;
+    }
+    
+    #terra-calculator-container .result-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    
+    #terra-calculator-container .result-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #EC9608;
+      margin: 5px 0;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    
+    #terra-calculator-container .result-label {
+      font-size: 11px;
+      margin: 2px 0;
+    }
+    
+    #terra-calculator-container .result-info {
+      margin-top: 10px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      flex-grow: 1;
+    }
+    
+    #terra-calculator-container .result-savings {
+      font-size: 20px;
+      font-weight: 700;
+      color: #EC9608;
+      margin: 10px 0;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    
+    #terra-calculator-container .cta-button {
+      background-color: #EC9608;
+      color: #222;
+      border: none;
+      padding: 7px 0;
+      border-radius: 3px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: auto;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    #terra-calculator-container .cta-button:hover {
+      background-color: #faa71b;
+      transform: translateY(-1px);
+    }
+    
+    #terra-calculator-container .cta-button:active {
+      transform: translateY(0);
+    }
+    
+    /* Animated highlight for updated results */
+    @keyframes highlight {
+      0% { color: #EC9608; }
+      50% { color: #ffffff; }
+      100% { color: #EC9608; }
+    }
+    
+    #terra-calculator-container .highlight {
+      animation: highlight 0.8s ease-out;
+    }
+    
+    /* Mobile responsive styling */
+    @media (max-width: 700px) {
+      #terra-calculator-container .calculator-content {
+        flex-direction: column;
+      }
+      
+      #terra-calculator-container .calculator-inputs,
+      #terra-calculator-container .calculator-results {
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      #terra-calculator-container .input-label {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      #terra-calculator-container .input-value-box {
+        margin-left: 0;
+      }
+      
+      #terra-calculator-container .description {
+        margin-left: 0;
+        text-align: left;
+        max-width: 100%;
+      }
+    }
+  </style>
+  
+  <div class="calculator-title">KNOXBOTS ROI Calculator</div>
+  
+  <div class="calculator-content">
+    <div class="calculator-inputs">
+      
+      <div class="input-group">
+        <div class="input-label">Traditional Mower Maintenance Cost</div>
+        <input type="text" class="input-value-box" id="maintenance-cost-value" value="$8,000"/>
+        <div class="error-message" id="maintenance-cost-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="maintenance-cost-tooltip">$8,000</div>
+            <input type="range" min="0" max="10000" value="8000" step="100" class="input-range" id="maintenance-cost"/>
+            <div class="range-values">
+              <span>$0</span>
+              <span>$10,000</span>
+            </div>
+          </div>
+          <div class="description">How Much is Spent Each Year on Maintenance</div>
+        </div>
+      </div>
+      
+      
+      <div class="input-group">
+        <div class="input-label">Cost of Traditional Fairway Mower</div>
+        <input type="text" class="input-value-box" id="mower-cost-value" value="$120,000"/>
+        <div class="error-message" id="mower-cost-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="mower-cost-tooltip">$120,000</div>
+            <input type="range" min="1000" max="150000" value="120000" step="1000" class="input-range" id="mower-cost"/>
+            <div class="range-values">
+              <span>$1,000</span>
+              <span>$150,000</span>
+            </div>
+          </div>
+          <div class="description">Cost of a Traditional Fairway Mower</div>
+        </div>
+      </div>
+      
+      
+      <div class="input-group">
+        <div class="input-label">Operator Hourly Wage</div>
+        <input type="text" class="input-value-box" id="hourly-wage-value" value="$25.00"/>
+        <div class="error-message" id="hourly-wage-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="hourly-wage-tooltip">$25.00</div>
+            <input type="range" min="0" max="42.5" value="25" step="0.5" class="input-range" id="hourly-wage"/>
+            <div class="range-values">
+              <span>$0</span>
+              <span>$42.50</span>
+            </div>
+          </div>
+          <div class="description">How Much The Operator is Paid per Hour</div>
+        </div>
+      </div>
+      
+      
+      <div class="input-group">
+        <div class="input-label">Hours of Operation per Year</div>
+        <input type="text" class="input-value-box" id="operation-hours-value" value="1,000"/>
+        <div class="error-message" id="operation-hours-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="operation-hours-tooltip">1,000</div>
+            <input type="range" min="0" max="2000" value="1000" step="10" class="input-range" id="operation-hours"/>
+            <div class="range-values">
+              <span>0</span>
+              <span>2,000</span>
+            </div>
+          </div>
+          <div class="description">How Many Hours of Operation per Year</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="calculator-results">
+      <div class="result-title">Your Estimated ROI with KNOXBOTS</div>
+      
+      <div class="result-label">Annual Traditional Cost:</div>
+      <div class="result-value" id="traditional-cost">$33,000</div>
+      
+      <div class="result-label">5-Year Cost of Ownership:</div>
+      <div class="result-value" id="five-year-cost">$285,000</div>
+      
+      <div class="result-info">
+        By switching to KNOXBOTS automated solutions, you can significantly reduce labor costs, maintenance expenses, and equipment depreciation.
+      </div>
+      
+      <div class="result-label">Estimated 5-Year Savings:</div>
+      <div class="result-savings" id="total-savings">$142,500</div>
+      
+      <button class="cta-button" onclick="window.location.href='https://www.knoxbots.com/appointment/11?'">Get Your Custom Quote</button>
+    </div>
+  </div>
+  
+  <script>
+    (function() {
+      // Input elements
+      const maintenanceCost = document.getElementById('maintenance-cost');
+      const mowerCost = document.getElementById('mower-cost');
+      const hourlyWage = document.getElementById('hourly-wage');
+      const operationHours = document.getElementById('operation-hours');
+      
+      // Value display elements
+      const maintenanceCostValue = document.getElementById('maintenance-cost-value');
+      const mowerCostValue = document.getElementById('mower-cost-value');
+      const hourlyWageValue = document.getElementById('hourly-wage-value');
+      const operationHoursValue = document.getElementById('operation-hours-value');
+      
+      // Error message elements
+      const maintenanceCostError = document.getElementById('maintenance-cost-error');
+      const mowerCostError = document.getElementById('mower-cost-error');
+      const hourlyWageError = document.getElementById('hourly-wage-error');
+      const operationHoursError = document.getElementById('operation-hours-error');
+      
+      // Tooltip elements
+      const maintenanceCostTooltip = document.getElementById('maintenance-cost-tooltip');
+      const mowerCostTooltip = document.getElementById('mower-cost-tooltip');
+      const hourlyWageTooltip = document.getElementById('hourly-wage-tooltip');
+      const operationHoursTooltip = document.getElementById('operation-hours-tooltip');
+      
+      // Result elements
+      const traditionalCost = document.getElementById('traditional-cost');
+      const fiveYearCost = document.getElementById('five-year-cost');
+      const totalSavings = document.getElementById('total-savings');
+      
+      // Input validation regexes
+      const currencyRegex = /^[$]?[0-9,]*(\.[0-9]{0,2})?$/;
+      const numberRegex = /^[0-9,]*$/;
+      
+      // Format currency with 2 decimal places for hourly wage, 0 for others
+      function formatCurrency(value, decimals = 0) {
+        return '$' + value.toLocaleString('en-US', { 
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals 
+        });
+      }
+      
+      // Format number with commas
+      function formatNumber(value) {
+        return value.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      }
+      
+      // Parse currency input, handling decimals properly
+      function parseCurrency(value) {
+        // Remove $ and commas, then parse as float
+        return parseFloat(value.replace(/[$,]/g, '')) || 0;
+      }
+      
+      // Validate input based on type and range
+      function validateInput(input, value, min, max, isDecimal = false) {
+        const inputElement = document.getElementById(input + '-value');
+        const errorElement = document.getElementById(input + '-error');
+        
+        // Clear any existing error styles/messages
+        inputElement.classList.remove('error');
+        errorElement.textContent = '';
+        
+        // Check if value matches expected format
+        const regex = isDecimal ? currencyRegex : numberRegex;
+        if (!regex.test(inputElement.value)) {
+          inputElement.classList.add('error');
+          errorElement.textContent = 'Please enter a valid number';
+          return false;
+        }
+        
+        // Check if value is within range
+        if (value &lt; min) {
+          inputElement.classList.add('error');
+          errorElement.textContent = `Minimum value is ${isDecimal ? formatCurrency(min, 2) : min}`;
+          return false;
+        }
+        
+        if (value &gt; max) {
+          inputElement.classList.add('error');
+          errorElement.textContent = `Maximum value is ${isDecimal ? formatCurrency(max, 2) : formatNumber(max)}`;
+          return false;
+        }
+        
+        return true;
+      }
+      
+      // Update slider positions from input boxes with validation
+      function updateSlidersFromInputs() {
+        // Get values from inputs
+        const maintenanceValue = parseCurrency(maintenanceCostValue.value);
+        const mowerValue = parseCurrency(mowerCostValue.value);
+        const wageValue = parseCurrency(hourlyWageValue.value);
+        const hoursValue = parseCurrency(operationHoursValue.value);
+        
+        // Validate and update sliders if valid
+        const maintenanceValid = validateInput('maintenance-cost', maintenanceValue, 0, 10000);
+        const mowerValid = validateInput('mower-cost', mowerValue, 1000, 150000);
+        const wageValid = validateInput('hourly-wage', wageValue, 0, 42.5, true);
+        const hoursValid = validateInput('operation-hours', hoursValue, 0, 2000);
+        
+        // Only update sliders if values are valid
+        if (maintenanceValid) {
+          maintenanceCost.value = Math.min(Math.max(maintenanceValue, 0), 10000);
+          updateTooltip(maintenanceCost, maintenanceCostTooltip, formatCurrency(maintenanceValue));
+        }
+        
+        if (mowerValid) {
+          mowerCost.value = Math.min(Math.max(mowerValue, 1000), 150000);
+          updateTooltip(mowerCost, mowerCostTooltip, formatCurrency(mowerValue));
+        }
+        
+        if (wageValid) {
+          hourlyWage.value = Math.min(Math.max(wageValue, 0), 42.5);
+          updateTooltip(hourlyWage, hourlyWageTooltip, formatCurrency(wageValue, 2));
+        }
+        
+        if (hoursValid) {
+          operationHours.value = Math.min(Math.max(hoursValue, 0), 2000);
+          updateTooltip(operationHours, operationHoursTooltip, formatNumber(hoursValue));
+        }
+        
+        // Only calculate ROI if all inputs are valid
+        if (maintenanceValid &amp;&amp; mowerValid &amp;&amp; wageValid &amp;&amp; hoursValid) {
+          calculateROI();
+        }
+      }
+      
+      // Update input boxes from slider values
+      function updateInputsFromSliders() {
+        maintenanceCostValue.value = formatCurrency(parseInt(maintenanceCost.value));
+        mowerCostValue.value = formatCurrency(parseInt(mowerCost.value));
+        hourlyWageValue.value = formatCurrency(parseFloat(hourlyWage.value), 2);
+        operationHoursValue.value = formatNumber(parseInt(operationHours.value));
+        
+        // Clear any error states since slider values are always valid
+        document.querySelectorAll('.input-value-box').forEach(input =&gt; input.classList.remove('error'));
+        document.querySelectorAll('.error-message').forEach(error =&gt; error.textContent = '');
+        
+        calculateROI();
+      }
+      
+      // Update tooltip position and value
+      function updateTooltip(slider, tooltip, value) {
+        const percent = (slider.value - slider.min) / (slider.max - slider.min);
+        const position = percent * (slider.offsetWidth - 20) + 10; // Adjust for thumb width
+        tooltip.style.left = `${position}px`;
+        tooltip.textContent = value;
+      }
+      
+      // Show tooltip during slider interaction
+      function showTooltip(tooltip) {
+        tooltip.style.opacity = '1';
+      }
+      
+      // Hide tooltip after slider interaction
+      function hideTooltip(tooltip) {
+        tooltip.style.opacity = '0';
+      }
+      
+      // Calculate ROI and update results with animation
+      function calculateROI() {
+        // Get values from sliders
+        const maintenance = parseInt(maintenanceCost.value);
+        const mower = parseInt(mowerCost.value);
+        const wage = parseFloat(hourlyWage.value);
+        const hours = parseInt(operationHours.value);
+        
+        // Calculate annual labor costs
+        const laborCost = wage * hours;
+        
+        // Calculate annual traditional cost
+        const annualCost = maintenance + laborCost;
+        
+        // Calculate 5-year cost of ownership
+        // (Annual cost × 5) + mower cost
+        const fiveYearTotal = (annualCost * 5) + mower;
+        
+        // Calculate estimated savings (assuming 50% savings with KNOXBOTS)
+        const savings = fiveYearTotal * 0.5;
+        
+        // Update result displays with animation
+        animateValueUpdate(traditionalCost, formatCurrency(annualCost));
+        animateValueUpdate(fiveYearCost, formatCurrency(fiveYearTotal));
+        animateValueUpdate(totalSavings, formatCurrency(savings));
+      }
+      
+      // Animate value updates with subtle highlight effect
+      function animateValueUpdate(element, newValue) {
+        // Update the text
+        element.textContent = newValue;
+        
+        // Remove existing highlight class and trigger reflow
+        element.classList.remove('highlight');
+        void element.offsetWidth; // Trigger reflow
+        
+        // Add highlight class to start animation
+        element.classList.add('highlight');
+      }
+      
+      // Handle slider input
+      function handleSliderInput(event) {
+        const slider = event.target;
+        const tooltip = document.getElementById(`${slider.id}-tooltip`);
+        
+        // Update input values
+        updateInputsFromSliders();
+        
+        // Update and show tooltip
+        if (slider.id === 'hourly-wage') {
+          updateTooltip(slider, tooltip, formatCurrency(parseFloat(slider.value), 2));
+        } else if (slider.id === 'operation-hours') {
+          updateTooltip(slider, tooltip, formatNumber(parseInt(slider.value)));
+        } else {
+          updateTooltip(slider, tooltip, formatCurrency(parseInt(slider.value)));
+        }
+        
+        showTooltip(tooltip);
+      }
+      
+      // Handle text input with debounce
+      let debounceTimeout;
+      function handleTextInput() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() =&gt; {
+          updateSlidersFromInputs();
+        }, 300); // 300ms debounce
+      }
+      
+      // Handle focus out for text inputs
+      function handleFocusOut(event) {
+        const input = event.target;
+        let value;
+        
+        // Parse the current value
+        if (input.id === 'hourly-wage-value') {
+          value = parseCurrency(input.value);
+          // Special handling for hourly wage with 2 decimal places
+          input.value = formatCurrency(value, 2);
+        } else if (input.id === 'operation-hours-value') {
+          value = parseCurrency(input.value);
+          input.value = formatNumber(value);
+        } else {
+          value = parseCurrency(input.value);
+          input.value = formatCurrency(value);
+        }
+        
+        // Clear any immediate debouncing and update
+        clearTimeout(debounceTimeout);
+        updateSlidersFromInputs();
+      }
+      
+      // Initialize tooltips
+      function initTooltips() {
+        updateTooltip(maintenanceCost, maintenanceCostTooltip, formatCurrency(parseInt(maintenanceCost.value)));
+        updateTooltip(mowerCost, mowerCostTooltip, formatCurrency(parseInt(mowerCost.value)));
+        updateTooltip(hourlyWage, hourlyWageTooltip, formatCurrency(parseFloat(hourlyWage.value), 2));
+        updateTooltip(operationHours, operationHoursTooltip, formatNumber(parseInt(operationHours.value)));
+      }
+      
+      // Add event listeners to sliders
+      function setupSliderEvents(slider, tooltip) {
+        slider.addEventListener('input', handleSliderInput);
+        slider.addEventListener('mousedown', () =&gt; showTooltip(tooltip));
+        slider.addEventListener('touchstart', () =&gt; showTooltip(tooltip), { passive: true });
+        slider.addEventListener('mouseup', () =&gt; hideTooltip(tooltip));
+        slider.addEventListener('touchend', () =&gt; hideTooltip(tooltip));
+        slider.addEventListener('mouseleave', () =&gt; hideTooltip(tooltip));
+      }
+      
+      // Setup all slider events
+      setupSliderEvents(maintenanceCost, maintenanceCostTooltip);
+      setupSliderEvents(mowerCost, mowerCostTooltip);
+      setupSliderEvents(hourlyWage, hourlyWageTooltip);
+      setupSliderEvents(operationHours, operationHoursTooltip);
+      
+      // Add event listeners to input boxes
+      maintenanceCostValue.addEventListener('input', handleTextInput);
+      mowerCostValue.addEventListener('input', handleTextInput);
+      hourlyWageValue.addEventListener('input', handleTextInput);
+      operationHoursValue.addEventListener('input', handleTextInput);
+      
+      // Add focus out event listeners to input boxes for formatting
+      maintenanceCostValue.addEventListener('focusout', handleFocusOut);
+      mowerCostValue.addEventListener('focusout', handleFocusOut);
+      hourlyWageValue.addEventListener('focusout', handleFocusOut);
+      operationHoursValue.addEventListener('focusout', handleFocusOut);
+      
+      // Initialize
+      initTooltips();
+      updateInputsFromSliders();
+      calculateROI();
+    })();
+  </script>
+</div> </template>
+        <div class="s_embed_code_embedded container o_not_editable"><div id="terra-calculator-container">
+  <style>
+    #terra-calculator-container {
+      font-family: 'Montserrat', sans-serif;
+      max-width: 700px;
+      margin: 12px auto;
+      background-color: #333;
+      border-radius: 6px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      border-top: 2px solid #EC9608;
+      overflow: hidden;
+      color: white;
+    }
+    
+    #terra-calculator-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #terra-calculator-container .calculator-title {
+      background: linear-gradient(to bottom, rgba(236, 150, 8, 0.95), rgba(236, 150, 8, 0.85));
+      color: #222;
+      text-align: center;
+      padding: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    #terra-calculator-container .calculator-content {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    
+    #terra-calculator-container .calculator-inputs {
+      flex: 3;
+      padding: 16px;
+      max-width: 60%;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #terra-calculator-container .calculator-results {
+      flex: 2;
+      padding: 16px;
+      max-width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-calculator-container .input-group {
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    #terra-calculator-container .input-label {
+      font-weight: 600;
+      font-size: 12px;
+      width: 50%;
+      align-self: center;
+    }
+    
+    #terra-calculator-container .input-value-box {
+      background-color: white;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 5px 8px;
+      font-weight: 600;
+      font-size: 12px;
+      width: 85px;
+      text-align: center;
+      margin-left: auto;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    #terra-calculator-container .input-value-box:focus {
+      outline: none;
+      border-color: #EC9608;
+      box-shadow: 0 0 0 2px rgba(236, 150, 8, 0.3);
+    }
+    
+    #terra-calculator-container .input-value-box.error {
+      border-color: #ff4d4d;
+      box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.3);
+    }
+    
+    #terra-calculator-container .error-message {
+      color: #ff4d4d;
+      font-size: 10px;
+      width: 100%;
+      text-align: right;
+      margin-top: 3px;
+      height: 12px;
+    }
+    
+    #terra-calculator-container .slider-row {
+      width: 100%;
+      margin-top: 5px;
+      position: relative;
+    }
+    
+    #terra-calculator-container .slider-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #terra-calculator-container .input-range {
+      width: 100%;
+      height: 5px;
+      background: #C4B095;
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 3px;
+      margin: 6px 0;
+    }
+    
+    #terra-calculator-container .input-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+    
+    #terra-calculator-container .input-range::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      background: #EC9608;
+    }
+    
+    #terra-calculator-container .input-range::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #bbb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+    
+    #terra-calculator-container .input-range::-moz-range-thumb:hover {
+      transform: scale(1.1);
+      background: #EC9608;
+    }
+
+    #terra-calculator-container .slider-tooltip {
+      position: absolute;
+      background: #EC9608;
+      color: #222;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      top: -20px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    #terra-calculator-container .range-values {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    #terra-calculator-container .description {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      margin-left: auto;
+      text-align: right;
+      margin-top: 3px;
+      max-width: 70%;
+    }
+    
+    #terra-calculator-container .result-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    
+    #terra-calculator-container .result-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #EC9608;
+      margin: 5px 0;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    
+    #terra-calculator-container .result-label {
+      font-size: 11px;
+      margin: 2px 0;
+    }
+    
+    #terra-calculator-container .result-info {
+      margin-top: 10px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      flex-grow: 1;
+    }
+    
+    #terra-calculator-container .result-savings {
+      font-size: 20px;
+      font-weight: 700;
+      color: #EC9608;
+      margin: 10px 0;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    
+    #terra-calculator-container .cta-button {
+      background-color: #EC9608;
+      color: #222;
+      border: none;
+      padding: 7px 0;
+      border-radius: 3px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: auto;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    #terra-calculator-container .cta-button:hover {
+      background-color: #faa71b;
+      transform: translateY(-1px);
+    }
+    
+    #terra-calculator-container .cta-button:active {
+      transform: translateY(0);
+    }
+    
+    /* Animated highlight for updated results */
+    @keyframes highlight {
+      0% { color: #EC9608; }
+      50% { color: #ffffff; }
+      100% { color: #EC9608; }
+    }
+    
+    #terra-calculator-container .highlight {
+      animation: highlight 0.8s ease-out;
+    }
+    
+    /* Mobile responsive styling */
+    @media (max-width: 700px) {
+      #terra-calculator-container .calculator-content {
+        flex-direction: column;
+      }
+      
+      #terra-calculator-container .calculator-inputs,
+      #terra-calculator-container .calculator-results {
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      #terra-calculator-container .input-label {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      #terra-calculator-container .input-value-box {
+        margin-left: 0;
+      }
+      
+      #terra-calculator-container .description {
+        margin-left: 0;
+        text-align: left;
+        max-width: 100%;
+      }
+    }
+  </style>
+  
+  <div class="calculator-title">KNOXBOTS ROI Calculator</div>
+  
+  <div class="calculator-content">
+    <div class="calculator-inputs">
+      
+      <div class="input-group">
+        <div class="input-label">Traditional Mower Maintenance Cost</div>
+        <input type="text" class="input-value-box" id="maintenance-cost-value" value="$8,000"/>
+        <div class="error-message" id="maintenance-cost-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="maintenance-cost-tooltip">$8,000</div>
+            <input type="range" min="0" max="10000" value="8000" step="100" class="input-range" id="maintenance-cost"/>
+            <div class="range-values">
+              <span>$0</span>
+              <span>$10,000</span>
+            </div>
+          </div>
+          <div class="description">How Much is Spent Each Year on Maintenance</div>
+        </div>
+      </div>
+      
+      
+      <div class="input-group">
+        <div class="input-label">Cost of Traditional Fairway Mower</div>
+        <input type="text" class="input-value-box" id="mower-cost-value" value="$120,000"/>
+        <div class="error-message" id="mower-cost-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="mower-cost-tooltip">$120,000</div>
+            <input type="range" min="1000" max="150000" value="120000" step="1000" class="input-range" id="mower-cost"/>
+            <div class="range-values">
+              <span>$1,000</span>
+              <span>$150,000</span>
+            </div>
+          </div>
+          <div class="description">Cost of a Traditional Fairway Mower</div>
+        </div>
+      </div>
+      
+      
+      <div class="input-group">
+        <div class="input-label">Operator Hourly Wage</div>
+        <input type="text" class="input-value-box" id="hourly-wage-value" value="$25.00"/>
+        <div class="error-message" id="hourly-wage-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="hourly-wage-tooltip">$25.00</div>
+            <input type="range" min="0" max="42.5" value="25" step="0.5" class="input-range" id="hourly-wage"/>
+            <div class="range-values">
+              <span>$0</span>
+              <span>$42.50</span>
+            </div>
+          </div>
+          <div class="description">How Much The Operator is Paid per Hour</div>
+        </div>
+      </div>
+      
+      
+      <div class="input-group">
+        <div class="input-label">Hours of Operation per Year</div>
+        <input type="text" class="input-value-box" id="operation-hours-value" value="1,000"/>
+        <div class="error-message" id="operation-hours-error"/>
+        
+        <div class="slider-row">
+          <div class="slider-container">
+            <div class="slider-tooltip" id="operation-hours-tooltip">1,000</div>
+            <input type="range" min="0" max="2000" value="1000" step="10" class="input-range" id="operation-hours"/>
+            <div class="range-values">
+              <span>0</span>
+              <span>2,000</span>
+            </div>
+          </div>
+          <div class="description">How Many Hours of Operation per Year</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="calculator-results">
+      <div class="result-title">Your Estimated ROI with KNOXBOTS</div>
+      
+      <div class="result-label">Annual Traditional Cost:</div>
+      <div class="result-value" id="traditional-cost">$33,000</div>
+      
+      <div class="result-label">5-Year Cost of Ownership:</div>
+      <div class="result-value" id="five-year-cost">$285,000</div>
+      
+      <div class="result-info">
+        By switching to KNOXBOTS automated solutions, you can significantly reduce labor costs, maintenance expenses, and equipment depreciation.
+      </div>
+      
+      <div class="result-label">Estimated 5-Year Savings:</div>
+      <div class="result-savings" id="total-savings">$142,500</div>
+      
+      <button class="cta-button" onclick="window.location.href='https://www.knoxbots.com/appointment/11?'">Get Your Custom Quote</button>
+    </div>
+  </div>
+  
+  <script>
+    (function() {
+      // Input elements
+      const maintenanceCost = document.getElementById('maintenance-cost');
+      const mowerCost = document.getElementById('mower-cost');
+      const hourlyWage = document.getElementById('hourly-wage');
+      const operationHours = document.getElementById('operation-hours');
+      
+      // Value display elements
+      const maintenanceCostValue = document.getElementById('maintenance-cost-value');
+      const mowerCostValue = document.getElementById('mower-cost-value');
+      const hourlyWageValue = document.getElementById('hourly-wage-value');
+      const operationHoursValue = document.getElementById('operation-hours-value');
+      
+      // Error message elements
+      const maintenanceCostError = document.getElementById('maintenance-cost-error');
+      const mowerCostError = document.getElementById('mower-cost-error');
+      const hourlyWageError = document.getElementById('hourly-wage-error');
+      const operationHoursError = document.getElementById('operation-hours-error');
+      
+      // Tooltip elements
+      const maintenanceCostTooltip = document.getElementById('maintenance-cost-tooltip');
+      const mowerCostTooltip = document.getElementById('mower-cost-tooltip');
+      const hourlyWageTooltip = document.getElementById('hourly-wage-tooltip');
+      const operationHoursTooltip = document.getElementById('operation-hours-tooltip');
+      
+      // Result elements
+      const traditionalCost = document.getElementById('traditional-cost');
+      const fiveYearCost = document.getElementById('five-year-cost');
+      const totalSavings = document.getElementById('total-savings');
+      
+      // Input validation regexes
+      const currencyRegex = /^[$]?[0-9,]*(\.[0-9]{0,2})?$/;
+      const numberRegex = /^[0-9,]*$/;
+      
+      // Format currency with 2 decimal places for hourly wage, 0 for others
+      function formatCurrency(value, decimals = 0) {
+        return '$' + value.toLocaleString('en-US', { 
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals 
+        });
+      }
+      
+      // Format number with commas
+      function formatNumber(value) {
+        return value.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      }
+      
+      // Parse currency input, handling decimals properly
+      function parseCurrency(value) {
+        // Remove $ and commas, then parse as float
+        return parseFloat(value.replace(/[$,]/g, '')) || 0;
+      }
+      
+      // Validate input based on type and range
+      function validateInput(input, value, min, max, isDecimal = false) {
+        const inputElement = document.getElementById(input + '-value');
+        const errorElement = document.getElementById(input + '-error');
+        
+        // Clear any existing error styles/messages
+        inputElement.classList.remove('error');
+        errorElement.textContent = '';
+        
+        // Check if value matches expected format
+        const regex = isDecimal ? currencyRegex : numberRegex;
+        if (!regex.test(inputElement.value)) {
+          inputElement.classList.add('error');
+          errorElement.textContent = 'Please enter a valid number';
+          return false;
+        }
+        
+        // Check if value is within range
+        if (value &lt; min) {
+          inputElement.classList.add('error');
+          errorElement.textContent = `Minimum value is ${isDecimal ? formatCurrency(min, 2) : min}`;
+          return false;
+        }
+        
+        if (value &gt; max) {
+          inputElement.classList.add('error');
+          errorElement.textContent = `Maximum value is ${isDecimal ? formatCurrency(max, 2) : formatNumber(max)}`;
+          return false;
+        }
+        
+        return true;
+      }
+      
+      // Update slider positions from input boxes with validation
+      function updateSlidersFromInputs() {
+        // Get values from inputs
+        const maintenanceValue = parseCurrency(maintenanceCostValue.value);
+        const mowerValue = parseCurrency(mowerCostValue.value);
+        const wageValue = parseCurrency(hourlyWageValue.value);
+        const hoursValue = parseCurrency(operationHoursValue.value);
+        
+        // Validate and update sliders if valid
+        const maintenanceValid = validateInput('maintenance-cost', maintenanceValue, 0, 10000);
+        const mowerValid = validateInput('mower-cost', mowerValue, 1000, 150000);
+        const wageValid = validateInput('hourly-wage', wageValue, 0, 42.5, true);
+        const hoursValid = validateInput('operation-hours', hoursValue, 0, 2000);
+        
+        // Only update sliders if values are valid
+        if (maintenanceValid) {
+          maintenanceCost.value = Math.min(Math.max(maintenanceValue, 0), 10000);
+          updateTooltip(maintenanceCost, maintenanceCostTooltip, formatCurrency(maintenanceValue));
+        }
+        
+        if (mowerValid) {
+          mowerCost.value = Math.min(Math.max(mowerValue, 1000), 150000);
+          updateTooltip(mowerCost, mowerCostTooltip, formatCurrency(mowerValue));
+        }
+        
+        if (wageValid) {
+          hourlyWage.value = Math.min(Math.max(wageValue, 0), 42.5);
+          updateTooltip(hourlyWage, hourlyWageTooltip, formatCurrency(wageValue, 2));
+        }
+        
+        if (hoursValid) {
+          operationHours.value = Math.min(Math.max(hoursValue, 0), 2000);
+          updateTooltip(operationHours, operationHoursTooltip, formatNumber(hoursValue));
+        }
+        
+        // Only calculate ROI if all inputs are valid
+        if (maintenanceValid &amp;&amp; mowerValid &amp;&amp; wageValid &amp;&amp; hoursValid) {
+          calculateROI();
+        }
+      }
+      
+      // Update input boxes from slider values
+      function updateInputsFromSliders() {
+        maintenanceCostValue.value = formatCurrency(parseInt(maintenanceCost.value));
+        mowerCostValue.value = formatCurrency(parseInt(mowerCost.value));
+        hourlyWageValue.value = formatCurrency(parseFloat(hourlyWage.value), 2);
+        operationHoursValue.value = formatNumber(parseInt(operationHours.value));
+        
+        // Clear any error states since slider values are always valid
+        document.querySelectorAll('.input-value-box').forEach(input =&gt; input.classList.remove('error'));
+        document.querySelectorAll('.error-message').forEach(error =&gt; error.textContent = '');
+        
+        calculateROI();
+      }
+      
+      // Update tooltip position and value
+      function updateTooltip(slider, tooltip, value) {
+        const percent = (slider.value - slider.min) / (slider.max - slider.min);
+        const position = percent * (slider.offsetWidth - 20) + 10; // Adjust for thumb width
+        tooltip.style.left = `${position}px`;
+        tooltip.textContent = value;
+      }
+      
+      // Show tooltip during slider interaction
+      function showTooltip(tooltip) {
+        tooltip.style.opacity = '1';
+      }
+      
+      // Hide tooltip after slider interaction
+      function hideTooltip(tooltip) {
+        tooltip.style.opacity = '0';
+      }
+      
+      // Calculate ROI and update results with animation
+      function calculateROI() {
+        // Get values from sliders
+        const maintenance = parseInt(maintenanceCost.value);
+        const mower = parseInt(mowerCost.value);
+        const wage = parseFloat(hourlyWage.value);
+        const hours = parseInt(operationHours.value);
+        
+        // Calculate annual labor costs
+        const laborCost = wage * hours;
+        
+        // Calculate annual traditional cost
+        const annualCost = maintenance + laborCost;
+        
+        // Calculate 5-year cost of ownership
+        // (Annual cost × 5) + mower cost
+        const fiveYearTotal = (annualCost * 5) + mower;
+        
+        // Calculate estimated savings (assuming 50% savings with KNOXBOTS)
+        const savings = fiveYearTotal * 0.5;
+        
+        // Update result displays with animation
+        animateValueUpdate(traditionalCost, formatCurrency(annualCost));
+        animateValueUpdate(fiveYearCost, formatCurrency(fiveYearTotal));
+        animateValueUpdate(totalSavings, formatCurrency(savings));
+      }
+      
+      // Animate value updates with subtle highlight effect
+      function animateValueUpdate(element, newValue) {
+        // Update the text
+        element.textContent = newValue;
+        
+        // Remove existing highlight class and trigger reflow
+        element.classList.remove('highlight');
+        void element.offsetWidth; // Trigger reflow
+        
+        // Add highlight class to start animation
+        element.classList.add('highlight');
+      }
+      
+      // Handle slider input
+      function handleSliderInput(event) {
+        const slider = event.target;
+        const tooltip = document.getElementById(`${slider.id}-tooltip`);
+        
+        // Update input values
+        updateInputsFromSliders();
+        
+        // Update and show tooltip
+        if (slider.id === 'hourly-wage') {
+          updateTooltip(slider, tooltip, formatCurrency(parseFloat(slider.value), 2));
+        } else if (slider.id === 'operation-hours') {
+          updateTooltip(slider, tooltip, formatNumber(parseInt(slider.value)));
+        } else {
+          updateTooltip(slider, tooltip, formatCurrency(parseInt(slider.value)));
+        }
+        
+        showTooltip(tooltip);
+      }
+      
+      // Handle text input with debounce
+      let debounceTimeout;
+      function handleTextInput() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() =&gt; {
+          updateSlidersFromInputs();
+        }, 300); // 300ms debounce
+      }
+      
+      // Handle focus out for text inputs
+      function handleFocusOut(event) {
+        const input = event.target;
+        let value;
+        
+        // Parse the current value
+        if (input.id === 'hourly-wage-value') {
+          value = parseCurrency(input.value);
+          // Special handling for hourly wage with 2 decimal places
+          input.value = formatCurrency(value, 2);
+        } else if (input.id === 'operation-hours-value') {
+          value = parseCurrency(input.value);
+          input.value = formatNumber(value);
+        } else {
+          value = parseCurrency(input.value);
+          input.value = formatCurrency(value);
+        }
+        
+        // Clear any immediate debouncing and update
+        clearTimeout(debounceTimeout);
+        updateSlidersFromInputs();
+      }
+      
+      // Initialize tooltips
+      function initTooltips() {
+        updateTooltip(maintenanceCost, maintenanceCostTooltip, formatCurrency(parseInt(maintenanceCost.value)));
+        updateTooltip(mowerCost, mowerCostTooltip, formatCurrency(parseInt(mowerCost.value)));
+        updateTooltip(hourlyWage, hourlyWageTooltip, formatCurrency(parseFloat(hourlyWage.value), 2));
+        updateTooltip(operationHours, operationHoursTooltip, formatNumber(parseInt(operationHours.value)));
+      }
+      
+      // Add event listeners to sliders
+      function setupSliderEvents(slider, tooltip) {
+        slider.addEventListener('input', handleSliderInput);
+        slider.addEventListener('mousedown', () =&gt; showTooltip(tooltip));
+        slider.addEventListener('touchstart', () =&gt; showTooltip(tooltip), { passive: true });
+        slider.addEventListener('mouseup', () =&gt; hideTooltip(tooltip));
+        slider.addEventListener('touchend', () =&gt; hideTooltip(tooltip));
+        slider.addEventListener('mouseleave', () =&gt; hideTooltip(tooltip));
+      }
+      
+      // Setup all slider events
+      setupSliderEvents(maintenanceCost, maintenanceCostTooltip);
+      setupSliderEvents(mowerCost, mowerCostTooltip);
+      setupSliderEvents(hourlyWage, hourlyWageTooltip);
+      setupSliderEvents(operationHours, operationHoursTooltip);
+      
+      // Add event listeners to input boxes
+      maintenanceCostValue.addEventListener('input', handleTextInput);
+      mowerCostValue.addEventListener('input', handleTextInput);
+      hourlyWageValue.addEventListener('input', handleTextInput);
+      operationHoursValue.addEventListener('input', handleTextInput);
+      
+      // Add focus out event listeners to input boxes for formatting
+      maintenanceCostValue.addEventListener('focusout', handleFocusOut);
+      mowerCostValue.addEventListener('focusout', handleFocusOut);
+      hourlyWageValue.addEventListener('focusout', handleFocusOut);
+      operationHoursValue.addEventListener('focusout', handleFocusOut);
+      
+      // Initialize
+      initTooltips();
+      updateInputsFromSliders();
+      calculateROI();
+    })();
+  </script>
+</div></div>
+    </section><h2><br/></h2>
+                </div><div class="o_colored_level o_grid_item g-height-4 g-col-lg-7 col-lg-7" style="z-index: 1; grid-area: 3 / 2 / 7 / 9;">
+                    <h2>Experience the Grounds Automation <br/>Showcase</h2>
+    <p class="lead">
+        Join us in revolutionizing grounds maintenance!
+    </p>
+                </div><div class="o_colored_level o_grid_item g-height-1 g-col-lg-3 col-lg-3" style="z-index: 2; grid-area: 7 / 2 / 8 / 5;">
+                    <p style="text-align: left;">
+                        <a class="btn btn-primary btn-lg" href="/appointment/11?">
+        <strong>        REQUEST A DEMO    </strong>
+    </a></p>
+                </div></div>
+        </div>
+    </section></div>
+    </t>
+</t>

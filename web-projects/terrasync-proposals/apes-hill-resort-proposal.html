@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSYNC Solutions - Apes Hill Resort Inc. Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(75, 85, 99, 0.12) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid rgba(34, 197, 94, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .company-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            font-size: 1.5rem;
+            color: #EC9608;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .client-info {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .client-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 5px;
+        }
+
+        .client-location {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        /* Section Headers */
+        .section {
+            margin: 50px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: #EC9608;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Welcome Message */
+        .welcome-message {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-text {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        /* Product Cards */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .product-card {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.2);
+        }
+
+        .product-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .product-subtitle {
+            font-size: 1rem;
+            color: #EC9608;
+            font-weight: 600;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .feature-list li {
+            padding: 5px 0;
+            color: #e5e7eb;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        .spec-item {
+            padding: 8px;
+            background: rgba(55, 65, 81, 0.4);
+            border-radius: 6px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .spec-label {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .spec-value {
+            color: #e5e7eb;
+        }
+
+        /* Pricing */
+        .pricing-highlight {
+            background: linear-gradient(135deg, rgba(236, 150, 8, 0.15) 0%, rgba(236, 150, 8, 0.08) 100%);
+            border: 2px solid rgba(236, 150, 8, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #EC9608;
+            margin-bottom: 5px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .service-card {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(236, 150, 8, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            border-top: 4px solid #EC9608;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #EC9608;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .service-description {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .step {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #22c55e;
+            color: #ffffff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #22c55e;
+            margin: 15px 0 10px 0;
+        }
+
+        .step-description {
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 20px;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            margin-bottom: 30px;
+        }
+
+        .catalog-link {
+            display: inline-block;
+            background: #22c55e;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+
+        .catalog-link:hover {
+            background: #16a34a;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .company-logo {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="company-logo">TerraSYNC</div>
+            <div class="header-subtitle">Advanced Golf Course Automation Solutions</div>
+            
+            <div class="client-info">
+                <div class="client-name">Apes Hill Resort Inc.</div>
+                <div class="client-location">Barbados</div>
+            </div>
+        </header>
+
+        <!-- Welcome Message -->
+        <section class="welcome-message">
+            <div class="welcome-text">
+                We are excited about the opportunity to work with Apes Hill Resort Inc. and bring our cutting-edge robotic automation technology to Barbados. Below you'll find detailed information about our products, services, and comprehensive support solutions designed to revolutionize your golf course operations.
+            </div>
+        </section>
+
+        <!-- Range Picker Section -->
+        <section class="section">
+            <h2 class="section-title">Range Picking Solution</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-title">Korechi Pik'r™-X</div>
+                        <div class="product-subtitle">Industry's Most Versatile Range Picking Robot</div>
+                    </div>
+                    
+                    <div class="product-description">
+                        Developed in stealth, the Korechi Pik'r™-X is engineered to revolutionize golf ball collection, working efficiently with up to 5 gangs of purpose-built range pickers (up to 18ft wide). Its exceptional maneuverability allows for sharp turns and the ability to climb most steep slopes.
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>Advanced sensor array for comprehensive obstacle detection</li>
+                        <li>High-precision satellite-guided autonomous navigation</li>
+                        <li>Extended continuous runtime (12-18 hours)</li>
+                        <li>High ball capacity (up to 7,500 golf balls per circuit)</li>
+                        <li>Artificial Intelligence for smart basket management</li>
+                        <li>Optional automatic ball-dumping mechanism</li>
+                        <li>Robust construction with powder-coated steel chassis</li>
+                        <li>Mobile app connectivity</li>
+                        <li>Proudly made in Canada</li>
+                    </ul>
+
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Coverage:</div>
+                            <div class="spec-value">Up to 10.4 acres/hour (5 gangs)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Max Speed:</div>
+                            <div class="spec-value">3.7 mph (7 kph)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Battery Life:</div>
+                            <div class="spec-value">Up to 18 hours continuous</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Positioning:</div>
+                            <div class="spec-value">Multi-constellation GNSS RTK</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-highlight">
+                        <div class="price">$37,000 USD</div>
+                        <div style="color: #e5e7eb;">1-Gang System</div>
+                        <div style="color: #EC9608; font-weight: 600; margin-top: 10px;">Additional Gangs: $2,500 USD each</div>
+                        <div style="color: #d1d5db; font-size: 0.9rem; margin-top: 5px;">Charger and accessories included</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Robotic Mowing Solutions -->
+        <section class="section">
+            <h2 class="section-title">Robotic Mowing Solutions</h2>
+            
+            <div class="products-grid">
+                <!-- Husqvarna CEORA -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-title">Husqvarna CEORA™</div>
+                        <div class="product-subtitle">Autonomous Mowing for Professional Turf</div>
+                    </div>
+                    
+                    <div class="product-description">
+                        Designed specifically for sports fields and golf courses, CEORA™ leverages cutting-edge EPOS™ technology to deliver exceptional grass quality across large areas, freeing up your crew to focus on other essential tasks.
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>Husqvarna EPOS™ satellite-based technology</li>
+                        <li>No physical boundary wires required</li>
+                        <li>Adaptable mowing schedules for quality needs</li>
+                        <li>Object avoidance with integrated sensors</li>
+                        <li>Safety lights for nighttime operation</li>
+                        <li>Firmware over-the-air updates</li>
+                        <li>Fleet management via Husqvarna Fleet Services™</li>
+                        <li>Sustainable and quiet operation</li>
+                    </ul>
+
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Coverage:</div>
+                            <div class="spec-value">Up to 18 acres</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Cutting Width:</div>
+                            <div class="spec-value">26.8 inches</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Max Slope:</div>
+                            <div class="spec-value">20°</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Battery:</div>
+                            <div class="spec-value">Li-ion 49 Ah</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-highlight">
+                        <div class="price">$20,000 - $32,000 USD</div>
+                        <div style="color: #e5e7eb;">Depending on configuration</div>
+                    </div>
+                </div>
+
+                <!-- Kress KR236 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-title">Kress KR236</div>
+                        <div class="product-subtitle">RTK™ Satellite Guidance Precision</div>
+                    </div>
+                    
+                    <div class="product-description">
+                        Revolutionary Kress RTK™ technology delivers satellite-guided, centimeter-level accuracy without property-specific antennas. Engineered for expansive landscapes with professional stripe-perfect finish.
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>RTK™ satellite guidance (centimeter-level accuracy)</li>
+                        <li>MAP™ (Mowing Action Plan) technology</li>
+                        <li>Dual-layer blade system (12 razor blades)</li>
+                        <li>TeamWork™ collaborative operation</li>
+                        <li>OAS (Obstacle Avoidance System)</li>
+                        <li>Multi-zone management</li>
+                        <li>Auto-leveling cutting disc</li>
+                        <li>Over-the-air updates</li>
+                        <li>GPS tracking and theft protection</li>
+                    </ul>
+
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Coverage:</div>
+                            <div class="spec-value">Up to 6 acres (recommended)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Cutting Width:</div>
+                            <div class="spec-value">13.78 inches</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Max Slope:</div>
+                            <div class="spec-value">30° (40% maximum)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Sound Level:</div>
+                            <div class="spec-value">62 dB</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-highlight">
+                        <div class="price">$20,000 - $32,000 USD</div>
+                        <div style="color: #e5e7eb;">Depending on configuration</div>
+                    </div>
+                </div>
+
+                <!-- NEXMOW M2 -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-title">NEXMOW M2</div>
+                        <div class="product-subtitle">Battery Swap & Stationary Options</div>
+                    </div>
+                    
+                    <div class="product-description">
+                        Versatile robotic mowing solution offering both innovative battery swap technology for drop-and-go operations and traditional stationary charging capabilities, providing maximum flexibility for your golf course operations.
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>Revolutionary battery swap technology</li>
+                        <li>Drop-and-go operational model</li>
+                        <li>Stationary charging station compatibility</li>
+                        <li>Centralized mower housing capability</li>
+                        <li>Professional-grade cutting system</li>
+                        <li>Advanced navigation and mapping</li>
+                        <li>Weather-resistant construction</li>
+                        <li>Remote monitoring and control</li>
+                    </ul>
+
+                    <div class="pricing-highlight">
+                        <div class="price">$9,000 USD each</div>
+                        <div style="color: #e5e7eb;">Recommended: 2 units for optimal coverage</div>
+                        <div style="color: #EC9608; font-weight: 600; margin-top: 10px;">Total Package: $18,000 USD</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mowing Models Explanation -->
+        <section class="section">
+            <h2 class="section-title">Mowing Deployment Options</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-anchor" style="margin-right: 10px;"></i>
+                        Standard Stationary Model
+                    </div>
+                    <div class="service-description">
+                        Stationary mowers are positioned over specific zones and defined areas on virtual maps. They continuously mow their designated areas and charge locally within their assigned zones. This model provides consistent, autonomous coverage for dedicated areas.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-shuttle-van" style="margin-right: 10px;"></i>
+                        Drop-and-Go Model
+                    </div>
+                    <div class="service-description">
+                        Mowers with battery swap technology can be housed centrally and deployed by your team to specific zones as needed. When completed, mowers are collected and returned to the central housing. This efficient model is typically more cost-effective and offers maximum operational flexibility.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-cogs" style="margin-right: 10px;"></i>
+                        Hybrid Configuration
+                    </div>
+                    <div class="service-description">
+                        Drop-and-go mowers also have stationary capabilities with charging stations. If desired, any drop-and-go mower can be configured for stationary operation, providing ultimate flexibility to adapt to your operational preferences and requirements.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section">
+            <h2 class="section-title">Comprehensive Support Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-headset" style="margin-right: 10px;"></i>
+                        Ongoing Support Services
+                    </div>
+                    <div class="service-description">
+                        While we don't yet have a location in Barbados, we're committed to providing exceptional support. When multiple golf courses adopt our technology in Barbados, we will establish a local support team to provide on-site assistance and technical support for all our clients.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-plane" style="margin-right: 10px;"></i>
+                        Demo Flights to West Palm Beach
+                    </div>
+                    <div class="service-description">
+                        We provide complimentary flights to our West Palm Beach facility where you can see our technology in action, meet with our team, and experience firsthand the capabilities of our robotic solutions.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-tools" style="margin-right: 10px;"></i>
+                        Installation & Training
+                    </div>
+                    <div class="service-description">
+                        Complete installation service upon product delivery, including comprehensive 3-4 day training program to ensure your team is fully prepared to operate and maintain the technology at the highest level.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-globe" style="margin-right: 10px;"></i>
+                        On-Site Consultation
+                    </div>
+                    <div class="service-description">
+                        We will fly our team to Barbados to meet with your staff, assess your specific needs, and discuss implementation strategies tailored to your golf course requirements.
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-cloud" style="margin-right: 10px;"></i>
+                        TerraSYNC Hub (Coming Soon)
+                    </div>
+                    <div class="service-description">
+                        Our upcoming cloud software solution will manage all your technology, personnel, irrigation systems, and existing equipment in one unified platform. Includes robotic mower management, maintenance scheduling, and comprehensive operational oversight.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="section">
+            <h2 class="section-title">Our Implementation Process</h2>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Discovery Call</div>
+                    <div class="step-description">Initial consultation to gauge interest and assess your specific requirements and operational needs.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Initiation Fee</div>
+                    <div class="step-description">$1,000 USD initiation fee to proceed with comprehensive assessment and detailed proposal development.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Full Assessment</div>
+                    <div class="step-description">Complete evaluation of your golf course to determine optimal product selection and create detailed implementation quote.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Demo Options</div>
+                    <div class="step-description">Choose from: West Palm Beach facility visit, on-site consultation in Barbados, or virtual demonstration (one option included).</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Order & Delivery</div>
+                    <div class="step-description">Product ordering, manufacturing, and delivery to your Barbados location with full logistics coordination.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-title">Installation & Training</div>
+                    <div class="step-description">Professional installation followed by comprehensive 3-4 day training program for your team.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-title">Ongoing Support</div>
+                    <div class="step-description">Continuous support until local technician establishment, with plans for regional support team development.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-title">Ready to Transform Your Golf Course?</div>
+            <div class="contact-text">
+                We're excited about the opportunity to bring cutting-edge robotic automation to Apes Hill Resort Inc. and look forward to discussing how our solutions can enhance your operations while reducing costs and improving efficiency.
+            </div>
+            <div class="contact-text">
+                Let's schedule an additional conversation to assess your specific needs and determine the perfect TerraSYNC solution for your golf course.
+            </div>
+            <a href="https://start.terrasync.biz" class="catalog-link" target="_blank">
+                <i class="fas fa-external-link-alt" style="margin-right: 10px;"></i>
+                View Complete Product Catalog
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 40px 0; border-top: 1px solid rgba(34, 197, 94, 0.2); margin-top: 50px;">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: #22c55e; margin-bottom: 10px;">
+                TerraSYNC Solutions
+            </div>
+            <div style="color: #9ca3af; font-size: 0.9rem;">
+                Revolutionizing Golf Course Operations Through Advanced Automation Technology
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

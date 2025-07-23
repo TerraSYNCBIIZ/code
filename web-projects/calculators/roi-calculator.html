@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotic Ball Picker ROI Calculator</title>
+    <style>
+        :root {
+            --primary-color: #333;
+            --accent-color: #0066ff;
+            --result-bg: #333;
+            --result-text: white;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff;
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            grid-column: 1 / -1;
+        }
+        
+        .input-section {
+            padding-right: 20px;
+        }
+        
+        .result-section {
+            background-color: var(--result-bg);
+            color: var(--result-text);
+            padding: 30px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .result-item {
+            margin-bottom: 20px;
+        }
+        
+        .result-label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .result-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .result-section .savings {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .slider-container {
+            margin-bottom: 25px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .slider-value {
+            font-weight: bold;
+            display: inline-block;
+            background-color: #fff;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 4px;
+            margin-left: 20px;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        input[type="number"] {
+            width: 80px;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .slider-description {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .cta-button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: auto;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .cta-button:hover {
+            background-color: #0055cc;
+        }
+        
+        .get-in-touch {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-section, .result-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Robotic Ball Picker ROI</h1>
+        
+        <div class="input-section">
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Number of Gangs</span>
+                    <span class="slider-value" id="gangs-value">4 Gangs</span>
+                </div>
+                <input type="range" id="gangs" min="1" max="5" value="4" step="1">
+                <div class="slider-endpoints">
+                    <span>1 Gangs</span>
+                    <span style="float: right;">5 Gangs</span>
+                </div>
+                <div class="slider-description">How many Gangs do you currently use</div>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Hours per Day</span>
+                    <span class="slider-value" id="hours-value">3 Hours</span>
+                </div>
+                <input type="range" id="hours" min="0" max="14" value="3" step="1">
+                <div class="slider-endpoints">
+                    <span>0 Hours</span>
+                    <span style="float: right;">14 Hours</span>
+                </div>
+                <div class="slider-description">How Many Hourse per Day do You Pick</div>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Gas Price</span>
+                    <span class="slider-value" id="gas-price-value">$2.01</span>
+                </div>
+                <input type="range" id="gas-price" min="0" max="8" value="2.01" step="0.01">
+                <div class="slider-endpoints">
+                    <span>$0</span>
+                    <span style="float: right;">$8</span>
+                </div>
+                <div class="slider-description">Cost of Gas Per Gallon</div>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Hourly Wage</span>
+                    <span class="slider-value" id="wage-value">$10.35</span>
+                </div>
+                <input type="range" id="wage" min="0" max="42.5" value="10.35" step="0.05">
+                <div class="slider-endpoints">
+                    <span>$0</span>
+                    <span style="float: right;">$42.5</span>
+                </div>
+                <div class="slider-description">How Much does The Employee Make Per Hour</div>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-item">
+                <div class="result-label">Robotic Annual Cost</div>
+                <div class="result-label">*Including Depreciation*</div>
+                <div class="result-value" id="robotic-cost">13,410.91</div>
+            </div>
+            
+            <div class="result-item">
+                <div class="result-label">Traditional Annual Cost</div>
+                <div class="result-label">*Including Depreciation*</div>
+                <div class="result-value" id="traditional-cost">18,184.20</div>
+            </div>
+            
+            <div class="result-item savings">
+                <div class="result-label">Savings Per Year</div>
+                <div class="result-value" id="savings">4,773.29</div>
+            </div>
+            
+            <div class="result-item">
+                <div class="result-label">ROI Period</div>
+                <div class="result-value" id="roi-period">2.81</div>
+            </div>
+            
+            <div class="get-in-touch">Get in Touch With Us</div>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+    </div>
+    
+    <script>
+        // Constants for calculations
+        const ROBOT_BASE_COST = 10000;  // Base cost of robot
+        const ROBOT_MAINTENANCE = 2000;  // Annual maintenance
+        const ROBOT_DEPRECIATION_YEARS = 5;  // Years for depreciation
+        const ROBOT_ELECTRICITY_HOURLY = 0.5;  // Hourly electricity cost
+        
+        const TRADITIONAL_GANG_COST = 4000;  // Cost per gang
+        const TRADITIONAL_MAINTENANCE_PERCENT = 0.1;  // 10% of gang cost for maintenance
+        const TRADITIONAL_DEPRECIATION_YEARS = 3;  // Years for depreciation
+        const TRADITIONAL_GAS_HOURLY = 1.5;  // Gallons per hour
+        
+        const DAYS_PER_YEAR = 365;
+        
+        // Get DOM elements
+        const gangsSlider = document.getElementById('gangs');
+        const gangsValue = document.getElementById('gangs-value');
+        const hoursSlider = document.getElementById('hours');
+        const hoursValue = document.getElementById('hours-value');
+        const gasPriceSlider = document.getElementById('gas-price');
+        const gasPriceValue = document.getElementById('gas-price-value');
+        const wageSlider = document.getElementById('wage');
+        const wageValue = document.getElementById('wage-value');
+        
+        const roboticCostDisplay = document.getElementById('robotic-cost');
+        const traditionalCostDisplay = document.getElementById('traditional-cost');
+        const savingsDisplay = document.getElementById('savings');
+        const roiPeriodDisplay = document.getElementById('roi-period');
+        
+        // Format currency
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', { 
+                style: 'decimal',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(value);
+        }
+        
+        // Calculate ROI
+        function calculateROI() {
+            // Get values from sliders
+            const gangs = parseInt(gangsSlider.value);
+            const hoursPerDay = parseInt(hoursSlider.value);
+            const gasPrice = parseFloat(gasPriceSlider.value);
+            const hourlyWage = parseFloat(wageSlider.value);
+            
+            // Calculate annual hours
+            const annualHours = hoursPerDay * DAYS_PER_YEAR;
+            
+            // Calculate robotic costs
+            const robotDepreciation = ROBOT_BASE_COST / ROBOT_DEPRECIATION_YEARS;
+            const robotElectricity = ROBOT_ELECTRICITY_HOURLY * annualHours;
+            const roboticAnnualCost = robotDepreciation + ROBOT_MAINTENANCE + robotElectricity;
+            
+            // Calculate traditional costs
+            const gangsDepreciation = (gangs * TRADITIONAL_GANG_COST) / TRADITIONAL_DEPRECIATION_YEARS;
+            const gangsMaintenance = gangs * TRADITIONAL_GANG_COST * TRADITIONAL_MAINTENANCE_PERCENT;
+            const gasUsage = TRADITIONAL_GAS_HOURLY * annualHours * gasPrice;
+            const laborCost = hourlyWage * annualHours;
+            const traditionalAnnualCost = gangsDepreciation + gangsMaintenance + gasUsage + laborCost;
+            
+            // Calculate savings and ROI
+            const annualSavings = traditionalAnnualCost - roboticAnnualCost;
+            const roiPeriod = ROBOT_BASE_COST / annualSavings;
+            
+            // Update display
+            roboticCostDisplay.textContent = formatCurrency(roboticAnnualCost);
+            traditionalCostDisplay.textContent = formatCurrency(traditionalAnnualCost);
+            savingsDisplay.textContent = formatCurrency(annualSavings);
+            roiPeriodDisplay.textContent = formatCurrency(roiPeriod);
+        }
+        
+        // Update slider value displays
+        function updateSliderValues() {
+            gangsValue.textContent = `${gangsSlider.value} Gangs`;
+            hoursValue.textContent = `${hoursSlider.value} Hours`;
+            gasPriceValue.textContent = `$${parseFloat(gasPriceSlider.value).toFixed(2)}`;
+            wageValue.textContent = `$${parseFloat(wageSlider.value).toFixed(2)}`;
+        }
+        
+        // Add event listeners
+        gangsSlider.addEventListener('input', function() {
+            updateSliderValues();
+            calculateROI();
+        });
+        
+        hoursSlider.addEventListener('input', function() {
+            updateSliderValues();
+            calculateROI();
+        });
+        
+        gasPriceSlider.addEventListener('input', function() {
+            updateSliderValues();
+            calculateROI();
+        });
+        
+        wageSlider.addEventListener('input', function() {
+            updateSliderValues();
+            calculateROI();
+        });
+        
+        // Initialize
+        updateSliderValues();
+        calculateROI();
+    </script>
+</body>
+</html> 

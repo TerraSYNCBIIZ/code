@@ -1,0 +1,456 @@
+<div id="terra-sync-container">
+  <style>
+    #terra-sync-container {
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      width: 100%;
+    }
+    #terra-sync-container .centered-text {
+      font-size: 32px; 
+      font-family: 'Montserrat', sans-serif; 
+      font-style: italic; 
+      color: white; 
+      white-space: nowrap; 
+      overflow: visible; 
+      margin: 0 auto; 
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    #terra-sync-container .for-text {
+      font-weight: bold;
+      margin: 0 20px;
+      position: relative;
+    }
+    .word-container {
+      position: relative;
+      height: 36px;
+      width: 280px;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+    }
+    .word-container.left {
+      justify-content: flex-end;
+    }
+    .word-container.right {
+      justify-content: flex-start;
+    }
+    .word {
+      position: absolute;
+      font-weight: bold;
+      color: #EC9608;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .word.left {
+      right: 0;
+    }
+    .word.right {
+      left: 0;
+    }
+    .word.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .word.exit {
+      opacity: 0;
+      transform: translateY(-40px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    
+    /* Mobile responsive styling */
+    @media (max-width: 768px) {
+      #terra-sync-container .centered-text {
+        font-size: 24px;
+      }
+      #terra-sync-container .for-text {
+        margin: 0 10px;
+      }
+      .word-container {
+        height: 28px;
+        width: 200px;
+      }
+    }
+    
+    /* Small mobile devices */
+    @media (max-width: 480px) {
+      #terra-sync-container .centered-text {
+        font-size: 20px;
+      }
+      #terra-sync-container .for-text {
+        margin: 0 8px;
+      }
+      .word-container {
+        height: 24px;
+        width: 150px;
+      }
+      .word {
+        font-size: 19px;
+      }
+    }
+    
+    /* Very small mobile devices */
+    @media (max-width: 375px) {
+      #terra-sync-container {
+        width: 100%;
+        text-align: center;
+      }
+      #terra-sync-container .centered-text {
+        font-size: 18px;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 5px;
+        box-sizing: border-box;
+      }
+      #terra-sync-container .for-text {
+        margin: 8px 0;
+        font-size: 20px;
+      }
+      .word-container {
+        height: auto;
+        min-height: 24px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 5px 0;
+        position: relative;
+      }
+      .word-container.left {
+        justify-content: center;
+        order: 1;
+      }
+      .word-container.right {
+        justify-content: center;
+        order: 3;
+      }
+      .word {
+        position: relative;
+        width: auto;
+        max-width: 90%;
+        font-size: 17px;
+        text-align: center;
+        white-space: normal;
+        margin: 0 auto;
+        left: auto;
+        right: auto;
+        transform: translateY(40px);
+        hyphens: auto;
+        word-break: break-word;
+      }
+      .word.left, .word.right {
+        position: absolute;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) translateY(40px);
+      }
+      .word.active {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      .word.exit {
+        transform: translateX(-50%) translateY(-40px);
+      }
+      #terra-sync-container .for-text {
+        order: 2;
+      }
+    }
+    
+    /* Extra small mobile devices */
+    @media (max-width: 320px) {
+      #terra-sync-container .centered-text {
+        font-size: 16px;
+      }
+      .word {
+        font-size: 15px;
+      }
+    }
+  </style>
+  
+  <div class="centered-text">
+    <div class="word-container left" id="left-container"></div>
+    
+    <span class="for-text">FOR</span>
+    
+    <div class="word-container right" id="right-container"></div>
+  </div>
+
+  <script>
+    (function() {
+      // Define valid pairs based on logical relationships
+      const validPairs = [
+        // Range pickers only for golf
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"],
+        
+        // Line painters for specific facilities
+        ["AUTONOMOUS LINE PAINTERS", "GOLF"],
+        ["AUTONOMOUS LINE PAINTERS", "MUNICIPALITIES"],
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"],
+        ["AUTONOMOUS LINE PAINTERS", "UNIVERSITIES"],
+        
+        // Robotic mowers for everything
+        ["ROBOTIC MOWERS", "GOLF"],
+        ["ROBOTIC MOWERS", "UNIVERSITIES"],
+        ["ROBOTIC MOWERS", "MUNICIPALITIES"],
+        ["ROBOTIC MOWERS", "GOVERNMENT"],
+        ["ROBOTIC MOWERS", "ATHLETICS"],
+        ["ROBOTIC MOWERS", "EQUINE"],
+        ["ROBOTIC MOWERS", "SOLAR FIELDS"],
+        ["ROBOTIC MOWERS", "RESORTS"],
+        ["ROBOTIC MOWERS", "HIGH END RESIDENTIAL"],
+        
+        // Consulting for everything
+        ["CONSULTING", "GOLF"],
+        ["CONSULTING", "UNIVERSITIES"],
+        ["CONSULTING", "MUNICIPALITIES"],
+        ["CONSULTING", "GOVERNMENT"],
+        ["CONSULTING", "ATHLETICS"],
+        ["CONSULTING", "EQUINE"],
+        ["CONSULTING", "SOLAR FIELDS"],
+        ["CONSULTING", "RESORTS"],
+        ["CONSULTING", "HIGH END RESIDENTIAL"],
+        
+        // Installation for everything
+        ["INSTALLATION", "GOLF"],
+        ["INSTALLATION", "UNIVERSITIES"],
+        ["INSTALLATION", "MUNICIPALITIES"],
+        ["INSTALLATION", "GOVERNMENT"],
+        ["INSTALLATION", "ATHLETICS"],
+        ["INSTALLATION", "EQUINE"],
+        ["INSTALLATION", "SOLAR FIELDS"],
+        ["INSTALLATION", "RESORTS"],
+        ["INSTALLATION", "HIGH END RESIDENTIAL"]
+      ];
+      
+      // Define priority pairs that should appear more frequently
+      const priorityPairs = [
+        ["ROBOTIC MOWERS", "GOLF"],      // High priority - featured service
+        ["INSTALLATION", "HIGH END RESIDENTIAL"], // New high priority
+        ["ROBOTIC MOWERS", "UNIVERSITIES"], // High priority - important market
+        ["INSTALLATION", "SOLAR FIELDS"], // High priority - growing market
+        ["CONSULTING", "MUNICIPALITIES"],  // High priority - strategic focus
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"], // Added to ensure appearance
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"] // Added to ensure appearance
+      ];
+      
+      // Sequence for the first two animations (will show in this exact order)
+      const startingSequence = [
+        ["ROBOTIC MOWERS", "GOLF"],
+        ["INSTALLATION", "HIGH END RESIDENTIAL"],
+        ["AUTONOMOUS RANGE PICKERS", "GOLF"], 
+        ["AUTONOMOUS LINE PAINTERS", "ATHLETICS"]
+      ];
+      let sequenceIndex = 0;
+      
+      // Priority boost factor - how much more likely priority pairs are to be selected
+      const PRIORITY_BOOST = 2.5;
+      
+      const leftContainer = document.getElementById("left-container");
+      const rightContainer = document.getElementById("right-container");
+      
+      let leftActiveElement = null;
+      let rightActiveElement = null;
+      
+      // Create a frequency weight map to bias selection
+      // Services with few applications should appear less frequently
+      const serviceWeights = {
+        "AUTONOMOUS RANGE PICKERS": 0.7,  // Increased from 0.4
+        "AUTONOMOUS LINE PAINTERS": 0.8,  // Increased from 0.6
+        "ROBOTIC MOWERS": 1.0,            // Regular frequency
+        "CONSULTING": 1.0,                // Regular frequency
+        "INSTALLATION": 1.0               // Regular frequency
+      };
+      
+      // Track recent displays to avoid repetition
+      const recentServices = [];  // Track recent left-side services
+      const recentDestinations = []; // Track recent right-side destinations
+      const recentPairs = [];     // Track full recent pairs
+      const MAX_HISTORY = 3;     // How many recent items to remember
+      
+      // Create all word elements
+      function setupWords() {
+        // Get unique words for both sides
+        const uniqueLeftWords = [...new Set(validPairs.map(pair => pair[0]))];
+        const uniqueRightWords = [...new Set(validPairs.map(pair => pair[1]))];
+        
+        // Setup left words (services)
+        uniqueLeftWords.forEach(word => {
+          const wordElement = document.createElement("span");
+          wordElement.textContent = word;
+          wordElement.className = "word left";
+          wordElement.dataset.word = word;
+          leftContainer.appendChild(wordElement);
+        });
+        
+        // Setup right words (destinations)
+        uniqueRightWords.forEach(word => {
+          const wordElement = document.createElement("span");
+          wordElement.textContent = word;
+          wordElement.className = "word right";
+          wordElement.dataset.word = word;
+          rightContainer.appendChild(wordElement);
+        });
+      }
+      
+      // Check if a pair is in the priority list
+      function isPriorityPair(leftWord, rightWord) {
+        return priorityPairs.some(pair => 
+          pair[0] === leftWord && pair[1] === rightWord
+        );
+      }
+      
+      // Check if a pair was recently shown
+      function wasRecentlyShown(leftWord, rightWord) {
+        return recentPairs.some(pair => 
+          pair[0] === leftWord && pair[1] === rightWord
+        );
+      }
+      
+      // Select the next pair to display
+      function selectNextPair() {
+        // If we're still in the starting sequence, use that
+        if (sequenceIndex < startingSequence.length) {
+          return startingSequence[sequenceIndex++];
+        }
+        
+        // Collect all possible pairs excluding the most recent ones
+        const candidatePairs = [];
+        const weightedPairs = [];
+        
+        validPairs.forEach(([leftWord, rightWord]) => {
+          // Skip recently shown full pairs
+          if (wasRecentlyShown(leftWord, rightWord)) {
+            return;
+          }
+          
+          // Base weight from the service type
+          const baseWeight = serviceWeights[leftWord];
+          
+          // Calculate final weight with priority boost if applicable
+          let finalWeight = baseWeight;
+          if (isPriorityPair(leftWord, rightWord)) {
+            finalWeight *= PRIORITY_BOOST;
+          }
+          
+          // Add to candidates list
+          candidatePairs.push({
+            leftWord,
+            rightWord,
+            weight: finalWeight
+          });
+          
+          // Add to weighted selection pool (more weight = more entries)
+          const entries = Math.ceil(finalWeight * 10);
+          for (let i = 0; i < entries; i++) {
+            weightedPairs.push([leftWord, rightWord]);
+          }
+        });
+        
+        // If we have candidates, randomly select one
+        if (weightedPairs.length > 0) {
+          return weightedPairs[Math.floor(Math.random() * weightedPairs.length)];
+        }
+        
+        // Fallback: just pick any valid pair
+        const fallbackPair = validPairs[Math.floor(Math.random() * validPairs.length)];
+        return fallbackPair;
+      }
+      
+      function animatePair() {
+        // Remove active class from current active elements
+        if (leftActiveElement) {
+          leftActiveElement.classList.remove("active");
+          leftActiveElement.classList.add("exit");
+          
+          setTimeout(() => {
+            leftActiveElement.classList.remove("exit");
+          }, 500);
+        }
+        
+        if (rightActiveElement) {
+          rightActiveElement.classList.remove("active");
+          rightActiveElement.classList.add("exit");
+          
+          setTimeout(() => {
+            rightActiveElement.classList.remove("exit");
+          }, 500);
+        }
+        
+        // Get next pair using our weighted priority selection
+        const [leftWord, rightWord] = selectNextPair();
+        
+        // Update tracking of recent items
+        recentServices.unshift(leftWord);
+        if (recentServices.length > MAX_HISTORY) {
+          recentServices.pop();
+        }
+        
+        recentDestinations.unshift(rightWord);
+        if (recentDestinations.length > MAX_HISTORY) {
+          recentDestinations.pop();
+        }
+        
+        recentPairs.unshift([leftWord, rightWord]);
+        if (recentPairs.length > MAX_HISTORY) {
+          recentPairs.pop();
+        }
+        
+        // Find and activate the elements
+        leftActiveElement = leftContainer.querySelector(`.word[data-word="${leftWord}"]`);
+        rightActiveElement = rightContainer.querySelector(`.word[data-word="${rightWord}"]`);
+        
+        leftActiveElement.classList.add("active");
+        rightActiveElement.classList.add("active");
+        
+        // Add a bit of timing variation to make the animation feel more natural
+        const nextDelay = 2800 + Math.floor(Math.random() * 600); // 2.8-3.4 seconds
+        
+        // Schedule next animation
+        setTimeout(animatePair, nextDelay);
+      }
+      
+      // Start animations with delay
+      function initAnimations() {
+        setupWords();
+        
+        // Start with the first pair in our sequence
+        const [initialService, initialDestination] = startingSequence[0];
+        sequenceIndex = 1; // Set to 1 since we're using the first sequence item
+        
+        // Update recent lists
+        recentServices.push(initialService);
+        recentDestinations.push(initialDestination);
+        recentPairs.push([initialService, initialDestination]);
+        
+        // Activate initial elements
+        leftActiveElement = leftContainer.querySelector(`.word[data-word="${initialService}"]`);
+        rightActiveElement = rightContainer.querySelector(`.word[data-word="${initialDestination}"]`);
+        
+        leftActiveElement.classList.add("active");
+        rightActiveElement.classList.add("active");
+        
+        // Schedule next animation with a slightly longer initial delay
+        setTimeout(animatePair, 3800);
+      }
+      
+      // Start animation when the document is ready
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        initAnimations();
+      } else {
+        window.addEventListener('DOMContentLoaded', initAnimations);
+      }
+    })();
+  </script>
+</div> 
