@@ -1,0 +1,836 @@
+# KnoxBots LLC (DBA TerraSYNC) Employment Agreement
+**Hudson Schmid - Head of Sales Operations & Growth**
+
+---
+
+## RECITALS
+
+WHEREAS, KnoxBots LLC, a Tennessee limited liability company operating under the DBA "TerraSYNC" ("Company"), is engaged in the business of providing robotic grounds maintenance automation services and related technology solutions;
+
+WHEREAS, Hudson Schmid ("Employee") possesses specialized skills, experience, and expertise in sales operations, business development, and client relationship management that are valuable to the Company's growth objectives;
+
+WHEREAS, the Company desires to engage Employee as Head of Sales Operations & Growth to lead business development initiatives, manage client relationships, and drive revenue growth in the Company's physical service operations;
+
+WHEREAS, Employee desires to accept such engagement and contribute to the Company's success in exchange for the compensation, benefits, and equity participation set forth herein;
+
+WHEREAS, the parties wish to establish their respective rights, obligations, and expectations in a comprehensive written agreement;
+
+NOW, THEREFORE, in consideration of the mutual covenants and agreements contained herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties agree as follows:
+
+---
+
+## ARTICLE I: DEFINITIONS
+
+For the purposes of this Agreement, the following terms shall have the meanings set forth below:
+
+**Affiliate:** Any entity that directly or indirectly controls, is controlled by, or is under common control with the Company, including but not limited to parent companies, subsidiaries, and sister entities within the KnoxBots/TerraSYNC corporate structure.
+
+**Base Salary:** The annual monetary compensation paid to Employee, exclusive of performance bonuses, equity compensation, benefits, or other forms of remuneration, as may be adjusted from time to time in accordance with this Agreement.
+
+**Cause:** Grounds for immediate termination of Employee's employment, limited to the following specific circumstances with documented evidence: (a) willful and continued failure to perform assigned duties after two written warnings and 60-day cure period; (b) gross negligence or willful misconduct in the performance of duties resulting in measurable financial harm exceeding $25,000; (c) material breach of this Agreement that remains uncured after 60 days written notice and opportunity to cure; (d) conviction of, or plea of guilty or nolo contendere to, any felony or crime involving moral turpitude that directly affects Employee's ability to perform duties; (e) material violation of written Company policies after written warning and opportunity to cure; (f) fraud, embezzlement, or misappropriation of Company funds or property exceeding $5,000; or (g) intentional acts that materially damage the Company's reputation or result in loss of major clients (with documented evidence of causation). All Cause determinations require consultation with legal counsel and written documentation.
+
+**Change of Control:** Any transaction or series of related transactions whereby: (a) any person or group becomes the beneficial owner of 50% or more of the Company's equity interests; (b) the Company merges or consolidates with another entity and the Company's equity holders immediately prior to such transaction own less than 50% of the surviving entity; (c) the Company sells, transfers, or disposes of all or substantially all of its assets; or (d) the Company undergoes a similar transaction that results in a fundamental change in ownership or control.
+
+**Competing Business:** Any business that directly competes with the Company's robotic grounds maintenance services, automated landscaping solutions, or related technology offerings within the Restricted Territory, including but not limited to companies providing similar robotic services, automated maintenance solutions, or competing technology platforms.
+
+**Confidential Information:** All non-public, proprietary, or confidential information of the Company, including but not limited to: trade secrets, client lists, pricing information, business strategies, financial data, technical specifications, software code, algorithms, marketing plans, supplier relationships, and any other information that derives economic value from not being generally known.
+
+**Good Reason:** Employee's right to terminate employment due to: (a) material reduction in Base Salary without Employee's consent; (b) material diminution of Employee's authority, duties, or responsibilities; (c) relocation of Employee's principal work location by more than 50 miles without consent; (d) material breach of this Agreement by the Company that remains uncured after 30 days written notice; or (e) failure by the Company to pay compensation when due for more than 30 days after written notice.
+
+**Monthly Recurring Revenue (MRR):** The predictable monthly revenue generated by the Company from ongoing service contracts and subscriptions, calculated as the total monthly contracted revenue from active client agreements, excluding one-time fees, setup charges, or variable usage-based fees.
+
+**Restricted Client:** Any person or entity that was a client or customer of the Company at any time during Employee's employment, or any prospective client with whom Employee had contact or about whom Employee obtained Confidential Information during employment.
+
+**Restricted Territory:** The specific geographic areas where non-competition restrictions apply, limited to: (a) the State of Tennessee; (b) Palm Beach County, Martin County, and Broward County, Florida; (c) any additional counties or metropolitan statistical areas where the Company has active operations or signed client contracts during Employee's employment, provided such areas are specifically identified in writing to Employee; and (d) a 50-mile radius from any Company facility or major client location where Employee provided services. The Restricted Territory shall not exceed a total geographic area larger than three (3) states to ensure enforceability.
+
+**Vesting Commencement Date:** Employee's first day of employment with the Company, which shall serve as the starting point for all equity vesting calculations and milestone determinations.
+
+**Work Product:** All inventions, discoveries, improvements, developments, methods, processes, programs, designs, analyses, drawings, reports, service marks, trademarks, trade names, logos, and all similar or related information (whether patentable or not) that relate to the Company's business and are conceived, developed, or made by Employee during employment.
+
+---
+
+## ARTICLE II: EMPLOYMENT TERMS AND CONDITIONS
+
+### Section 2.1 Position and Duties
+
+(a) **Title and Role:** Employee is hereby employed as Head of Sales Operations & Growth, reporting directly to the Founder and CEO of KnoxBots LLC (DBA TerraSYNC).
+
+(b) **Primary Responsibilities:** Employee's duties shall include, but not be limited to:
+- Leading business development initiatives for the Company's physical service operations
+- Managing post-initial-contact client relationships and serving as primary point of contact for operational matters
+- Acting as liaison between sales and operations teams to ensure seamless service delivery
+- Developing and implementing strategies to drive revenue growth and market expansion
+- Overseeing client onboarding, account management, and retention initiatives
+- Analyzing sales performance metrics and operational efficiency indicators
+- Collaborating with technical teams to align service capabilities with market demands
+- Managing territory expansion planning and market penetration strategies
+
+(c) **Scope Limitation:** Employee's role focuses exclusively on the Company's physical service business operations and does not include responsibilities related to software development, technology products, or intellectual property licensing.
+
+(d) **Performance Standards:** Employee shall perform all duties with the highest degree of professional competence, integrity, and loyalty to the Company's interests, adhering to all Company policies, procedures, and industry best practices.
+
+### Section 2.2 Term of Employment
+
+This Agreement shall commence on [Employment Start Date] (the "Effective Date") and shall continue until terminated in accordance with the provisions set forth herein. Employment under this Agreement is "at-will," meaning either party may terminate the employment relationship at any time, with or without cause, subject to the notice and severance provisions contained herein.
+
+### Section 2.3 Full-Time Commitment
+
+Employee agrees to devote their full business time, attention, and energies to the performance of their duties hereunder. Employee shall not, without the prior written consent of the Company, engage in any other business activity that would conflict with or interfere with the performance of Employee's duties or that would constitute a competing business.
+
+### Section 2.4 Work Location and Travel
+
+(a) **Primary Location:** Employee's primary work location shall be determined by mutual agreement between Employee and the Company, with flexibility for remote work arrangements as approved by the Company.
+
+(b) **Travel Requirements:** Employee may be required to travel for business purposes, including client meetings, site visits, and industry conferences, with all reasonable travel expenses reimbursed by the Company in accordance with Company travel policies.
+
+---
+
+## ARTICLE III: COMPENSATION AND BENEFITS
+
+### Section 3.1 Base Salary Structure
+
+(a) **Initial Base Salary:** Employee's initial Base Salary shall be Twenty-Four Thousand Dollars ($24,000) per year, payable in equal monthly installments of Two Thousand Dollars ($2,000), subject to applicable tax withholdings.
+
+(b) **Performance-Based Salary Increases:** Employee's Base Salary shall be increased based on the achievement of specific Monthly Recurring Revenue (MRR) milestones, subject to the following de-risked structure:
+
+- **Tier 1 Increase:** Upon the Company achieving $25,000 in MRR for six consecutive months AND maintaining positive cash flow, Base Salary shall increase to $30,000 annually ($2,500 monthly)
+- **Tier 2 Increase:** Upon the Company achieving $50,000 in MRR for six consecutive months AND maintaining cash reserves of at least $100,000, Base Salary shall increase to $45,000 annually ($3,750 monthly)
+- **Tier 3 Increase:** Upon the Company achieving $100,000 in MRR for six consecutive months AND maintaining cash reserves of at least $200,000, Base Salary shall increase to $70,000 annually ($5,833 monthly)
+
+(c) **Salary Increase Implementation and Safeguards:** 
+- Salary increases shall take effect beginning with the first payroll period following the month in which both the MRR milestone and cash flow requirements are achieved
+- All salary increases are subject to quarterly review by the Company's financial advisor or CPA
+- If MRR drops below 80% of the qualifying threshold for three consecutive months OR if Employee fails to meet performance standards per Section 11.3, the Company may implement a temporary salary reduction to the previous tier level, with 30 days written notice
+
+(d) **Financial Hardship Clause:** In cases of material adverse changes to the Company's financial condition, force majeure events, or cash flow emergencies, the Company may temporarily reduce Employee's salary to a minimum of $24,000 annually with 60 days written notice. Such reductions shall be restored when financial conditions improve and shall not affect equity vesting schedules.
+
+### Section 3.2 Equity Compensation
+
+(a) **Restricted Equity Grant:** Subject to the terms and conditions of this Agreement, Employee shall receive fifteen percent (15%) membership interest in KnoxBots LLC (or equivalent equity upon incorporation of TerraSYNC Corporation). This restricted equity shall:
+- Be issued within thirty (30) days of execution of this Agreement at nominal consideration ($1.50 total for the 15% interest)
+- Be subject to the Company's repurchase rights at cost until vested
+- Carry full voting and economic rights upon vesting
+- Qualify for favorable tax treatment under Section 83 of the Internal Revenue Code
+
+(b) **Vesting Schedule:** The equity interest shall vest according to the following back-weighted schedule:
+- **Year 1:** Two percent (2%) shall vest on the first anniversary of the Vesting Commencement Date
+- **Year 2:** An additional three percent (3%) shall vest on the second anniversary (total 5% vested)
+- **Year 3:** An additional four percent (4%) shall vest on the third anniversary (total 9% vested)
+- **Year 4:** The remaining six percent (6%) shall vest on the fourth anniversary (total 15% fully vested)
+
+(c) **Dilutive Nature and Anti-Dilution Protections:** Employee's equity interest is dilutive, meaning it will be subject to proportional dilution in connection with future equity financings, issuances, or other transactions that increase the Company's outstanding equity. However, Employee shall receive the following protections:
+- In any equity financing where new investors receive superior rights (such as liquidation preferences), Employee's equity shall be converted to the same class as the Founder's equity
+- Employee shall have the right to participate pro-rata in future equity offerings to maintain ownership percentage (subject to securities law limitations)
+- If the Company issues equity at a valuation below the most recent 409A valuation (a "down round"), Employee's equity shall be protected by weighted-average anti-dilution adjustments
+- Any equity issued for less than fair market value to management or consultants shall be counted against a management pool, not treated as dilutive to Employee's interest
+
+(d) **Acceleration Provisions:**
+- **Termination Without Cause:** If Employee's employment is terminated by the Company without Cause, all unvested equity shall immediately vest.
+- **Termination for Good Reason:** If Employee terminates employment for Good Reason, all unvested equity shall immediately vest.
+- **Change of Control:** Upon a Change of Control, fifty percent (50%) of all unvested equity shall immediately vest, with the remainder continuing to vest according to the original schedule unless Employee's employment is terminated without Cause or for Good Reason within twelve (12) months following the Change of Control, in which case all remaining unvested equity shall immediately vest.
+
+(e) **Performance-Based Vesting Conditions:** 
+- All unvested equity shall be forfeited if Employee's employment is terminated for Cause or if Employee voluntarily terminates employment without Good Reason
+- Equity vesting is contingent upon the Company achieving minimum **annual** revenue thresholds: Year 1 ($150K ARR), Year 2 ($400K ARR), Year 3 ($750K ARR), Year 4 ($1.2M ARR)
+- If performance thresholds are not met, vesting may be delayed until achieved or subject to Board discretion
+- Maximum total equity pool for all employees shall not exceed 25% of Company equity, with Employee's 15% being the largest single grant
+
+(f) **Death and Disability Succession:**
+- Upon Employee's death, all vested equity shall transfer to Employee's designated beneficiary or estate
+- Upon permanent disability preventing performance of duties, vesting shall accelerate for the current year only
+- Employee may designate beneficiaries by written notice to the Company, updated annually
+- In the absence of beneficiary designation, equity transfers according to Employee's will or state intestacy laws
+- The Company shall have a right of first refusal to purchase equity from beneficiaries at fair market value
+
+(g) **Equity Valuation Caps:** To protect against excessive dilution of Founder equity:
+- Employee's equity shall be valued using conservative methodologies (minimum of revenue multiple and asset-based approaches)
+- In any liquidity event, Employee's equity payout is capped at 15% of the first $10 million of proceeds, and 10% of proceeds above $10 million
+- If Company valuation exceeds $50 million, Employee's percentage may be subject to adjustment to maintain Founder control
+
+### Section 3.3 Performance Bonuses and Incentives
+
+(a) **Quarterly Performance Bonuses:** Employee shall be eligible for quarterly performance bonuses based on achievement of mutually agreed objectives related to revenue growth, client acquisition, and operational efficiency.
+
+(b) **Annual Retention Bonus:** Beginning in Year 2 of employment, Employee shall receive an annual retention bonus equal to 10% of Base Salary, payable in January of each year, provided Employee remains employed through December 31 of the preceding year.
+
+(c) **Revenue Milestone Bonuses:** Employee shall receive special milestone bonuses for extraordinary revenue achievements:
+- $5,000 bonus upon achieving $150,000 annual recurring revenue
+- $10,000 bonus upon achieving $500,000 annual recurring revenue
+- $25,000 bonus upon achieving $1,000,000 annual recurring revenue
+
+**Bonus Limitations:** Total annual performance bonuses (excluding base salary and equity) shall not exceed 200% of Employee's current Base Salary in any calendar year. All bonuses are subject to Company cash flow availability and may be deferred if payment would jeopardize business operations.
+
+### Section 3.4 Clawback Provisions
+
+(a) **Financial Restatement Clawback:** If the Company is required to restate its financial statements due to material noncompliance with financial reporting requirements, and such restatement affects the calculation of performance bonuses or MRR milestones, Employee shall repay any excess compensation received based on the erroneous financial information.
+
+(b) **Misconduct Clawback:** If Employee is terminated for Cause involving fraud, embezzlement, or material misconduct, the Company may recover:
+- Any unvested equity that accelerated due to the misconduct
+- Performance bonuses paid in the 12 months prior to discovery of misconduct
+- Any other compensation determined to be directly related to the misconduct
+
+(c) **Non-Compete Violation Clawback:** If Employee violates the non-competition provisions of this Agreement, Employee shall repay any severance payments received and forfeit any equity that vested in the 12 months prior to the violation.
+
+### Section 3.5 Benefits and Perquisites
+
+(a) **Health Insurance:** The Company does not currently provide health insurance benefits. Employee is responsible for obtaining their own health insurance coverage. As the Company grows, health insurance benefits may be added at the Company's discretion.
+
+(b) **Paid Time Off:** Employee shall be entitled to twenty (20) days of paid vacation per year, accruing monthly, plus standard Company holidays. **Growing Season Restriction:** During the peak growing season (March 1 through August 31), Employee may use a maximum of five (5) vacation days total. The remaining fifteen (15) days may be used September 1 through February 28/29. All vacation time during growing season requires advance approval and must not conflict with critical business operations.
+
+(c) **Professional Development:** The Company shall reimburse up to $500 annually for professional development expenses, including conferences, training programs, and industry certifications relevant to Employee's role, subject to prior approval and Company cash flow availability.
+
+(d) **Equipment and Technology:** The Company shall provide all necessary equipment, technology, and tools required for Employee to perform their duties effectively.
+
+---
+
+## ARTICLE IV: CONFIDENTIALITY AND PROPRIETARY INFORMATION
+
+### Section 4.1 Confidentiality Obligations
+
+(a) **Non-Disclosure:** Employee acknowledges that during employment, Employee will have access to Confidential Information. Employee agrees to maintain in confidence and not disclose, directly or indirectly, any Confidential Information to any third party without prior written authorization from the Company.
+
+(b) **Use Restrictions:** Employee agrees to use Confidential Information solely for the purpose of performing duties under this Agreement and not for any personal benefit or the benefit of any third party.
+
+(c) **Return of Information:** Upon termination of employment for any reason, Employee shall immediately return to the Company all documents, materials, and other property containing or relating to Confidential Information.
+
+### Section 4.2 Intellectual Property Rights
+
+(a) **Work Product Ownership:** All Work Product shall be the sole and exclusive property of the Company. Employee hereby assigns to the Company all right, title, and interest in and to all Work Product.
+
+(b) **Pre-Existing IP Disclosure:** Employee represents that Exhibit B (attached) contains a complete list of all inventions, discoveries, and proprietary information belonging to Employee prior to employment. Any IP not disclosed is deemed assigned to the Company.
+
+(c) **Cooperation and Documentation:** Employee agrees to:
+- Maintain detailed written records of all Work Product development
+- Cooperate with the Company in securing and maintaining intellectual property rights
+- Execute all documents reasonably requested for IP protection
+- Provide testimony in IP-related proceedings as reasonably requested
+
+(d) **Post-Employment IP Assignment:** Any inventions or discoveries made within 12 months after termination that relate to the Company's business or use Confidential Information shall be assigned to the Company.
+
+(e) **Third-Party IP Compliance:** Employee warrants that all Work Product will not infringe third-party intellectual property rights and agrees to indemnify the Company for any infringement claims arising from Employee's unauthorized use of third-party IP.
+
+---
+
+## ARTICLE V: NON-COMPETITION AND NON-SOLICITATION
+
+### Section 5.1 Non-Competition Covenant
+
+For a period of twenty-four (24) months following the termination of Employee's employment for any reason, Employee shall not, directly or indirectly:
+
+(a) Own, manage, operate, control, be employed by, participate in, or be connected with any Competing Business within the Restricted Territory;
+
+(b) Engage in any business activity that would reasonably be expected to result in the disclosure or use of the Company's Confidential Information in competition with the Company.
+
+### Section 5.2 Non-Solicitation of Clients
+
+For a period of twenty-four (24) months following termination of employment, Employee shall not, directly or indirectly:
+
+(a) Solicit, contact, or attempt to contact any Restricted Client for the purpose of offering goods or services competitive with those offered by the Company;
+
+(b) Divert or attempt to divert any business opportunity from the Company to any Competing Business.
+
+### Section 5.3 Non-Solicitation of Employees
+
+For a period of twenty-four (24) months following termination of employment, Employee shall not, directly or indirectly:
+
+(a) Solicit, recruit, hire, or attempt to hire any employee or independent contractor of the Company;
+
+(b) Encourage any employee or contractor of the Company to terminate their relationship with the Company.
+
+### Section 5.4 Reasonableness and Enforceability
+
+(a) **Acknowledgment:** Employee acknowledges that the restrictions set forth in this Article V are reasonable and necessary to protect the Company's legitimate business interests and that any violation would cause irreparable harm to the Company.
+
+(b) **Reformation:** If any restriction is deemed overly broad or unenforceable, the parties agree that such restriction shall be reformed to the maximum extent permitted by law rather than being declared void.
+
+(c) **Injunctive Relief:** Employee agrees that any breach of this Article V would cause irreparable injury to the Company and that monetary damages would be inadequate. Therefore, the Company shall be entitled to injunctive relief and other equitable remedies.
+
+---
+
+## ARTICLE VI: TERMINATION PROVISIONS
+
+### Section 6.1 Termination by the Company
+
+(a) **Termination for Cause:** The Company may terminate Employee's employment immediately upon written notice if Cause exists.
+
+(b) **Termination Without Cause:** The Company may terminate Employee's employment without Cause upon thirty (30) days written notice.
+
+### Section 6.2 Termination by Employee
+
+(a) **Voluntary Resignation:** Employee may terminate employment at any time upon thirty (30) days written notice to the Company.
+
+(b) **Termination for Good Reason:** Employee may terminate employment for Good Reason upon thirty (30) days written notice, provided Employee has given the Company at least thirty (30) days to cure the condition constituting Good Reason.
+
+### Section 6.3 Termination Benefits
+
+(a) **Termination Without Cause:** If the Company terminates Employee's employment without Cause, Employee shall receive:
+- Acceleration of all unvested equity as provided in Section 3.2(d)
+- Payment of any accrued but unused vacation time
+- No additional severance compensation
+
+(b) **Termination for Good Reason:** If Employee terminates employment for Good Reason, Employee shall receive the same benefits as termination without Cause.
+
+(c) **Other Terminations:** No additional compensation shall be payable for termination for Cause or voluntary resignation without Good Reason, except payment of accrued vacation time as required by law.
+
+### Section 6.4 Post-Termination Obligations
+
+Upon termination for any reason, Employee shall:
+- Immediately return all Company property, including but not limited to equipment, documents, and materials
+- Cooperate in the orderly transition of duties and responsibilities
+- Continue to comply with confidentiality and restrictive covenant obligations
+
+---
+
+## ARTICLE VII: DISPUTE RESOLUTION
+
+### Section 7.1 Internal Resolution
+
+The parties agree to first attempt to resolve any disputes arising under this Agreement through good faith negotiations. Either party may initiate such process by providing written notice of the dispute to the other party.
+
+### Section 7.2 Mediation
+
+If internal negotiations fail to resolve a dispute within thirty (30) days, the parties agree to submit the dispute to mediation before a mutually acceptable mediator. The costs of mediation shall be shared equally between the parties.
+
+### Section 7.3 Arbitration
+
+If mediation does not resolve the dispute within sixty (60) days, the parties agree to submit the dispute to binding arbitration with the following specific procedures:
+- Arbitration shall be conducted under the Commercial Arbitration Rules of the American Arbitration Association
+- The arbitration shall take place in Nashville, Tennessee
+- Each party shall select one arbitrator, and the two selected arbitrators shall choose a third neutral arbitrator
+- The arbitration shall be concluded within 120 days of initiation unless extended by mutual agreement
+- The prevailing party shall be entitled to reasonable attorney's fees and costs
+- The arbitrator's decision shall be final and binding, with limited appeal rights under the Federal Arbitration Act
+
+### Section 7.4 Equitable Relief
+
+Notwithstanding the foregoing, either party may seek injunctive or other equitable relief in any court of competent jurisdiction to enforce the provisions of Article IV (Confidentiality) and Article V (Non-Competition).
+
+---
+
+## ARTICLE VIII: GENERAL PROVISIONS
+
+### Section 8.1 Governing Law
+
+This Agreement shall be governed by and construed in accordance with the laws of the State of Tennessee, without regard to conflict of law principles.
+
+### Section 8.2 Entire Agreement
+
+This Agreement constitutes the entire agreement between the parties and supersedes all prior negotiations, representations, or agreements relating to the subject matter hereof.
+
+### Section 8.3 Amendment
+
+This Agreement may only be amended by a written instrument signed by both parties.
+
+### Section 8.4 Severability
+
+If any provision of this Agreement is held to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+
+### Section 8.5 Assignment
+
+This Agreement is personal to Employee and may not be assigned by Employee. The Company may assign this Agreement to any successor entity.
+
+### Section 8.6 Notices
+
+All notices required under this Agreement shall be in writing and delivered by email, certified mail, or overnight courier to the addresses set forth below or such other addresses as may be designated by written notice.
+
+### Section 8.7 Survival
+
+The provisions of Articles IV, V, and VII shall survive the termination of this Agreement and Employee's employment.
+
+---
+
+## ARTICLE IX: COMPLIANCE AND REGULATORY MATTERS
+
+### Section 9.1 Regulatory Compliance
+
+Employee agrees to comply with all applicable federal, state, and local laws, regulations, and industry standards in the performance of duties under this Agreement.
+
+### Section 9.2 Background Check
+
+Employee's employment is contingent upon satisfactory completion of background checks as required by the Company's policies and applicable law.
+
+### Section 9.3 Immigration and Employment Eligibility Compliance
+
+(a) **I-9 Verification:** Employee represents that Employee is authorized to work in the United States and agrees to complete Form I-9 and provide acceptable documentation within three (3) days of employment commencement as required by the Immigration Reform and Control Act.
+
+(b) **E-Verify Compliance:** Employee consents to verification of work eligibility through the federal E-Verify system if required by applicable law or Company policy.
+
+(c) **Ongoing Authorization:** Employee agrees to immediately notify the Company of any changes in work authorization status and to provide updated documentation as required.
+
+### Section 9.4 Insurance Compliance
+
+(a) **General Liability Insurance:** The Company shall maintain comprehensive general liability insurance and other standard business insurance coverages appropriate for its operations.
+
+(b) **Claims Reporting:** Employee agrees to immediately report any work-related incidents, potential liability issues, or insurance claims to the Company and to cooperate fully in claims processing.
+
+### Section 9.5 Equal Employment Opportunity and Anti-Discrimination
+
+(a) **EEO Compliance:** The Company is an equal opportunity employer and prohibits discrimination based on race, color, religion, sex, national origin, age, disability, genetic information, or any other protected characteristic under federal, state, or local law.
+
+(b) **Harassment Prevention:** Both parties agree to maintain a workplace free from harassment, discrimination, and retaliation. Employee agrees to report any violations of this policy immediately.
+
+(c) **Accommodation Requests:** Employee may request reasonable accommodations for disabilities or religious beliefs as provided by applicable law.
+
+### Section 9.6 Whistleblower Protection and Reporting
+
+(a) **Protected Disclosures:** Employee shall not be retaliated against for reporting in good faith suspected violations of law, regulations, or Company policies to appropriate authorities or management.
+
+(b) **Reporting Mechanisms:** Employee may report concerns through established Company channels or directly to relevant regulatory agencies as provided by applicable whistleblower protection laws.
+
+(c) **Anti-Retaliation:** The Company prohibits any form of retaliation against Employee for making protected disclosures, including termination, demotion, or harassment.
+
+### Section 9.7 Social Media and Public Relations Policy
+
+(a) **Company Representation:** Employee agrees not to make public statements on behalf of the Company without express written authorization from Company leadership.
+
+(b) **Social Media Guidelines:** Employee's personal social media activities shall not reference Company business, clients, or confidential information. Professional social media activities must be pre-approved.
+
+(c) **Media Inquiries:** All media contacts and interview requests shall be immediately referred to Company leadership. Employee shall not respond to media inquiries without authorization.
+
+---
+
+## ARTICLE X: INDEMNIFICATION
+
+### Section 10.1 Company Indemnification
+
+The Company shall indemnify and hold harmless Employee from and against any claims, damages, or liabilities arising from Employee's performance of duties under this Agreement, provided Employee acted in good faith and within the scope of employment.
+
+### Section 10.2 Employee Representations
+
+Employee represents and warrants that:
+- Employee has the right and authority to enter into this Agreement
+- Employee's performance will not violate any other agreement to which Employee is bound
+- Employee has not been convicted of any felony or crime involving moral turpitude
+- All information provided to the Company is accurate and complete
+
+---
+
+## EXHIBIT A: DETAILED JOB RESPONSIBILITIES
+
+### Primary Duties and Responsibilities
+
+**Business Development & Growth**
+- Develop and execute comprehensive business development strategies for physical service operations
+- Identify, qualify, and pursue new market opportunities within target geographic regions
+- Create and maintain a robust pipeline of prospective clients and business opportunities
+- Conduct market research and competitive analysis to inform strategic decisions
+- Collaborate with leadership team on territory expansion planning and market entry strategies
+
+**Client Relationship Management**
+- Serve as primary point of contact for clients following initial sales engagement
+- Manage client onboarding process to ensure smooth transition from sales to operations
+- Develop and maintain strong relationships with key decision-makers at client organizations
+- Conduct regular client reviews and satisfaction assessments
+- Handle client escalations and resolve operational issues in coordination with service teams
+- Identify upselling and cross-selling opportunities within existing client base
+
+**Sales Operations & Process Management**
+- Design and implement sales processes, procedures, and best practices
+- Develop sales tools, templates, and collateral to support business development efforts
+- Create and maintain customer relationship management (CRM) systems and databases
+- Generate regular sales reports and performance analytics for leadership review
+- Coordinate with operations teams to ensure service delivery capabilities align with sales commitments
+
+**Performance Monitoring & Optimization**
+- Establish key performance indicators (KPIs) for sales and client success functions
+- Monitor and analyze sales metrics, conversion rates, and revenue performance
+- Conduct regular performance reviews and implement process improvements
+- Track client satisfaction, retention rates, and expansion opportunities
+- Provide regular updates and recommendations to executive leadership
+
+**Team Collaboration & Leadership**
+- Act as liaison between sales, operations, and technical teams
+- Participate in strategic planning sessions and cross-functional initiatives
+- Mentor and support junior team members as the organization grows
+- Contribute to development of company culture and operational excellence initiatives
+
+### Performance Metrics and Success Criteria
+
+**Revenue Targets**
+- Achieve monthly and quarterly revenue goals as established by Company leadership
+- Maintain growth trajectory consistent with Company's strategic objectives
+- Drive achievement of MRR milestones that trigger compensation increases
+
+**Client Success Metrics**
+- Maintain client retention rate of 90% or higher
+- Achieve average client satisfaction scores of 4.5/5 or higher
+- Successfully onboard new clients within established timeframes
+- Identify and execute expansion opportunities within existing client base
+
+**Operational Excellence**
+- Maintain accurate and up-to-date CRM and sales documentation
+- Provide timely and accurate sales forecasting and reporting
+- Demonstrate continuous improvement in sales processes and efficiency
+- Support Company's transition to scalable operations and systems
+
+### Professional Development Expectations
+
+**Industry Knowledge**
+- Stay current with industry trends, competitive landscape, and market developments
+- Participate in relevant industry conferences, trade shows, and professional associations
+- Develop expertise in robotic automation, grounds maintenance, and related technologies
+
+**Skills Development**
+- Continuously improve sales, negotiation, and client management capabilities
+- Develop proficiency in relevant software tools and technologies
+- Enhance analytical and data interpretation skills to support decision-making
+
+**Company Integration**
+- Fully understand Company's service offerings, capabilities, and competitive advantages
+- Align personal objectives with Company's mission, vision, and strategic goals
+- Contribute to positive company culture and team collaboration
+
+---
+
+## ARTICLE XI: PERFORMANCE STANDARDS AND EVALUATION
+
+### Section 11.1 Annual Performance Reviews
+
+(a) **Review Schedule:** Employee shall undergo comprehensive performance evaluations annually, with informal quarterly check-ins to assess progress toward objectives.
+
+(b) **Performance Criteria:** Evaluations shall be based on achievement of revenue targets, client satisfaction metrics, operational efficiency improvements, and contribution to Company culture and strategic objectives.
+
+(c) **Performance Improvement Plans:** If performance falls below acceptable standards, the Company may implement a performance improvement plan with specific objectives, timelines, and support resources.
+
+### Section 11.2 Key Performance Indicators
+
+Employee's performance shall be measured against the following key metrics:
+
+(a) **Revenue Performance:**
+- Achievement of monthly and quarterly MRR growth targets
+- New client acquisition rates and pipeline development
+- Average deal size and sales cycle optimization
+- Upselling and cross-selling success within existing accounts
+
+(b) **Client Success Metrics:**
+- Client retention and satisfaction scores
+- Onboarding completion rates and timelines
+- Response time to client inquiries and issue resolution
+- Net Promoter Score (NPS) improvements
+
+(c) **Operational Excellence:**
+- Accuracy and timeliness of sales forecasting and reporting
+- CRM data quality and process adherence
+- Cross-functional collaboration effectiveness
+- Professional development and skill advancement
+
+### Section 11.3 Measurable Performance Standards
+
+Employee's performance shall be measured against specific, quantifiable metrics to avoid subjective evaluations:
+
+(a) **Minimum Performance Thresholds (Failure to meet constitutes grounds for performance improvement plan):**
+- Client retention rate: minimum 85% annually
+- Response time to client inquiries: maximum 24 hours for urgent, 72 hours for standard
+- Monthly sales activity: minimum 20 qualified prospect contacts
+- CRM data accuracy: minimum 95% complete and current records
+- Revenue pipeline: maintain pipeline equal to 3x quarterly revenue targets
+
+(b) **Corrective Action Process:** Performance issues shall be addressed through documented progressive discipline:
+- **First Instance:** Written performance improvement plan with 90-day timeline and specific measurable objectives
+- **Second Instance:** Final written warning with 60-day timeline and mandatory coaching/training
+- **Third Instance:** Consideration for termination for Cause with legal counsel review
+
+(c) **Performance Dispute Resolution:** Any performance disputes shall be resolved through objective data review with an independent third-party HR consultant if internal resolution fails.
+
+---
+
+## ARTICLE XII: BENEFITS AND COMPENSATION ENHANCEMENTS
+
+### Section 12.1 Future Benefits
+
+(a) **Benefits Development:** As the Company grows and cash flow permits, the Company may establish additional employee benefits including retirement planning, life insurance, and disability coverage. Employee shall be eligible to participate in any such benefits on the same terms as other Company employees.
+
+(b) **Benefits Timeline:** The Company anticipates implementing standard employee benefits once the Company achieves sustained profitability and cash reserves of at least $500,000, expected in Years 2-3 of operations.
+
+### Section 12.2 Expense Reimbursement
+
+(a) **Business Expenses:** The Company shall reimburse all reasonable and necessary business expenses incurred by Employee in the performance of duties, including travel, entertainment, and communication expenses, upon submission of appropriate documentation.
+
+(b) **Technology and Equipment:** The Company shall provide and maintain all technology, equipment, and software necessary for Employee to perform duties effectively, including laptop, mobile device, and relevant software licenses.
+
+(c) **Professional Memberships:** The Company does not currently budget for professional association memberships or subscriptions. Such benefits may be added in the future as the Company grows and cash flow permits.
+
+### Section 12.3 Equity Administration
+
+(a) **Equity Documentation:** Employee's equity interest shall be documented through appropriate equity agreements, certificates, or other instruments as determined by the Company's legal counsel.
+
+(b) **Section 409A Compliance:** All equity grants under this Agreement are intended to comply with Section 409A of the Internal Revenue Code. The Company shall obtain independent valuations as required to establish fair market value for tax purposes. Employee acknowledges that any modifications to vesting or payment terms may require 409A compliance analysis.
+
+(c) **Tax Optimization Structure:** 
+- **83(b) Election Required:** Employee must file an 83(b) election within 30 days of the equity grant date. The Company will provide the necessary forms and coordinate with Employee's tax advisor to ensure proper filing. Failure to file may result in significant adverse tax consequences for which Employee bears full responsibility
+- **Nominal Purchase Price:** The equity is issued at $1.50 total to minimize current taxable income from the grant
+- **Tax Coordination:** The Company will coordinate with Employee's tax advisor to optimize timing and structure
+- **Tax Documentation:** The Company will provide all necessary tax forms and valuations to support Employee's tax planning
+- **State Tax Advantage:** As a Tennessee resident, Employee benefits from no state income tax on equity gains
+
+(d) **QSBS Qualification:** The parties intend for Employee's equity to qualify as Qualified Small Business Stock (QSBS) under Section 1202 of the Internal Revenue Code, potentially providing up to $10 million in tax-free gains upon sale. The Company agrees to use reasonable efforts to maintain QSBS qualification, including monitoring gross asset limitations and active business requirements.
+
+(e) **Securities Law Compliance:** 
+- This equity grant is made in reliance on exemptions from securities registration under federal and state securities laws
+- Employee represents that Employee is acquiring the equity for investment purposes and not with a view to distribution
+- Employee acknowledges that the equity has not been registered under the Securities Act of 1933 and may not be sold, transferred, or disposed of without registration or an applicable exemption
+- The Company will provide all required disclosures under Rule 701 and applicable state securities laws
+
+(f) **Membership Interest Purchase Agreement:** This equity grant shall be governed by a separate Membership Interest Purchase Agreement that includes:
+- **Repurchase Rights:** Company's right to repurchase unvested equity at cost ($1.50) upon termination
+- **Transfer Restrictions:** Prohibition on transfer of restricted membership interests until vested and approved by Company
+- **Right of First Refusal:** Company's right to purchase vested membership interests before any third-party sale
+- **Drag-Along/Tag-Along Rights:** Standard minority member protection provisions
+- **Voting Agreement:** Coordination of voting on major corporate matters
+
+(g) **Legal Documentation Requirements:** The Company shall provide within thirty (30) days of this Agreement:
+- Membership Interest Certificate evidencing Employee's 15% ownership
+- Amended Operating Agreement reflecting Employee's membership rights and voting provisions
+- Membership Interest Purchase Agreement with all repurchase terms and conditions
+- All necessary forms for 83(b) election filing
+- Annual ownership statements and dilution notifications (ongoing requirement)
+
+(h) **Equity Committee:** The Company may establish an equity committee to oversee equity grants, vesting schedules, and related matters, with Employee having the right to receive updates on equity-related decisions affecting their interests.
+
+---
+
+## ARTICLE XIII: FORCE MAJEURE AND BUSINESS CONTINUITY
+
+### Section 13.1 Force Majeure Events
+
+Neither party shall be liable for any failure or delay in performance under this Agreement that is due to fire, flood, earthquake, elements of nature, acts of God, wars, riots, civil disorders, rebellions, revolutions, pandemics, or other similar causes beyond the reasonable control of such party.
+
+### Section 13.2 Business Continuity Planning
+
+(a) **Remote Work Arrangements:** In the event of force majeure events or business disruptions, Employee agrees to work remotely or from alternative locations as reasonably requested by the Company.
+
+(b) **Communication Protocols:** Employee shall maintain regular communication with the Company during any business disruption and shall be available for emergency matters as reasonably necessary.
+
+(c) **Compensation During Disruption:** Employee's compensation shall continue during force majeure events, provided Employee remains available and willing to perform duties to the extent reasonably possible under the circumstances.
+
+---
+
+## ARTICLE XIV: CORPORATE GOVERNANCE AND REPORTING
+
+### Section 14.1 Corporate Transition
+
+Upon incorporation of TerraSYNC Corporation, all rights, obligations, and benefits under this Agreement shall automatically transfer to TerraSYNC Corporation without requiring amendment to this Agreement. Employee's equity interest shall be in the parent entity, whether KnoxBots LLC or TerraSYNC Corporation post-incorporation.
+
+### Section 14.2 Reporting Obligations
+
+(a) **Regular Reports:** Employee shall provide monthly written reports to Company leadership summarizing sales activities, client status, pipeline development, and strategic recommendations.
+
+(b) **Financial Reporting:** Employee shall cooperate with the Company's financial reporting requirements, including providing information necessary for revenue recognition, client contract analysis, and business forecasting.
+
+(c) **Compliance Reporting:** Employee shall promptly report any potential legal, regulatory, or compliance issues that come to their attention in the course of their duties.
+
+### Section 14.3 Board and Investor Relations
+
+Employee may be required to participate in board meetings, investor presentations, and due diligence processes as requested by Company leadership, providing updates on sales performance, market conditions, and growth strategies.
+
+---
+
+## ARTICLE XV: DATA PROTECTION AND PRIVACY
+
+### Section 15.1 Data Security Obligations
+
+(a) **Data Handling:** Employee agrees to handle all Company and client data in accordance with applicable privacy laws, industry standards, and Company data security policies.
+
+(b) **Security Training:** Employee shall complete mandatory data security training and maintain current knowledge of cybersecurity best practices.
+
+(c) **Incident Reporting:** Employee shall immediately report any suspected data breaches, security incidents, or unauthorized access to Company information to appropriate personnel.
+
+### Section 15.2 Client Privacy Protection
+
+Employee acknowledges that client information is confidential and proprietary, and agrees to:
+- Access client data only as necessary for job performance
+- Implement appropriate safeguards to protect client information
+- Comply with all applicable privacy regulations and client confidentiality requirements
+- Never use client information for personal benefit or unauthorized purposes
+
+---
+
+## ARTICLE XVI: SUCCESSION PLANNING AND KNOWLEDGE TRANSFER
+
+### Section 16.1 Documentation Requirements
+
+Employee shall maintain comprehensive documentation of all sales processes, client relationships, and business development activities to ensure business continuity and knowledge transfer capabilities.
+
+### Section 16.2 Succession Planning
+
+(a) **Cross-Training:** Employee shall participate in cross-training initiatives and knowledge sharing sessions to ensure critical business functions can continue during absences or transitions.
+
+(b) **Mentoring Responsibilities:** As the organization grows, Employee may be assigned mentoring responsibilities for junior sales and business development personnel.
+
+(c) **Transition Planning:** Employee agrees to cooperate fully in any succession planning processes, including training replacement personnel and transferring institutional knowledge.
+
+---
+
+## ARTICLE XVII: INTERNATIONAL CONSIDERATIONS
+
+### Section 17.1 International Travel and Operations
+
+(a) **Travel Authorization:** Employee may be required to travel internationally for business purposes, subject to Company approval and compliance with all applicable immigration and customs requirements.
+
+(b) **International Compliance:** Employee agrees to comply with all applicable laws, regulations, and customs requirements when conducting business internationally on behalf of the Company.
+
+(c) **Cultural Sensitivity:** Employee shall demonstrate cultural sensitivity and professional conduct when representing the Company in international markets or with international clients.
+
+### Section 17.2 Global Expansion Support
+
+Employee may be called upon to support the Company's international expansion efforts, including market research, client development, and partnership opportunities in target international markets.
+
+---
+
+## ARTICLE XVIII: ENVIRONMENTAL AND SAFETY COMPLIANCE
+
+### Section 18.1 Safety Protocols
+
+Employee shall comply with all applicable workplace safety regulations, Company safety policies, and industry best practices, particularly when visiting client sites or participating in field operations.
+
+### Section 18.2 Environmental Responsibility
+
+Employee agrees to support the Company's environmental sustainability initiatives and shall promote environmentally responsible practices in all business activities and client interactions.
+
+---
+
+## ARTICLE XIX: AMENDMENT AND MODIFICATION PROCEDURES
+
+### Section 19.1 Amendment Process
+
+(a) **Written Amendments:** This Agreement may only be amended by written instrument signed by both parties, with any oral modifications being invalid and unenforceable.
+
+(b) **Amendment Consideration:** Any proposed amendments shall be reviewed by legal counsel and evaluated for fairness, legality, and alignment with Company objectives.
+
+(c) **Amendment Documentation:** All amendments shall be properly documented, executed, and maintained in the Company's official records.
+
+### Section 19.2 Annual Review
+
+The parties agree to conduct an annual review of this Agreement to assess its continued appropriateness and to consider any necessary modifications based on changed circumstances, business developments, or legal requirements.
+
+---
+
+## ARTICLE XX: WARRANTIES AND REPRESENTATIONS
+
+### Section 20.1 Company Warranties
+
+The Company represents and warrants that:
+- It has full corporate power and authority to enter into this Agreement
+- The execution and performance of this Agreement has been duly authorized by all necessary corporate action
+- This Agreement constitutes a valid and binding obligation of the Company
+- The Company's performance under this Agreement will not violate any other agreement to which it is bound
+- All equity grants and compensation commitments are properly authorized and legally binding
+
+### Section 20.2 Employee Warranties
+
+Employee represents and warrants that:
+- Employee has full legal capacity to enter into this Agreement
+- Employee is not bound by any agreement that would prevent or limit performance under this Agreement
+- Employee has not made any material misrepresentations during the hiring process
+- Employee possesses the qualifications, skills, and experience necessary to perform the duties outlined herein
+- Employee has disclosed any potential conflicts of interest or competing obligations
+
+### Section 20.3 Mutual Warranties
+
+Both parties represent and warrant that:
+- They have obtained all necessary approvals and authorizations to enter into this Agreement
+- The execution and performance of this Agreement is lawful and will not violate any applicable laws or regulations
+- All information exchanged during negotiations has been accurate and complete
+- They intend to perform all obligations under this Agreement in good faith
+
+---
+
+## ARTICLE XXI: MISCELLANEOUS PROVISIONS
+
+### Section 21.1 Headings and Interpretation
+
+The headings in this Agreement are for convenience only and shall not affect the interpretation of any provision. This Agreement shall be construed without regard to any presumption or rule requiring construction against the drafting party.
+
+### Section 21.2 Counterparts and Electronic Signatures
+
+This Agreement may be executed in counterparts, each of which shall be deemed an original and all of which together shall constitute one and the same instrument. Electronic signatures shall be deemed valid and binding for all purposes.
+
+### Section 21.3 Waiver
+
+No waiver of any provision of this Agreement shall be effective unless in writing and signed by the party against whom such waiver is sought. No waiver of any breach shall constitute a waiver of any subsequent breach.
+
+### Section 21.4 Third Party Beneficiaries
+
+This Agreement is intended solely for the benefit of the parties hereto and their permitted successors and assigns, and nothing herein shall create any third-party beneficiary rights.
+
+### Section 21.5 Time of Essence
+
+Time is of the essence with respect to all obligations under this Agreement.
+
+### Section 21.6 Currency
+
+All monetary amounts referenced in this Agreement are in United States Dollars unless otherwise specified.
+
+### Section 21.7 Business Days
+
+For purposes of this Agreement, "business days" means Monday through Friday, excluding federal holidays observed by the Company.
+
+### Section 21.8 Corporate Governance and Shareholder Rights
+
+(a) **Information Rights:** As an equity holder, Employee shall have the right to receive:
+- Annual audited financial statements within 120 days of year-end
+- Quarterly unaudited financial statements within 45 days of quarter-end
+- Annual business plan and budget
+- Notice of material changes in business operations or strategy
+
+(b) **Books and Records Access:** Employee shall have reasonable access to Company books and records for inspection during normal business hours upon reasonable notice.
+
+(c) **Tag-Along Rights:** If the Founder sells equity to a third party, Employee shall have the right to participate in the sale on the same terms and conditions on a pro-rata basis.
+
+(d) **Drag-Along Protection:** Employee cannot be forced to sell equity in any transaction unless the sale price values the Company at fair market value as determined by independent appraisal.
+
+---
+
+## SIGNATURES
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the date last signed below.
+
+**KNOXBOTS LLC (DBA TERRASYNC)**
+
+By: _________________________________
+Wesley Pitts, Founder
+Date: _______________________________
+
+**EMPLOYEE**
+
+_____________________________________
+Hudson Schmid
+Date: _______________________________
+
+---
+
+## EXHIBIT B: PRE-EXISTING INTELLECTUAL PROPERTY DISCLOSURE
+
+Employee hereby discloses the following inventions, discoveries, proprietary information, or intellectual property that Employee developed prior to employment with the Company:
+
+**Inventions/Patents:**
+☐ None
+☐ Listed below:
+_________________________________
+_________________________________
+_________________________________
+
+**Proprietary Software/Code:**
+☐ None  
+☐ Listed below:
+_________________________________
+_________________________________
+_________________________________
+
+**Trade Secrets/Know-How:**
+☐ None
+☐ Listed below:
+_________________________________
+_________________________________
+_________________________________
+
+**Other Intellectual Property:**
+☐ None
+☐ Listed below:
+_________________________________
+_________________________________
+_________________________________
+
+Employee acknowledges that any intellectual property not disclosed above shall be deemed to be assigned to the Company if developed during employment or within 12 months thereafter if related to the Company's business.
+
+Employee Signature: ___________________________ Date: ___________

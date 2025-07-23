@@ -640,15 +640,15 @@ class UnifiedFinancialModel {
         this.personnelModel.initializeStartingTeam();
         this.state = {
             clients: [
-                // Start with minimal clients that will grow to ~62 acres by July (month 4)
-                // Knoxville - start with ~15 acres
-                { id: 1, type: 'golfCourse', startMonth: -6, age: 6, maxAcres: 120, initialAcres: 8, currentAcres: 8, maturityTimeMonths: 36, saas: { plan: 'none' }, locationId: 1 },
-                { id: 2, type: 'other', startMonth: -3, age: 3, maxAcres: 40, initialAcres: 3, currentAcres: 3, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 1 },
-                { id: 3, type: 'other', startMonth: -2, age: 2, maxAcres: 40, initialAcres: 4, currentAcres: 4, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 1 },
+                // Start with clients that will have ~62 acres by July (month 4)
+                // Knoxville - mature established clients (~50 acres total)
+                { id: 1, type: 'golfCourse', startMonth: -12, age: 12, maxAcres: 120, initialAcres: 10, currentAcres: 35, maturityTimeMonths: 36, saas: { plan: 'none' }, locationId: 1 },
+                { id: 2, type: 'other', startMonth: -8, age: 8, maxAcres: 40, initialAcres: 5, currentAcres: 8, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 1 },
+                { id: 3, type: 'other', startMonth: -6, age: 6, maxAcres: 40, initialAcres: 3, currentAcres: 7, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 1 },
                 
-                // West Palm - start with ~5 acres  
-                { id: 4, type: 'other', startMonth: -2, age: 2, maxAcres: 40, initialAcres: 3, currentAcres: 3, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 2 },
-                { id: 5, type: 'other', startMonth: -1, age: 1, maxAcres: 40, initialAcres: 2, currentAcres: 2, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 2 },
+                // West Palm - newer but growing clients (~12 acres total)  
+                { id: 4, type: 'other', startMonth: -4, age: 4, maxAcres: 40, initialAcres: 4, currentAcres: 8, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 2 },
+                { id: 5, type: 'other', startMonth: -2, age: 2, maxAcres: 40, initialAcres: 2, currentAcres: 4, maturityTimeMonths: 18, saas: { plan: 'none' }, locationId: 2 },
             ],
             locations: this.getTerritoryList(0),
             cumulativeARR: 0,

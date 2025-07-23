@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraSYNC Round 2 Interview - Candidate Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .slide {
+            background: rgba(15, 15, 15, 0.95);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .company-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e5e7eb;
+            margin-bottom: 10px;
+        }
+
+        .slide-subtitle {
+            font-size: 1rem;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 15px;
+            border-left: 4px solid #22c55e;
+            padding-left: 15px;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 0 10px 10px 0;
+            text-align: center;
+        }
+
+        .timeline-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 5px;
+        }
+
+        .timeline-duration {
+            font-size: 0.8rem;
+            color: #EC9608;
+            font-weight: 500;
+        }
+
+        .challenge-box {
+            background: rgba(31, 41, 55, 0.6);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .challenge-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .challenge-description {
+            font-size: 0.95rem;
+            color: #e5e7eb;
+            margin-bottom: 15px;
+        }
+
+        .role-specific {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .role-card {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .role-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 8px;
+        }
+
+        .role-challenge {
+            font-size: 0.8rem;
+            color: #e5e7eb;
+            font-style: italic;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: rgba(31, 41, 55, 0.6);
+            border-left: 4px solid #22c55e;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tips-list li::before {
+            content: "✅ ";
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .api-reference {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .api-link {
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .api-link:hover {
+            color: #16a34a;
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-item {
+                margin: 0 0 10px 0;
+            }
+            
+            .slide {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Welcome -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-header">
+                    <div class="company-logo">TerraSYNC</div>
+                    <div class="slide-title">Round 2 Interview Guide</div>
+                    <div class="slide-subtitle">Software Developer Position - 18 Minutes</div>
+                </div>
+                
+                <div class="challenge-box">
+                    <div class="challenge-title">Welcome Back! 🚀</div>
+                    <div class="challenge-description">
+                        You've made it to Round 2! This interview focuses on how you think, solve problems, and fit with our mission to revolutionize golf course operations through autonomous technology.
+                    </div>
+                </div>
+
+                <div class="section-title">What We're Looking For</div>
+                <ul class="tips-list">
+                    <li>How you approach technical challenges</li>
+                    <li>Your problem-solving thought process</li>
+                    <li>Cultural fit and passion for our mission</li>
+                    <li>Communication and collaboration skills</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 2: Interview Structure -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="section-title">Interview Structure - 18 Minutes</div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-title">Technical Challenge</div>
+                        <div class="timeline-duration">8 minutes</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-title">Character Assessment</div>
+                        <div class="timeline-duration">7 minutes</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-title">Culture & Vision</div>
+                        <div class="timeline-duration">3 minutes</div>
+                    </div>
+                </div>
+
+                <div class="challenge-box">
+                    <div class="challenge-title">Our Philosophy</div>
+                    <div class="challenge-description">
+                        "We care more about how you think than what you know. Great developers can learn any technology, but great thinking is what builds revolutionary products."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Technical Challenge -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="section-title">Stage 1: Technical Challenge (8 min)</div>
+                
+                <div class="challenge-box">
+                    <div class="challenge-title">Real-World Scenario</div>
+                    <div class="challenge-description">
+                        You'll receive a technical challenge based on your role, involving integration with our Husqvarna Automower Connect API platform.
+                    </div>
+                </div>
+
+                <div class="role-specific">
+                    <div class="role-card">
+                        <div class="role-name">Full-Stack</div>
+                        <div class="role-challenge">API aggregation + WebSocket integration</div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-name">Frontend</div>
+                        <div class="role-challenge">Real-time dashboard from WebSocket stream</div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-name">Backend</div>
+                        <div class="role-challenge">Scalable system architecture design</div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-name">Mobile</div>
+                        <div class="role-challenge">Native API integration interface</div>
+                    </div>
+                </div>
+
+                <div class="api-reference">
+                    <div style="margin-bottom: 10px;">📚 Reference Documentation</div>
+                    <a href="https://developer.husqvarnagroup.cloud/apis/automower-connect-api?tab=websocket" class="api-link" target="_blank">
+                        Husqvarna Automower Connect API
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: What We're Evaluating -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="section-title">What We're Evaluating</div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">25%</div>
+                        <div class="timeline-title">Technical Skills</div>
+                        <div class="timeline-duration">Clean thinking & approach</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">25%</div>
+                        <div class="timeline-title">Problem Solving</div>
+                        <div class="timeline-duration">Edge cases & architecture</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">25%</div>
+                        <div class="timeline-title">Cultural Fit</div>
+                        <div class="timeline-duration">Mission alignment</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">25%</div>
+                        <div class="timeline-title">Growth Potential</div>
+                        <div class="timeline-duration">Learning & leadership</div>
+                    </div>
+                </div>
+
+                <div class="section-title">Bonus Points For</div>
+                <ul class="tips-list">
+                    <li>Asking clarifying questions</li>
+                    <li>Considering OAuth 2.0 authentication flows</li>
+                    <li>WebSocket connection management strategies</li>
+                    <li>Rate limiting and API quota considerations</li>
+                    <li>Error handling when systems go offline</li>
+                    <li>Time zone handling across golf courses</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Tips for Success -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="section-title">Tips for Success</div>
+                
+                <div class="challenge-box">
+                    <div class="challenge-title">Think Out Loud 💭</div>
+                    <div class="challenge-description">
+                        We want to understand your thought process. Walk us through your reasoning, ask questions, and explain your approach as you work through challenges.
+                    </div>
+                </div>
+
+                <ul class="tips-list">
+                    <li><strong>Ask questions</strong> - Show you understand the problem deeply</li>
+                    <li><strong>Consider edge cases</strong> - What could go wrong?</li>
+                    <li><strong>Think about scale</strong> - How does this work with 1000+ devices?</li>
+                    <li><strong>Be honest</strong> - "I don't know X, but here's how I'd learn it"</li>
+                    <li><strong>Show passion</strong> - Why does this problem excite you?</li>
+                    <li><strong>Ask about us</strong> - What questions do you have about TerraSYNC?</li>
+                </ul>
+
+                <div class="challenge-box">
+                    <div class="challenge-title">Remember: We're Building the Future 🌟</div>
+                    <div class="challenge-description">
+                        You're not just interviewing for a job - you're potentially joining a team that's revolutionizing how golf courses operate worldwide through autonomous technology.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-text">
+                <strong>TerraSYNC</strong> - Autonomous Golf Course Solutions<br>
+                KnoxBots LLC (DBA TerraSYNC) • Wesley Pitts, Founder<br>
+                <em>Good luck! We're excited to learn about you. 🚀</em>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

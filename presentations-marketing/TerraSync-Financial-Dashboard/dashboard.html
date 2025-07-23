@@ -8,6 +8,7 @@
     <!-- External Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- CSS Styles -->
     <link rel="stylesheet" href="css/dashboard-styles.css">
@@ -73,6 +74,46 @@
             font-weight: 600 !important;
         }
         
+        /* Header styling */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .header-left, .header-right {
+            flex: 0 0 200px;
+        }
+        
+        .header-center {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .back-to-portal {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-portal:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            transform: translateY(-2px);
+            color: #22c55e;
+            text-decoration: none;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 1200px) {
             .assumptions-container .assumption-grid {
@@ -96,6 +137,15 @@
             .assumptions-container .assumption-value {
                 text-align: left !important;
             }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-left, .header-right {
+                flex: none;
+            }
         }
     </style>
     
@@ -105,8 +155,21 @@
     <div class="container">
         <!-- HEADER -->
         <div class="header">
-            <h1>TERRASYNC FINANCIAL PROJECTIONS</h1>
-            <p style="color: #9ca3af; font-size: 1.2rem;">Live Financial Model</p>
+            <div class="header-content">
+                <div class="header-left">
+                    <!-- Space for additional controls -->
+                </div>
+                <div class="header-center">
+                    <h1>TERRASYNC FINANCIAL PROJECTIONS</h1>
+                    <p style="color: #9ca3af; font-size: 1.2rem;">Live Financial Model</p>
+                </div>
+                <div class="header-right">
+                    <a href="portal.html" class="back-to-portal">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Portal
+                    </a>
+                </div>
+            </div>
         </div>
         
 
@@ -164,6 +227,25 @@
                         <div class="metric-value" id="currentCashFlow">$0</div>
                         <div class="metric-label">Monthly Net Cash Flow</div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Investor KPIs Section -->
+            <div id="investor-kpis" style="margin-top: 25px; padding: 20px; background: rgba(31, 41, 55, 0.4); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #22c55e;">
+                        <path d="M3 3v18h18"/>
+                        <path d="M7 16l4-4 4 4 6-6"/>
+                        <circle cx="11" cy="12" r="1"/>
+                        <circle cx="15" cy="8" r="1"/>
+                        <circle cx="21" cy="2" r="1"/>
+                    </svg>
+                    <h3 style="color: #22c55e; font-size: 1.1rem; font-weight: 600; margin: 0;">Key Annual Metrics</h3>
+                    <span style="color: #9ca3af; font-size: 0.85rem; font-style: italic;">Investor KPIs by Year</span>
+                </div>
+                
+                <div id="annual-metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                    <!-- Metrics will be populated by JavaScript -->
                 </div>
             </div>
             
@@ -950,6 +1032,7 @@
 
                 switchChart('revenue');
                 updateMetricsForMonth(0);
+                updateInvestorKPIs();
 
             } catch (error) {
                 console.error('Failed to initialize dashboard:', error);
@@ -1102,6 +1185,105 @@
             event.target.style.background = 'rgba(34, 197, 94, 0.3)';
             event.target.style.border = '2px solid #22c55e';
             event.target.style.color = '#22c55e';
+        }
+
+        function updateInvestorKPIs() {
+            // Calculate annual aggregated metrics from monthly projections
+            const annualData = {};
+            
+            // Group projections by year and calculate key metrics
+            projections.forEach((projection, index) => {
+                const year = 2025 + Math.floor(projection.month / 12);
+                if (!annualData[year]) {
+                    annualData[year] = {
+                        year,
+                        projections: [],
+                        totalRevenue: 0,
+                        totalCosts: 0,
+                        endingARR: 0,
+                        endingClients: 0,
+                        endingAcres: 0,
+                        endingTeam: 0,
+                        totalNewClients: 0,
+                        avgMonthlyRevenue: 0
+                    };
+                }
+                annualData[year].projections.push(projection);
+            });
+
+            // Calculate metrics for each year
+            Object.values(annualData).forEach(yearData => {
+                const projections = yearData.projections;
+                const lastMonth = projections[projections.length - 1];
+                
+                // Sum total revenue and costs for the year
+                yearData.totalRevenue = projections.reduce((sum, p) => sum + (p.revenues?.total || 0), 0);
+                yearData.totalCosts = projections.reduce((sum, p) => sum + (p.costs?.totalCosts || 0), 0);
+                yearData.avgMonthlyRevenue = yearData.totalRevenue / projections.length;
+                
+                // End-of-year metrics
+                yearData.endingARR = lastMonth?.cumulativeARR || 0;
+                yearData.endingClients = lastMonth?.clients || 0;
+                yearData.endingAcres = lastMonth?.totalAcres || 0;
+                yearData.endingTeam = lastMonth?.team || lastMonth?.teamCount || 0;
+                
+                // Calculate new clients acquired in this year
+                yearData.totalNewClients = projections.reduce((sum, p) => sum + (p.newClientsAcquired || 0), 0);
+            });
+
+            // Generate the investor KPI widgets
+            const grid = document.getElementById('annual-metrics-grid');
+            const sortedYears = Object.keys(annualData).sort();
+            
+            let html = '';
+            
+            sortedYears.forEach((year, index) => {
+                const data = annualData[year];
+                const prevYear = index > 0 ? annualData[sortedYears[index - 1]] : null;
+                
+                // Calculate key metrics
+                const arr = data.endingARR;
+                const revenueGrowth = prevYear ? ((data.totalRevenue - prevYear.totalRevenue) / prevYear.totalRevenue * 100) : 0;
+                const grossMargin = data.totalRevenue > 0 ? ((data.totalRevenue - data.totalCosts) / data.totalRevenue * 100) : 0;
+                const revenuePerAcre = data.endingAcres > 0 ? (data.avgMonthlyRevenue / data.endingAcres) : 0;
+                const clientGrowth = prevYear ? (data.endingClients - prevYear.endingClients) : data.endingClients;
+                const teamEfficiency = data.endingTeam > 0 ? (data.endingAcres / data.endingTeam) : 0;
+                
+                html += `
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 8px; padding: 16px; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(34, 197, 94, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="color: #22c55e; font-size: 1.5rem; font-weight: 700; margin-bottom: 4px;">${year}</div>
+                        <div style="color: #9ca3af; font-size: 0.8rem; margin-bottom: 8px;">Annual Summary</div>
+                        <div style="border-top: 1px solid rgba(34, 197, 94, 0.1); padding-top: 8px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span style="color: #d1d5db; font-size: 0.75rem;">ARR:</span>
+                                <span style="color: #22c55e; font-size: 0.75rem; font-weight: 600;">$${Math.round(arr / 1000)}K</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span style="color: #d1d5db; font-size: 0.75rem;">Growth:</span>
+                                <span style="color: ${revenueGrowth >= 0 ? '#22c55e' : '#ef4444'}; font-size: 0.75rem; font-weight: 600;">${revenueGrowth.toFixed(0)}%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span style="color: #d1d5db; font-size: 0.75rem;">Margin:</span>
+                                <span style="color: ${grossMargin >= 60 ? '#22c55e' : grossMargin >= 40 ? '#f59e0b' : '#ef4444'}; font-size: 0.75rem; font-weight: 600;">${grossMargin.toFixed(0)}%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span style="color: #d1d5db; font-size: 0.75rem;">Rev/Acre:</span>
+                                <span style="color: #8b5cf6; font-size: 0.75rem; font-weight: 600;">$${Math.round(revenuePerAcre)}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span style="color: #d1d5db; font-size: 0.75rem;">Clients:</span>
+                                <span style="color: #3b82f6; font-size: 0.75rem; font-weight: 600;">${data.endingClients}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #d1d5db; font-size: 0.75rem;">Team:</span>
+                                <span style="color: #f59e0b; font-size: 0.75rem; font-weight: 600;">${data.endingTeam}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            grid.innerHTML = html;
         }
 
     </script>

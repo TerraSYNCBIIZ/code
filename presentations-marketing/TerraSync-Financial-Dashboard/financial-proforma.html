@@ -8,6 +8,7 @@
     <!-- External Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- CSS Styles -->
     <link rel="stylesheet" href="css/dashboard-styles.css">
@@ -42,12 +43,52 @@
             text-align: center;
             margin-bottom: 0;
             border-bottom: 2px solid rgba(34, 197, 94, 0.3);
-            padding: 20px 0 15px 0;
+            padding: 20px 40px 15px 40px;
             flex-shrink: 0;
             background: rgba(31, 41, 55, 0.9);
             position: sticky;
             top: 0;
             z-index: 100;
+            position: relative;
+        }
+        
+        .proforma-header-content {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-to-portal {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .back-to-portal:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            transform: translateY(-50%) translateY(-2px);
+            color: #22c55e;
+            text-decoration: none;
+        }
+        
+        .proforma-header-center {
+            flex: 1;
+            text-align: center;
         }
         
         .proforma-title {
@@ -266,6 +307,33 @@
             cursor: pointer;
             box-shadow: 0 2px 6px rgba(34, 197, 94, 0.3);
         }
+
+        /* Custom scrollbar styling for financial table */
+        #dataTableContent > div::-webkit-scrollbar {
+            height: 12px;
+            background-color: rgba(31, 41, 55, 0.6);
+            border-radius: 6px;
+        }
+
+        #dataTableContent > div::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 6px;
+            border: 2px solid rgba(31, 41, 55, 0.6);
+        }
+
+        #dataTableContent > div::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        }
+
+        #dataTableContent > div::-webkit-scrollbar-track {
+            background: rgba(55, 65, 81, 0.3);
+            border-radius: 6px;
+        }
+
+        /* Fix hover effect for sticky columns */
+        tbody tr:hover td[style*="position: sticky"] {
+            background: inherit !important;
+        }
     </style>
 </head>
 <body>
@@ -278,8 +346,16 @@
     <div class="proforma-container">
         <!-- Header -->
         <div class="proforma-header">
-            <h1 class="proforma-title">Financial Pro Forma</h1>
-            <p class="proforma-subtitle">Comprehensive 5-Year Financial Projections & Analysis</p>
+            <div class="proforma-header-content">
+                <a href="portal.html" class="back-to-portal">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Portal
+                </a>
+                <div class="proforma-header-center">
+                    <h1 class="proforma-title">Financial Pro Forma</h1>
+                    <p class="proforma-subtitle">Comprehensive 5-Year Financial Projections & Analysis</p>
+                </div>
+            </div>
         </div>
         
 
@@ -329,36 +405,36 @@
             
             // Create comprehensive financial data table (same as original dashboard)
             let html = `
-                <div style="flex: 1; overflow: auto; border-radius: 0; box-shadow: none;">
-                    <table style="width: 100%; border-collapse: collapse; font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; table-layout: fixed;">
+                <div style="flex: 1; overflow: auto; border-radius: 0; box-shadow: none; position: relative;">
+                    <table style="min-width: 3200px; border-collapse: collapse; font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; table-layout: auto;">
                         <thead style="position: sticky; top: 0; z-index: 10;">
                             <tr style="background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); color: white; font-weight: 600; box-shadow: 0 2px 4px rgba(34, 197, 94, 0.3);">
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: left; width: 4%;">Month</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: center; width: 5%;">Date</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">Locations</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">Total Clients</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">Golf Clients</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%;">Other Clients</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(99, 102, 241, 0.15);">SaaS-Only Clients</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%;">Total Acres</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(34, 197, 94, 0.15);">Golf Acres</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(139, 92, 246, 0.15);">Other Acres</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(34, 197, 94, 0.1);">New Acres (Existing)</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(59, 130, 246, 0.1);">New Acres (New Clients)</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(34, 197, 94, 0.2);">Service Rev</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(34, 197, 94, 0.2);">Install Rev</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(34, 197, 94, 0.2);">Product Rev</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(34, 197, 94, 0.2);">SaaS Rev</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 6%; background: rgba(34, 197, 94, 0.3); font-weight: 700;">Total Revenue</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(239, 68, 68, 0.2);">Salary Costs</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(239, 68, 68, 0.2);">Acquisition</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(239, 68, 68, 0.2);">Operational</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 5%; background: rgba(239, 68, 68, 0.2);">Equipment & Facilities</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 6%; background: rgba(239, 68, 68, 0.3); font-weight: 700;">Total Costs</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 6%; background: rgba(34, 197, 94, 0.2); font-weight: 700;">Net Cash Flow</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 3%;">Team</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 6%; background: rgba(34, 197, 94, 0.15);">Cumulative ARR</th>
-                                <th style="padding: 10px 8px; border: 1px solid #22c55e; text-align: right; width: 4%; background: rgba(34, 197, 94, 0.15);">Margin %</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: left; min-width: 80px; position: sticky; left: 0; background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); z-index: 11;">Month</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: center; min-width: 100px; position: sticky; left: 80px; background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); z-index: 11;">Date</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 90px;">Locations</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 100px;">Total Clients</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 100px;">Golf Clients</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 100px;">Other Clients</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 120px; background: rgba(99, 102, 241, 0.15);">SaaS-Only Clients</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 110px;">Total Acres</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 100px; background: rgba(34, 197, 94, 0.15);">Golf Acres</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 100px; background: rgba(139, 92, 246, 0.15);">Other Acres</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 130px; background: rgba(34, 197, 94, 0.1);">New Acres (Existing)</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 150px; background: rgba(59, 130, 246, 0.1);">New Acres (New Clients)</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 120px; background: rgba(34, 197, 94, 0.2);">Service Rev</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 120px; background: rgba(34, 197, 94, 0.2);">Install Rev</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 120px; background: rgba(34, 197, 94, 0.2);">Product Rev</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 110px; background: rgba(34, 197, 94, 0.2);">SaaS Rev</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 140px; background: rgba(34, 197, 94, 0.3); font-weight: 700;">Total Revenue</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 120px; background: rgba(239, 68, 68, 0.2);">Salary Costs</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 120px; background: rgba(239, 68, 68, 0.2);">Acquisition</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 120px; background: rgba(239, 68, 68, 0.2);">Operational</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 160px; background: rgba(239, 68, 68, 0.2);">Equipment & Facilities</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 130px; background: rgba(239, 68, 68, 0.3); font-weight: 700;">Total Costs</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 140px; background: rgba(34, 197, 94, 0.2); font-weight: 700;">Net Cash Flow</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 80px;">Team</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 140px; background: rgba(34, 197, 94, 0.15);">Cumulative ARR</th>
+                                <th style="padding: 10px 12px; border: 1px solid #22c55e; text-align: right; min-width: 100px; background: rgba(34, 197, 94, 0.15);">Margin %</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -387,8 +463,8 @@
                 
                 html += `
                     <tr style="background: ${rowColor}; color: #f1f5f9; transition: all 0.2s ease;" onmouseover="this.style.background='${hoverColor}'" onmouseout="this.style.background='${rowColor}'">
-                        <td style="padding: 8px 6px; border: 1px solid #475569; font-weight: 600; color: #94a3b8; font-size: 11px;">${projection.month}</td>
-                        <td style="padding: 8px 6px; border: 1px solid #475569; text-align: center; color: #cbd5e1; font-size: 11px;">${dateStr}</td>
+                        <td style="padding: 8px 12px; border: 1px solid #475569; font-weight: 600; color: #94a3b8; font-size: 11px; position: sticky; left: 0; background: ${rowColor}; z-index: 5;">${projection.month}</td>
+                        <td style="padding: 8px 12px; border: 1px solid #475569; text-align: center; color: #cbd5e1; font-size: 11px; position: sticky; left: 80px; background: ${rowColor}; z-index: 5;">${dateStr}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 500; font-size: 11px;">${projection.locations || 0}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 500; font-size: 11px;">${projection.clients || 0}</td>
                         <td style="padding: 8px 6px; border: 1px solid #475569; text-align: right; font-weight: 500; color: #22c55e; font-size: 11px;">${projection.golfClients || 0}</td>

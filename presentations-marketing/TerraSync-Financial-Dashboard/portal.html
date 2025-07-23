@@ -72,9 +72,12 @@
         .landing-container {
             position: relative;
             z-index: 1;
-            text-align: center;
-            max-width: 600px;
+            width: 100%;
+            max-width: 1400px;
             padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .logo-container {
@@ -159,62 +162,196 @@
             margin: 4px 0 0 0;
         }
 
-        .deck-selection-buttons {
+        .portal-content {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .main-action-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(55, 65, 81, 0.7) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        
+        .main-action-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .main-action-card:hover::before {
+            left: 100%;
+        }
+
+        .main-action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 80px rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+        
+        .side-section {
             display: flex;
             flex-direction: column;
             gap: 20px;
-            align-items: center;
-            animation: fadeInUp 1s ease-out 0.9s both;
         }
-
-        .enter-button {
-            display: inline-flex;
-            align-items: center;
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 16px;
-            padding: 20px 40px;
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.8) 0%, rgba(22, 163, 74, 0.9) 100%);
-            border: 2px solid rgba(34, 197, 94, 0.4);
-            border-radius: 50px;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 0 0 16px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #22c55e, transparent);
+        }
+        
+        .card-button {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
+            border: 1px solid rgba(75, 85, 99, 0.4);
+            border-radius: 16px;
+            padding: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .card-button:hover::before {
+            left: 100%;
+        }
+        
+        .card-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.15);
+        }
+        
+        .compact-link {
+            background: linear-gradient(135deg, rgba(75, 85, 99, 0.6) 0%, rgba(107, 114, 128, 0.4) 100%);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .compact-link:hover {
+            transform: translateY(-1px);
+            border-color: rgba(156, 163, 175, 0.5);
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.7) 0%, rgba(156, 163, 175, 0.5) 100%);
+            color: #f3f4f6;
+        }
+        
+        .main-button {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 16px 32px;
             color: #ffffff;
             text-decoration: none;
             font-size: 1.1rem;
             font-weight: 600;
-            letter-spacing: 0.02em;
             transition: all 0.4s ease;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
-            backdrop-filter: blur(10px);
-            min-width: 240px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4);
+            letter-spacing: 0.02em;
+        }
+        
+        .main-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(34, 197, 94, 0.4);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(22, 163, 74, 0.1) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
+            color: #22c55e;
+            margin-bottom: 16px;
         }
 
-        .enter-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.5);
-            border-color: rgba(34, 197, 94, 0.8);
-            background: linear-gradient(135deg, rgba(34, 197, 94, 1) 0%, rgba(22, 163, 74, 1) 100%);
-        }
-
-        .associate-button {
-            background: linear-gradient(135deg, rgba(75, 85, 99, 0.8) 0%, rgba(55, 65, 81, 0.9) 100%);
-            border: 2px solid rgba(75, 85, 99, 0.4);
-            box-shadow: 0 8px 30px rgba(75, 85, 99, 0.3);
-        }
-
-        .associate-button:hover {
-            background: linear-gradient(135deg, rgba(75, 85, 99, 1) 0%, rgba(55, 65, 81, 1) 100%);
-            border-color: rgba(75, 85, 99, 0.8);
-            box-shadow: 0 15px 40px rgba(75, 85, 99, 0.5);
-        }
-
-        .enter-button i {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .enter-button:hover i {
-            transform: translateX(3px);
-        }
 
         .confidential-notice {
             position: absolute;
@@ -270,6 +407,37 @@
         }
 
         /* Responsive design */
+        @media (max-width: 1200px) {
+            .portal-content {
+                grid-template-columns: 1fr 1.5fr 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .portal-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .hero-section {
+                order: 1;
+            }
+            
+            .side-section:first-of-type {
+                order: 2;
+            }
+            
+            .side-section:last-of-type {
+                order: 3;
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
         @media (max-width: 768px) {
             .presentation-title {
                 font-size: 2rem;
@@ -277,6 +445,32 @@
 
             .logo-container img {
                 max-width: 300px;
+            }
+            
+            .landing-container {
+                padding: 20px;
+            }
+            
+            .main-action-card {
+                padding: 30px 20px;
+            }
+            
+            .main-button {
+                padding: 16px 32px;
+                font-size: 1.1rem;
+            }
+            
+            .card-button {
+                padding: 16px;
+            }
+            
+            .compact-link {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -298,38 +492,60 @@
                 </div>
                 <h1 class="presentation-title">Grounds Maintenance Automation</h1>
 
-                <div class="founder-info">
-                    <img src="Fotogenic_6bda502e-2cc6-4331-9b93-643f1ede5cb4.jpg" alt="Wesley Pitts, Founder"
-                        class="founder-photo">
-                    <h2 class="founder-name">Presenting Wesley Pitts</h2>
-                    <p class="founder-title">Founder</p>
-                </div>
-
-                <div class="deck-selection-buttons">
-                    <a href="#" class="enter-button" id="enter-main-presentation">
-                        Main Pitch Deck <i class="fas fa-arrow-right"></i>
-                    </a>
-                    
-                    <a href="https://start.terrasync.biz" class="enter-button" target="_blank" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.8) 0%, rgba(21, 128, 61, 0.9) 100%); border: 2px solid rgba(34, 197, 94, 0.4); box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);">
-                        Landing Page <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    
-                    <a href="https://terrasync.biz" class="enter-button" target="_blank" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(79, 70, 229, 0.9) 100%); border: 2px solid rgba(99, 102, 241, 0.4); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);">
-                        Main Website <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    
-                    <div class="enter-button" style="background: linear-gradient(135deg, rgba(107, 114, 128, 0.6) 0%, rgba(75, 85, 99, 0.7) 100%); border: 2px solid rgba(107, 114, 128, 0.4); box-shadow: 0 8px 30px rgba(107, 114, 128, 0.2); cursor: not-allowed; opacity: 0.7;">
-                        Financial ProForma Visualization <span style="font-size: 0.8em; color: #9CA3AF;">Coming Soon</span>
+                <div class="portal-content">
+                    <!-- Left Side: Financial Tools -->
+                    <div class="side-section">
+                        <h3 class="section-title">Financial Tools</h3>
+                        <div class="tools-grid">
+                            <a href="dashboard.html" class="card-button" onclick="sessionStorage.setItem('terrasyncAuth', 'true')">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 4px;">Financial Dashboard</div>
+                                    <div style="font-size: 0.85rem; color: #9ca3af;">Interactive live model & projections</div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     
-                    <!-- Associate Pitch Deck - DISABLED -->
-                    <!-- <a href="TerraSync-Associate-Pitch-Deck/pitch-deck.html" class="enter-button associate-button">
-                        Associate Pitch Deck <i class="fas fa-arrow-right"></i>
-                    </a> -->
-                    <!-- Financial Dashboard - DISABLED -->
-                    <!-- <a href="dashboard.html" class="enter-button" onclick="sessionStorage.setItem('terrasyncAuth', 'true')" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.9) 100%); border: 2px solid rgba(59, 130, 246, 0.4); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);">
-                        Financial Dashboard <i class="fas fa-chart-line"></i>
-                    </a> -->
+                    <!-- Center: Main Hero Section -->
+                    <div class="hero-section">
+                        <div class="founder-info">
+                            <img src="Fotogenic_6bda502e-2cc6-4331-9b93-643f1ede5cb4.jpg" alt="Wesley Pitts, Founder" class="founder-photo">
+                            <h2 class="founder-name">Presenting Wesley Pitts</h2>
+                            <p class="founder-title">Founder & CEO</p>
+                        </div>
+                        
+                        <div class="main-action-card">
+                            <h3 style="font-size: 1.6rem; font-weight: 700; color: #e5e7eb; margin-bottom: 24px;">
+                                Main Pitch Deck
+                            </h3>
+                            <a href="#" class="main-button" id="enter-main-presentation">
+                                <i class="fas fa-presentation"></i>
+                                Start Presentation
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: External Links -->
+                    <div class="side-section">
+                        <h3 class="section-title">Quick Links</h3>
+                        <div class="links-grid">
+                            <a href="https://start.terrasync.biz" class="compact-link" target="_blank">
+                                <i class="fas fa-rocket"></i>
+                                Landing Page
+                            </a>
+                            <a href="https://terrasync.biz" class="compact-link" target="_blank">
+                                <i class="fas fa-globe"></i>
+                                Main Website
+                            </a>
+                            <a href="https://mobilo.link/social_profile/tzsv1ylNUAOKyMSA2m62vPEXeQP2" class="compact-link" target="_blank">
+                                <i class="fas fa-id-card"></i>
+                                Wesley's Digital Card
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="confidential-notice">Confidential & Proprietary</div>
@@ -351,7 +567,7 @@
                 e.preventDefault();
                 // Clear the session authentication and redirect to password page
                 sessionStorage.removeItem('terrasyncAuth');
-                window.location.href = 'password.html';
+                window.location.href = 'pitch-portal.html';
             });
         });
     </script>
