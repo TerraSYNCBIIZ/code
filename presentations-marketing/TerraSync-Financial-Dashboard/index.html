@@ -62,56 +62,15 @@
             <img src="Green_on_Transparent_Logo_.png" alt="TerraSync Logo" class="welcome-logo">
             <h1 class="welcome-title">TerraSync Portal</h1>
             <p class="welcome-subtitle">Access your presentation materials</p>
-            <a href="#" class="welcome-button" id="access-button" onclick="showPasswordInput()">Access Pitch Deck</a>
-            
-            <!-- Password Input (hidden initially) -->
-            <div class="password-section" id="password-section" style="display: none; margin-top: 20px;">
-                <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: center; justify-content: center;">
-                    <input type="password" id="password-input" placeholder="Enter Password" style="padding: 15px 20px; background: rgba(31, 41, 55, 0.8); border: 2px solid rgba(34, 197, 94, 0.3); border-radius: 10px; color: #ffffff; font-size: 1rem; font-weight: 500; min-width: 200px; text-align: center;">
-                    <button id="password-submit" onclick="attemptAuthentication()" style="padding: 15px 20px; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); border: 2px solid rgba(34, 197, 94, 0.4); border-radius: 10px; color: #ffffff; cursor: pointer; font-weight: 600;">
-                        Enter
-                    </button>
-                </div>
-                <p style="color: #9ca3af; font-size: 0.9rem; margin-top: 10px;">Enter access code to continue</p>
-            </div>
+            <p style="color: #9ca3af; font-size: 1rem; margin: 20px 0;">Redirecting...</p>
         </div>
     </div>
 
     <script>
-        function showPasswordInput() {
-            document.getElementById('access-button').style.display = 'none';
-            document.getElementById('password-section').style.display = 'block';
-            document.getElementById('password-input').focus();
-        }
-
-        function attemptAuthentication() {
-            const password = document.getElementById('password-input').value;
-            if (password === 'SYNC2025') {
-                // Set authentication flag
-                sessionStorage.setItem('terrasyncAuth', 'true');
-                // Redirect to main portal
-                window.location.href = 'portal.html';
-            } else {
-                // Show error feedback
-                const input = document.getElementById('password-input');
-                input.style.borderColor = '#ef4444';
-                input.value = '';
-                input.placeholder = 'Incorrect - Try Again';
-                setTimeout(() => {
-                    input.style.borderColor = 'rgba(34, 197, 94, 0.3)';
-                    input.placeholder = 'Enter Password';
-                }, 2000);
-            }
-        }
-
-        // Add enter key listener
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('password-input').addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    attemptAuthentication();
-                }
-            });
-        });
+        // Automatically redirect to the actual portal page
+        setTimeout(function() {
+            window.location.href = 'pitch-portal.html';
+        }, 1500);
     </script>
 </body>
 </html>
