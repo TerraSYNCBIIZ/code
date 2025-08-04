@@ -1,0 +1,57 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@upstash/context7-mcp@latest"],
+      "disabled": false,
+      "autoApprove": [],
+      "description": "Personal memory and context storage for each user"
+    },
+    "browser-use": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "browser-use[cli]", "--mcp"],
+      "disabled": false,
+      "autoApprove": [],
+      "description": "Browser automation for recording and web interactions"
+    },
+    "google-docs": {
+      "command": "npx",
+      "args": ["-y", "supergateway", "--sse", "https://mcp.pipedream.net/YOUR_PROJECT_ID/google_docs"],
+      "disabled": false,
+      "autoApprove": [],
+      "description": "Google Docs integration via Pipedream"
+    },
+    "google-calendar": {
+      "command": "npx", 
+      "args": ["-y", "supergateway", "--sse", "https://mcp.pipedream.net/YOUR_PROJECT_ID/google_calendar"],
+      "disabled": false,
+      "autoApprove": [],
+      "description": "Google Calendar integration via Pipedream"
+    },
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "supergateway", "--sse", "https://mcp.pipedream.net/YOUR_PROJECT_ID/gmail"],
+      "disabled": false,
+      "autoApprove": [],
+      "description": "Gmail integration via Pipedream"
+    },
+    "odoo": {
+      "command": "npx",
+      "args": ["-y", "supergateway", "--sse", "https://mcp.pipedream.net/YOUR_PROJECT_ID/odoo"],
+      "disabled": false,
+      "autoApprove": [],
+      "description": "Odoo ERP integration via Pipedream"
+    }
+  },
+  "config": {
+    "version": "1.0.0",
+    "description": "CompanyBrain MCP Configuration",
+    "features": [
+      "Personal memory storage per user",
+      "Voice recording and transcription", 
+      "Google Workspace integration",
+      "Odoo ERP system access",
+      "Browser automation capabilities"
+    ]
+  }
+}

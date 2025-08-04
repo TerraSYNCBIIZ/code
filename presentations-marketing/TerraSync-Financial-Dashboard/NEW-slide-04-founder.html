@@ -11,22 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .slide {
-            position: relative;
             padding-top: 60px !important; /* Pushes title down */
-        }
-        .slide::before {
-            content: '';
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
-            background: url('icon.png') no-repeat center center;
-            background-size: contain;
-            opacity: 0.05;
-            z-index: 0;
-            pointer-events: none;
         }
         .founder-grid {
             display: grid;
@@ -47,8 +32,8 @@
 
         .founder-image-container {
             position: relative;
-            width: 320px;
-            height: 400px;
+            width: 280px;
+            height: 350px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(34, 197, 94, 0.3);
@@ -64,19 +49,19 @@
         }
 
         .founder-credentials {
-            margin-top: 25px;
+            margin-top: 20px;
             text-align: center;
             background: rgba(31, 41, 55, 0.6);
-            padding: 20px 30px;
+            padding: 16px 24px;
             border-radius: 12px;
             border: 1px solid rgba(34, 197, 94, 0.2);
         }
 
         .founder-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: #22c55e;
-            margin-bottom: 0;
+            margin-bottom: 8px;
         }
 
         .founder-subtitle {
@@ -109,23 +94,18 @@
         }
 
         .story-section {
-            margin-bottom: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            margin-bottom: 12px;
         }
 
         .story-item {
             display: flex;
             align-items: flex-start;
-            gap: 25px;
-            margin-bottom: 25px;
-            padding: 35px;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 16px;
             background: rgba(31, 41, 55, 0.4);
-            border-radius: 16px;
+            border-radius: 12px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            flex: 1;
         }
 
         .story-item:hover {
@@ -134,22 +114,22 @@
         }
 
         .story-icon {
-            font-size: 3.2rem;
+            font-size: 1.6rem;
             color: #22c55e;
-            min-width: 80px;
+            min-width: 40px;
             text-align: center;
-            margin-top: 8px;
+            margin-top: 4px;
         }
 
         .story-content h3 {
-            font-size: 1.8rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #ffffff;
-            margin-bottom: 16px;
+            margin-bottom: 6px;
         }
 
         .story-content p {
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             color: #d1d5db;
             line-height: 1.5;
         }
@@ -179,27 +159,27 @@
         .achievements-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 16px;
+            margin-top: 20px;
         }
 
         .achievement-card {
             background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
-            padding: 24px;
+            padding: 16px;
             border-radius: 12px;
             border: 1px solid rgba(34, 197, 94, 0.3);
             text-align: center;
         }
 
         .achievement-number {
-            font-size: 2.4rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #22c55e;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .achievement-label {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             color: #d1d5db;
             font-weight: 500;
         }
@@ -267,7 +247,7 @@
                     </div>
                     
                     <div class="founder-credentials">
-                        <div class="founder-title">Founder</div>
+                        <div class="founder-subtitle">Founder</div>
                     </div>
 
                     <div class="achievements-grid">
@@ -329,7 +309,11 @@
                         </div>
                     </div>
 
-
+                    <div class="vision-statement">
+                        <p class="vision-quote">
+                            From Budapest to Tennessee, my mission is to scale TerraSync nationwide - transforming an entire industry through the GMA revolution I pioneered, creating the definitive platform that makes autonomous grounds maintenance the new standard.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
       "Bash(mkdir:*)",
@@ -16,8 +17,75 @@
       "Bash(echo:*)",
       "Bash(python:*)",
       "Bash(grep:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__list_dir",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:library.municode.com)",
+      "WebFetch(domain:discover.pbcgov.org)",
+      "WebFetch(domain:discover.pbc.gov)",
+      "WebFetch(domain:dms-media.ccplatform.net)",
+      "WebFetch(domain:www.leg.state.fl.us)",
+      "WebFetch(domain:law.justia.com)",
+      "Bash(start \"C:\\Users\\wesle\\Desktop\\code\\web-projects\\marketing-sites\\mission-vision-values.html\")",
+      "Bash(cmd /c start:*)",
+      "WebFetch(domain:terrasync-investors.netlify.app)",
+      "Bash(copy:*)",
+      "Bash(del:*)",
+      "mcp__serena__activate_project",
+      "WebFetch(domain:www.moodyscre.com)",
+      "mcp__serena__get_current_config",
+      "mcp__serena__list_memories",
+      "Bash(npm:*)",
+      "Bash(where npm)",
+      "mcp__serena__initial_instructions",
+      "mcp__serena__create_text_file",
+      "Bash(start \"C:\\Users\\wesle\\Desktop\\code\\PERSONAL\\student_loan_investment_plan.html\")",
+      "mcp__serena__write_memory",
+      "Bash(start \"C:\\Users\\wesle\\Desktop\\code\\Pink Apron\\Financial_Dashboard_Data.md\")",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(dir:*)",
+      "mcp__pd__*",
+      "Bash(npx:*)",
+      "WebFetch(domain:mcp.pipedream.com)",
+      "WebFetch(domain:pipedream.com)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "Bash(where claude)",
+      "WebFetch(domain:mcp.pipedream.net)",
+      "mcp__google-docs-sse__google_docs-find-document",
+      "mcp__google-docs-sse__google_docs-get-document",
+      "mcp__google-docs-sse__google_docs-append-text",
+      "mcp__google-docs-sse__google_docs-replace-text",
+      "WebFetch(domain:developers.google.com)",
+      "mcp__odoo-sse__odoo-search-read-records",
+      "WebFetch(domain:chat.pipedream.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.browser-use.com)",
+      "Bash(timeout 300 npm install)",
+      "Bash(start npm run dev)",
+      "Bash(curl:*)",
+      "Bash(start \"C:\\Users\\wesle\\Desktop\\code\\presentations-marketing\\TerraSYNC_Hub_Roadmap.html\")",
+      "Bash(start \"\" \"file:///C:/Users/wesle/Desktop/code/presentations-marketing/TerraSYNC_Hub_Roadmap.html\")",
+      "Bash(start TerraSYNC_Hub_Roadmap.html)",
+      "Bash(cmd /c:*)"
     ],
     "deny": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "google-docs"
+  ],
+  "mcpServers": {
+    "pd": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "supergateway",
+        "--sse",
+        "https://mcp.pipedream.net/8af24915-c16a-4b95-858c-619ec2425c8c/google_docs"
+      ]
+    }
   }
 }

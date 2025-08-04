@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@upstash/context7-mcp@latest"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "browser-use": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "browser-use[cli]", "--mcp"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

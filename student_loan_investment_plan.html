@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Loan vs Investment Strategy Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .loan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .loan-table th {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .loan-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .loan-table tr:hover {
+            background: #e9ecef;
+        }
+        
+        .subsidized {
+            background: #d4edda;
+        }
+        
+        .unsubsidized {
+            background: #f8d7da;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .comparison-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #dee2e6;
+        }
+        
+        .comparison-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .pros, .cons {
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .pros {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+        }
+        
+        .cons {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .pros h4, .cons h4 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .pros ul, .cons ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .pros li, .cons li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .pros li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .cons li:before {
+            content: "✗";
+            color: #dc3545;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .strategy-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .strategy-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .calculator {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .calculator input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .calculator button {
+            background: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        
+        .calculator button:hover {
+            background: #2980b9;
+        }
+        
+        .results {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .timeline {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .timeline-content {
+            flex: 1;
+        }
+        
+        .recommendation {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .recommendation h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .recommendation p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-date {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Student Loan vs Investment Strategy</h1>
+            <p>Your Comprehensive Financial Plan</p>
+        </div>
+
+        <div class="section">
+            <h2>📊 Current Loan Portfolio Analysis</h2>
+            <table class="loan-table">
+                <thead>
+                    <tr>
+                        <th>Loan</th>
+                        <th>Type</th>
+                        <th>Current Balance</th>
+                        <th>Interest Rate</th>
+                        <th>Interest Accrued</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="unsubsidized">
+                        <td>1-02 Direct Loan - Unsubsidized</td>
+                        <td>Unsubsidized</td>
+                        <td>$2,143.09</td>
+                        <td>3.730%</td>
+                        <td>$143.09</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr class="subsidized">
+                        <td>1-03 Direct Loan - Subsidized</td>
+                        <td>Subsidized</td>
+                        <td>$3,500.00</td>
+                        <td>4.990%</td>
+                        <td>$0.00</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr class="unsubsidized">
+                        <td>1-04 Direct Loan - Unsubsidized</td>
+                        <td>Unsubsidized</td>
+                        <td>$1,095.65</td>
+                        <td>4.990%</td>
+                        <td>$95.65</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr class="subsidized">
+                        <td>1-05 Direct Loan - Subsidized</td>
+                        <td>Subsidized</td>
+                        <td>$1,000.00</td>
+                        <td>4.990%</td>
+                        <td>$0.00</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr class="subsidized">
+                        <td>1-06 Direct Loan - Subsidized</td>
+                        <td>Subsidized</td>
+                        <td>$5,500.00</td>
+                        <td>5.500%</td>
+                        <td>$0.00</td>
+                        <td>High</td>
+                    </tr>
+                    <tr class="unsubsidized">
+                        <td>1-07 Direct Loan - Unsubsidized</td>
+                        <td>Unsubsidized</td>
+                        <td>$2,191.91</td>
+                        <td>5.500%</td>
+                        <td>$191.91</td>
+                        <td>High</td>
+                    </tr>
+                    <tr class="subsidized">
+                        <td>1-08 Direct Loan - Subsidized</td>
+                        <td>Subsidized</td>
+                        <td>$5,500.00</td>
+                        <td>6.530%</td>
+                        <td>$0.00</td>
+                        <td>Critical</td>
+                    </tr>
+                    <tr class="unsubsidized">
+                        <td>1-09 Direct Loan - Unsubsidized</td>
+                        <td>Unsubsidized</td>
+                        <td>$2,096.48</td>
+                        <td>6.530%</td>
+                        <td>$96.48</td>
+                        <td>Critical</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="highlight">
+                <strong>📈 Portfolio Summary:</strong><br>
+                                 • Total Debt: $26,527.13<br>
+                • Average Interest Rate: 5.2%<br>
+                • Current Interest Accrued: $526.13 (unsubsidized loans only)<br>
+                • Grace Period Ends: November 7, 2025
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚖️ Payoff vs Investment Comparison</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>💰 Aggressive Payoff Strategy</h3>
+                    <p><strong>Approach:</strong> Pay off all loans as quickly as possible</p>
+                    <p><strong>Timeline:</strong> 2-3 years</p>
+                    <p><strong>Monthly Payment:</strong> $800-1,200</p>
+                    <p><strong>Total Interest Paid:</strong> ~$1,500-2,000</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <h3>📈 Investment-Focused Strategy</h3>
+                    <p><strong>Approach:</strong> Minimum payments + invest difference</p>
+                    <p><strong>Timeline:</strong> 10 years (standard)</p>
+                    <p><strong>Monthly Payment:</strong> $250-300</p>
+                    <p><strong>Investment Potential:</strong> $500-950/month</p>
+                </div>
+            </div>
+            
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✅ Pros of Aggressive Payoff</h4>
+                    <ul>
+                        <li>Eliminate debt faster</li>
+                        <li>Reduce total interest paid</li>
+                        <li>Improve credit score</li>
+                        <li>Peace of mind</li>
+                        <li>No risk of investment losses</li>
+                    </ul>
+                </div>
+                
+                <div class="cons">
+                    <h4>❌ Cons of Aggressive Payoff</h4>
+                    <ul>
+                        <li>Less money for investments</li>
+                        <li>Missed compound growth</li>
+                        <li>Reduced emergency fund</li>
+                        <li>Lower liquidity</li>
+                    </ul>
+                </div>
+                
+                <div class="pros">
+                    <h4>✅ Pros of Investment Strategy</h4>
+                    <ul>
+                        <li>Higher long-term returns</li>
+                        <li>Compound growth advantage</li>
+                        <li>Better liquidity</li>
+                        <li>Tax advantages</li>
+                        <li>Diversification benefits</li>
+                    </ul>
+                </div>
+                
+                <div class="cons">
+                    <h4>❌ Cons of Investment Strategy</h4>
+                    <ul>
+                        <li>Investment risk</li>
+                        <li>Longer debt timeline</li>
+                        <li>Higher total interest paid</li>
+                        <li>Market volatility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧮 Investment vs Payoff Calculator</h2>
+            <div class="calculator">
+                <h3>Compare Your Options</h3>
+                <p>Enter your monthly payment amount to see the comparison:</p>
+                
+                <label for="monthlyPayment">Monthly Payment Amount ($):</label>
+                <input type="number" id="monthlyPayment" value="800" min="300" max="2000">
+                
+                <label for="investmentReturn">Expected Investment Return (%):</label>
+                <input type="number" id="investmentReturn" value="8" min="5" max="12">
+                
+                <button onclick="calculateComparison()">Calculate Comparison</button>
+                <button onclick="resetCalculator()">Reset</button>
+                
+                <div id="results" class="results" style="display: none;">
+                    <h4>📊 Comparison Results</h4>
+                    <div id="comparisonResults"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Recommended Hybrid Strategy</h2>
+            
+            <div class="strategy-card">
+                <h3>Phase 1: High-Interest Loan Elimination (Months 1-12)</h3>
+                <p><strong>Focus:</strong> Pay off loans with 6.530% interest rate first</p>
+                <p><strong>Target:</strong> $7,596.48 (Loans 1-08 and 1-09)</p>
+                <p><strong>Monthly Payment:</strong> $650-700</p>
+                <p><strong>Investment:</strong> $100-150/month (emergency fund first)</p>
+            </div>
+            
+            <div class="strategy-card">
+                <h3>Phase 2: Balanced Approach (Months 13-36)</h3>
+                <p><strong>Focus:</strong> Pay off remaining loans while increasing investments</p>
+                                 <p><strong>Target:</strong> Remaining $18,930.65</p>
+                <p><strong>Monthly Payment:</strong> $500-600</p>
+                <p><strong>Investment:</strong> $300-400/month</p>
+            </div>
+            
+            <div class="strategy-card">
+                <h3>Phase 3: Investment Acceleration (Months 37+)</h3>
+                <p><strong>Focus:</strong> Maximize investments once loans are manageable</p>
+                <p><strong>Target:</strong> Long-term wealth building</p>
+                <p><strong>Monthly Payment:</strong> $300-400 (minimum)</p>
+                <p><strong>Investment:</strong> $600-800/month</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📅 Implementation Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2025</div>
+                    <div class="timeline-content">
+                        <strong>Graduation</strong><br>
+                        • All loans enter grace period<br>
+                        • Unsubsidized loans start accruing interest<br>
+                        • Begin building emergency fund
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">June 2025</div>
+                    <div class="timeline-content">
+                        <strong>Financial Planning</strong><br>
+                        • Set up automatic payments<br>
+                        • Open investment account<br>
+                        • Create budget for hybrid strategy
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">November 2025</div>
+                    <div class="timeline-content">
+                        <strong>Repayment Begins</strong><br>
+                        • Start Phase 1 strategy<br>
+                        • Focus on 6.530% interest loans<br>
+                        • Begin emergency fund contributions
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">November 2026</div>
+                    <div class="timeline-content">
+                        <strong>Phase 2 Begins</strong><br>
+                        • High-interest loans paid off<br>
+                        • Increase investment contributions<br>
+                        • Continue with remaining loans
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">November 2028</div>
+                    <div class="timeline-content">
+                        <strong>Phase 3 Begins</strong><br>
+                        • Most loans significantly reduced<br>
+                        • Maximize investment contributions<br>
+                        • Focus on long-term wealth building
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendation">
+            <h2>🏆 Final Recommendation</h2>
+            <p>
+                <strong>Hybrid Strategy:</strong> Pay off high-interest loans (6.530%) aggressively while investing in low-cost index funds for the difference. This approach balances debt elimination with wealth building, taking advantage of the S&P 500's historical 10% average returns while minimizing your highest-cost debt.
+            </p>
+            <p>
+                <strong>Key Success Factors:</strong> Start early, automate payments, maintain emergency fund, and stay consistent with your investment contributions regardless of market fluctuations.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function calculateComparison() {
+            const monthlyPayment = parseFloat(document.getElementById('monthlyPayment').value);
+            const investmentReturn = parseFloat(document.getElementById('investmentReturn').value);
+            
+                         const totalDebt = 26527.13;
+            const avgInterestRate = 0.052;
+            const years = 10;
+            
+            // Payoff strategy calculation
+            const payoffInterest = totalDebt * avgInterestRate * years;
+            const payoffTotal = totalDebt + payoffInterest;
+            
+            // Investment strategy calculation
+            const monthlyInvestment = monthlyPayment - 300; // Assuming $300 minimum payment
+            const investmentGrowth = monthlyInvestment * 12 * Math.pow(1 + investmentReturn/100, years);
+            
+            // Investment vs interest comparison
+            const netBenefit = investmentGrowth - payoffInterest;
+            
+            const results = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                    <div style="background: #d4edda; padding: 15px; border-radius: 8px;">
+                        <h5>💰 Aggressive Payoff</h5>
+                        <p><strong>Total Interest Paid:</strong> $${payoffInterest.toFixed(2)}</p>
+                        <p><strong>Total Cost:</strong> $${payoffTotal.toFixed(2)}</p>
+                        <p><strong>Debt-Free Timeline:</strong> ${(totalDebt/monthlyPayment/12).toFixed(1)} years</p>
+                    </div>
+                    <div style="background: #cce5ff; padding: 15px; border-radius: 8px;">
+                        <h5>📈 Investment Strategy</h5>
+                        <p><strong>Monthly Investment:</strong> $${monthlyInvestment.toFixed(2)}</p>
+                        <p><strong>Investment Growth:</strong> $${investmentGrowth.toFixed(2)}</p>
+                        <p><strong>Net Benefit:</strong> $${netBenefit.toFixed(2)}</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px;">
+                    <strong>💡 Recommendation:</strong> ${netBenefit > 0 ? 
+                        `The investment strategy shows a net benefit of $${netBenefit.toFixed(2)} over ${years} years. Consider the hybrid approach!` : 
+                        `The payoff strategy may be better for your risk tolerance. Consider paying off high-interest loans first.`}
+                </div>
+            `;
+            
+            document.getElementById('comparisonResults').innerHTML = results;
+            document.getElementById('results').style.display = 'block';
+        }
+        
+        function resetCalculator() {
+            document.getElementById('monthlyPayment').value = 800;
+            document.getElementById('investmentReturn').value = 8;
+            document.getElementById('results').style.display = 'none';
+        }
+    </script>
+</body>
+</html> 

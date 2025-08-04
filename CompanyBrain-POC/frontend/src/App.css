@@ -1,0 +1,41 @@
+/* CompanyBrain Custom Styles */
+
+.companybrain-logo {
+  height: 32px;
+  width: auto;
+}
+
+.voice-recording {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.chat-message {
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.dashboard-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.quick-action-btn {
+  transition: all 0.2s ease;
+}
+
+.quick-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
